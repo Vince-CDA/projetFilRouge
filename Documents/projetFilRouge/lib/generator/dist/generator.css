@@ -1,0 +1,206 @@
+/*-----------------------------------------------
+|   Generator
+-----------------------------------------------*/
+main {
+    display: flex;
+}
+
+.sidebar {
+    width: 34rem;
+    position: fixed;
+    display: flex;
+}
+
+#generator-menu {
+    height: 100vh;
+    overflow: auto;
+    width: 14rem;
+    background-color: black;
+    padding: 2rem 0;
+}
+
+#dragable-items {
+    height: 100vh;
+    overflow: auto;
+    width: 20rem;
+    background-color: #1b1e21;
+    padding: 2rem;
+}
+
+.menu-item {
+    padding: 0.5rem 2rem;
+    color: #8e8e8e;
+    font-weight: 600;
+    text-transform: capitalize;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+}
+
+.menu-item.hover,
+.menu-item.focus,
+.menu-item.active {
+    background-color: #1b1e21;
+    color: black;
+    color: #fff;
+}
+
+.draggable-item {
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+/*-----------------------------------------------
+|   Browser
+----------------------------------------------- */
+.browser {
+    width: calc(100vw - 34rem);
+    min-width: 30rem;
+    margin-left: 34rem;
+    padding: 6rem 8rem;
+    min-height: 200px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.browser-header {
+    background-color: #f9f9f9;
+    /*border: 1px solid #eee;*/
+    border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+    padding: 0.5rem 0.25rem;
+}
+
+#drop-zone {
+    width: 100%;
+    min-height: calc(100vh - 16rem);
+    height: 100%;
+    /*border: 1px solid #eee;*/
+    border-bottom-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    overflow: hidden;
+}
+
+#drop-zone .draggable-item {
+    width: 100% !important;
+    height: auto !important;
+    margin-bottom: 0;
+}
+
+#drop-zone .text {
+    text-align: center;
+    display: none;
+}
+
+.browser-intro-text-wrapper {
+    position: relative;
+}
+
+.browser-intro-text-wrapper .text {
+    display: block !important;
+}
+
+/*-----------------------------------------------
+|   Actions Buttons
+----------------------------------------------- */
+.actions-buttons {
+    position: fixed;
+    right: 8rem;
+    bottom: 2rem;
+    z-index: 1;
+}
+
+/*-----------------------------------------------
+|   Alert Window
+----------------------------------------------- */
+.alert-window {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10001;
+    background-image: url('../../../images/header_showcase.jpg');
+    opacity: 1;
+    transition: opacity 0.8s cubic-bezier(.77, 0, .18, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+/*-----------------------------------------------
+|   Remodal
+----------------------------------------------- */
+.remodal {
+    padding: 0;
+    border: 2rem solid #fff;
+    border-top-width: 0;
+    max-height: 90vh !important;
+    max-width: 90vw;
+}
+
+.remodal > :not(pre) > code[class*="language-"], pre[class*="language-"] {
+    border: 0 !important;
+    margin: 0 !important;
+    background-color: #f1f1f1 !important;
+}
+
+/*-----------------------------------------------
+|   Sidebar
+----------------------------------------------- */
+.sidebar .draggable-item .section-id, .browser .draggable-item .btn-group-action {
+    position: absolute;
+    top: 1rem;
+    display: none;
+    z-index: 1;
+}
+
+.browser .draggable-item .section-id, .sidebar .draggable-item .btn-group-action {
+    display: none;
+}
+
+.section-id {
+    left: 1rem;
+    border: 1px solid #eee;
+    border-radius: 0.2rem;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    font-weight: 600;
+}
+
+.btn-group-action {
+    right: 1rem;
+}
+
+.sidebar .draggable-item:hover .section-id, .browser .draggable-item:hover .btn-group-action {
+    display: flex;
+}
+
+/*-----------------------------------------------
+|   Sort Place and Dragging image fix
+----------------------------------------------- */
+.ui-draggable-dragging img {
+    width: 256px !important;
+    height: auto;
+    left: 0;
+}
+
+#drop-zone .sort-placer {
+    background: #F7F6F5 url('navigate.svg') no-repeat center;
+    height: 50px;
+    transition: height 2s ease-in-out;
+}
+.ui-sortable-helper img{
+    max-width: calc(100vw - 50rem);
+}
+
+/*hot fix*/
+span.token.doctype {
+    display: block;
+    margin: -15px 0;
+}

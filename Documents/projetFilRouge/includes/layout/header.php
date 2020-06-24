@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!--  -->
+    <!--    Document Title-->
+    <!-- =============================================-->
+    <title>Slick | Create Beautiful Websites. Effortlessly.</title><!--  -->
+    <!--    Favicons-->
+    <!--    =============================================-->
+    <link rel="apple-touch-icon" sizes="180x180" href="./images/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicons/favicon-16x16.png">
+    <link rel="shortcut icon" type="image/x-icon" href="./images/favicons/favicon.ico">
+    <link rel="manifest" href="./images/favicons/manifest.json">
+    <link rel="mask-icon" href="./images/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileImage" content="./images/favicons/mstile-150x150.png">
+    <meta name="theme-color" content="#ffffff"><!--  -->
+    <!--    Stylesheets-->
+    <!--    =============================================-->
+    <!-- Default stylesheets-->
+    <link href="./lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"><!-- Template specific stylesheets-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
+    <link href="./lib/iconsmind/iconsmind.css" rel="stylesheet">
+    <link href="./lib/flexslider/flexslider.css" rel="stylesheet">
+    <link href="./lib/loaders.css/loaders.min.css" rel="stylesheet">
+    <link href="./lib/remodal/dist/remodal.css" rel="stylesheet">
+    <link href="./lib/remodal/dist/remodal-default-theme.css" rel="stylesheet">
+    <link href="./lib/semantic-ui-dropdown/dropdown.min.css" rel="stylesheet">
+    <link href="./lib/semantic-ui-accordion/accordion.min.css" rel="stylesheet">
+    <link href="./lib/semantic-ui-transition/transition.min.css" rel="stylesheet">
+    <link href="./lib/owl.carousel/dist/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="./lib/owl.carousel/dist/assets/owl.theme.default.min.css" rel="stylesheet">
+    <link href="./lib/iconsmind/iconsmind.css" rel="stylesheet">
+    <link href="./lib/lightbox2/dist/css/lightbox.css" rel="stylesheet">
+    <link href="./lib/hamburgers/dist/hamburgers.min.css" rel="stylesheet"><!-- Main stylesheet and color file-->
+    <link href="./css/style.css" rel="stylesheet">
+    <link href="./css/custom.css" rel="stylesheet">
+</head>
+
+<body data-spy="scroll" data-target=".inner-link" data-offset="60">
+<div class="preloader" id="preloader">
+    <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-white-only">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<main>
+    <div class="znav-container" id="znav-container">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg"><a class="navbar-brand" href="./index.html">Slick</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span class="hamburger hamburger--emphatic"><span class="hamburger-box"><span class="hamburger-inner"></span></span></span></button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav pos-lg-absolute absolute-centered-lg">
+                        <li><a href="./index.php">Home</a></li>
+                        <li><a href="#">Feature</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Shop</a></li>
+                        <li><a href="#"><span class="fa fa-search"></span></a></li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                        <li><a href="#">Sign In</a></li>
+                        <li><a class="btn btn-primary btn-capsule btn-sm" href="#">Sign Up</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>

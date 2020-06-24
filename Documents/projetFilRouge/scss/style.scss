@@ -1,0 +1,365 @@
+@import 'config';
+@import '../../zcore/assets/scss/core.scss';
+@import 'hover';
+@import 'preloader';
+
+
+ 
+//Slick styles
+h1, h2, h3, h4 {
+	font-weight: 400;
+}
+h5{
+	font-weight: 600;
+}
+h6{
+    font-weight: 700;
+    text-transform: uppercase;
+	letter-spacing: 0.06em;
+}
+p{
+    font-weight: 400;
+    color: map-get($colors, 5);
+    &.lead{
+    	font-weight: 400;
+    }
+}
+
+a:not(.btn-icon-pop){
+	.fa{
+		transform: translateY(0.01em);
+	}
+}
+
+.hvr-background-primary{
+	transition: background-color 0.2s ease-in-out;
+	@include hover-focus{
+		background-color: map-get($colors, primary) !important;
+	}
+}
+
+.btn{
+	letter-spacing: 0.03em;
+	text-transform: uppercase;
+	font-weight: 700;
+	&[class*="btn-outline-"]:not(.border-2x){
+		font-weight: 600;
+	}
+
+	&.btn-link{
+		font-weight: 400 !important;
+	}
+
+	&.btn-capsule.btn-icon{
+		span{
+			text-indent: 4px;
+			width: 2.9rem;
+		}
+	}
+}
+
+.btn-outline-light{
+	border-color: rgba(255, 255, 255, 0.35);
+	color: rgba(255, 255, 255, 0.8);
+	font-weight: 700 !important;
+}
+.border-color-mild{ border-color: rgba(127, 127, 127, 0.35); }
+
+.background-holder.overlay-white:before{
+	background: rgba(255, 255, 255, 0.5);
+}
+
+.no-circle{
+	position: relative;
+	>span{
+		position: absolute;
+		padding: map-get($spacers, 2);
+		text-align: center;
+		color: white;
+		border-radius: 100%;
+		height: 40px;
+		width: 40px;
+		top: 0;
+		left: -20px;
+		font-weight: 700;
+	}
+}
+
+
+// Pricing Table Custom Style
+@include mq($from: desktop) {
+	.border-right-radius-0{
+		border-top-right-radius: 0 !important;
+		border-bottom-right-radius: 0 !important;
+	}
+	.border-left-radius-0{
+		border-top-left-radius: 0 !important;
+		border-bottom-left-radius: 0 !important;
+	}
+}
+
+
+.slick-line{
+	height: 2px;
+	width: 0;
+}
+
+// //////////////
+// For zcore
+// //////////////
+.overflow-scroll{
+	overflow: scroll;
+}
+.sticky-bottom{
+	position: sticky;
+	bottom: 0;
+}
+
+///// Forms
+.form-control{
+	font-size: modular-scale(-1);
+}
+.input-group{
+	.input-group-addon{ border: 1px solid map-get($colors, 9); }
+	input{
+		@include hover-focus {
+			border-color: map-get($colors, 9);
+		}
+	}
+}
+.input-capsule{ border-radius: $radius-capsule; }
+
+
+	
+.input-group-capsule{
+	.input-group-addon{
+		border-radius: $radius-capsule 0 0 $radius-capsule;
+		border-width: 1px 0 1px 1px;
+		
+	}
+	.input-group-addon + input{ border-radius: 0 $radius-capsule $radius-capsule 0; }
+	
+	input{ border-radius: $radius-capsule 0 0 $radius-capsule; }
+	input + .input-group-addon{
+		border-radius: 0 $radius-capsule $radius-capsule 0;
+		border-width: 1px 1px 1px 0;
+	}
+}
+
+///*-----------------------------------------------
+//|   Pre-loader
+//-----------------------------------------------*/
+//.preloader {
+//	position: fixed;
+//	top: 0;
+//	left: 0;
+//	right: 0;
+//	bottom: 0;
+//	z-index: 10001;
+//	background-image: linear-gradient(135deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+//	animation: Gradient 15s ease infinite;
+//	background-size: 400% 400%;
+//	opacity: 1;
+//	transition: opacity 0.8s cubic-bezier(.77, 0, .18, 1);
+//	display: flex;
+//	align-items: flex-end;
+//	justify-content: flex-end;
+//	padding-right: 150px;
+//	padding-bottom: 150px;
+//	&.loaded{
+//		opacity: 0;
+//	}
+//}
+//.ball-scale-ripple-multiple > div{
+//	width: 400px;
+//	height: 400px;
+//}
+
+.container-fluid, .container-wide{
+	.card-columns {
+		column-count: 2;
+		//@include mq($from: mobile) {
+		//	column-count: 2;
+		//}
+		@include mq($from: tablet) {
+			column-count: 3;
+		}
+		@include mq($from: wide) {
+			column-count: 4;
+		}
+	}
+}
+.card-columns.sitemap{
+	column-count: 1;
+	@include mq($from: mobile) {
+		column-count: 2;
+	}
+	@include mq($from: tablet) {
+		column-count: 3;
+	}
+	@include mq($from: wide) {
+		column-count: 4;
+	}
+}
+
+.pink{
+	background-color: pink;
+	height: 500px;
+}
+.white{
+	background-image: url(https://d29fhpw069ctt2.cloudfront.net/photo/17003/preview/photo-1476433701303-4608fe1b1a3c_npreviews_eb97.jpg);
+	background-size: cover;
+	background-position: center;
+	height: 500px;
+}
+
+
+.background-gradient-signup{
+	background: linear-gradient(45deg, #ff233d 1%,#f8253c 17%,#ff353f 32%,#ff4d40 68%,#ff5b41 83%,#ff5e41 100%);
+}
+
+
+
+//for zcore
+
+.pos-absolute.absolute-centered{
+	left: 50%;
+	top: 50%;
+	transform: translate3d(-50%, -50%, 0);
+}
+
+/*-----------------------------------------------
+|   Nav burger Panel
+-----------------------------------------------*/
+body{ overflow-x: hidden; }
+.nav-burger-panel{
+	border-top: 1px solid map_get($colors, 2);
+	padding: map_get($spacers, 5);
+	position: fixed;
+	left: 100%;
+	width: 500px;
+	max-width: 100%;
+	background-color: map_get($colors, 1);
+	overflow-y: auto;
+  z-index: 9999;
+	transition: transform 0.2s ease-in-out;
+	&.nav-burger-panel-collapsed{ transform: translateX(-100%); }
+}
+.znav-container{
+	.hamburger-inner, .hamburger-inner:after, .hamburger-inner:before{ background-color: white !important; }
+	.is-active{ .hamburger-inner{ background-color: transparent !important; } }
+}
+.znav-white{ .hamburger-inner, .hamburger-inner:after, .hamburger-inner:before{ background-color: black !important; } }
+
+/*-----------------------------------------------
+|   Icon with input
+-----------------------------------------------*/
+.input-group-icon{
+	position: relative;
+	.input-icon {
+		position: absolute;
+		z-index: 99;
+		right: map_get($spacers, 3);
+		font-size: modular-scale(0);
+		top: 50%;
+		transform: translateY(-50%);
+	}
+	.form-control{
+		font-size: modular-scale(0);
+		padding-left: map_get($spacers, 3);
+		padding-right: map_get($spacers, 5);
+	}
+}
+
+
+
+/*-----------------------------------------------
+|   Semantic UI Dropdown
+-----------------------------------------------*/
+.ui.selection.dropdown.border-2x .menu.border-2x{
+	margin: 0 -2px;
+	min-width: calc(100% + 4px);
+}
+.ui.selection.dropdown > .search.icon:before, .ui.selection.dropdown > .delete.icon:before, .ui.selection.dropdown > .dropdown.icon:before{
+	content: '';
+	height: 10px;
+	width: 10px;
+	border-right: 2px solid map_get($colors, 7);
+	border-bottom: 2px solid map_get($colors, 7);
+	transform: rotate(45deg);
+	transform-origin: center;
+	transition: transform 0.1s ease-in-out;
+	display: block;
+}
+.ui.selection.dropdown.active.visible > .search.icon:before, .ui.selection.dropdown.active.visible > .delete.icon:before, .ui.selection.dropdown.active.visible > .dropdown.icon:before{
+	transform: rotate(-135deg);
+}
+
+/*-----------------------------------------------
+|   Showcase
+-----------------------------------------------*/
+.background-gradient{
+	position: relative;
+	background-image: linear-gradient(135deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+	animation: Gradient 15s ease infinite;
+	background-size: 400% 400%;
+}
+
+.container-wide { @include mq($from: ultrawide) { max-width: (map_get($mq-breakpoints, ultrawide) - 60px); } }
+@include mq($from: desktop){
+	.znav-container .container-wide ul li a:not(.btn){ padding: 1rem 0.6rem; }
+	.znav-container .container-wide .has-megamenu > a:after, .znav-container .container-wide .has-dropdown > a:after{ top: 18px }
+	.znav-container .has-megamenu > a:after, .znav-container .has-dropdown > a:after{ top: 8px }
+	.znav-container .has-megamenu > a, .znav-container .has-dropdown > a{ padding-right: 1rem !important;}
+}
+.znav-container .megamenu a:not(.btn){ padding: 2px !important;}
+
+.showcase-content {
+	margin-top: -28rem;
+	&.showcase-pages{ margin-top: -24rem; }
+}
+.showcase-banner{
+	padding-bottom: 27rem;
+	max-width: 52rem;
+}
+.filter-item {
+	transition-timing-function: linear !important;
+	transition-property: transform !important;
+}
+
+
+/*-----------------------------------------------
+|  TODO: Push this keyframe and remove from css
+-----------------------------------------------*/
+@keyframes Gradient {
+	0% { background-position: 0% 50%; }
+	50% { background-position: 100% 50%; }
+	100% { background-position: 0% 50%; }
+}
+
+/*-----------------------------------------------
+|   Showcase Menu
+-----------------------------------------------*/
+.showcase-megamenu{
+	padding: 3rem 4rem 4rem;
+	background: url(./../images/shapes/corner-2.png) no-repeat bottom left;
+}
+.ie .showcase-megamenu, .edge .showcase-megamenu{
+	width: 100%;
+	@include mq($from: desktop){ max-width: 30rem; }
+}
+
+/*-----------------------------------------------
+|   IE fix
+-----------------------------------------------*/
+.wave { bottom: -2px; }
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){
+	.wave { bottom: -20px; }
+	//.col-auto { flex: 10 0 auto; }
+}
+
+
+/*-----------------------------------------------
+|   Component navigation
+-----------------------------------------------*/
+.components-nav a{ cursor: pointer; }
