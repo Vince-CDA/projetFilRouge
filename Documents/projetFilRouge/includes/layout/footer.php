@@ -2,10 +2,14 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg text-lg-left">
-                <h5 class="color-8 mb-1 fw-600">SLICK inc.</h5>
-                <p class="mb-0">&#xA9; Copyright 2018 Slick</p>
+                <h5 class="color-8 mb-1 fw-600">Moto Club Millau Passion</h5>
+                <p class="mb-0">&#xA9; Copyright 2020</p>
             </div>
-            <div class="col-lg-auto mt-4 mt-lg-0"><a class="color-7 d-inline-block m-2" href="#">Projects</a><a class="color-7 d-inline-block m-2" href="./index.php?page=about">How Slick Works</a><a class="color-7 d-inline-block m-2" href="./index.php?page=about">About</a><a class="color-7 d-inline-block m-2" href="#">Contacts</a></div>
+            <div class="col-lg-auto mt-4 mt-lg-0">
+                <a class="color-7 d-inline-block m-2" href="./index.php?page=reglement">Règlement</a>
+                <a class="color-7 d-inline-block m-2" href="./index.php?page=contact">Contact</a>
+                <a class="color-7 d-inline-block m-2" href="./index.php?page=partenaire">Partenaire</a>
+            </div>
             <div class="col-lg text-lg-right mt-4 mt-lg-0"><a class="d-inline-block" href="#">
                     <div class="border color-2 radius-round d-flex align-items-center justify-content-center m-1" style="width: 50px; height: 50px;"><span class="fab fa-twitter color-5"></span></div>
                 </a><a class="d-inline-block" href="#">
@@ -44,14 +48,11 @@
 <script src="./lib/lightbox2/dist/js/lightbox.js"></script>
 <script src="./lib/tableCollation.js"></script>
 <script src="./js/countup.js"></script>
-<script src="./js/googlemap.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async></script>
 <script src="./lib/rellax/rellax.min.js"></script>
 <script src="./lib/isotope-layout/dist/isotope.pkgd.js"></script>
-<script src="./lib/jquery.mb.ytplayer/dist/jquery.mb.YTPlayer.min.js"></script>
 <script src="./lib/flexslider/jquery.flexslider-min.js"></script>
 <script src="./js/core.js"></script>
-<script src="./js/main.js"></script>
+<script src="./js/main.js?v1.<?php echo time();?>"></script>
 </body>
 
 </html>

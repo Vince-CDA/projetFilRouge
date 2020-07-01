@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"><!--  -->
     <!--    Document Title-->
     <!-- =============================================-->
-    <title>Slick | Create Beautiful Websites. Effortlessly.</title><!--  -->
+    <title><?php echo $titre; ?></title><!--  -->
     <!--    Favicons-->
     <!--    =============================================-->
     <link rel="apple-touch-icon" sizes="180x180" href="./images/favicons/apple-touch-icon.png">
@@ -41,6 +41,8 @@
     <link href="./lib/hamburgers/dist/hamburgers.min.css" rel="stylesheet"><!-- Main stylesheet and color file-->
     <link href="./css/style.css" rel="stylesheet">
     <link href="./css/custom.css" rel="stylesheet">
+    <!-- Fichier main custom -->
+    <link href="./css/main.css?v1.<?php echo time();?>" rel="stylesheet">
 </head>
 
 <body data-spy="scroll" data-target=".inner-link" data-offset="60">
@@ -62,18 +64,27 @@
 <main>
     <div class="znav-container" id="znav-container">
         <div class="container">
-            <nav class="navbar navbar-expand-lg"><a class="navbar-brand" href="./index.html">Slick</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span class="hamburger hamburger--emphatic"><span class="hamburger-box"><span class="hamburger-inner"></span></span></span></button>
+            <nav class="navbar navbar-expand-lg"><a class="navbar-brand" href="./index.php">Moto Club Millau Passion</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span class="hamburger hamburger--emphatic"><span class="hamburger-box"><span class="hamburger-inner"></span></span></span></button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav pos-lg-absolute absolute-centered-lg">
-                        <li><a href="./index.php">Home</a></li>
-                        <li><a href="#">Feature</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Shop</a></li>
-                        <li><a href="#"><span class="fa fa-search"></span></a></li>
+                        <!-- Boucle pour afficher ma barre de navigation -->
+                        <?php
+                        foreach ($navbar as $key => $value) {
+                            echo '<li><a href="./index.php?page='.$key.'">'.$value.'</a></li>';
+                        }
+                        ?>
+                        <!--
+                        <li><a href="./index.php?page=accueil">Accueil</a></li>
+                        <li><a href="./index.php?page=news">News</a></li>
+                        <li><a href="./index.php?page=activites">Activités</a></li>
+                        <li><a href="./index.php?page=galerie">Galerie</a></li>
+                        <li><a href="./index.php?page=historique">Historique</a></li>
+                        <li><a href="./index.php?page=search"><span class="fa fa-search"></span></a></li>
+                        -->
                     </ul>
                     <ul class="navbar-nav ml-auto">
-                        <li><a href="#">Sign In</a></li>
-                        <li><a class="btn btn-primary btn-capsule btn-sm" href="#">Sign Up</a></li>
+                        <li><a href="./index.php?page=connexion">Connexion</a></li>
+                        <li><a class="btn btn-primary btn-capsule btn-sm" href="./index.php?page=inscription">Inscription</a></li>
                     </ul>
                 </div>
             </nav>

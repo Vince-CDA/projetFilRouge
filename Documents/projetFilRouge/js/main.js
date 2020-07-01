@@ -128,4 +128,9 @@ Utils.$document.ready(function () {
       shuffleInstance.filter(filterValue);
     });
   }
+
+/*-----------------------------------------------
+|   Mon code JS custom
+-----------------------------------------------*/
+
 });
