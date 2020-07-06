@@ -1,0 +1,16 @@
+.modal {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-bouton a {
+  text-decoration: none;
+  color: white;
+}
+
+a {
+  color: black;
+}
+
+a:hover {
+  text-decoration: none;
+}

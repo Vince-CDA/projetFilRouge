@@ -44,23 +44,33 @@ if(!empty($_POST)){
             $bdd->query($query);
 
             /* Changement du message de type modal */
-            $message_modal = 'Inscription prise en compte, nous vous recontacterons.';
-
-        }/*else if($_POST['formulaire'] == 'update_profil'){
+            $monModalTitre = 'Succès !';
+            $monModalTexte = 'Votre inscription a bien été prise en compte, vous serez recontacté par mail quand un organisateur aura confirmé votre inscription.';
+            $monModalBouton = '<a href="./index.php">Retour à la page d\'accueil</a>';
+        }else if($_POST['formulaire'] == 'update_profil'){
 
             $query = 'UPDATE adherent SET 
               Login = "'.$_POST["login"].'",
+              Password = "'.$_POST["password"].'",
               Prenom = "'.$_POST["prenom"].'",
-              cylindree = "'.$_POST["cylindree"].'"
+              Nom = "'.$_POST["nom"].'",
+              DNaiss = "'.$_POST["dnaiss"].'",
+              Adresse1 = "'.$_POST["adresse1"].'",
+              CdPost = "'.$_POST["cdpost"].'",
+              Ville = "'.$_POST["ville"].'",
+              Email = "'.$_POST["email"].'",
+              Tel = "'.$_POST["tel"].'",
+              cc = "'.$_POST["cc"].'"
               WHERE IdAdherent = '.$_POST["IdAdherent"];
 
 
             $bdd->query($query);
             //information modal html
-            $message_modal = 'Votre profil est mis à jour.'.$query;
-
+            $monModalTitre = 'Mise à jour faite avec succès!';
+            $monModalTexte = 'Le profil a bien été mis à jour.';
+            $monModalBouton = 'Fermer';
         }
-*/
+
 
 
     }

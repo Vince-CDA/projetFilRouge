@@ -44,7 +44,6 @@
     <!-- Fichier main custom -->
     <link href="./css/main.css?v1.<?php echo time();?>" rel="stylesheet">
 </head>
-
 <body data-spy="scroll" data-target=".inner-link" data-offset="60">
 <div class="preloader" id="preloader">
     <div class="preloader-wrapper big active">
@@ -62,6 +61,7 @@
     </div>
 </div>
 <main>
+    <?php include('./includes/template/modal.php') ?>
     <div class="znav-container" id="znav-container">
         <div class="container">
             <nav class="navbar navbar-expand-lg"><a class="navbar-brand" href="./index.php">Moto Club Millau Passion</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span class="hamburger hamburger--emphatic"><span class="hamburger-box"><span class="hamburger-inner"></span></span></span></button>

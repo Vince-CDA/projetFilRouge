@@ -132,5 +132,18 @@ Utils.$document.ready(function () {
 /*-----------------------------------------------
 |   Mon code JS custom
 -----------------------------------------------*/
+  $('.modal-header .close,.modal-bouton').on('click', function(){
+
+
+    $(".modal").hide();
+
+
+  });
+
+  if($('.modal-body p').html().length){
+
+    $(".modal").show();
+
+  }
 
 });

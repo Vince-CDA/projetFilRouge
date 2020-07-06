@@ -18,6 +18,33 @@ $tbTitle[$donnees['Key']] = $donnees;
 
 if (isset($_GET['page']) && array_key_exists($_GET['page'],$tbTitle)) {
 $mapage = $_GET['page'];
+    //test sur les action de page
+    if(isset($_GET['action']) && !empty($_GET['action'])) {
+
+        //est-ce que l'action c'est delete sur la page membres ?
+        if ($_GET['action'] == 'delete') {
+
+            //est-ce qu'on a une valeur d'id ?
+            if (isset($_GET['id']) && !empty($_GET['id'])) {
+
+                //est-ce que c'est sur la page membre ?
+                if ($mapage == 'membres') {
+
+                    //lancement de la requete
+                    $bdd->query('DELETE FROM adherent WHERE IdAdherent = ' . $_GET['id']);
+
+                    //information modal html
+                    $message_modal = 'Utilisateur ' . $_GET['id'] . ' supprimé.';
+
+                } else if ($mapage == 'activites') {
+                    //ici le code pour gérer les suppressions des activités
+
+
+                }
+
+            }
+        }
+    }
 } else {
 $mapage = 'accueil';
 }

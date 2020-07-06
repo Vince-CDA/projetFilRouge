@@ -8,68 +8,69 @@
                 <div class="tabs background-white radius-secondary pb-4">
                     <div class="tab-contents px-5">
                         <div class="tab-content active">
-                            <form action="./index.php?page=inscription" method="post" class="register-form">
-                                <h1 id="bandeau" class="lead bold h1 pb-4 text-center"><b>Inscription</b></h1>
-                                <input type="hidden" name="formulaire" value="register" />
-                                <div class="row">
+                            <form action="./index.php?page=<?php echo $mapage ?><?php echo isset($id) ? '&id='.$id : ''; ?>" method="post" class="register-form">
+                                <h1 id="bandeau" class="lead bold h1 pb-4 text-center"><b><?php echo $titre ?></b></h1>
+                                <input type="hidden" name="formulaire" value="<?php echo $action; ?>" />
+                                <input type="hidden" name="IdAdherent" value="<?php echo isset($id) ? $id : ''; ?>" />
+                                <div class="row text-center">
                                     <div class="col-lg-6">
                                         <label class="py-0 mb-0" for="name">Identifiant</label>
-                                        <input size="16" type="text" id="login" name="login" value="test identifiant" placeholder="" required />
+                                        <br /><input size="16" type="text" id="login" name="login" value="<?php echo isset($identifiant) ? $identifiant : '' ?>" placeholder="" required />
                                     </div>
                                     <div class="col-lg-6">
                                         <label class="py-0 mb-0"  for="name">Mot de passe</label>
-                                        <input size="16" type="password" id="password" name="password" value="test password" placeholder="" required />
+                                        <br /><input size="16" type="password" id="password" name="password" value="<?php echo isset($password) ? $password : '' ?>" placeholder="" required />
                                     </div>
                                     <div class="col-lg-6">
                                         <label class="py-0 mb-0"  for="name">Prénom</label>
-                                        <input size="16" type="text" id="firstname" name="prenom" value="test prenom" placeholder="" required />
+                                        <br /><input size="16" type="text" id="firstname" name="prenom" value="<?php echo isset($prenom) ? $prenom : '' ?>" placeholder="" required />
                                     </div>
                                     <div class="col-lg-6">
                                         <label class="py-0 mb-0"  for="name">Nom</label>
-                                        <input size="16" type="text" id="name" name="nom" value="test nom" required />
+                                        <br /><input size="16" type="text" id="name" name="nom" value="<?php echo isset($nom) ? $nom : '' ?>" required />
                                     </div>
                                     <div class="col-lg-6">
                                         <label class="py-0 mb-0"  for="name">Date de naissance</label>
-                                        <input size="16" type="date" id="birth" name="dnaiss" value="1980-01-22" required />
+                                        <br /><input size="16" type="date" id="birth" name="dnaiss" value="<?php echo isset($datenaiss) ? $datenaiss : '' ?>" required />
                                     </div>
                                     <div class="col-lg-6">
                                         <label class="py-0 mb-0"  for="name">Adresse</label>
-                                        <input size="16" type="text" id="adress" name="adresse1" value="test adresse" required />
+                                        <br /><input size="16" type="text" id="adress" name="adresse1" value="<?php echo isset($adresse) ? $adresse : '' ?>" required />
                                     </div>
                                     <div class="col-lg-6">
                                         <label class="py-0 mb-0"  for="cp">CP</label>
-                                        <input size="16" type="text" id="zip" name="cdpost" value="Test cp" required />
+                                        <br /><input size="16" type="text" id="zip" name="cdpost" value="<?php echo isset($codep) ? $codep : '' ?>" required />
                                     </div>
                                     <div class="col-lg-6">
                                         <label class="py-0 mb-0"  for="name">Ville</label>
-                                        <input size="16" type="text" id="city" name="ville" value="test ville" required />
+                                        <br /><input size="16" type="text" id="city" name="ville" value="<?php echo isset($ville) ? $ville : '' ?>" required />
                                     </div>
                                     <div class="col-lg-6">
                                         <label class="py-0 mb-0"  for="email">Email</label>
-                                        <input size="16" type="email" id="email" name="email" value="test@test.com" required />
+                                        <br /><input size="16" type="email" id="email" name="email" value="<?php echo isset($email) ? $email : '' ?>" required />
                                     </div>
                                     <div class="col-lg-6">
                                         <label class="py-0 mb-0"  for="mobile">Téléphone</label>
-                                        <input size="16" type="text" id="mobile" name="tel" value="test tel" required />
+                                        <br /><input size="16" type="text" id="mobile" name="tel" value="<?php echo isset($tel) ? $tel : '' ?>" required />
                                     </div>
                                     <div class="col-lg-12">
                                         <label class="py-0 mb-0"  for="mobile">Votre cylindrée</label>
                                     </div>
-                                        <div class="col-lg-12">
-                                            <input type="radio" name="cylindree" value="125 cm3" />
-                                            <label  for="mobile">125 cm3</label>
-                                            <input type="radio" name="cylindree" value="250 cm3" />
-                                            <label  for="mobile">250 cm3</label>
-                                            <input type="radio" name="cylindree" value="> 250 cm3" />
-                                            <label  for="mobile">> 250 cm3</label>
-                                            <input type="radio" name="cylindree" value="aucune" checked/>
-                                            <label  for="mobile">aucune</label>
+                                    <div class="col-lg-12">
+                                        <input type="radio" name="cc" value="125 cm3" <?php echo isset($cylindree) && $cylindree == "125 cm3" ? 'checked' : '';  ?>/>
+                                        <label  for="mobile">125 cm3</label>
+                                        <input type="radio" name="cc" value="250 cm3" <?php echo isset($cylindree) && $cylindree == "250 cm3" ? 'checked' : '';  ?>/>
+                                        <label  for="mobile">250 cm3</label>
+                                        <input type="radio" name="cc" value="> 250 cm3" <?php echo isset($cylindree) && $cylindree == "> 250 cm3" ? 'checked' : '';  ?>/>
+                                        <label  for="mobile">> 250 cm3</label>
+                                        <input type="radio" name="cc" value="aucune" <?php echo isset($cylindree) && $cylindree == "aucune" ? 'checked' : '';  ?>/>
+                                        <label  for="mobile">aucune</label>
                                     </div>
                                     <div class="col-lg-12">
                                         <label class="py-0 mb-0"  for="mobile">En vous inscrivant, vous acceptez que votre image soit utilisée sur le site internet</label>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-success float-right lead">S'inscrire</button>
+                                <button type="submit" class="btn btn-success float-right lead"><?php echo $btn_register; ?></button>
                             </form>
                         </div>
                         <div class="tab-content text-center" style="min-height: 325px;">
