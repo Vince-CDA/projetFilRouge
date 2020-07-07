@@ -1,4 +1,13 @@
 <?php
+/* Le site utilise les sessions (créé moi un fichier avec un numéro unique et fait correspondre des numéros de sessions serveur/client)*/
+session_start();
+
+if(isset($_GET['deconnexion']) AND $_GET['deconnexion'] == '1'){
+    /* Destruction de la session */
+    session_destroy();
+    header("location:index.php");
+
+}
 
 /* J'inclus mon fichier config avec mes logins de base de données local */
 

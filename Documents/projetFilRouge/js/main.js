@@ -128,7 +128,7 @@ Utils.$document.ready(function () {
       shuffleInstance.filter(filterValue);
     });
   }
-
+});
 /*-----------------------------------------------
 |   Mon code JS custom
 -----------------------------------------------*/
@@ -144,6 +144,6 @@ Utils.$document.ready(function () {
 
     $(".modal").show();
 
-  }
+  };
 
-});
+

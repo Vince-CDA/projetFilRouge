@@ -73,6 +73,7 @@
                             echo '<li><a href="./index.php?page='.$key.'">'.$value.'</a></li>';
                         }
                         ?>
+
                         <!--
                         <li><a href="./index.php?page=accueil">Accueil</a></li>
                         <li><a href="./index.php?page=news">News</a></li>
@@ -83,8 +84,13 @@
                         -->
                     </ul>
                     <ul class="navbar-nav ml-auto">
+                        <?php if(isset($_SESSION['nom'])){ ?>
+                            <li><a href="./index.php?page=profil&id=<?php echo $_SESSION['id'] ?>">Mon profil</a></li>
+                            <a href="./index.php?deconnexion=1" alt="Déconnexion" title="Cliquez-ici pour se déconnecter" class="fa fa-sign-out"></a>
+                        <?php }else{?>
                         <li><a href="./index.php?page=connexion">Connexion</a></li>
                         <li><a class="btn btn-primary btn-capsule btn-sm" href="./index.php?page=inscription">Inscription</a></li>
+                        <?php } ?>
                     </ul>
                 </div>
             </nav>

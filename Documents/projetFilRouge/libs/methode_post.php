@@ -47,6 +47,7 @@ if(!empty($_POST)){
             $monModalTitre = 'Succès !';
             $monModalTexte = 'Votre inscription a bien été prise en compte, vous serez recontacté par mail quand un organisateur aura confirmé votre inscription.';
             $monModalBouton = '<a href="./index.php">Retour à la page d\'accueil</a>';
+
         }else if($_POST['formulaire'] == 'update_profil'){
 
             $query = 'UPDATE adherent SET 
@@ -69,10 +70,48 @@ if(!empty($_POST)){
             $monModalTitre = 'Mise à jour faite avec succès!';
             $monModalTexte = 'Le profil a bien été mis à jour.';
             $monModalBouton = 'Fermer';
+        }else if($_POST['formulaire'] == 'connexion'){
+
+            if(isset($_POST['login']) AND isset($_POST['password'])){
+                if (!empty($_POST['login']) AND !empty($_POST['password'])) {
+
+                    $query = 'SELECT IdAdherent,
+                                     Nom,
+                                     Prenom,
+                                     Organisateur 
+                                     FROM adherent 
+                                     WHERE Login ="'.$_POST['login'].'" AND Password ="'.$_POST['password'].'"';
+                    $reponse = $bdd->query($query);
+
+                    if ($reponse->rowCount() == 1) {
+                        while ($donnee = $reponse->fetch()) {
+                            $nom = $donnee['Nom'];
+                            $prenom = $donnee['Prenom'];
+                            $id = $donnee['IdAdherent'];
+                            $admin = $donnee['Organisateur'];
+                            $_SESSION['nom'] = $nom;
+                            $_SESSION['prenom'] = $prenom;
+                            $_SESSION['id'] = $id;
+                            $_SESSION['admin'] = $admin;
+                            $monModalTitre = 'Bravo';
+                            $monModalTexte = 'Vous êtes maintenant connecté à MCMP.';
+                            $monModalBouton = 'Ok !';
+                        } }else{
+                            $monModalTitre = 'Echec';
+                            $monModalTexte = 'Votre identifiant ou votre mot de passe est invalide.';
+                            $monModalBouton = 'Ok !';
+                        }
+
+                    }
+
+
+                }
+            }
+
         }
 
 
 
-    }
+
 
 };
