@@ -92,7 +92,7 @@ if(!empty($_POST)){
                             $_SESSION['nom'] = $nom;
                             $_SESSION['prenom'] = $prenom;
                             $_SESSION['id'] = $id;
-                            $_SESSION['admin'] = $admin;
+                            $_SESSION['organisateur'] = $admin;
                             $monModalTitre = 'Bravo';
                             $monModalTexte = 'Vous êtes maintenant connecté à MCMP.';
                             $monModalBouton = 'Ok !';

@@ -10,7 +10,7 @@ $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 /* Tableau de ma barre de navigation */
 
-$navbar = array('accueil'=>'Accueil', 'membres'=>'Membres', 'news'=>'News', 'activites'=>'Activités', 'galerie'=>'Galerie', 'historique'=>'Historique');
+$navbar = array('accueil'=>'Accueil', 'news'=>'News', 'activites'=>'Activités', 'galerie'=>'Galerie', 'historique'=>'Historique');
 
 $monModalTitre = '';
 $monModalTexte = '';

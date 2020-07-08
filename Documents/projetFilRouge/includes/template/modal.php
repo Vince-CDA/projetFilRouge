@@ -11,7 +11,7 @@
                 <p><?php echo $monModalTexte ?></p>
             </div>
             <div class="modal-bouton text-right">
-                <button type="button" class="btn btn-primary"><?php echo $monModalBouton ?></button>
+                <button type="button" class="btn btn-success float-right lead"><?php echo $monModalBouton ?></button>
             </div>
         </div>
     </div>

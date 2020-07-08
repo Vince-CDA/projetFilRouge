@@ -85,8 +85,18 @@
                     </ul>
                     <ul class="navbar-nav ml-auto">
                         <?php if(isset($_SESSION['nom'])){ ?>
-                            <li><a href="./index.php?page=profil&id=<?php echo $_SESSION['id'] ?>">Mon profil</a></li>
-                            <a href="./index.php?deconnexion=1" alt="Déconnexion" title="Cliquez-ici pour se déconnecter" class="fa fa-sign-out"></a>
+
+                                <button class="btn btn-primary btn-capsule btn-sm dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    <?php  echo $_SESSION['prenom'].' '.$_SESSION['nom'] ?>
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu shadow" aria-labelledby="dropdownMenu1">
+                                    <li><a class="menu-deroul" href="./index.php?page=profil&id=<?php echo $_SESSION['id'] ?>">Mon profil</a></li>
+                                    <li><a class="menu-deroul" href="./index.php?page=membres">Membres</a></li>
+                                    <li><a class="menu-deroul" href="./index.php?page=activités">Ajouter une activité</a></li>
+                                    <li role="separator" class="menu-deroul divider"></li>
+                                    <li><a class="menu-deroul" href="./index.php?deconnexion=1" alt="Déconnexion" title="Cliquez-ici pour se déconnecter">Déconnexion</a></li>
+                                </ul>
                         <?php }else{?>
                         <li><a href="./index.php?page=connexion">Connexion</a></li>
                         <li><a class="btn btn-primary btn-capsule btn-sm" href="./index.php?page=inscription">Inscription</a></li>
