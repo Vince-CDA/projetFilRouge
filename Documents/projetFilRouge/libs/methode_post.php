@@ -9,7 +9,7 @@ if(!empty($_POST)){
             /* Pour voir le POST après validation du formulaire */
             //var_dump($_POST);
 
-            $query = 'INSERT INTO adherent(
+            $Query = 'INSERT INTO adherent(
             Login,
             Password,
             Nom,
@@ -20,20 +20,20 @@ if(!empty($_POST)){
             Ville,
             Email,
             Tel,
-            cc,
+            CC,
             DAdhesion
             ) VALUES (
-            "'.$_POST["login"].'",
-            "'.$_POST["password"].'",
-            "'.$_POST["nom"].'",
-            "'.$_POST["prenom"].'",
-            "'.$_POST["dnaiss"].'",
-            "'.$_POST["adresse1"].'",
-            "'.$_POST["cdpost"].'",
-            "'.$_POST["ville"].'",
-            "'.$_POST["email"].'",
-            "'.$_POST["tel"].'",
-            "'.$_POST["cc"].'",
+            "'.$_POST["Login"].'",
+            "'.$_POST["Password"].'",
+            "'.$_POST["Nom"].'",
+            "'.$_POST["Prenom"].'",
+            "'.$_POST["DNaiss"].'",
+            "'.$_POST["Adresse1"].'",
+            "'.$_POST["CdPost"].'",
+            "'.$_POST["Ville"].'",
+            "'.$_POST["Email"].'",
+            "'.$_POST["Tel"].'",
+            "'.$_POST["CC"].'",
             NOW()
             )';
 
@@ -41,65 +41,67 @@ if(!empty($_POST)){
             //echo "Query : ".$query;
 
             /* Execution de la requête dans la base de données */
-            $bdd->query($query);
+            $BDD->query($Query);
 
             /* Changement du message de type modal */
-            $monModalTitre = 'Succès !';
-            $monModalTexte = 'Votre inscription a bien été prise en compte, vous serez recontacté par mail quand un organisateur aura confirmé votre inscription.';
-            $monModalBouton = '<a href="./index.php">Retour à la page d\'accueil</a>';
+            $MonModalTitre = 'Succès !';
+            $MonModalTexte = 'Votre inscription a bien été prise en compte, vous serez recontacté par mail quand un organisateur aura confirmé votre inscription.';
+            $MonModalBouton = '<a href="./index.php">Retour à la page d\'accueil</a>';
 
         }else if($_POST['formulaire'] == 'update_profil'){
 
-            $query = 'UPDATE adherent SET 
-              Login = "'.$_POST["login"].'",
-              Password = "'.$_POST["password"].'",
-              Prenom = "'.$_POST["prenom"].'",
-              Nom = "'.$_POST["nom"].'",
-              DNaiss = "'.$_POST["dnaiss"].'",
-              Adresse1 = "'.$_POST["adresse1"].'",
-              CdPost = "'.$_POST["cdpost"].'",
-              Ville = "'.$_POST["ville"].'",
-              Email = "'.$_POST["email"].'",
-              Tel = "'.$_POST["tel"].'",
-              cc = "'.$_POST["cc"].'"
+            $Query = 'UPDATE adherent SET 
+              Login = "'.$_POST["Login"].'",
+              Password = "'.$_POST["Password"].'",
+              Prenom = "'.$_POST["Prenom"].'",
+              Nom = "'.$_POST["Nom"].'",
+              DNaiss = "'.$_POST["DNaiss"].'",
+              Adresse1 = "'.$_POST["Adresse1"].'",
+              CdPost = "'.$_POST["CdPost"].'",
+              Ville = "'.$_POST["Ville"].'",
+              Email = "'.$_POST["Email"].'",
+              Tel = "'.$_POST["Tel"].'",
+              CC = "'.$_POST["CC"].'"
               WHERE IdAdherent = '.$_POST["IdAdherent"];
 
 
-            $bdd->query($query);
+            $BDD->query($Query);
             //information modal html
-            $monModalTitre = 'Mise à jour faite avec succès!';
-            $monModalTexte = 'Le profil a bien été mis à jour.';
-            $monModalBouton = 'Fermer';
+            $MonModalTitre = 'Mise à jour faite avec succès!';
+            $MonModalTexte = 'Le profil a bien été mis à jour.';
+            $MonModalBouton = 'Fermer';
         }else if($_POST['formulaire'] == 'connexion'){
 
-            if(isset($_POST['login']) AND isset($_POST['password'])){
-                if (!empty($_POST['login']) AND !empty($_POST['password'])) {
+            if(isset($_POST['Login']) AND isset($_POST['Password'])){
+                if (!empty($_POST['Login']) AND !empty($_POST['Password'])) {
 
-                    $query = 'SELECT IdAdherent,
+                    $Query = 'SELECT IdAdherent,
                                      Nom,
                                      Prenom,
-                                     Organisateur 
+                                     Organisateur,
+                                     Admin 
                                      FROM adherent 
-                                     WHERE Login ="'.$_POST['login'].'" AND Password ="'.$_POST['password'].'"';
-                    $reponse = $bdd->query($query);
+                                     WHERE Login ="'.$_POST['Login'].'" AND Password ="'.$_POST['Password'].'"';
+                    $Reponse = $BDD->query($Query);
 
-                    if ($reponse->rowCount() == 1) {
-                        while ($donnee = $reponse->fetch()) {
-                            $nom = $donnee['Nom'];
-                            $prenom = $donnee['Prenom'];
-                            $id = $donnee['IdAdherent'];
-                            $admin = $donnee['Organisateur'];
-                            $_SESSION['nom'] = $nom;
-                            $_SESSION['prenom'] = $prenom;
-                            $_SESSION['id'] = $id;
-                            $_SESSION['organisateur'] = $admin;
-                            $monModalTitre = 'Bravo';
-                            $monModalTexte = 'Vous êtes maintenant connecté à MCMP.';
-                            $monModalBouton = 'Ok !';
+                    if ($Reponse->rowCount() == 1) {
+                        while ($Donnees = $Reponse->fetch()) {
+                            $Nom = $Donnees['Nom'];
+                            $Prenom = $Donnees['Prenom'];
+                            $Id = $Donnees['IdAdherent'];
+                            $Organisateur = $Donnees['Organisateur'];
+                            $Admin = $Donnees['Admin'];
+                            $_SESSION['User_Level'] = 1 + $Organisateur + $Admin;
+                            $_SESSION['Nom'] = $Nom;
+                            $_SESSION['Prenom'] = $Prenom;
+                            $_SESSION['Id'] = $Id;
+                            $MonModalTitre = 'Bravo';
+                            $MonModalTexte = 'Vous êtes maintenant connecté à MCMP.';
+                            $MonModalBouton = 'Ok !';
                         } }else{
-                            $monModalTitre = 'Echec';
-                            $monModalTexte = 'Votre identifiant ou votre mot de passe est invalide.';
-                            $monModalBouton = 'Ok !';
+                            $MonModalTitre = 'Echec';
+                            $MonModalTexte = 'Votre identifiant ou votre mot de passe est invalide.';
+                            $MonModalBouton = 'Ok !';
                         }
 
                     }

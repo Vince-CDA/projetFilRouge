@@ -27,7 +27,7 @@ include './includes/layout/header.php';
 
 /* J'inclus le corps de ma page */
 
-include './includes/pages/'.$mapage.'.php';
+include './includes/pages/'.$MaPage.'.php';
 
 /* J'inclus le footer de mon site */
 

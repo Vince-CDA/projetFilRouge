@@ -1,6 +1,6 @@
 <?php
-$titre = 'Inscription';
-$btn_register = 'S\'inscrire';
-$action = 'register';
+$Titre = 'Inscription';
+$Btn_Register = 'S\'inscrire';
+$Action = 'register';
 include('./includes/template/register.php');
 ?>

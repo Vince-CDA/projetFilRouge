@@ -1,45 +1,52 @@
 <main>
 
     <?php
+        include('./includes/template/register.php');
+/*
+ *     if(isset($_GET['id']) && !empty($_GET['id'])) {
+        if ($_GET['id'] == $_SESSION['Id'] || $_SESSION['User_Level'] > 2) {
 
-    if(isset($_GET['id']) && !empty($_GET['id'])){
 
-        //la requete de la table page
-        $reponse = $bdd->query('SELECT * FROM adherent WHERE IdAdherent = '.$_GET['id']);
+            //la requete de la table page
+            $Reponse = $BDD->query('SELECT * FROM adherent WHERE IdAdherent = ' . $_GET['id']);
 
 
-        //boucle les données récupérées
-        while ($donnees = $reponse->fetch()) {
+            //boucle les données récupérées
+            while ($Donnees = $Reponse->fetch()) {
 
-            $identifiant = $donnees['Login'];
-            $password = $donnees['Password'];
-            $prenom = $donnees['Prenom'];
-            $nom = $donnees['Nom'];
-            $datenaiss = $donnees['DNaiss'];
-            $adresse = $donnees['Adresse1'];
-            $codep = $donnees['CdPost'];
-            $ville = $donnees['Ville'];
-            $email = $donnees['Email'];
-            $tel = $donnees['Tel'];
-            $cylindree = $donnees['cc'];
+                $Identifiant = $Donnees['Login'];
+                $Password = $Donnees['Password'];
+                $Prenom = $Donnees['Prenom'];
+                $Nom = $Donnees['Nom'];
+                $DateNaiss = $Donnees['DNaiss'];
+                $Adresse = $Donnees['Adresse1'];
+                $CodeP = $Donnees['CdPost'];
+                $Ville = $Donnees['Ville'];
+                $Email = $Donnees['Email'];
+                $Tel = $Donnees['Tel'];
+                $CC = $Donnees['CC'];
 
-            //to be continued
+                //to be continued
+                $Titre = $Prenom . ' ' . $Nom . '';
+                $Id = $_GET['id'];
+                $Title_Register = 'Mise à jour de votre profil';
+                $Btn_Register = 'Mettre à jour';
+                $Action = 'update_profil';
+            }
 
+
+            include('./includes/template/register.php');
         }
-
-        $titre = $prenom.' '.$nom.'';
-        $id = $_GET['id'];
-
+        include('./includes/pages/membres.php');
     }
+ */
 
 
 
-    $title_register = 'Mise à jour de votre profil';
-    $btn_register = 'Mettre à jour';
-    $action = 'update_profil';
 
-    include('./includes/template/register.php');
 
-    ?>
 
-</main>
+
+
+
+

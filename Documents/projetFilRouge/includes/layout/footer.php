@@ -50,7 +50,7 @@
 <script src="./lib/tableCollation.js"></script>
 <script src="./js/countup.js"></script>
 <script src="./lib/rellax/rellax.min.js"></script>
-<script src="./lib/isotope-layout/dist/isotope.pkgd.js"></script>
+<script src="./lib/isotope-layout/dist/isotope.pkgd.min.js"></script>
 <script src="./lib/flexslider/jquery.flexslider-min.js"></script>
 <script src="./js/core.js"></script>
 <script src="./js/main.js?v1.<?php echo time();?>"></script>

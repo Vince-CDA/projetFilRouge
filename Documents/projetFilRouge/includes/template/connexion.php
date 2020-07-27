@@ -10,15 +10,15 @@
                         <div class="tab-content active">
                             <form action="./index.php" method="post">
                                 <input type="hidden" name="formulaire" value="connexion" />
-                                <h1 id="bandeau" class="lead bold h1 pb-4 text-center"><b><?php echo $titre ?></b></h1>
+                                <h1 id="bandeau" class="lead bold h1 pb-4 text-center"><b><?php echo $Titre ?></b></h1>
                                 <div class="row text-center">
                                     <div class="col-lg-6">
                                         <label class="py-0 mb-0" for="name">Identifiant</label>
-                                        <br /><input size="16" type="text" id="login" name="login" placeholder="" required />
+                                        <br /><input size="16" type="text" id="login" name="Login" placeholder="" required />
                                     </div>
                                     <div class="col-lg-6">
                                         <label class="py-0 mb-0"  for="name">Mot de passe</label>
-                                        <br /><input size="16" type="password" id="password" name="password" placeholder="" required />
+                                        <br /><input size="16" type="password" id="password" name="Password" placeholder="" required />
                                     </div>
                                     <div class="col-lg-12">
                                         <label class="py-0 mb-0"  for="mobile">Veuillez saisir votre identifiant et votre mot de passe</label>

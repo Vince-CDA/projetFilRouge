@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"><!--  -->
     <!--    Document Title-->
     <!-- =============================================-->
-    <title><?php echo $titre; ?></title><!--  -->
+    <title><?php echo $Titre; ?></title><!--  -->
     <!--    Favicons-->
     <!--    =============================================-->
     <link rel="apple-touch-icon" sizes="180x180" href="./images/favicons/apple-touch-icon.png">
@@ -69,7 +69,7 @@
                     <ul class="navbar-nav pos-lg-absolute absolute-centered-lg">
                         <!-- Boucle pour afficher ma barre de navigation -->
                         <?php
-                        foreach ($navbar as $key => $value) {
+                        foreach ($NavBar as $key => $value) {
                             echo '<li><a href="./index.php?page='.$key.'">'.$value.'</a></li>';
                         }
                         ?>
@@ -84,16 +84,18 @@
                         -->
                     </ul>
                     <ul class="navbar-nav ml-auto">
-                        <?php if(isset($_SESSION['nom'])){ ?>
+                        <?php if(isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 0 ){ ?>
 
                                 <button class="btn btn-primary btn-capsule btn-sm dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    <?php  echo $_SESSION['prenom'].' '.$_SESSION['nom'] ?>
+                                    <?php  echo $_SESSION['Prenom'].' '.$_SESSION['Nom'] ?>
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu shadow" aria-labelledby="dropdownMenu1">
-                                    <li><a class="menu-deroul" href="./index.php?page=profil&id=<?php echo $_SESSION['id'] ?>">Mon profil</a></li>
+                                    <li><a class="menu-deroul" href="./index.php?page=profil&id=<?php echo $_SESSION['Id'] ?>">Mon profil</a></li>
                                     <li><a class="menu-deroul" href="./index.php?page=membres">Membres</a></li>
+                                    <?php if(isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 1 ){ ?>
                                     <li><a class="menu-deroul" href="./index.php?page=activités">Ajouter une activité</a></li>
+                                    <?php }?>
                                     <li role="separator" class="menu-deroul divider"></li>
                                     <li><a class="menu-deroul" href="./index.php?deconnexion=1" alt="Déconnexion" title="Cliquez-ici pour se déconnecter">Déconnexion</a></li>
                                 </ul>

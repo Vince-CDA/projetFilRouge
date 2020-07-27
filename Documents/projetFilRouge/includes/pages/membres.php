@@ -13,10 +13,10 @@
                         <?php
 
                         //la requete
-                        $reponse = $bdd->query('SELECT * FROM adherent');
+                        $Reponse = $BDD->query('SELECT * FROM adherent');
 
                         //boucle les données récupérées
-                        while ($donnees = $reponse->fetch()) {
+                        while ($Donnees = $Reponse->fetch()) {
 
                             //le template html du membre
                         include('./includes/template/membre.php');
