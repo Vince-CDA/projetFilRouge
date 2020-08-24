@@ -146,4 +146,109 @@ Utils.$document.ready(function () {
 
   };
 
+  let editor;
+/* WYSYWYG */
 
+ClassicEditor
+  .create( document.querySelector( '#editor' ), {
+    ckfinder: {
+			uploadUrl: './js/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json',
+    },
+    resizeOptions: [
+      {
+          name: 'imageResize:original',
+          label: 'Original',
+          value: null
+      },
+      {
+          name: 'imageResize:50',
+          label: '50%',
+          value: '50'
+      },
+      {
+          name: 'imageResize:75',
+          label: '75%',
+          value: '75'
+      }
+  ],
+  heading: {
+    options: [
+        { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
+        { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
+        { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' },
+        {
+            model: 'headingFancy',
+            view: {
+                name: 'h2',
+                classes: 'fancy'
+            },
+            title: 'Heading 2 (fancy)',
+            class: 'ck-heading_heading2_fancy',
+
+            // It needs to be converted before the standard 'heading2'.
+            converterPriority: 'high'
+        }
+    ]
+},
+  toolbar: [
+    'heading',
+    'alignment',
+    'Styles','Format','Font','FontSize',
+    '/',
+    'Bold','Italic','Underline','StrikeThrough','-','Undo','Redo','-','Cut','Copy','Paste','Find','Replace','-','Outdent','Indent','-','Print',
+    '/',
+    'NumberedList','BulletedList','-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock',
+    'Image','Table','-','Link','Flash','Smiley','TextColor','BGColor','Source',
+    'imageStyle:alignLeft', 'imageStyle:alignCenter', 'imageStyle:alignRight',
+    '|',
+    'imageUpload',
+    'imageStyle:full',
+    'imageStyle:side',
+    '|',
+    'imageTextAlternative',
+    'imageTextAlternative',
+    'headings', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote',
+],
+  } )
+  .then( e => editor = e)
+	.catch( error => {
+		console.error( error );
+  } );
+  
+
+  
+  $('#publier').on('click', function(){
+
+    console.log('btn wysiwyg ready !');
+    var description = editor.getData(); 
+
+    var title = $('input[name=title]').val();
+
+    //methode Ajax
+    var request = $.ajax({
+        url: "./libs/methode_ajax.php",
+        method: "POST",
+        data: { informations : 1, title:title, description : description },
+        dataType: "html" //ou JSON
+    });
+
+    //reussite reponse 200 - Inclu le fait que vous avez pas les permissions requisent
+    request.done(function( msg ) {
+        //console.log(msg);
+        //afichage de la modal ave
+        $('.modal-body p').html(msg);
+
+        $('')
+
+        $(".modal").show();
+        //$( "#log" ).html( msg );
+    });
+
+    //erreur 404 ou 500 - le serveur ne repond pas, erreur PHP ?
+    request.fail(function( jqXHR, textStatus ) {
+        console.log( "Request failed: " + textStatus );
+    });
+
+
+
+});

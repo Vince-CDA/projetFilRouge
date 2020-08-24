@@ -39,6 +39,10 @@
     <link href="./lib/iconsmind/iconsmind.css" rel="stylesheet">
     <link href="./lib/lightbox2/dist/css/lightbox.css" rel="stylesheet">
     <link href="./lib/hamburgers/dist/hamburgers.min.css" rel="stylesheet"><!-- Main stylesheet and color file-->
+    <!-- Wysiwyg -->
+
+
+
     <link href="./css/style.css" rel="stylesheet">
     <link href="./css/custom.css" rel="stylesheet">
     <!-- Fichier main custom -->

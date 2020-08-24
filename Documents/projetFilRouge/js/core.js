@@ -238,9 +238,11 @@ $(document).ready(function ($) {
 // Tabs
 //
 ////////////////////////////////////////
+/*
 $(document).ready(function () {
   if ($('.tabs, .navs').length) {
 
+    /*
     // Function for active tab indicator change
     ///////////////////////////////////////////
     function updateIncicator($indicator, $tabs, $tabnavCurrentItem) {
@@ -301,6 +303,8 @@ $(document).ready(function () {
   }
 });
 
+
+*/
 
 ////////////////////////////////////////
 //

@@ -8,7 +8,20 @@ if(!empty($_POST)){
 
             /* Pour voir le POST après validation du formulaire */
             //var_dump($_POST);
-
+            //Je fais une variable contenant le résultat de ma requête SQL suivante :
+            $ListeLoginSQL = $BDD->query ('SELECT Login FROM adherent');
+            //Je créé un tableau de login
+            $TbLogin = array();
+            while ($ResultatListeLoginSQL = $ListeLoginSQL->fetch()) {
+                $TbLogin[$ResultatListeLoginSQL['Login']] = $ResultatListeLoginSQL;
+            }
+            if (array_key_exists($_POST["Login"], $TbLogin)){
+                var_dump($ResultatListeLoginSQL);
+                $MonModalTitre = 'Echec !';
+                $MonModalTexte = 'Un membre utilise déjà cet identifiant, veuillez en choisir un autre';
+                $MonModalBouton = '<a href="./index.php?page=inscription">Rééssayer</a>';
+            }
+            else {
             $Query = 'INSERT INTO adherent(
             Login,
             Password,
@@ -48,7 +61,7 @@ if(!empty($_POST)){
             $MonModalTexte = 'Votre inscription a bien été prise en compte, vous serez recontacté par mail quand un organisateur aura confirmé votre inscription.';
             $MonModalBouton = '<a href="./index.php">Retour à la page d\'accueil</a>';
 
-        }else if($_POST['formulaire'] == 'update_profil'){
+        }}else if($_POST['formulaire'] == 'update_profil'){
 
             $Query = 'UPDATE adherent SET 
               Login = "'.$_POST["Login"].'",
@@ -70,6 +83,19 @@ if(!empty($_POST)){
             $MonModalTitre = 'Mise à jour faite avec succès!';
             $MonModalTexte = 'Le profil a bien été mis à jour.';
             $MonModalBouton = 'Fermer';
+        }else if ($_POST['formulaire'] == 'contact'){
+
+            $subject = $_POST['objet'] . ' de ' . $_POST['lastname'] . ' ' . $_POST['firstname'];
+            $message = $_POST['message'];
+            $expediteur = $_POST['from'];
+            try {
+                MailEngine::send($subject, $expediteur, $message);
+                //MailEngine::SendConfirmation($subject, $message);
+
+            }catch(Exception $e) {
+                error_log($e->getMessage());
+            }
+
         }else if($_POST['formulaire'] == 'connexion'){
 
             if(isset($_POST['Login']) AND isset($_POST['Password'])){

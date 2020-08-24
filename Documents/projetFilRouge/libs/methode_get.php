@@ -24,6 +24,7 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'],$TbTitle)) {
 $MaPage = $_GET['page'];
     //Est-ce qu'on cherche à voir un profil ? Il y a un id valable ?
     if ($_GET['page'] == 'profil' && isset($_GET['id']) && !empty($_GET['id'])) {
+        if (!empty($_SESSION['User_Level']) && isset($_SESSION['User_Level']) ){
         //Est-ce que l'utilisateur veut voir son propre profil ou a-t-il les droits d'aller en voir un autre ?
         if ($_SESSION['User_Level'] > 2 && array_key_exists($_GET['id'],$TbMesId) || $_GET['id'] == $_SESSION['Id']) {
             $Reponse = $BDD->query('SELECT * FROM adherent WHERE IdAdherent = ' . $_GET['id']);
@@ -41,14 +42,13 @@ $MaPage = $_GET['page'];
                 $Email = $Donnees['Email'];
                 $Tel = $Donnees['Tel'];
                 $CC = $Donnees['CC'];
-
-                //to be continued
                 $Titre = $Prenom . ' ' . $Nom . '';
                 $Id = $_GET['id'];
                 $Title_Register = 'Mise à jour de votre profil';
                 $Btn_Register = 'Mettre à jour';
                 $Action = 'update_profil';
             }
+        }
         }else {
             $MaPage = 'accueil';
     }
@@ -85,6 +85,7 @@ $MaPage = $_GET['page'];
 
 
 } else {
+    //Sinon retour sur la page d'accueil
     $MaPage = 'accueil';
 }
 

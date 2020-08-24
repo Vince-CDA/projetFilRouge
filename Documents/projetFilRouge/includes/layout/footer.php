@@ -53,7 +53,12 @@
 <script src="./lib/isotope-layout/dist/isotope.pkgd.min.js"></script>
 <script src="./lib/flexslider/jquery.flexslider-min.js"></script>
 <script src="./js/core.js"></script>
+<!-- WYSYWYG -->
+<script src="./js/ckeditor/ckeditor.js"></script>
+
 <script src="./js/main.js?v1.<?php echo time();?>"></script>
+
+
 </body>
 
 </html>
