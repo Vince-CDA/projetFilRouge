@@ -220,10 +220,9 @@ ClassicEditor
   $('#publier').on('click', function(){
 
     console.log('btn wysiwyg ready !');
-    var description = editor.getData(); 
-
+    var test = editor.getData(); 
     var title = $('input[name=title]').val();
-
+    var description = encodeURI(test)
     //methode Ajax
     var request = $.ajax({
         url: "./libs/methode_ajax.php",
@@ -231,7 +230,6 @@ ClassicEditor
         data: { informations : 1, title:title, description : description },
         dataType: "html" //ou JSON
     });
-
     //reussite reponse 200 - Inclu le fait que vous avez pas les permissions requisent
     request.done(function( msg ) {
         //console.log(msg);
