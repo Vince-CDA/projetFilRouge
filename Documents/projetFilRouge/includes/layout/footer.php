@@ -55,6 +55,8 @@
 <script src="./js/core.js"></script>
 <!-- WYSYWYG -->
 <script src="./js/ckeditor/ckeditor.js"></script>
+<!-- Fancy Box pour Galerie -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 
 <script src="./js/main.js?v1.<?php echo time();?>"></script>
 

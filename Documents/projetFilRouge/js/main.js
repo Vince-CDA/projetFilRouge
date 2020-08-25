@@ -250,3 +250,5 @@ ClassicEditor
 
 
 });
+
+$("[data-fancybox]").fancybox();

@@ -3097,9 +3097,7 @@ label, input, textarea, legend {
   font-family: "Source Sans Pro", sans-serif;
 }
 
-input[type='file'] {
-  display: none;
-}
+
 
 .inputfile + label svg {
   fill: currentColor;
@@ -9655,3 +9653,5 @@ body {
 .components-nav a {
   cursor: pointer;
 }
+
+

@@ -27,6 +27,7 @@ include ('./libs/methode_get.php');
 
 include './includes/layout/header.php';
 
+
 /* J'inclus le corps de ma page */
 
 include './includes/pages/'.$MaPage.'.php';
@@ -34,5 +35,3 @@ include './includes/pages/'.$MaPage.'.php';
 /* J'inclus le footer de mon site */
 
 include './includes/layout/footer.php';
-
-var_dump($_SESSION['User_Level']);

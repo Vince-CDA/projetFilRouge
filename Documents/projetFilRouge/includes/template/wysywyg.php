@@ -8,10 +8,9 @@
                             <div class="tab-contents px-5">
                                 <div class="tab-content active">
                                     <div>
-                                        <input type="text" name="title" size="100%" value="Titre"/>
+                                        <input type="text" name="title" size="100%" placeholder="Titre"/>
                                     </div>  
                                         <div id="editor" name="description">
-                                        <input type="text" name="texte" size="100%" value="Titre"/>
                                             <p>Ecrivez votre nouvelle ici.</p>
                                         </input>
                                         </div>
