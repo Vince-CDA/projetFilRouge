@@ -42,6 +42,7 @@ $MaPage = $_GET['page'];
                 $Email = $Donnees['Email'];
                 $Tel = $Donnees['Tel'];
                 $CC = $Donnees['CC'];
+                $image = $Donnees['Avatar'];
                 $Titre = $Prenom . ' ' . $Nom . '';
                 $Id = $_GET['id'];
                 $Title_Register = 'Mise à jour de votre profil';
@@ -52,7 +53,82 @@ $MaPage = $_GET['page'];
         }else {
             $MaPage = 'accueil';
     }
-    }
+    }else if($_GET['page'] == 'newscontent'){
+
+        if(isset($_GET['id']) && !empty($_GET['id'])){
+
+
+                $idboutonsuccess = 'editer';
+                $idboutondanger = 'annnuler';
+                $valueboutonsuccess = 'Editer la nouvelle';
+                $valueboutondanger = 'Supprimer la nouvelle';
+                //la requete de la table page
+                $reponse = $BDD->query('SELECT * FROM nouvelle WHERE IdNouvelle = '.$_GET['id']);
+
+
+                //boucle les données récupérées
+                while ($donnees = $reponse->fetch()) {
+
+                    $titlenews = $donnees['Titre'];
+                    $contenunews = urldecode($donnees['Texte']);
+                } 
+            }
+        }else if($_GET['page'] == 'news'){
+
+            if(isset($_GET['id']) && !empty($_GET['id'])){
+    
+    
+                if(isset($_GET['action']) && !empty($_GET['action'])) {
+
+                    if($_GET['action'] == 'supprimer') {
+                        $reponse = $BDD->query('DELETE FROM nouvelle WHERE IdNouvelle = '.$_GET['id']);
+                        $MonModalTexte = 'La nouvelle a bien été supprimée';
+                        $MonModalBouton = '<a href="./index.php?page=news">Retour aux nouvelles</a>';
+                        $MonModalTitre = 'Suppression avec succès !';
+                    }
+                }
+            }
+        }else if($_GET['page'] == 'ajoutnews'){
+                            $idboutonsuccess = 'publier';
+                            $idboutondanger = 'annnuler';
+                            $valueboutonsuccess = 'Publier la nouvelle';
+                            $valueboutondanger = 'Annuler';
+                            $MonModalBouton = '<a href="./index.php?page=news">Retour sur la page des news</a>';
+            }else if($_GET['page'] == 'editnews'){
+                if(isset($_GET['id']) && !empty($_GET['id'])){
+                    
+                    $idboutonsuccess = 'editer';
+                    $idboutondanger = 'supprimer';
+                    $valueboutonsuccess = 'Editer la nouvelle';
+                    $valueboutondanger = 'Supprimer le nouvelle';
+                    $id = $_GET['id'];
+                    $MonModalBouton = '<a href="./index.php?page=news">Retour aux nouvelles</a>';
+                    $MonModalTitre = 'Information';
+                    
+                    //la requete de la table page
+                    $reponse = $BDD->query('SELECT * FROM nouvelle WHERE IdNouvelle = '.$_GET['id']);
+                    
+                    
+                    //boucle les données récupérées
+                    while ($donnees = $reponse->fetch()) {
+                        
+                        $titlenews = $donnees['Titre'];
+                        $contenunews = urldecode($donnees['Texte']);
+                    } 
+                    }
+                    else{
+                       $MaPage = 'news';
+                    }
+                    if(isset($_GET['action']) && !empty($_GET['action'])) {
+
+                    if($_GET['action'] == 'supprimer') {
+                        $reponse = $BDD->query('DELETE FROM nouvelle WHERE IdNouvelle = '.$_GET['id']);
+                        $MonModalTexte = 'La nouvelle a bien été supprimée';
+                        $MonModalBouton = '<a href="./index.php?page=news">Retour aux nouvelles</a>';
+                        $MonModalTitre = 'Suppression avec succès !';
+                    }
+                }
+            }
     //test sur les action de page
     if(isset($_GET['action']) && !empty($_GET['action'])) {
 

@@ -8,11 +8,21 @@
                 <div class="tabs background-white radius-secondary pb-4">
                     <div class="tab-contents px-5">
                         <div class="tab-content active">
-                            <form action="./index.php?page=<?php echo $MaPage ?><?php echo isset($Id) ? '&id='.$Id : ''; ?>" method="post" class="register-form">
+                            <form action="./index.php?page=<?php echo $MaPage ?><?php echo isset($Id) ? '&id='.$Id : ''; ?>" method="post" class="register-form" enctype="multipart/form-data">
                                 <h1 id="bandeau" class="lead bold h1 pb-4 text-center"><b><?php echo $Titre ?></b></h1>
                                 <input type="hidden" name="formulaire" value="<?php echo $Action; ?>" />
                                 <input type="hidden" name="IdAdherent" value="<?php echo isset($Id) ? $Id : ''; ?>" />
                                 <div class="row text-center">
+                                <div class="col-lg-12 mb-2">
+                                    <?php
+                                    $img = !empty($image) ? $image : 'upload_photo_default.jpg';
+                                    ?>
+                                    <div class="col-lg-12 text-center">
+                                    <img src="<?php echo $directory_img_upload.$img; ?>" alt="">
+                                </div>
+                                        <input class="mt-2" type="file" name="image" />
+
+                                    </div>
                                     <div class="col-lg-6">
                                         <label class="py-0 mb-0" for="name">Identifiant</label>
                                         <br /><input size="16" type="text" id="login" name="Login" value="<?php echo isset($Identifiant) ? $Identifiant : '' ?>" placeholder="" required />

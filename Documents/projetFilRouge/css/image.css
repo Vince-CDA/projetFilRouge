@@ -1,0 +1,249 @@
+/*
+ * Copyright (c) 2003-2020, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+/*
+ * Copyright (c) 2003-2020, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+@import url(@ckeditor/ckeditor5-ui/theme/mixins/_rwd.css);
+/* line 6, ../../../../../wamp64/www/css/ckeditor/_imagecaption.scss */
+.ck-content .image > figcaption {
+  display: table-caption;
+  caption-side: bottom;
+  word-break: break-word;
+  color: #333333;
+  background-color: #f7f7f7;
+  padding: .6em;
+  font-size: .75em;
+  outline-offset: -1px;
+}
+
+/*
+ * Copyright (c) 2003-2020, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+/* line 6, ../../../../../wamp64/www/css/ckeditor/_imageresize.scss */
+.image.image_resized {
+  max-width: 100%;
+  /*
+	The `<figure>` element for resized images must not use `display:table` as browsers do not support `max-width` for it well.
+	See https://stackoverflow.com/questions/4019604/chrome-safari-ignoring-max-width-in-table/14420691#14420691 for more.
+	Fortunately, since we control the width, there is no risk that the image will look bad.
+	*/
+  display: block;
+  box-sizing: border-box;
+}
+
+/* line 16, ../../../../../wamp64/www/css/ckeditor/_imageresize.scss */
+.image.image_resized img {
+  /* For resized images it is the `<figure>` element that determines the image width. */
+  width: 100%;
+}
+
+/* line 21, ../../../../../wamp64/www/css/ckeditor/_imageresize.scss */
+.image.image_resized > figcaption {
+  /* The `<figure>` element uses `display:block`, so `<figcaption>` also has to. */
+  display: block;
+}
+
+/* line 27, ../../../../../wamp64/www/css/ckeditor/_imageresize.scss */
+[dir="ltr"] .ck.ck-button.ck-button_with-text.ck-resize-image-button .ck-button__icon {
+  margin-right: var(--ck-spacing-standard);
+}
+
+/* line 31, ../../../../../wamp64/www/css/ckeditor/_imageresize.scss */
+[dir="rtl"] .ck.ck-button.ck-button_with-text.ck-resize-image-button .ck-button__icon {
+  margin-left: var(--ck-spacing-standard);
+}
+
+/* line 35, ../../../../../wamp64/www/css/ckeditor/_imageresize.scss */
+.ck.ck-dropdown .ck-button.ck-resize-image-button .ck-button__label {
+  width: 4em;
+}
+
+/*
+ * Copyright (c) 2003-2020, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+/* line 6, ../../../../../wamp64/www/css/ckeditor/_imagestyle.scss */
+:root {
+  --ck-image-style-spacing: 1.5em;
+}
+
+/* line 11, ../../../../../wamp64/www/css/ckeditor/_imagestyle.scss */
+.image .image-style-side {
+  float: right;
+  margin-left: var(--ck-image-style-spacing);
+  max-width: 50%;
+}
+
+/* line 17, ../../../../../wamp64/www/css/ckeditor/_imagestyle.scss */
+.image.image-style-align-left {
+  float: left;
+  margin-right: var(--ck-image-style-spacing);
+}
+
+/* line 22, ../../../../../wamp64/www/css/ckeditor/_imagestyle.scss */
+.image.image-style-align-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* line 27, ../../../../../wamp64/www/css/ckeditor/_imagestyle.scss */
+.image.image-style-align-right {
+  float: right;
+  margin-left: var(--ck-image-style-spacing);
+}
+
+/*
+ * Copyright (c) 2003-2020, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+/* line 6, ../../../../../wamp64/www/css/ckeditor/_imageupload.scss */
+.ck.ck-image-upload__panel {
+  padding: var(--ck-spacing-standard);
+}
+
+/* line 10, ../../../../../wamp64/www/css/ckeditor/_imageupload.scss */
+.ck.ck-image-upload__ck-finder-button {
+  display: block;
+  width: 100%;
+  margin: var(--ck-spacing-standard) auto;
+  border: 1px solid #cccccc;
+  border-radius: var(--ck-border-radius);
+}
+
+/*
+ * Copyright (c) 2003-2020, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+/* line 6, ../../../../../wamp64/www/css/ckeditor/_imageuploadformrowview.scss */
+.ck.ck-form__row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  /* Ignore labels that work as fieldset legends */
+}
+
+/* line 13, ../../../../../wamp64/www/css/ckeditor/_imageuploadformrowview.scss */
+.ck.ck-form__row > *:not(.ck-label) {
+  flex-grow: 1;
+}
+
+/* line 17, ../../../../../wamp64/www/css/ckeditor/_imageuploadformrowview.scss */
+.ck.ck-form__row.ck-image-upload-form__action-row {
+  margin-top: var(--ck-spacing-standard);
+}
+
+/* line 20, ../../../../../wamp64/www/css/ckeditor/_imageuploadformrowview.scss */
+.ck.ck-form__row.ck-image-upload-form__action-row .ck-button-save,
+.ck.ck-form__row.ck-image-upload-form__action-row .ck-button-cancel {
+  justify-content: center;
+}
+
+/* line 25, ../../../../../wamp64/www/css/ckeditor/_imageuploadformrowview.scss */
+.ck.ck-form__row.ck-image-upload-form__action-row .ck-button .ck-button__label {
+  color: var(--ck-color-text);
+}
+
+/*
+ * Copyright (c) 2003-2020, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+/* line 6, ../../../../../wamp64/www/css/ckeditor/_imageuploadicon.scss */
+.ck-image-upload-complete-icon {
+  display: block;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border-radius: 50%;
+}
+
+/* line 13, ../../../../../wamp64/www/css/ckeditor/_imageuploadicon.scss */
+.ck-image-upload-complete-icon::after {
+  content: "";
+  position: absolute;
+}
+
+/*
+ * Copyright (c) 2003-2020, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+/* line 6, ../../../../../wamp64/www/css/ckeditor/_imageuploadloader.scss */
+.ck .ck-upload-placeholder-loader {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+}
+
+/* line 14, ../../../../../wamp64/www/css/ckeditor/_imageuploadloader.scss */
+.ck .ck-upload-placeholder-loader::before {
+  content: '';
+  position: relative;
+}
+
+/*
+ * Copyright (c) 2003-2020, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+/* line 6, ../../../../../wamp64/www/css/ckeditor/_imageuploadprogress.scss */
+.ck.ck-editor__editable .image {
+  position: relative;
+}
+
+/* Upload progress bar. */
+/* line 11, ../../../../../wamp64/www/css/ckeditor/_imageuploadprogress.scss */
+.ck.ck-editor__editable .image .ck-progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/*
+ * Copyright (c) 2003-2020, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+/* line 8, ../../../../../wamp64/www/css/ckeditor/_textalternativeform.scss */
+.ck.ck-text-alternative-form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+/* line 13, ../../../../../wamp64/www/css/ckeditor/_textalternativeform.scss */
+.ck.ck-text-alternative-form .ck-labeled-field-view {
+  display: inline-block;
+}
+
+/* line 17, ../../../../../wamp64/www/css/ckeditor/_textalternativeform.scss */
+.ck.ck-text-alternative-form .ck-label {
+  display: none;
+}
+
+/* line 15, ../../../../../wamp64/www/css/ckeditor/image.scss */
+.image {
+  display: table;
+  clear: both;
+  text-align: center;
+  /* Make sure there is some space between the content and the image. Center image by default. */
+  margin: 1em auto;
+}
+
+/* line 23, ../../../../../wamp64/www/css/ckeditor/image.scss */
+.image img {
+  /* Prevent unnecessary margins caused by line-height (see #44). */
+  display: block;
+  /* Center the image if its width is smaller than the content's width. */
+  margin: 0 auto;
+  /* Make sure the image never exceeds the size of the parent container (ckeditor/ckeditor5-ui#67). */
+  max-width: 100%;
+  /* Make sure the caption will be displayed properly (See: https://github.com/ckeditor/ckeditor5/issues/1870). */
+  min-width: 50px;
+}
+
+/*# sourceMappingURL=image.css.map */

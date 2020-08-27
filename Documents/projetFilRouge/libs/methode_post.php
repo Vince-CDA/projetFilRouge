@@ -63,6 +63,9 @@ if(!empty($_POST)){
 
         }}else if($_POST['formulaire'] == 'update_profil'){
 
+            list($error, $MonModalTexte, $photoName) = upload_img($directory_img_upload);
+
+
             $Query = 'UPDATE adherent SET 
               Login = "'.$_POST["Login"].'",
               Password = "'.$_POST["Password"].'",
@@ -74,7 +77,8 @@ if(!empty($_POST)){
               Ville = "'.$_POST["Ville"].'",
               Email = "'.$_POST["Email"].'",
               Tel = "'.$_POST["Tel"].'",
-              CC = "'.$_POST["CC"].'"
+              CC = "'.$_POST["CC"].'",
+              Avatar = "' . $photoName . '"
               WHERE IdAdherent = '.$_POST["IdAdherent"];
 
 
@@ -137,9 +141,5 @@ if(!empty($_POST)){
             }
 
         }
-
-
-
-
 
 };

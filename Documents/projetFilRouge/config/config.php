@@ -16,4 +16,8 @@ $MonModalTitre = '';
 $MonModalTexte = '';
 $MonModalBouton = '';
 $User_Level = '0';
+$nouvelle = ' ';
+$directory_img_upload = './upload/images/';
+$titlenews = '';
+$contenunews = '';
 ?>

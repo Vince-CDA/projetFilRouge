@@ -13,7 +13,8 @@ if(isset($_GET['deconnexion']) AND $_GET['deconnexion'] == '1'){
 
 include('./config/config.php');
 include ('./config/configPHPMailer.php'); 
-
+//mes fonctions PHP
+include('./libs/functions.php');
 /* J'inclus les méthodes POST */
 
 include('./libs/methode_post.php');

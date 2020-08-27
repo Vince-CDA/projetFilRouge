@@ -9655,3 +9655,46 @@ body {
 }
 
 
+.gallery img {
+  padding: .25rem;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: .25rem;
+  max-width: 100%;
+  height: 170px;
+}
+.col-lg-8 p{
+font-size: 17px;
+font-weight: 500;
+padding: 5px;
+margin: 0;
+  color: #dee2e6;
+}
+
+table tr th, table tr td{
+  font-size: 1rem;
+}
+table tr td img{
+width: 75px;
+}
+
+
+
+.card .image{
+display: none;
+}
+
+.card-text:last-child {
+  margin-bottom: 0;
+  height: 200px;
+}
+.card-img-top {
+  width: auto; /* or any custom size */
+  height: 300px; 
+  object-fit: contain;
+  margin: 0 auto;
+  display: block;
+}
+.image-style-align-center {
+  text-align: center;
+}

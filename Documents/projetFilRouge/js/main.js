@@ -154,23 +154,6 @@ ClassicEditor
     ckfinder: {
 			uploadUrl: './js/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json',
     },
-    resizeOptions: [
-      {
-          name: 'imageResize:original',
-          label: 'Original',
-          value: null
-      },
-      {
-          name: 'imageResize:50',
-          label: '50%',
-          value: '50'
-      },
-      {
-          name: 'imageResize:75',
-          label: '75%',
-          value: '75'
-      }
-  ],
   heading: {
     options: [
         { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
@@ -209,6 +192,41 @@ ClassicEditor
     'imageTextAlternative',
     'headings', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote',
 ],
+image: {
+  // Configure the available styles.
+  styles: [
+      'alignLeft', 'alignCenter', 'alignRight'
+  ],
+
+  // Configure the available image resize options.
+  resizeOptions: [
+      {
+          name: 'imageResize:original',
+          label: 'Original',
+          value: null
+      },
+      {
+          name: 'imageResize:50',
+          label: '50%',
+          value: '50'
+      },
+      {
+          name: 'imageResize:75',
+          label: '75%',
+          value: '75'
+      }
+  ],
+
+  // You need to configure the image toolbar, too, so it shows the new style
+  // buttons as well as the resize buttons.
+  toolbar: [
+      'imageStyle:alignLeft', 'imageStyle:alignCenter', 'imageStyle:alignRight',
+      '|',
+      'imageResize',
+      '|',
+      'imageTextAlternative'
+  ]
+}
   } )
   .then( e => editor = e)
 	.catch( error => {
@@ -216,18 +234,17 @@ ClassicEditor
   } );
   
 
-  
   $('#publier').on('click', function(){
 
     console.log('btn wysiwyg ready !');
     var test = editor.getData(); 
     var title = $('input[name=title]').val();
-    var description = encodeURI(test)
+    var description = encodeURI(test);
     //methode Ajax
     var request = $.ajax({
         url: "./libs/methode_ajax.php",
         method: "POST",
-        data: { informations : 1, title:title, description : description },
+        data: { informations : 1, title:title, description : description, fichier : $('figure img').attr('src')},
         dataType: "html" //ou JSON
     });
     //reussite reponse 200 - Inclu le fait que vous avez pas les permissions requisent
@@ -251,4 +268,42 @@ ClassicEditor
 
 });
 
+$('#editer').on('click', function(){
+
+  console.log('btn wysiwyg ready !');
+  var test = editor.getData(); 
+  var title = $('input[name=title]').val();
+  var description = encodeURI(test);
+  var id = $('input[name=id]').val();
+  //methode Ajax
+  var request = $.ajax({
+      url: "./libs/methode_ajax.php",
+      method: "POST",
+      data: { informations : 2, title:title, description : description, id : id, fichier : $('figure img').attr('src')},
+      dataType: "html" //ou JSON
+  });
+  //reussite reponse 200 - Inclu le fait que vous avez pas les permissions requisent
+  request.done(function( msg ) {
+      //console.log(msg);
+      //afichage de la modal ave
+      $('.modal-body p').html(msg);
+
+      $('')
+
+      $(".modal").show();
+      //$( "#log" ).html( msg );
+  });
+
+  //erreur 404 ou 500 - le serveur ne repond pas, erreur PHP ?
+  request.fail(function( jqXHR, textStatus ) {
+      console.log( "Request failed: " + textStatus );
+  });
+
+
+
+});
+
+
 $("[data-fancybox]").fancybox();
+
+

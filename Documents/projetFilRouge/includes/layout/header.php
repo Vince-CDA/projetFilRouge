@@ -42,14 +42,18 @@
     <!-- Photobox -->
     <link href="./libs/photobox/photobox.css" rel="stylesheet">
     <link href="./libs/photobox/photobox.ie.css" rel="stylesheet">
+    <!-- Cropie -->
+    <link rel="stylesheet" href="./css/croppie.css" />
+
 
     <!-- FancyBox -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-
     <link href="./css/style.css" rel="stylesheet">
     <link href="./css/custom.css" rel="stylesheet">
     <!-- Fichier main custom -->
     <link href="./css/main.css?v1.<?php echo time();?>" rel="stylesheet">
+        <!-- CSS Spécial Wysiwyg -->
+        <link rel="stylesheet" href="./css/image.css" />
 </head>
 <body data-spy="scroll" data-target=".inner-link" data-offset="60">
 <div class="preloader" id="preloader">
@@ -115,3 +119,4 @@
             </nav>
         </div>
     </div>
+    
