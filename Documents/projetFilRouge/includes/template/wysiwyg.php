@@ -1,3 +1,5 @@
+            <!-- WysiWyg avec contenu de news et boutons et ses valeurs, s'adapte par rapport à la page de base (ajoutnews ou editnews = boutons différent et contenu différent) -->
+
 <div class="row h-full  justify-content-center py-5">
                     <div class="col-8">
                                     <div class="mb-2">

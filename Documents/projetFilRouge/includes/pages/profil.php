@@ -1,6 +1,5 @@
-<main>
-
     <?php
+        //On inclus register.php
         include('./includes/template/register.php');
 /*
  *     if(isset($_GET['id']) && !empty($_GET['id'])) {

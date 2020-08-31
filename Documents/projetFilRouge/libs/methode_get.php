@@ -22,6 +22,9 @@ while ($Donnees2 = $MesId->fetch()) {
 
 if (isset($_GET['page']) && array_key_exists($_GET['page'],$TbTitle)) {
 $MaPage = $_GET['page'];
+if($_GET['page'] == 'connexion' && isset($_SESSION['Id']) && !empty($_SESSION['Id'])) {
+    $MaPage = 'accueil';
+}
     //Est-ce qu'on cherche à voir un profil ? Il y a un id valable ?
     if ($_GET['page'] == 'profil' && isset($_GET['id']) && !empty($_GET['id'])) {
         if (!empty($_SESSION['User_Level']) && isset($_SESSION['User_Level']) ){
@@ -158,8 +161,6 @@ $MaPage = $_GET['page'];
 
         }
     }
-
-
 } else {
     //Sinon retour sur la page d'accueil
     $MaPage = 'accueil';

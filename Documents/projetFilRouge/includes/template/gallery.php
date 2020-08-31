@@ -1,4 +1,4 @@
-<!-- Display status message -->
+<!-- Affichage de message de status -->
 <?php if(!empty($statusMsg)){ ?>
 <div class="col-xs-12">
     <div class="alert alert-<?php echo $statusMsgType; ?>"><?php echo $statusMsg; ?></div>
@@ -8,20 +8,20 @@
 <div class="row">
     <div class="col-md-12 head">
         <h5>Images</h5>
-        <!-- Add link -->
+        <!-- Lien d'ajout d'images -->
         <div class="float-right">
-            <a href="./index.php?page=addEdit" class="btn btn-success"><i class="plus"></i> New Image</a>
+            <a href="./index.php?page=addEdit" class="btn btn-success"><i class="plus"></i>Nouvelle image</a>
         </div>
     </div>
     
-    <!-- List the images -->
+    <!-- Listing des images -->
     <table class="table table-striped table-bordered">
         <thead class="thead-dark">
             <tr>
                 <th width="5%"></th>
                 <th width="12%">Image</th>
-                <th width="45%">Title</th>
-                <th width="17%">Created</th>
+                <th width="45%">Titre</th>
+                <th width="17%">Créé</th>
                 <th width="8%">Status</th>
                 <th width="13%">Action</th>
             </tr>
@@ -45,7 +45,7 @@
                 </td>
             </tr>
             <?php } }else{ ?>
-            <tr><td colspan="6">No image(s) found...</td></tr>
+            <tr><td colspan="6">Pas d'images trouvées...</td></tr>
             <?php } ?>
         </tbody>
     </table>

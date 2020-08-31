@@ -1,4 +1,7 @@
 <?php
+require_once './libs/MailEngine.php';
+use Lib\MailEngine;
+
 //test de la super global $_POST si elle n'est pas vide '!empty()'
 if(!empty($_POST)){
 
@@ -22,6 +25,9 @@ if(!empty($_POST)){
                 $MonModalBouton = '<a href="./index.php?page=inscription">Rééssayer</a>';
             }
             else {
+                $password = My_Crypt($_POST["Password"],$_POST["Login"]);
+            list($error, $MonModalTexte, $photoName) = upload_img($directory_img_upload);
+
             $Query = 'INSERT INTO adherent(
             Login,
             Password,
@@ -34,10 +40,11 @@ if(!empty($_POST)){
             Email,
             Tel,
             CC,
-            DAdhesion
+            DAdhesion,
+            Avatar
             ) VALUES (
             "'.$_POST["Login"].'",
-            "'.$_POST["Password"].'",
+            "'.$password.'",
             "'.$_POST["Nom"].'",
             "'.$_POST["Prenom"].'",
             "'.$_POST["DNaiss"].'",
@@ -47,7 +54,8 @@ if(!empty($_POST)){
             "'.$_POST["Email"].'",
             "'.$_POST["Tel"].'",
             "'.$_POST["CC"].'",
-            NOW()
+            NOW(),
+            "' . $photoName . '"
             )';
 
             /* Pour voir la requête correspondante */
@@ -65,10 +73,11 @@ if(!empty($_POST)){
 
             list($error, $MonModalTexte, $photoName) = upload_img($directory_img_upload);
 
-
+            $password = My_Crypt($_POST["Password"],$_POST["Login"]);
+                
             $Query = 'UPDATE adherent SET 
               Login = "'.$_POST["Login"].'",
-              Password = "'.$_POST["Password"].'",
+              Password = "'.$password.'",
               Prenom = "'.$_POST["Prenom"].'",
               Nom = "'.$_POST["Nom"].'",
               DNaiss = "'.$_POST["DNaiss"].'",
@@ -88,14 +97,16 @@ if(!empty($_POST)){
             $MonModalTexte = 'Le profil a bien été mis à jour.';
             $MonModalBouton = 'Fermer';
         }else if ($_POST['formulaire'] == 'contact'){
-
             $subject = $_POST['objet'] . ' de ' . $_POST['lastname'] . ' ' . $_POST['firstname'];
             $message = $_POST['message'];
             $expediteur = $_POST['from'];
             try {
+                
                 MailEngine::send($subject, $expediteur, $message);
                 //MailEngine::SendConfirmation($subject, $message);
-
+                $MonModalTexte = 'Message envoyé.';
+                $MonModalTexte = 'Le message a bien été envoyé.';
+                $MonModalBouton = 'Ok!';
             }catch(Exception $e) {
                 error_log($e->getMessage());
             }
@@ -104,14 +115,14 @@ if(!empty($_POST)){
 
             if(isset($_POST['Login']) AND isset($_POST['Password'])){
                 if (!empty($_POST['Login']) AND !empty($_POST['Password'])) {
-
+                    $password = My_Crypt($_POST["Password"],$_POST["Login"]);
                     $Query = 'SELECT IdAdherent,
                                      Nom,
                                      Prenom,
                                      Organisateur,
                                      Admin 
                                      FROM adherent 
-                                     WHERE Login ="'.$_POST['Login'].'" AND Password ="'.$_POST['Password'].'"';
+                                     WHERE Login ="'.$_POST['Login'].'" AND Password ="'.$password.'"';
                     $Reponse = $BDD->query($Query);
 
                     if ($Reponse->rowCount() == 1) {
@@ -127,11 +138,12 @@ if(!empty($_POST)){
                             $_SESSION['Id'] = $Id;
                             $MonModalTitre = 'Bravo';
                             $MonModalTexte = 'Vous êtes maintenant connecté à MCMP.';
-                            $MonModalBouton = 'Ok !';
-                        } }else{
+                            $MonModalBouton = 'Ok!';
+                        }
+                    }else{
                             $MonModalTitre = 'Echec';
                             $MonModalTexte = 'Votre identifiant ou votre mot de passe est invalide.';
-                            $MonModalBouton = 'Ok !';
+                            $MonModalBouton = 'Ok!';
                         }
 
                     }

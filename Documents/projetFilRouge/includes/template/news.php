@@ -1,4 +1,6 @@
       <main>
+            <!-- Template de news avec un bouton rouge et un vert pour supprimer ou modifier la news 
+                Affichage du titre et du contenu de la news  -->
         <section class="background-11" id="content-6">
         <div class="container">
             <div class="row justify-content-center">

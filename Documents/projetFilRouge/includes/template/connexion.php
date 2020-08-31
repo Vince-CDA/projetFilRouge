@@ -1,4 +1,7 @@
 
+<?php 
+//Voici le template de connexion avec $Titre initialisé
+?>
 <section class="py-0" id="forms-1">
     <div class="background-holder overlay overlay-0" style="background-image:url(./images/38.jpg);"></div>
     <!--/.background-holder-->

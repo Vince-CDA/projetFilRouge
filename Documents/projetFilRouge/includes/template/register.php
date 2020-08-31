@@ -1,4 +1,5 @@
 
+            <!-- Formulaire d'inscription et d'édition de profil, ternaire pour afficher ls informations si celles-ci existent (donc si l'utilisateur est connecté), cas contraire : C'est une inscription -->
 <section class="py-0" id="forms-1">
     <div class="background-holder overlay overlay-0" style="background-image:url(./images/38.jpg);"></div>
     <!--/.background-holder-->
@@ -15,6 +16,7 @@
                                 <div class="row text-center">
                                 <div class="col-lg-12 mb-2">
                                     <?php
+                                    //L'image profil sera par défaut upload_photo_default.jpg ($img) dans le $directory_img_upload
                                     $img = !empty($image) ? $image : 'upload_photo_default.jpg';
                                     ?>
                                     <div class="col-lg-12 text-center">
@@ -29,7 +31,7 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <label class="py-0 mb-0"  for="name">Mot de passe</label>
-                                        <br /><input size="16" type="password" id="password" name="Password" value="<?php echo isset($Password) ? $Password : '' ?>" placeholder="" required />
+                                        <br /><input size="16" type="password" id="password" name="Password" value="" placeholder="" required />
                                     </div>
                                     <div class="col-lg-6">
                                         <label class="py-0 mb-0"  for="name">Prénom</label>
@@ -82,9 +84,6 @@
                                 </div>
                                 <button type="submit" class="btn btn-success float-right lead"><?php echo $Btn_Register; ?></button>
                             </form>
-                        </div>
-                        <div class="tab-content text-center" style="min-height: 325px;">
-                            <div><img class="mb-4" src="./assets/images/icons/icon-paypal.svg" width="100" alt="paypal"></div><a class="btn btn-primary" href="#">Pay $299 with paypal</a>
                         </div>
                     </div>
                 </div>

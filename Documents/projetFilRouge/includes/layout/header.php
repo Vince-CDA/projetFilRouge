@@ -78,14 +78,14 @@
             <nav class="navbar navbar-expand-lg"><a class="navbar-brand" href="./index.php">Moto Club Millau Passion</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span class="hamburger hamburger--emphatic"><span class="hamburger-box"><span class="hamburger-inner"></span></span></span></button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav pos-lg-absolute absolute-centered-lg">
-                        <!-- Boucle pour afficher ma barre de navigation -->
+                        <!-- Boucle pour afficher ma barre de navigation ($NavBar présent dans config.php !) -->
                         <?php
                         foreach ($NavBar as $key => $value) {
                             echo '<li><a href="./index.php?page='.$key.'">'.$value.'</a></li>';
                         }
                         ?>
 
-                        <!--
+                        <!-- Ancienne barre de navigation 
                         <li><a href="./index.php?page=accueil">Accueil</a></li>
                         <li><a href="./index.php?page=news">News</a></li>
                         <li><a href="./index.php?page=activites">Activités</a></li>
@@ -94,6 +94,8 @@
                         <li><a href="./index.php?page=search"><span class="fa fa-search"></span></a></li>
                         -->
                     </ul>
+                        <!-- Condition si connecté alors afficher bouton déroulant avec : "Prénom Nom" -> "Mon profil"/"Membres"/"Déconnexion" & si Admin "Ajouter une activité" 
+                        -->
                     <ul class="navbar-nav ml-auto">
                         <?php if(isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 0 ){ ?>
 

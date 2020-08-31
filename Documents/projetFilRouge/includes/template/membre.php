@@ -1,3 +1,4 @@
+            <!-- Affichage d'un membre dans la page des membres avec Prénom Nom en lien vers sa page profil avec son id, Possibilté de suppression du membre si userlevel > 1 (Admin) -->
 <div class="col-sm-6 col-lg-4 mb-lg-0 mb-4">
     <div class="border border-2x radius-secondary border-color-10 py-4"><img class="radius-round" src="./images/portraits/square/04.jpg" alt="Member" width="120">
         <h4 class="color-3 mt-3 mb-2"><a href="./index.php?page=profil&id=<?php echo $Donnees['IdAdherent']; ?>"><?php echo $Donnees['Prenom'].' '.$Donnees['Nom']; ?></a></h4>

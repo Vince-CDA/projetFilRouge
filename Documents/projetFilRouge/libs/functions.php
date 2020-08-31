@@ -1,5 +1,5 @@
 <?php
-
+// Fonction d'upload d'image
 function upload_img($directory){
 
     $error = true;
@@ -73,3 +73,30 @@ function upload_img($directory){
     return array($error, $MonModalTexte, $photoName, $binary, $fileType);
 
 }
+//Fonction de cryptage de mot de passe avec un Salt donné puis un Mot de passe ainsi qu'un Login
+function My_Crypt($password, $login){
+    $salt = 'banane';
+    return hash('sha256', $salt.$password.$login);
+}
+
+/* 
+FONCTION CRYPTAGE SI LES MOTS DE PASSES SONT EN CLAIR DANS LA BDD, \!/ NE PLUS EXECUTER \!/  
+
+function Cryptage_Password(){
+    include('./config/config.php');
+
+    $Query = 'SELECT                 IdAdherent,
+                                     Password
+                                     FROM adherent';
+                    $Reponse = $BDD->query($Query);
+                    while ($Donnees = $Reponse->fetch()) {
+                    $password = My_Crypt($Donnees["Password"]);
+                    
+                    
+                    $Query = 'UPDATE adherent SET 
+                    Password = "'.$password.'"
+                    WHERE IdAdherent = '.$Donnees["IdAdherent"];
+                    $BDD->query($Query);
+                    }
+} 
+*/

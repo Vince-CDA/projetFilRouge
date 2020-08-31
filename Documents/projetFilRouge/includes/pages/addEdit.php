@@ -4,25 +4,25 @@
 
 $postData = $imgData = array();
 
-// Get session data
+// récupération de la session "sessData" servant à l'ajout ou l'édition des images
 $sessData = !empty($_SESSION['sessData'])?$_SESSION['sessData']:'';
 
-// Get status message from session
+// Récupération du message de status de la session
 if(!empty($sessData['status']['msg'])){
     $statusMsg = $sessData['status']['msg'];
     $statusMsgType = $sessData['status']['type'];
     unset($_SESSION['sessData']['status']);
 }
 
-// Get posted data from session
+// Récupération des données affichés de la session
 if(!empty($sessData['postData'])){
     $postData = $sessData['postData'];
     unset($_SESSION['sessData']['postData']);
 }
 
-// Get image data
+// Obtention des données des images
 if(!empty($_GET['id'])){
-    // Include and initialize DB class
+    // Inclusion du fichier de configuration
     require_once './config/DB.class.php';
     $db = new DB();
     

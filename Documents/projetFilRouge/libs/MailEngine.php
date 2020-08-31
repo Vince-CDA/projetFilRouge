@@ -47,10 +47,9 @@ class MailEngine {
     $mail->isHTML(true);                                      // email au format HTML
     $mail->Subject = utf8_decode($subject);      // Objet du message (éviter les accents là, sauf si utf8_encode)
     $mail->Body    = $message;          // corps du message en HTML - Mettre des slashes si apostrophes
-    $mail->AltBody = 'Contenu au format texte pour les clients e-mails qiui ne le supportent pas'; // ajout facultatif de texte sans balises HTML (format texte)
+    $mail->AltBody = 'Contenu au format texte pour les clients e-mails qui ne le supportent pas'; // ajout facultatif de texte sans balises HTML (format texte)
 
     $mail->send();
-    echo 'Message envoyé.';
     }
 
 }

@@ -23,7 +23,6 @@ include('./libs/methode_post.php');
 
 include ('./libs/methode_get.php');
 
-
 /* J'inclus le header de mon site */
 
 include './includes/layout/header.php';

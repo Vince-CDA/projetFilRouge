@@ -1,17 +1,18 @@
 <link href="./css/style1.css" rel="stylesheet">
 
 <?php
-// Include and initialize DB class
+// Inclusion et initialisation de la config de la galerie via DB class
 require_once './config/DB.class.php';
 $db = new DB();
 
-// Fetch the images data
+// Fetch les données d'images
 $condition = array('where' => array('status' => 1));
 $images = $db->getRows('images', $condition);
 ?>
     <?php
     if(!empty($images)){
         foreach($images as $row){
+          //Répertoire d'upload de la galerie
             $uploadDir = 'upload/images/';
             $imageURL = $uploadDir.$row["file_name"];
     ?>
