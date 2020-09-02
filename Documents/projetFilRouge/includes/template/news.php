@@ -5,8 +5,8 @@
         <div class="container">
             <div class="row justify-content-center">
             <div class="col-12">
-                <a href="./index.php?page=editnews&id=<?php echo $_GET['id'] ?>"> <button id= <?php echo $idboutonsuccess; ?> type="submit" class="btn btn-success float-right lead"><?php echo $valueboutonsuccess; ?></button></a>
-                <a href="./index.php?page=news&id=<?php echo $_GET['id'] ?>&action=supprimer"> <button id= <?php echo $idboutondanger; ?> type="submit" class="btn btn-danger float-right lead"><?php echo $valueboutondanger; ?></button></a>
+                <a href="page-editnews-<?php echo $_GET['id'] ?>"> <button id= <?php echo $idboutonsuccess; ?> type="submit" class="btn btn-success float-right lead"><?php echo $valueboutonsuccess; ?></button></a>
+                <a href="page-news-<?php echo $_GET['id'] ?>&action=supprimer"> <button id= <?php echo $idboutondanger; ?> type="submit" class="btn btn-danger float-right lead"><?php echo $valueboutondanger; ?></button></a>
                 </form>
             </div>
             <div class="col-lg-10">

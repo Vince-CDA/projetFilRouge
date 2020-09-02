@@ -9,7 +9,7 @@
                 <div class="tabs background-white radius-secondary pb-4">
                     <div class="tab-contents px-5">
                         <div class="tab-content active">
-                            <form action="./index.php?page=<?php echo $MaPage ?><?php echo isset($Id) ? '&id='.$Id : ''; ?>" method="post" class="register-form" enctype="multipart/form-data">
+                            <form action="page-<?php echo $MaPage ?><?php echo isset($Id) ? '-'.$Id : ''; ?>" method="post" class="register-form" enctype="multipart/form-data">
                                 <h1 id="bandeau" class="lead bold h1 pb-4 text-center"><b><?php echo $Titre ?></b></h1>
                                 <input type="hidden" name="formulaire" value="<?php echo $Action; ?>" />
                                 <input type="hidden" name="IdAdherent" value="<?php echo isset($Id) ? $Id : ''; ?>" />

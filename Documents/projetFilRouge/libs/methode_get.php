@@ -60,7 +60,7 @@ if($_GET['page'] == 'connexion' && isset($_SESSION['Id']) && !empty($_SESSION['I
 
         if(isset($_GET['id']) && !empty($_GET['id'])){
 
-
+                //Mes id et value de boutons changent par rapport à la page où je suis. Dans le cas d'une newscontent je peux soit editer soit supprimer la nouvelle
                 $idboutonsuccess = 'editer';
                 $idboutondanger = 'annnuler';
                 $valueboutonsuccess = 'Editer la nouvelle';
@@ -77,7 +77,7 @@ if($_GET['page'] == 'connexion' && isset($_SESSION['Id']) && !empty($_SESSION['I
                 } 
             }
         }else if($_GET['page'] == 'news'){
-
+            //Si la page est news, qu'il y a un id, et qu'il y a une action supprimer alors je supprime la news par une requête delete
             if(isset($_GET['id']) && !empty($_GET['id'])){
     
     
@@ -86,18 +86,20 @@ if($_GET['page'] == 'connexion' && isset($_SESSION['Id']) && !empty($_SESSION['I
                     if($_GET['action'] == 'supprimer') {
                         $reponse = $BDD->query('DELETE FROM nouvelle WHERE IdNouvelle = '.$_GET['id']);
                         $MonModalTexte = 'La nouvelle a bien été supprimée';
-                        $MonModalBouton = '<a href="./index.php?page=news">Retour aux nouvelles</a>';
+                        $MonModalBouton = '<a href="page-news">Retour aux nouvelles</a>';
                         $MonModalTitre = 'Suppression avec succès !';
                     }
                 }
             }
         }else if($_GET['page'] == 'ajoutnews'){
+                    //Si c'est la page ajoutnews alors les boutons sont publier ou annuler, ils sont géré par le main.js
                             $idboutonsuccess = 'publier';
                             $idboutondanger = 'annnuler';
                             $valueboutonsuccess = 'Publier la nouvelle';
                             $valueboutondanger = 'Annuler';
-                            $MonModalBouton = '<a href="./index.php?page=news">Retour sur la page des news</a>';
+                            $MonModalBouton = '<a href="page-news">Retour sur la page des news</a>';
             }else if($_GET['page'] == 'editnews'){
+                //Si c'est editnews et qu'il y a une id alors je peux editer ou supprimer la nouvelle
                 if(isset($_GET['id']) && !empty($_GET['id'])){
                     
                     $idboutonsuccess = 'editer';
@@ -105,7 +107,7 @@ if($_GET['page'] == 'connexion' && isset($_SESSION['Id']) && !empty($_SESSION['I
                     $valueboutonsuccess = 'Editer la nouvelle';
                     $valueboutondanger = 'Supprimer le nouvelle';
                     $id = $_GET['id'];
-                    $MonModalBouton = '<a href="./index.php?page=news">Retour aux nouvelles</a>';
+                    $MonModalBouton = '<a href="page-news">Retour aux nouvelles</a>';
                     $MonModalTitre = 'Information';
                     
                     //la requete de la table page
@@ -120,14 +122,15 @@ if($_GET['page'] == 'connexion' && isset($_SESSION['Id']) && !empty($_SESSION['I
                     } 
                     }
                     else{
+                        //Sinon retour sur la page news
                        $MaPage = 'news';
                     }
                     if(isset($_GET['action']) && !empty($_GET['action'])) {
-
+                            //Si l'action est supprimer alors je supprime la nouvelle depuis la requête sql
                     if($_GET['action'] == 'supprimer') {
                         $reponse = $BDD->query('DELETE FROM nouvelle WHERE IdNouvelle = '.$_GET['id']);
                         $MonModalTexte = 'La nouvelle a bien été supprimée';
-                        $MonModalBouton = '<a href="./index.php?page=news">Retour aux nouvelles</a>';
+                        $MonModalBouton = '<a href="page-news">Retour aux nouvelles</a>';
                         $MonModalTitre = 'Suppression avec succès !';
                     }
                 }

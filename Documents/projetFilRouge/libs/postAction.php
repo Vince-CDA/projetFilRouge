@@ -7,13 +7,13 @@ $db = new DB();
 $tblName = 'images';
 
 // File upload path
-$uploadDir = "./../upload/images/";
+$uploadDir = "./upload/images/";
 
 // Allow file formats
 $allowTypes = array('jpg','png','jpeg','gif');
 
 // Set default redirect url
-$redirectURL = './../index.php?page=manage';
+$redirectURL = './page-manage';
 var_dump($_POST);
 
 $statusMsg = '';
@@ -21,7 +21,7 @@ $sessData = array();
 $statusType = 'danger';
 if(isset($_POST['imgSubmit'])){
      // Set redirect url
-    $redirectURL = './../index.php?page=addEdit';
+    $redirectURL = './page-addEdit';
 
     // Get submitted data
     $image    = $_FILES['image'];
@@ -83,7 +83,7 @@ if(isset($_POST['imgSubmit'])){
                 $statusMsg = 'Image data has been updated successfully.';
                 $sessData['postData'] = '';
                 
-                $redirectURL = './../index.php?page=manage';
+                $redirectURL = './page-manage';
             }else{
                 $statusMsg = 'Some problem occurred, please try again.';
                 // Set redirect url
@@ -98,7 +98,7 @@ if(isset($_POST['imgSubmit'])){
                 $statusMsg = 'Image has been uploaded successfully.';
                 $sessData['postData'] = '';
                 
-                $redirectURL = './../index.php?page=manage';
+                $redirectURL = './page-manage';
             }else{
                 $statusMsg = 'Some problem occurred, please try again.';
             }

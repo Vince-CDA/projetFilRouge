@@ -6,9 +6,9 @@
                 <p class="mb-0">&#xA9; Copyright 2020</p>
             </div>
             <div class="col-lg-auto mt-4 mt-lg-0">
-                <a class="color-7 d-inline-block m-2" href="./index.php?page=reglement">Règlement</a>
-                <a class="color-7 d-inline-block m-2" href="./index.php?page=contact">Contact</a>
-                <a class="color-7 d-inline-block m-2" href="./index.php?page=partenaire">Partenaire</a>
+                <a class="color-7 d-inline-block m-2" href="page-reglement">Règlement</a>
+                <a class="color-7 d-inline-block m-2" href="page-contact">Contact</a>
+                <a class="color-7 d-inline-block m-2" href="page-partenaire">Partenaire</a>
             </div>
             <div class="col-lg text-lg-right mt-4 mt-lg-0"><a class="d-inline-block" href="#">
                     <div class="border color-2 radius-round d-flex align-items-center justify-content-center m-1" style="width: 50px; height: 50px;"><span class="fab fa-twitter color-5"></span></div>
@@ -55,6 +55,7 @@
 <script src="./js/core.js"></script>
 <!-- WYSYWYG -->
 <script src="./js/ckeditor/ckeditor.js"></script>
+<script src="./js/ckeditor/ckfinder/ckfinder.js"></script>
 <!-- Fancy Box pour Galerie -->
 <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 

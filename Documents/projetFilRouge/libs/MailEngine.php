@@ -5,7 +5,7 @@ require_once './config/configPHPMailer.php';
 use PHPMailer\PHPMailer\PHPMailer;
 
 class MailEngine {
-
+//Configuration du smtp avec les données du tableau de configPHPMailer.php
     public static function CreateMail() {
         include ('./config/configPHPMailer.php');
         $mail = new PHPMailer(true);

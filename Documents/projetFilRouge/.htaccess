@@ -1,0 +1,6 @@
+ErrorDocument 404 /404.html
+
+RewriteEngine On
+Rewriterule ^page-([a-z]*)$ index.php?page=$1 [L]
+
+Rewriterule ^page-([a-z]*)-([0-9]*)$ index.php?page=$1&id=$2 [L]

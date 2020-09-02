@@ -1,7 +1,9 @@
 <?php
+//Indépendant de l'index, donc rechargement du fichier config pour PDO requis ainsi que la session start
 session_start();
 include ('./../config/config.php');
-
+//Pour un insert d'une nouvelle
+//Vérification si l'user est admin, si l'information est à 1 (dans le main.js en cliquant sur le bouton), si la description n'est pas vide, si il y a un fichier puis envoie de la requête
 if(isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 2){
     if(!empty($_POST)) {
 
@@ -18,11 +20,13 @@ if(isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 2){
                 Titre,
                 Texte,
                 Fichier,
+                Diffusion,
                 DPubli
                 ) VALUES (
                 "'.$_POST["title"].'",            
                 "'.$_POST["description"].'",
-                "'.$_POST["fichier"].'",
+                "'.$fichier.'",
+                "'.$_POST["publier"].'",
                 NOW()            
             )';
             $BDD->query($Query);
@@ -32,12 +36,12 @@ if(isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 2){
             }
         }
     }
-
+//Second envoie ajax via "information = 2" pour un update de la nouvelle
                 if(isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 2){
                     if(!empty($_POST)) {
                         if(isset($_POST['informations']) && $_POST['informations'] == 2) {
                             if(isset($_POST['description']) && !empty($_POST['description'])){
-                                if(isset($_POST['fichier'])) {
+                                if(null !== $_POST['fichier']) {
                                     $fichier = $_POST['fichier'];
                                         }else {
                                             $fichier = ' ';
@@ -45,7 +49,8 @@ if(isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 2){
                                         $Query = 'UPDATE nouvelle 
                                         SET Titre = "'.$_POST["title"].'",
                                             Texte = "'.$_POST["description"].'",
-                                            Fichier = "'.$_POST["fichier"].'",
+                                            Fichier = "'.$fichier.'",
+                                            Diffusion = "'.$_POST["publier"].'",
                                             DPubli = NOW()
                                             WHERE IdNouvelle = '.$_POST["id"];
                                 

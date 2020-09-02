@@ -52,8 +52,9 @@
     <link href="./css/custom.css" rel="stylesheet">
     <!-- Fichier main custom -->
     <link href="./css/main.css?v1.<?php echo time();?>" rel="stylesheet">
-        <!-- CSS Spécial Wysiwyg -->
-        <link rel="stylesheet" href="./css/image.css" />
+    <!-- CSS Spécial Wysiwyg -->
+    <link rel="stylesheet" href="./css/image.css" />
+    <link rel="canonical" href="http://cda27.s1.2isa.org/page-<?php echo isset($_GET['page']) ? $_GET['page'] : 'accueil' ;?>" />
 </head>
 <body data-spy="scroll" data-target=".inner-link" data-offset="60">
 <div class="preloader" id="preloader">
@@ -81,17 +82,17 @@
                         <!-- Boucle pour afficher ma barre de navigation ($NavBar présent dans config.php !) -->
                         <?php
                         foreach ($NavBar as $key => $value) {
-                            echo '<li><a href="./index.php?page='.$key.'">'.$value.'</a></li>';
+                            echo '<li><a href="page-'.$key.'">'.$value.'</a></li>';
                         }
                         ?>
 
                         <!-- Ancienne barre de navigation 
-                        <li><a href="./index.php?page=accueil">Accueil</a></li>
-                        <li><a href="./index.php?page=news">News</a></li>
-                        <li><a href="./index.php?page=activites">Activités</a></li>
-                        <li><a href="./index.php?page=galerie">Galerie</a></li>
-                        <li><a href="./index.php?page=historique">Historique</a></li>
-                        <li><a href="./index.php?page=search"><span class="fa fa-search"></span></a></li>
+                        <li><a href="page-accueil">Accueil</a></li>
+                        <li><a href="page-news">News</a></li>
+                        <li><a href="page-activites">Activités</a></li>
+                        <li><a href="page-galerie">Galerie</a></li>
+                        <li><a href="page-historique">Historique</a></li>
+                        <li><a href="page-search"><span class="fa fa-search"></span></a></li>
                         -->
                     </ul>
                         <!-- Condition si connecté alors afficher bouton déroulant avec : "Prénom Nom" -> "Mon profil"/"Membres"/"Déconnexion" & si Admin "Ajouter une activité" 
@@ -104,17 +105,17 @@
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu shadow" aria-labelledby="dropdownMenu1">
-                                    <li><a class="menu-deroul" href="./index.php?page=profil&id=<?php echo $_SESSION['Id'] ?>">Mon profil</a></li>
-                                    <li><a class="menu-deroul" href="./index.php?page=membres">Membres</a></li>
+                                    <li><a class="menu-deroul" href="page-profil-<?php echo $_SESSION['Id'] ?>">Mon profil</a></li>
+                                    <li><a class="menu-deroul" href="page-membres">Membres</a></li>
                                     <?php if(isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 1 ){ ?>
-                                    <li><a class="menu-deroul" href="./index.php?page=activités">Ajouter une activité</a></li>
+                                    <li><a class="menu-deroul" href="page-activités">Ajouter une activité</a></li>
                                     <?php }?>
                                     <li role="separator" class="menu-deroul divider"></li>
                                     <li><a class="menu-deroul" href="./index.php?deconnexion=1" alt="Déconnexion" title="Cliquez-ici pour se déconnecter">Déconnexion</a></li>
                                 </ul>
                         <?php }else{?>
-                        <li><a href="./index.php?page=connexion">Connexion</a></li>
-                        <li><a class="btn btn-primary btn-capsule btn-sm" href="./index.php?page=inscription">Inscription</a></li>
+                        <li><a href="page-connexion">Connexion</a></li>
+                        <li><a class="btn btn-primary btn-capsule btn-sm" href="page-inscription">Inscription</a></li>
                         <?php } ?>
                     </ul>
                 </div>

@@ -1,3 +1,4 @@
+
 "use strict";
 
 
@@ -148,6 +149,7 @@ Utils.$document.ready(function () {
 
   let editor;
 /* WYSYWYG */
+CKFinder.start();
 
 ClassicEditor
   .create( document.querySelector( '#editor' ), {
@@ -239,12 +241,13 @@ image: {
     console.log('btn wysiwyg ready !');
     var test = editor.getData(); 
     var title = $('input[name=title]').val();
+    var publier = $('input[name=diffusion]').is(':checked') === true ? '1' : '0'; 
     var description = encodeURI(test);
     //methode Ajax
     var request = $.ajax({
         url: "./libs/methode_ajax.php",
         method: "POST",
-        data: { informations : 1, title:title, description : description, fichier : $('figure img').attr('src')},
+        data: { informations : 1, title:title, description : description, fichier : $('figure img').attr('src'), publier : publier},
         dataType: "html" //ou JSON
     });
     //reussite reponse 200 - Inclu le fait que vous avez pas les permissions requisent
@@ -275,11 +278,12 @@ $('#editer').on('click', function(){
   var title = $('input[name=title]').val();
   var description = encodeURI(test);
   var id = $('input[name=id]').val();
+  var publier = $('input[name=diffusion]').is(':checked') === true ? '1' : '0'; 
   //methode Ajax
   var request = $.ajax({
       url: "./libs/methode_ajax.php",
       method: "POST",
-      data: { informations : 2, title:title, description : description, id : id, fichier : $('figure img').attr('src')},
+      data: { informations : 2, title:title, description : description, id : id, fichier : $('figure img').attr('src'), publier : publier},
       dataType: "html" //ou JSON
   });
   //reussite reponse 200 - Inclu le fait que vous avez pas les permissions requisent

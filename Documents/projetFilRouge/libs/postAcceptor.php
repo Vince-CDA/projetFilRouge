@@ -1,6 +1,6 @@
 <?php
   /***************************************************
-   * Only these origins are allowed to upload images *
+   * Module d'upload d'images télécharger online     *
    ***************************************************/
   $accepted_origins = array("http://localhost", "http://cda27.2isa.org", "http://127.0.0.1/");
 

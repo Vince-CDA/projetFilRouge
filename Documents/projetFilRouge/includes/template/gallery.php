@@ -10,7 +10,7 @@
         <h5>Images</h5>
         <!-- Lien d'ajout d'images -->
         <div class="float-right">
-            <a href="./index.php?page=addEdit" class="btn btn-success"><i class="plus"></i>Nouvelle image</a>
+            <a href="page-addEdit" class="btn btn-success"><i class="plus"></i>Nouvelle image</a>
         </div>
     </div>
     
@@ -30,7 +30,7 @@
             <?php
             if(!empty($images)){
                 foreach($images as $row){
-                    $statusLink = ($row['status'] == 1)?'./libs/postAction.php?action_type=block&id='.$row['id']:'./libs/postAction.php?action_type=unblock&id='.$row['id'];
+                    $statusLink = ($row['status'] == 1)?'./libs/postAction.php?action_type=block-'.$row['id']:'./libs/postAction.php?action_type=unblock-'.$row['id'];
                     $statusTooltip = ($row['status'] == 1)?'Click to Inactive':'Click to Active';
             ?>
             <tr>
@@ -40,8 +40,8 @@
                 <td><?php echo $row['created']; ?></td>
                 <td><a href="<?php echo $statusLink; ?>" title="<?php echo $statusTooltip; ?>"><span class="badge <?php echo ($row['status'] == 1)?'badge-success':'badge-danger'; ?>"><?php echo ($row['status'] == 1)?'Active':'Inactive'; ?></span></a></td>
                 <td>
-                    <a href="./index.php?page=addEdit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning">edit</a>
-                    <a href="./libs/postAction.php?action_type=delete&id=<?php echo $row['id']; ?>" class="btn btn-danger" onclick="return confirm('Are you sure to delete data?')?true:false;">delete</a>
+                    <a href="page-addEdit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning">edit</a>
+                    <a href="./libs/postAction.php?action_type=delete-<?php echo $row['id']; ?>" class="btn btn-danger" onclick="return confirm('Are you sure to delete data?')?true:false;">delete</a>
                 </td>
             </tr>
             <?php } }else{ ?>

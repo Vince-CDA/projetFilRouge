@@ -61,7 +61,7 @@ $actionLabel = !empty($_GET['id'])?'Edit':'Add';
                 <label>Title</label>
                 <input type="text" name="title" class="form-control" placeholder="Enter title" value="<?php echo !empty($imgData['title'])?$imgData['title']:''; ?>" >
             </div>
-            <a href="./index.php?page=manage" class="btn btn-secondary">Back</a>
+            <a href="page-manage" class="btn btn-secondary">Back</a>
             <input type="hidden" name="id" value="<?php echo !empty($imgData['id'])?$imgData['id']:''; ?>">
             <input type="submit" name="imgSubmit" class="btn btn-success" value="SUBMIT">
         </form>

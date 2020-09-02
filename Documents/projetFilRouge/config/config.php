@@ -30,5 +30,4 @@ $titlenews = '';
 
 //Chemin d'upload de pohtos pour les images profil
 $directory_img_upload = './upload/images/';
-
 ?>

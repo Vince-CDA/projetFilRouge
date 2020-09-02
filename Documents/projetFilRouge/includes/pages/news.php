@@ -1,11 +1,16 @@
 <?php 
 
-   
+   $idboutonsuccess = 'ajout';
+   $valueboutonsuccess = 'Ajouter nouvelle...';
     //la requete de la table page
     $reponse = $BDD->query('SELECT * FROM nouvelle');
     ?>
 
     <div class="row justify-content-center justify-content-sm-start mt-5 ml-9">
+            <div class="col-12">
+                <a href="page-ajoutnews"> <button id= <?php echo $idboutonsuccess; ?> type="submit" class="btn btn-success float-right lead"><?php echo $valueboutonsuccess; ?></button></a>
+                </form>
+            </div>
 <?php 
 
     //boucle les données récupérées

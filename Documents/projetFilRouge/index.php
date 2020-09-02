@@ -9,12 +9,15 @@ if(isset($_GET['deconnexion']) AND $_GET['deconnexion'] == '1'){
 
 }
 
-/* J'inclus mon fichier config avec mes logins de base de données local */
+/* J'inclus mes fichier config avec mes logins de base de données local */
 
 include('./config/config.php');
 include ('./config/configPHPMailer.php'); 
-//mes fonctions PHP
+
+// J'inclus mes fonctions PHP
+
 include('./libs/functions.php');
+
 /* J'inclus les méthodes POST */
 
 include('./libs/methode_post.php');

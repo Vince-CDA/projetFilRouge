@@ -7,7 +7,7 @@
             <h2><?php echo $Titre ?></h2>
           </div>
           <div class="col-lg-10 mt-4">
-          <form action="./index.php?page=contact" method="post">
+          <form action="page-contact" method="post">
             <form class="zform p-3 p-md-6 background-11 radius-secondary border color-9" method="post">
               <div class="row justify-content-center">
                 <div class="col-md-12">

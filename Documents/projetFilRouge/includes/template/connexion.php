@@ -11,7 +11,7 @@
                 <div class="tabs background-white radius-secondary pb-4">
                     <div class="tab-contents px-5">
                         <div class="tab-content active">
-                            <form action="./index.php?page=connexion" method="post">
+                            <form action="page-connexion" method="post">
                                 <input type="hidden" name="formulaire" value="connexion" />
                                 <h1 id="bandeau" class="lead bold h1 pb-4 text-center"><b><?php echo $Titre ?></b></h1>
                                 <div class="row text-center">
