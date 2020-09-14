@@ -149,9 +149,11 @@ Utils.$document.ready(function () {
 
   let editor;
 /* WYSYWYG */
-CKFinder.start();
+if($('#editor').length) {
+Utils.$document.ready(function () {
 
-ClassicEditor
+  ClassicEditor
+
   .create( document.querySelector( '#editor' ), {
     ckfinder: {
 			uploadUrl: './js/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json',
@@ -177,9 +179,8 @@ ClassicEditor
 },
   toolbar: [
     'heading',
-    'alignment',
+    'alignment:left', 'alignment:right', 'alignment:center', 'alignment:justify', 'alignment',,
     'Styles','Format','Font','FontSize',
-    '/',
     'Bold','Italic','Underline','StrikeThrough','-','Undo','Redo','-','Cut','Copy','Paste','Find','Replace','-','Outdent','Indent','-','Print',
     '/',
     'NumberedList','BulletedList','-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock',
@@ -187,8 +188,6 @@ ClassicEditor
     'imageStyle:alignLeft', 'imageStyle:alignCenter', 'imageStyle:alignRight',
     '|',
     'imageUpload',
-    'imageStyle:full',
-    'imageStyle:side',
     '|',
     'imageTextAlternative',
     'imageTextAlternative',
@@ -221,20 +220,15 @@ image: {
 
   // You need to configure the image toolbar, too, so it shows the new style
   // buttons as well as the resize buttons.
-  toolbar: [
-      'imageStyle:alignLeft', 'imageStyle:alignCenter', 'imageStyle:alignRight',
-      '|',
-      'imageResize',
-      '|',
-      'imageTextAlternative'
-  ]
+
 }
   } )
   .then( e => editor = e)
 	.catch( error => {
 		console.error( error );
   } );
-  
+}
+)};
 
   $('#publier').on('click', function(){
 
@@ -307,7 +301,91 @@ $('#editer').on('click', function(){
 
 });
 
+$('#ajoutactivite').on('click', function(){
+
+  console.log('btn wysiwyg ready !');
+  var test = editor.getData(); 
+  var intituleactivite = $('input[name=IntituleActivite]').val();
+  var publier = $('input[name=diffusion]').is(':checked') === true ? '1' : '0'; 
+  var description = encodeURI(test);
+  var ddebut = $('input[name=DDebut]').val();
+  var dfin = $('input[name=DFin]').val();
+  var dlimite = $('input[name=DLimite]').val();
+  var tarifadherent = $('input[name=TarifAdherent]').val();
+  var tarifinvite = $('input[name=TarifInvite]').val();
+  var idadherent = $('input[name=IdAdherent]').val();
+  var idtype = $( "#IdType" ).val();
+  
+  //methode Ajax
+  var request = $.ajax({
+      url: "./libs/methode_ajax.php",
+      method: "POST",
+      data: { 
+              informations : 3,
+              intituleactivite : intituleactivite,
+              ddebut : ddebut,
+              dfin : dfin,
+              description : description,
+              tarifadherent : tarifadherent,
+              tarifinvite : tarifinvite,
+              dlimite : dlimite,
+              idadherent : idadherent,
+              idtype : idtype,
+              fichier : $('figure img').attr('src'),
+              publier : publier
+            },
+      dataType: "html" //ou JSON
+  });
+  //reussite reponse 200 - Inclu le fait que vous avez pas les permissions requisent
+  request.done(function( msg ) {
+      //console.log(msg);
+      //afichage de la modal ave
+      $('.modal-body p').html(msg);
+
+      $('')
+
+      $(".modal").show();
+      //$( "#log" ).html( msg );
+  });
+
+  //erreur 404 ou 500 - le serveur ne repond pas, erreur PHP ?
+  request.fail(function( jqXHR, textStatus ) {
+      console.log( "Request failed: " + textStatus );
+  });
+
+
+
+});
+
 
 $("[data-fancybox]").fancybox();
 
+// On initialise la latitude et la longitude de Paris (centre de la carte)
+var lat = 44.10018;
+var lon = 3.05301;
+var macarte = null;
 
+if($("#map").length){
+// Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
+initMap(lat, lon, macarte); 
+
+}
+
+// Fonction d'initialisation de la carte
+function initMap(lat, lon, macarte) {
+  // Créer l'objet "macarte" et l'insèrer dans l'élément HTML qui a l'ID "map"
+  macarte = L.map('map').setView([lat, lon], 11);
+  // Leaflet ne récupère pas les cartes (tiles) sur un serveur par défaut. Nous devons lui préciser où nous souhaitons les récupérer. Ici, openstreetmap.fr
+  L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+      // Il est toujours bien de laisser le lien vers la source des données
+      attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
+      minZoom: 12,
+      maxZoom: 20,
+  }).addTo(macarte);
+var marker = L.marker([lat, lon]).addTo(macarte);
+
+
+
+}
+var onloadCallback = function() {
+};

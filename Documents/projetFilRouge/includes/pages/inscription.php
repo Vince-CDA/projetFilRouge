@@ -7,4 +7,3 @@ $Btn_Register = 'S\'inscrire';
 $Action = 'register';
 //Inclusion de la page register.php
 include('./includes/template/register.php');
-?>

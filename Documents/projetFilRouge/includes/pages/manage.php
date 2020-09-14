@@ -13,7 +13,7 @@ $images = $db->getRows('images');
 $sessData = !empty($_SESSION['sessData'])?$_SESSION['sessData']:'';
 
 // Get status message from session
-if(!empty($sessData['status']['msg'])){
+if (!empty($sessData['status']['msg'])) {
     $statusMsg = $sessData['status']['msg'];
     $statusMsgType = $sessData['status']['type'];
     unset($_SESSION['sessData']['status']);
@@ -22,7 +22,7 @@ if(!empty($sessData['status']['msg'])){
 //include ('./includes/template/gallery.php');
 ?>
 <!-- Display status message -->
-<?php if(!empty($statusMsg)){ ?>
+<?php if (!empty($statusMsg)) { ?>
 <div class="col-xs-12">
     <div class="alert alert-<?php echo $statusMsgType; ?>"><?php echo $statusMsg; ?></div>
 </div>
@@ -51,11 +51,10 @@ if(!empty($sessData['status']['msg'])){
         </thead>
         <tbody>
             <?php
-            if(!empty($images)){
-                foreach($images as $row){
+            if (!empty($images)) {
+                foreach ($images as $row) {
                     $statusLink = ($row['status'] == 1)?'./libs/postAction.php?action_type=block-'.$row['id']:'./libs/postAction.php?action_type=unblock-'.$row['id'];
-                    $statusTooltip = ($row['status'] == 1)?'Click to Inactive':'Click to Active';
-            ?>
+                    $statusTooltip = ($row['status'] == 1)?'Click to Inactive':'Click to Active'; ?>
             <tr>
                 <td><?php echo '#'.$row['id']; ?></td>
                 <td><img src="<?php echo 'uploads/images/'.$row['file_name']; ?>" alt="" /></td>
@@ -67,7 +66,9 @@ if(!empty($sessData['status']['msg'])){
                     <a href="./libs/postAction.php?action_type=delete-<?php echo $row['id']; ?>" class="btn btn-danger" onclick="return confirm('Are you sure to delete data?')?true:false;">delete</a>
                 </td>
             </tr>
-            <?php } }else{ ?>
+            <?php
+                }
+            } else { ?>
             <tr><td colspan="6">No image(s) found...</td></tr>
             <?php } ?>
         </tbody>

@@ -19,8 +19,7 @@
                         while ($Donnees = $Reponse->fetch()) {
 
                             //le template html du membre
-                        include('./includes/template/membre.php');
-
+                            include('./includes/template/membre.php');
                         }
 
                         ?>

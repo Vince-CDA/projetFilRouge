@@ -28,6 +28,7 @@ namespace PHPMailer\PHPMailer;
  * @author Marcus Bointon <phpmailer@synchromedia.co.uk>
  */
 use lib\MailEngine;
+
 class SMTP
 {
     /**

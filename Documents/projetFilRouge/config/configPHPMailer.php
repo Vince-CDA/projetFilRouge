@@ -2,8 +2,10 @@
 // lance les classes de PHPMailer
 require_once './PHPMailer/src/PHPMailer.php';
 use PHPMailer\PHPMailer\PHPMailer;
+
 require_once './PHPMailer/src/SMTP.php';
 use PHPMailer\PHPMailer\SMTP;
+
 require_once './PHPMailer/src/Exception.php';
 use PHPMailer\PHPMailer\Exception;
 
@@ -11,7 +13,7 @@ use PHPMailer\PHPMailer\Exception;
 
 
 //Création d'un tableau de configuration PHPMailer
-$ConfigServMail = array (
+$ConfigServMail = array(
 
     'SMTPDebug' => SMTP::DEBUG_OFF, // Enable verbose debug output
     'isSMTP' => true,   // Send using SMTP
@@ -24,6 +26,3 @@ $ConfigServMail = array (
     'From' => array('Address' => 'vince.cda3@gmail.com', 'Name' => 'Vincent Mundo'), // email and name of the site web
     'Administrator' => array('Address' => 'v.mundoegea@gmail.com', 'Name' => 'Vincent Mundo'), //  administrator (email and name) of this site web
 );
-
-
-?>

@@ -8,20 +8,20 @@ $postData = $imgData = array();
 $sessData = !empty($_SESSION['sessData'])?$_SESSION['sessData']:'';
 
 // Récupération du message de status de la session
-if(!empty($sessData['status']['msg'])){
+if (!empty($sessData['status']['msg'])) {
     $statusMsg = $sessData['status']['msg'];
     $statusMsgType = $sessData['status']['type'];
     unset($_SESSION['sessData']['status']);
 }
 
 // Récupération des données affichés de la session
-if(!empty($sessData['postData'])){
+if (!empty($sessData['postData'])) {
     $postData = $sessData['postData'];
     unset($_SESSION['sessData']['postData']);
 }
 
 // Obtention des données des images
-if(!empty($_GET['id'])){
+if (!empty($_GET['id'])) {
     // Inclusion du fichier de configuration
     require_once './config/DB.class.php';
     $db = new DB();
@@ -41,7 +41,7 @@ $actionLabel = !empty($_GET['id'])?'Edit':'Add';
 ?>
 
 <!-- Display status message -->
-<?php if(!empty($statusMsg)){ ?>
+<?php if (!empty($statusMsg)) { ?>
 <div class="col-xs-12">
     <div class="alert alert-<?php echo $statusMsgType; ?>"><?php echo $statusMsg; ?></div>
 </div>
@@ -52,7 +52,7 @@ $actionLabel = !empty($_GET['id'])?'Edit':'Add';
         <form method="post" action="./libs/postAction.php" enctype="multipart/form-data">
             <div class="form-group">
                 <label>Image</label>
-                <?php if(!empty($imgData['file_name'])){ ?>
+                <?php if (!empty($imgData['file_name'])) { ?>
                     <img src="upload/images/<?php echo $imgData['file_name']; ?>">
                 <?php } ?>
                 <input type="file" name="image" class="form-control">

@@ -1,5 +1,5 @@
 <!-- Affichage de message de status -->
-<?php if(!empty($statusMsg)){ ?>
+<?php if (!empty($statusMsg)) { ?>
 <div class="col-xs-12">
     <div class="alert alert-<?php echo $statusMsgType; ?>"><?php echo $statusMsg; ?></div>
 </div>
@@ -28,11 +28,10 @@
         </thead>
         <tbody>
             <?php
-            if(!empty($images)){
-                foreach($images as $row){
+            if (!empty($images)) {
+                foreach ($images as $row) {
                     $statusLink = ($row['status'] == 1)?'./libs/postAction.php?action_type=block-'.$row['id']:'./libs/postAction.php?action_type=unblock-'.$row['id'];
-                    $statusTooltip = ($row['status'] == 1)?'Click to Inactive':'Click to Active';
-            ?>
+                    $statusTooltip = ($row['status'] == 1)?'Click to Inactive':'Click to Active'; ?>
             <tr>
                 <td><?php echo '#'.$row['id']; ?></td>
                 <td><img src="<?php echo 'uploads/images/'.$row['file_name']; ?>" alt="" /></td>
@@ -44,7 +43,9 @@
                     <a href="./libs/postAction.php?action_type=delete-<?php echo $row['id']; ?>" class="btn btn-danger" onclick="return confirm('Are you sure to delete data?')?true:false;">delete</a>
                 </td>
             </tr>
-            <?php } }else{ ?>
+            <?php
+                }
+            } else { ?>
             <tr><td colspan="6">Pas d'images trouvées...</td></tr>
             <?php } ?>
         </tbody>

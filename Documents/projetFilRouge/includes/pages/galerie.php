@@ -10,12 +10,11 @@ $condition = array('where' => array('status' => 1));
 $images = $db->getRows('images', $condition);
 ?>
     <?php
-    if(!empty($images)){
-        foreach($images as $row){
-          //Répertoire d'upload de la galerie
+    if (!empty($images)) {
+        foreach ($images as $row) {
+            //Répertoire d'upload de la galerie
             $uploadDir = 'upload/images/';
-            $imageURL = $uploadDir.$row["file_name"];
-    ?>
+            $imageURL = $uploadDir.$row["file_name"]; ?>
     <div class="background-holder overlay overlay-0" style="background-image:url(./images/38.jpg);"></div>
     <!--/.background-holder-->
     </div>
@@ -25,6 +24,7 @@ $images = $db->getRows('images', $condition);
             <p><?php echo $row["title"]; ?></p>
         </a>
     </div>
-    <?php }
+    <?php
+        }
     } ?>
 </div>

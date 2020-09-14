@@ -81,6 +81,7 @@
                                     <div class="col-lg-12">
                                         <label class="py-0 mb-0"  for="mobile">En vous inscrivant, vous acceptez que votre image soit utilisée sur le site internet</label>
                                     </div>
+                                <div class="g-recaptcha" data-sitekey="6LfVpssZAAAAALskuUcMWYxfZ-WYY2hOxIJi4cxr" ></div>
                                 </div>
                                 <button type="submit" class="btn btn-success float-right lead"><?php echo $Btn_Register; ?></button>
                             </form>

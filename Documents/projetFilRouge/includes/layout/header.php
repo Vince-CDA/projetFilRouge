@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html lang="en-US">
+<html lang="fr">
 
 <head>
     <meta charset="utf-8">
@@ -42,10 +42,10 @@
     <!-- Photobox -->
     <link href="./libs/photobox/photobox.css" rel="stylesheet">
     <link href="./libs/photobox/photobox.ie.css" rel="stylesheet">
-    <!-- Cropie -->
-    <link rel="stylesheet" href="./css/croppie.css" />
-
-
+    <!-- Open Street Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+  crossorigin=""/>
     <!-- FancyBox -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
     <link href="./css/style.css" rel="stylesheet">
@@ -98,7 +98,7 @@
                         <!-- Condition si connecté alors afficher bouton déroulant avec : "Prénom Nom" -> "Mon profil"/"Membres"/"Déconnexion" & si Admin "Ajouter une activité" 
                         -->
                     <ul class="navbar-nav ml-auto">
-                        <?php if(isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 0 ){ ?>
+                        <?php if (isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 0) { ?>
 
                                 <button class="btn btn-primary btn-capsule btn-sm dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                     <?php  echo $_SESSION['Prenom'].' '.$_SESSION['Nom'] ?>
@@ -107,13 +107,14 @@
                                 <ul class="dropdown-menu shadow" aria-labelledby="dropdownMenu1">
                                     <li><a class="menu-deroul" href="page-profil-<?php echo $_SESSION['Id'] ?>">Mon profil</a></li>
                                     <li><a class="menu-deroul" href="page-membres">Membres</a></li>
-                                    <?php if(isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 1 ){ ?>
-                                    <li><a class="menu-deroul" href="page-activités">Ajouter une activité</a></li>
+                                    <?php if (isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 1) { ?>
+                                    <li><a class="menu-deroul" href="page-ajoutactivite">Ajouter une activité</a></li>
+                                    <li><a class="menu-deroul" href="page-ajoutnews">Ajouter une nouvelle</a></li>
                                     <?php }?>
                                     <li role="separator" class="menu-deroul divider"></li>
                                     <li><a class="menu-deroul" href="./index.php?deconnexion=1" alt="Déconnexion" title="Cliquez-ici pour se déconnecter">Déconnexion</a></li>
                                 </ul>
-                        <?php }else{?>
+                        <?php } else {?>
                         <li><a href="page-connexion">Connexion</a></li>
                         <li><a class="btn btn-primary btn-capsule btn-sm" href="page-inscription">Inscription</a></li>
                         <?php } ?>

@@ -34,6 +34,7 @@
             </form>
           </div>
         </div>
+        <div id="map"></div>
         <!--/.row-->
       </div>
       <!--/.container-->

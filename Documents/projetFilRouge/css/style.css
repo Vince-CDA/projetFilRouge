@@ -9698,3 +9698,7 @@ display: none;
 .image-style-align-center {
   text-align: center;
 }
+#map{ /* la carte DOIT avoir une hauteur sinon elle n'apparaît pas */
+  height:400px;
+}
+

@@ -44,7 +44,7 @@ use Hayageek\OAuth2\Client\Provider\Yahoo;
 use Stevenmaguire\OAuth2\Client\Provider\Microsoft;
 
 if (!isset($_GET['code']) && !isset($_GET['provider'])) {
-?>
+    ?>
 <html>
 <body>Select Provider:<br/>
 <a href='?provider=Google'>Google</a><br/>

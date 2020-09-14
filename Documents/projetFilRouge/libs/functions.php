@@ -1,13 +1,13 @@
 <?php
 // Fonction d'upload d'image
-function upload_img($directory){
-
+function upload_img($directory)
+{
     $error = true;
     $photoName = '';
     $fileType = '';
     $binary = '';
 
-    if(isset($_FILES['image'])) {
+    if (isset($_FILES['image'])) {
 
         //les différentes clef de $_FILES
         $fileName = $_FILES['image']['name']; //01.02.JPG
@@ -39,48 +39,39 @@ function upload_img($directory){
 
                 //if($methode == 'blob'){
 
-                    $binary = file_get_contents($fileTmp);
-                    // et $fileType
+                $binary = file_get_contents($fileTmp);
+                // et $fileType
 
                 //}else{
-                    //fonction d'upload sur le serveur
-                    move_uploaded_file($fileTmp, $directory . $photoName);
+                //fonction d'upload sur le serveur
+                move_uploaded_file($fileTmp, $directory . $photoName);
 
                 //}
 
 
                 $error = false;
                 $MonModalTexte = "Avatar uploadé";
-
             } else {
-
                 $MonModalTexte = "Extension d'image non valide";
-
             }
-
-
         } else {
-
             $MonModalTexte = "Fichier image trop gros (" . ($limitSize / 1000000) . " Mo max)";
-
         }
-
-    }else{
+    } else {
         $MonModalTexte = "Pas de fichier Upload";
-
     }
 
     return array($error, $MonModalTexte, $photoName, $binary, $fileType);
-
 }
 //Fonction de cryptage de mot de passe avec un Salt donné puis un Mot de passe ainsi qu'un Login
-function My_Crypt($password, $login){
+function My_Crypt($password, $login)
+{
     $salt = 'banane';
     return hash('sha256', $salt.$password.$login);
 }
 
-/* 
-FONCTION CRYPTAGE SI LES MOTS DE PASSES SONT EN CLAIR DANS LA BDD, \!/ NE PLUS EXECUTER \!/  
+/*
+FONCTION CRYPTAGE SI LES MOTS DE PASSES SONT EN CLAIR DANS LA BDD, \!/ NE PLUS EXECUTER \!/
 
 function Cryptage_Password(){
     include('./config/config.php');
@@ -91,12 +82,12 @@ function Cryptage_Password(){
                     $Reponse = $BDD->query($Query);
                     while ($Donnees = $Reponse->fetch()) {
                     $password = My_Crypt($Donnees["Password"]);
-                    
-                    
-                    $Query = 'UPDATE adherent SET 
+
+
+                    $Query = 'UPDATE adherent SET
                     Password = "'.$password.'"
                     WHERE IdAdherent = '.$Donnees["IdAdherent"];
                     $BDD->query($Query);
                     }
-} 
+}
 */

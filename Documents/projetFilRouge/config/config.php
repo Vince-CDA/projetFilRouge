@@ -3,7 +3,8 @@
 $BDD = new PDO(
     'mysql:host=localhost;dbname=test;charset=utf8',
     'root',
-    '');
+    ''
+);
 
 //Affichage des erreurs SQL (mode dev)
 $BDD->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -30,4 +31,4 @@ $titlenews = '';
 
 //Chemin d'upload de pohtos pour les images profil
 $directory_img_upload = './upload/images/';
-?>
+setlocale(LC_TIME, "fr_FR", "French");

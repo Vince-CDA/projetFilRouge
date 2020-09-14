@@ -4,3 +4,5 @@ RewriteEngine On
 Rewriterule ^page-([a-z]*)$ index.php?page=$1 [L]
 
 Rewriterule ^page-([a-z]*)-([0-9]*)$ index.php?page=$1&id=$2 [L]
+Rewriterule ^page-([a-z]*)-([a-z]*)-([0-9]*)$ index.php?page=$1&action=$2&id=$3 [L]
+Rewriterule ^page-([a-z]*)-([0-9]*)-([a-z]*)$ index.php?page=$1&id=$2&action=$3 [L]

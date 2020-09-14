@@ -3,3 +3,5 @@
 $Titre = 'Connexion';
 //Inclusion de la page connexion.php
 include('./includes/template/connexion.php');
+           
+

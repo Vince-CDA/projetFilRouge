@@ -58,9 +58,16 @@
 <script src="./js/ckeditor/ckfinder/ckfinder.js"></script>
 <!-- Fancy Box pour Galerie -->
 <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
-
-<script src="./croppie.js"></script>
-
+<!-- Open Street Map -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+  crossorigin=""></script>
+<!-- Captcha GOOGLE -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+    async defer>
+</script>
+<!-- Mon custom -->
 <script src="./js/main.js?v1.<?php echo time();?>"></script>
 
 

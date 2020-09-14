@@ -3,5 +3,4 @@
 $id = '';
 $contenunews = '';
 //Inclusion du WysiWyg
-include ('./includes/template/wysiwyg.php');
-?>
+include('./includes/template/wysiwyg.php');

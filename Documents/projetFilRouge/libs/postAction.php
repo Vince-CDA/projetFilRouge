@@ -19,8 +19,8 @@ var_dump($_POST);
 $statusMsg = '';
 $sessData = array();
 $statusType = 'danger';
-if(isset($_POST['imgSubmit'])){
-     // Set redirect url
+if (isset($_POST['imgSubmit'])) {
+    // Set redirect url
     $redirectURL = './page-addEdit';
 
     // Get submitted data
@@ -42,26 +42,25 @@ if(isset($_POST['imgSubmit'])){
     $idStr = !empty($id)?'?id='.$id:'';
     
     // If the data is not empty
-    if((!empty($image['name']) && !empty($title)) || (!empty($id) && !empty($title))){
-        
-        if(!empty($image)){
+    if ((!empty($image['name']) && !empty($title)) || (!empty($id) && !empty($title))) {
+        if (!empty($image)) {
             $fileName = basename($image["name"]);
             $targetFilePath = $uploadDir . $fileName;
-            $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+            $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
             
-            if(in_array($fileType, $allowTypes)){
+            if (in_array($fileType, $allowTypes)) {
                 // Upload file to server
-                if(move_uploaded_file($image["tmp_name"], $targetFilePath)){
+                if (move_uploaded_file($image["tmp_name"], $targetFilePath)) {
                     $imgData['file_name'] = $fileName;
-                }else{
+                } else {
                     $statusMsg = "Sorry, there was an error uploading your file.";
                 }
-            }else{
+            } else {
                 $statusMsg = "Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.";
             }
         }
 
-        if(!empty($id)){
+        if (!empty($id)) {
             // Previous file name
             $conditions['where'] = array(
                 'id' => $_GET['id'],
@@ -73,9 +72,9 @@ if(isset($_POST['imgSubmit'])){
             $condition = array('id' => $id);
             $update = $db->update($tblName, $imgData, $condition);
             
-            if($update){
+            if ($update) {
                 // Remove old file from server
-                if(!empty($imgData['file_name'])){
+                if (!empty($imgData['file_name'])) {
                     @unlink($uploadDir.$prevData['file_name']);
                 }
                 
@@ -84,63 +83,63 @@ if(isset($_POST['imgSubmit'])){
                 $sessData['postData'] = '';
                 
                 $redirectURL = './page-manage';
-            }else{
+            } else {
                 $statusMsg = 'Some problem occurred, please try again.';
                 // Set redirect url
                 $redirectURL .= $idStr;
             }
-        }elseif(!empty($imgData['file_name'])){
+        } elseif (!empty($imgData['file_name'])) {
             // Insert data
             $insert = $db->insert($tblName, $imgData);
             
-            if($insert){
+            if ($insert) {
                 $statusType = 'success';
                 $statusMsg = 'Image has been uploaded successfully.';
                 $sessData['postData'] = '';
                 
                 $redirectURL = './page-manage';
-            }else{
+            } else {
                 $statusMsg = 'Some problem occurred, please try again.';
             }
         }
-    }else{
+    } else {
         $statusMsg = 'All fields are mandatory, please fill all the fields.';
     }
     
     // Status message
     $sessData['status']['type'] = $statusType;
     $sessData['status']['msg']  = $statusMsg;
-}elseif(($_REQUEST['action_type'] == 'block') && !empty($_GET['id'])){
+} elseif (($_REQUEST['action_type'] == 'block') && !empty($_GET['id'])) {
     // Update data
     $imgData = array('status' => 0);
     $condition = array('id' => $_GET['id']);
     $update = $db->update($tblName, $imgData, $condition);
-    if($update){
+    if ($update) {
         $statusType = 'success';
         $statusMsg  = 'Image data has been blocked successfully.';
-    }else{
+    } else {
         $statusMsg  = 'Some problem occurred, please try again.';
     }
     
     // Status message
     $sessData['status']['type'] = $statusType;
     $sessData['status']['msg']  = $statusMsg;
-}elseif(($_REQUEST['action_type'] == 'unblock') && !empty($_GET['id'])){
+} elseif (($_REQUEST['action_type'] == 'unblock') && !empty($_GET['id'])) {
     // Update data
     $imgData = array('status' => 1);
     $condition = array('id' => $_GET['id']);
     $update = $db->update($tblName, $imgData, $condition);
-    if($update){
+    if ($update) {
         $statusType = 'success';
         $statusMsg  = 'Image data has been activated successfully.';
-    }else{
+    } else {
         $statusMsg  = 'Some problem occurred, please try again.';
     }
     
     // Status message
     $sessData['status']['type'] = $statusType;
     $sessData['status']['msg']  = $statusMsg;
-}elseif(($_REQUEST['action_type'] == 'delete') && !empty($_GET['id'])){
+} elseif (($_REQUEST['action_type'] == 'delete') && !empty($_GET['id'])) {
     // Previous file name
     $conditions['where'] = array(
         'id' => $_GET['id'],
@@ -151,13 +150,13 @@ if(isset($_POST['imgSubmit'])){
     // Delete data
     $condition = array('id' => $_GET['id']);
     $delete = $db->delete($tblName, $condition);
-    if($delete){
+    if ($delete) {
         // Remove old file from server
         @unlink($uploadDir.$prevData['file_name']);
         
         $statusType = 'success';
         $statusMsg  = 'Image data has been deleted successfully.';
-    }else{
+    } else {
         $statusMsg  = 'Some problem occurred, please try again.';
     }
     
@@ -172,4 +171,3 @@ $_SESSION['sessData'] = $sessData;
 // Redirect the user
 header("Location: ".$redirectURL);
 exit();
-?>
