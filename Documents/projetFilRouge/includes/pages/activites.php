@@ -9,7 +9,7 @@
     
     ?>
 
-    <div class="row justify-content-center justify-content-sm-start mt-5 ml-9">
+    <div class="row justify-content-center justify-content-sm-start mt-5 margincustom">
     <?php
     if (isset($_SESSION['User_Level']) && !empty($_SESSION['User_Level'])) {
         //Est-ce que l'utilisateur veut voir son propre profil ou a-t-il les droits d'aller en voir un autre ?

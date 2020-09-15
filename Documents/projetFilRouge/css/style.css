@@ -9654,6 +9654,11 @@ body {
   cursor: pointer;
 }
 
+.margincustom{
+  margin: auto;
+  margin-bottom: 20px !important;
+  
+}
 
 .gallery img {
   padding: .25rem;
@@ -9682,6 +9687,7 @@ width: 75px;
 
 .card .image{
 display: none;
+margin-right: 5%;
 }
 
 .card-text:last-child {
@@ -9702,3 +9708,23 @@ display: none;
   height:400px;
 }
 
+@media only screen and (min-device-width : 320px) and (max-device-width : 600px) {
+  /* Styles pour cette Media Queries */
+  .gallery {
+    display: block !important;
+      width: auto !important;
+  }
+      .gallery img {
+        width: auto !important;;
+        height: auto !important;;
+        object-fit: contain;
+
+      }
+      .card-img-top {
+        width: auto  !important;; /* or any custom size */
+        height: auto !important;; 
+        object-fit: contain;
+        display: block;
+      }
+     
+  }
