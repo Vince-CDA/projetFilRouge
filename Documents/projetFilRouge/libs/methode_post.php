@@ -82,7 +82,44 @@ if (!empty($_POST)) {
             $MonModalTexte = 'Vous n\'avez pas valider la verification reCAPTCHA';
             $MonModalBouton = 'Ok!';
     }
-        } elseif ($_POST['formulaire'] == 'update_profil') {
+        }else if ($_POST['formulaire'] == 'inscriptionactivite') {
+            //Si un login existe déjà dans mon tableau de login alors je lui renvoie une modal
+            $ListeInscription = $BDD->query('SELECT * FROM inscription WHERE IdInscription ='.$_GET['id']);
+            //Je créé un tableau de login
+            $TbInscription = array();
+            while ($ResultatListeInscription = $ListeInscription->fetch()) {
+                $TbInscription[$ResultatListeInscription['IdAdherent']] = $ResultatListeLoginSQL;
+            }
+            if (array_key_exists($_SESSION['Id'], $TbInscription)) {
+                $MonModalTitre = 'Erreur';
+                $MonModalTexte = 'Vous êtes déjà inscrit à cette activité!';
+                $MonModalBouton = '<a href="page-activite-'.$_GET['id'].'">Retourner sur l\'activité</a>';
+            } else {
+                $Query = 'INSERT INTO inscription(
+            DInscription,
+            NbInvités,
+            IdAdherent,
+            IdActivite
+            ) VALUES (
+            NOW(),
+            "'.$_POST["NombreInvite"].'",
+            "'.$_SESSION['Id'].'",
+            "'.$_GET['id'].'"
+            )';
+
+                /* Pour voir la requête correspondante */
+                //echo "Query : ".$query;
+
+                /* Execution de la requête dans la base de données */
+                $BDD->query($Query);
+
+                /* Changement du message de type modal */
+                $MonModalTitre = 'Succès !';
+                $MonModalTexte = 'Votre inscription a bien été prise en compte';
+                $MonModalBouton = '<a href="page-activitecontent-'.$_GET['id'].'">Retourner sur l\'activité</a>';
+            }
+        }
+         else if ($_POST['formulaire'] == 'update_profil') {
             if ($_POST["g-recaptcha-response"]) {
                 $response = $reCaptcha->verifyResponse(
                     $_SERVER["REMOTE_ADDR"],
@@ -116,7 +153,6 @@ if (!empty($_POST)) {
             $reponse2->execute();
             while ($Donnees = $reponse2->fetch()) {
                 $image = $Donnees['Avatar'];
-                var_dump('coucou');
             }
             if ($photoName == '') {
                 $photoName = $image;

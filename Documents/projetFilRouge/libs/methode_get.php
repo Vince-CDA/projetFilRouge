@@ -102,10 +102,13 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
             if (array_key_exists($_GET['id'], $TbActivites)) {
     
                     //Mes id et value de boutons changent par rapport à la page où je suis. Dans le cas d'une newscontent je peux soit editer soit supprimer la nouvelle
-                $idboutonsuccess = 'editer';
-                $idboutondanger = 'annnuler';
-                $valueboutonsuccess = 'Editer l\'activité';
+                $idboutonsuccess = 'inscriptionactivite';
+                $valueboutonsuccess = 'S\'inscrire à l\'activité';
+                $idboutondanger = 'supprimer';
                 $valueboutondanger = 'Supprimer l\'activité';
+                $idboutonedit = 'inscriptionedit';
+                $valueboutonedit = 'Editer l\'activité';
+               
                 //la requete de la table page
                 $reponse = $BDD->query('SELECT * FROM activite WHERE IdActivite = '.$_GET['id']);
     
@@ -121,10 +124,27 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
                     $tarifi = $donnees['TarifInvite'];
                     $typeid = $donnees['IdType'];
                 }
+                if (isset($_GET['inscrireactivite']) && !empty($_GET['inscrireactivite']) && $_GET['inscrireactivite'] == 1){
+                    $MonModalBouton = 'Fermer';
+                    $MonModalTexte = 'Vous voulez vous inscrire à '.$titreactivite.', nous avons maintenant besoin de savoir si il y aura des invités avec vous.
+                    <div class="col-md-6 policesize">
+                    <form action="page-activitecontent-'.$_GET['id'].'" method="post" class="register-form" enctype="multipart/form-data">
+                    <input type="hidden" name="formulaire" value="inscriptionactivite" />
+                  <div class="form-group"><label class="ls text-uppercase color-3 fw-700 mb-0">Nombre d\'invités :</label><input class=" text-uppercase color-3 fw-700 
+                  form-control background-white" type="number" name="NombreInvite" min="0" max="300" value="0" required="required"></div>
+                </div>
+                <div class="col-12  mt-2">
+                <button id="'.$idboutonsuccess.'" type="submit" class="btn btn-success float-right lead">'.$valueboutonsuccess.'</button>                                               
+               </div>
+               </form>
+                    ';
+                    $MonModalTitre = 'Inscription à l\'activité';
+                }
                 $reponse2 = $BDD->query('SELECT * FROM type_activite WHERE IdType = '.$typeid);
                 while ($donnees2 = $reponse2->fetch()) {
                     $type = $donnees2['IntituleType'];
                 }
+                
             } else {
                 $MaPage = 'activites';
             }
