@@ -9,7 +9,7 @@
                 <div class="tabs background-white radius-secondary pb-4">
                     <div class="tab-contents px-5">
                         <div class="tab-content active">
-                            <form action="page-<?php echo $MaPage ?><?php echo isset($Id) ? '-'.$Id : ''; ?>" method="post" class="register-form" enctype="multipart/form-data">
+                            <form action="page-<?php echo $MaPage ?><?php echo isset($Id) ? '-'.$Id : ''; ?>" method="post" runat="server" class="register-form" enctype="multipart/form-data">
                                 <h1 id="bandeau" class="lead bold h1 pb-4 text-center"><b><?php echo $Titre ?></b></h1>
                                 <input type="hidden" name="formulaire" value="<?php echo $Action; ?>" />
                                 <input type="hidden" name="IdAdherent" value="<?php echo isset($Id) ? $Id : ''; ?>" />
@@ -20,9 +20,9 @@
                                     $img = !empty($image) ? $image : 'upload_photo_default.jpg';
                                     ?>
                                     <div class="col-lg-12 text-center">
-                                    <img src="<?php echo $directory_img_upload.$img; ?>" alt="">
+                                    <img id="blah" src="<?php echo $directory_img_upload.$img; ?>" alt="">
                                 </div>
-                                        <input class="mt-2" type="file" name="image" />
+                                        <input class="mt-2" type="file" id="imgInp" name="image" />
 
                                     </div>
                                     <div class="col-lg-6">

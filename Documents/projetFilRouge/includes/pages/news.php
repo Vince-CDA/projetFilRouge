@@ -6,6 +6,7 @@
    $pagename = 'newscontent';
     //la requete de la table page
     $reponse = $BDD->query('SELECT * FROM nouvelle WHERE Diffusion = 1');
+    $reponse2 = $BDD->query('SELECT * FROM nouvelle WHERE Diffusion = 0');
     ?>
 
     <div class="row justify-content-center justify-content-sm-start mt-5 margincustom">
@@ -42,7 +43,35 @@
         //On inclus Newsmini pour l'affichage de l'aperçu de la news.
         include('./includes/template/newsmini.php');
     }
-
+    if (isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 1) {
+    //boucle les données récupérées
+    while ($donnees2 = $reponse2->fetch()) {
+        //Mise du texte de la requête dans une variable
+        $texte = $donnees2['Texte'];
+        //Décode du texte
+        $texte = urldecode($texte);
+        //Remplacement des balises titres par des espaces pour l'affichage dans la "mininews"
+        $texte = str_replace('</h1>', '    ', $texte);
+        $texte = str_replace('</h2>', '    ', $texte);
+        $texte = str_replace('</h3>', '    ', $texte);
+        $texte = str_replace('<script>', ' ', $texte);
+        $texte = str_replace('</script>', ' ', $texte);
+        $texte = str_replace('<style>', ' ', $texte);
+        $texte = str_replace('</style>', ' ', $texte);
+        //Balises enlevées
+        $texte = strip_tags($texte);
+        //Mise en variable de la donnée de l'ID de la news
+        $idnews = $donnees2['IdNouvelle'];
+        $titrenews = $donnees2['Titre'];
+        $fichiernews = $donnees2['Fichier'];
+        if ($fichiernews == ' ') {
+            $fichiernews = $directory_img_upload.'defaut.png';
+        }
+        $bonus = '<h1>NON PUBLIC</h1>';
+        //On inclus Newsmini pour l'affichage de l'aperçu de la news.
+        include('./includes/template/newsmini.php');
+    }
+}
 
 ?>
 </div>

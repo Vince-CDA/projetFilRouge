@@ -23,17 +23,17 @@ if (!empty($sessData['status']['msg'])) {
 ?>
 <!-- Display status message -->
 <?php if (!empty($statusMsg)) { ?>
-<div class="col-xs-12">
+<div class="col-6">
     <div class="alert alert-<?php echo $statusMsgType; ?>"><?php echo $statusMsg; ?></div>
 </div>
 <?php } ?>
 
 <div class="row">
-    <div class="col-md-12 head">
+    <div class="col-12 ">
         <h5>Images</h5>
         <!-- Add link -->
         <div class="float-right">
-            <a href="page-addEdit" class="btn btn-success"><i class="plus"></i> New Image</a>
+            <a href="page-addedit" class="btn btn-success"><i class="plus"></i> New Image</a>
         </div>
     </div>
     

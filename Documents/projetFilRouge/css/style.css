@@ -9728,4 +9728,11 @@ margin-right: 5%;
       }
      
   }
+
+  #blah {
+    object-fit: contain;
+    height: 350px;
+  }
   
+
+  .card-ombre { background-color: rgb(12 12 12 / 30%); }

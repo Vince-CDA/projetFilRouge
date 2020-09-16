@@ -51,8 +51,9 @@ class ReCaptcha
      * Constructor.
      *
      * @param string $secret shared secret between site and ReCAPTCHA server.
+     * ReCaptcha changé par __construct pour ne pas avoir d'erreur PHP !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! (Vincent Mundo) (inutile de répété une méthode)
      */
-    function ReCaptcha($secret)
+    function __construct($secret)
     {
         if ($secret == null || $secret == "") {
             die("To use reCAPTCHA you must get an API key from <a href='"
@@ -129,8 +130,8 @@ class ReCaptcha
         if (trim($answers ['success']) == true) {
             $recaptchaResponse->success = true;
         } else {
-            $recaptchaResponse->success = false;
-            $recaptchaResponse->errorCodes = $answers [error-codes];
+            @$recaptchaResponse->success = false;
+            @$recaptchaResponse->errorCodes = $answers [error-codes];
         }
 
         return $recaptchaResponse;

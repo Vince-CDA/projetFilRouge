@@ -94,23 +94,25 @@ if (!empty($_POST)) {
                 $MonModalTexte = 'Vous êtes déjà inscrit à cette activité!';
                 $MonModalBouton = '<a href="page-activitecontent-'.$_GET['id'].'">Retourner sur l\'activité</a>';
             } else {
+                //Initialisation de la requête
                 $Query = 'INSERT INTO inscription(
             DInscription,
             NbInvités,
             IdAdherent,
             IdActivite
-            ) VALUES (
-            NOW(),
-            "'.$_POST["NombreInvite"].'",
-            "'.$_SESSION['Id'].'",
-            "'.$_GET['id'].'"
+            ) VALUES ( NOW(), ?, ?, ?)
             )';
+            //Préparation de la requête
+            $reponse = $BDD->prepare($Query);
 
-                /* Pour voir la requête correspondante */
-                //echo "Query : ".$query;
-
-                /* Execution de la requête dans la base de données */
-                $BDD->query($Query);
+            /* Execution de la requête dans la base de données */
+            $reponse->execute(  
+                array(
+                    $_POST["NombreInvite"],
+                    $_SESSION['Id'],
+                    $_GET['id']
+                )
+            );
 
                 /* Changement du message de type modal */
                 $MonModalTitre = 'Succès !';
@@ -189,12 +191,13 @@ if (!empty($_POST)) {
     } elseif ($_POST['formulaire'] == 'contact') {
             //J'indique que le sujet c'est l'objet + prénom + nom, j'indique que le message correspond à la valeur de message du formulaire et que l'expéditeur est le POST from
             $subject = $_POST['objet'] . ' de ' . $_POST['lastname'] . ' ' . $_POST['firstname'];
+            $nom =  $_POST['lastname'] . ' ' . $_POST['firstname'];
             $message = $_POST['message'];
             $expediteur = $_POST['from'];
             try {
                 //J'essai d'envoyer le mail puis j'indique que le message est envoyé via ma modal
                 
-                MailEngine::send($subject, $expediteur, $message);
+                MailEngine::send($subject, $expediteur, $nom, $message);
                 //MailEngine::SendConfirmation($subject, $message);
                 $MonModalTexte = 'Message envoyé.';
                 $MonModalTexte = 'Le message a bien été envoyé.';

@@ -29,16 +29,16 @@ class MailEngine
     }
 
 
-    public static function Send($subject, $expediteur, $message)
+    public static function Send($subject, $expediteur, $nom, $message)
     {
         $mail = MailEngine::CreateMail();
 
 
         /* DONNEES DESTINATAIRES */
         ##########################
-    $mail->setFrom('v.mundoegea@gmail.com', 'No-Reply');  //adresse de l'expéditeur (pas d'accents)
+    $mail->setFrom($expediteur, 'No-Reply');  //adresse de l'expéditeur (pas d'accents)
     $mail->addAddress('v.mundoegea@gmail.com', 'Vincent Mundo');        // Adresse du destinataire (le nom est facultatif)
-    // $mail->addReplyTo('moi@mon_domaine.fr', 'son nom');     // réponse à un autre que l'expéditeur (le nom est facultatif)
+    $mail->addReplyTo($expediteur, $nom);     // réponse à un autre que l'expéditeur (le nom est facultatif)
     // $mail->addCC('cc@example.com');            // Cc (copie) : autant d'adresse que souhaité = Cc (le nom est facultatif)
     // $mail->addBCC('bcc@example.com');          // Cci (Copie cachée) :  : autant d'adresse que souhaité = Cci (le nom est facultatif)
 

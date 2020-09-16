@@ -42,13 +42,15 @@ $actionLabel = !empty($_GET['id'])?'Edit':'Add';
 
 <!-- Display status message -->
 <?php if (!empty($statusMsg)) { ?>
-<div class="col-xs-12">
+<div class="container">    
+<div class="row">
+<div class="col-12">
     <div class="alert alert-<?php echo $statusMsgType; ?>"><?php echo $statusMsg; ?></div>
 </div>
 <?php } ?>
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6 m-auto">
         <form method="post" action="./libs/postAction.php" enctype="multipart/form-data">
             <div class="form-group">
                 <label>Image</label>
@@ -61,9 +63,8 @@ $actionLabel = !empty($_GET['id'])?'Edit':'Add';
                 <label>Title</label>
                 <input type="text" name="title" class="form-control" placeholder="Enter title" value="<?php echo !empty($imgData['title'])?$imgData['title']:''; ?>" >
             </div>
-            <a href="page-manage" class="btn btn-secondary">Back</a>
             <input type="hidden" name="id" value="<?php echo !empty($imgData['id'])?$imgData['id']:''; ?>">
-            <input type="submit" name="imgSubmit" class="btn btn-success" value="SUBMIT">
+            <input type="submit" name="imgSubmit" class="btn btn-success" value="Envoyer la photo">
         </form>
     </div>
 </div>

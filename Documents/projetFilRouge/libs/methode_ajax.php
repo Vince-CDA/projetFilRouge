@@ -37,20 +37,31 @@ if (isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 2) {
                     if (!empty($_POST)) {
                         if (isset($_POST['informations']) && $_POST['informations'] == 2) {
                             if (isset($_POST['description']) && !empty($_POST['description'])) {
-                                if (null !== $_POST['fichier']) {
+                                $fichier = '';
+                                if (isset($_POST['fichier']) && null !== $_POST['fichier']) {
                                     $fichier = $_POST['fichier'];
                                 } else {
                                     $fichier = ' ';
                                 }
-                                $Query = 'UPDATE nouvelle 
-                                        SET Titre = "'.$_POST["title"].'",
-                                            Texte = "'.$_POST["description"].'",
-                                            Fichier = "'.$fichier.'",
-                                            Diffusion = "'.$_POST["publier"].'",
-                                            DPubli = NOW()
-                                            WHERE IdNouvelle = '.$_POST["id"];
+                                $query = 'UPDATE nouvelle SET 
+                                Titre = ?,
+                                Texte = ?,
+                                Fichier = ?,
+                                Diffusion = ?,
+                                DPubli = NOW()
+                                WHERE IdNouvelle = ?';
+
+                                $response = $BDD->prepare($query);
+                                $result = $response->execute(
+                                    array(
+                                        $_POST["title"], 
+                                        $_POST["description"],
+                                        $fichier,
+                                        $_POST["publier"],
+                                        $_POST["id"]
+                                    )
+                                );
                                 
-                                $BDD->query($Query);
                                 echo 'La nouvelle a bien été éditée';
                             }
                         }

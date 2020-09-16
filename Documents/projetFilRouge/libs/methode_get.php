@@ -4,7 +4,8 @@
 $Reponse = $BDD->query('SELECT * FROM pages');
 $MesId = $BDD->query('SELECT * FROM adherent');
 $MesActivites = $BDD->query('SELECT * FROM activite');
-$MesNews = $BDD->query('SELECT * FROM nouvelle');
+$MesNews = $BDD->query('SELECT * FROM nouvelle WHERE Diffusion = 1');
+$MesNews0 = $BDD->query('SELECT * FROM nouvelle WHERE Diffusion = 0');
 $MesMembres = $BDD->query('SELECT * FROM adherent');
 /* Je génère un tableau  */
 
@@ -12,6 +13,7 @@ $TbTitle = array();
 $TbActivite = array();
 $TbMesId = array();
 $TbNews = array();
+$TbNews0 = array();
 $TbMembres = array();
 /* Ma valeur $Donnees sur les lignes de ma requête SQL $reponse */
 
@@ -32,6 +34,10 @@ while ($Donnees4 = $MesNews->fetch()) {
     /* Mon $tbTitle avec comme clée chaque valeur de la colonne 'Key' de mes $Donnees sera égale à mes lignes $Donnees correspondante */
     $TbNews[$Donnees4['IdNouvelle']] = $Donnees4;
 }
+while ($Donnees6 = $MesNews0->fetch()) {
+    /* Mon $tbTitle avec comme clée chaque valeur de la colonne 'Key' de mes $Donnees sera égale à mes lignes $Donnees correspondante */
+    $TbNews0[$Donnees6['IdNouvelle']] = $Donnees6;
+}
 while ($Donnees5 = $MesMembres->fetch()) {
     /* Mon $tbTitle avec comme clée chaque valeur de la colonne 'Key' de mes $Donnees sera égale à mes lignes $Donnees correspondante */
     $TbMembres[$Donnees5['IdAdherent']] = $Donnees5;
@@ -48,7 +54,7 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
     if ($_GET['page'] == 'profil' && isset($_GET['id']) && !empty($_GET['id'])) {
         if (!empty($_SESSION['User_Level']) && isset($_SESSION['User_Level'])) {
             //Est-ce que l'utilisateur veut voir son propre profil ou a-t-il les droits d'aller en voir un autre ?
-            if ($_SESSION['User_Level'] > 2 && array_key_exists($_GET['id'], $TbMesId) || $_GET['id'] == $_SESSION['Id']) {
+            if ($_SESSION['User_Level'] > 1 && array_key_exists($_GET['id'], $TbMesId) || $_GET['id'] == $_SESSION['Id']) {
                 $Reponse = $BDD->query('SELECT * FROM adherent WHERE IdAdherent = ' . $_GET['id']);
                 //boucle les données récupérées
                 while ($Donnees = $Reponse->fetch()) {
@@ -74,7 +80,14 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
         } else {
             $MaPage = 'accueil';
         }
-    } elseif ($_GET['page'] == 'newscontent') {
+    } else if ($_GET['page'] == 'admin') {
+        if (isset($_SESSION['Id'])) {
+            $MaPage = 'admin';
+        } else {
+            $MaPage = 'accueil';
+        }
+    } 
+     else if ($_GET['page'] == 'newscontent') {
         if (isset($_GET['id']) && !empty($_GET['id'])) {
             if (array_key_exists($_GET['id'], $TbNews)) {
                 //Mes id et value de boutons changent par rapport à la page où je suis. Dans le cas d'une newscontent je peux soit editer soit supprimer la nouvelle
@@ -91,10 +104,27 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
                     $titlenews = $donnees['Titre'];
                     $contenunews = urldecode($donnees['Texte']);
                 }
-            } else {
+            }else if (array_key_exists($_GET['id'], $TbNews0) && isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 1) {
+         
+                //Mes id et value de boutons changent par rapport à la page où je suis. Dans le cas d'une newscontent je peux soit editer soit supprimer la nouvelle
+                $idboutonsuccess = 'editer';
+                $idboutondanger = 'annnuler';
+                $valueboutonsuccess = 'Editer la nouvelle';
+                $valueboutondanger = 'Supprimer la nouvelle';
+                //la requete de la table page
+                $reponse = $BDD->query('SELECT * FROM nouvelle WHERE IdNouvelle = '.$_GET['id']);
+   
+   
+                //boucle les données récupérées
+                while ($donnees = $reponse->fetch()) {
+                    $titlenews = $donnees['Titre'];
+                    $contenunews = urldecode($donnees['Texte']);
+                }
+            }   
+             else {
                 $MaPage = 'news';
             }
-        } else {
+         }   else {
             $MaPage = 'news';
         }
     } elseif ($_GET['page'] == 'activitecontent') {

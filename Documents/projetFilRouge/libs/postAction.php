@@ -21,7 +21,7 @@ $sessData = array();
 $statusType = 'danger';
 if (isset($_POST['imgSubmit'])) {
     // Set redirect url
-    $redirectURL = './page-addEdit';
+    $redirectURL = './page-addedit';
 
     // Get submitted data
     $image    = $_FILES['image'];
