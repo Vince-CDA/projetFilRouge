@@ -18,7 +18,7 @@ $images = $db->getRows('images', $condition);
     <div class="background-holder overlay overlay-0" style="background-image:url(./images/38.jpg);"></div>
     <!--/.background-holder-->
     </div>
-    <div class="row gallery container col-lg-8">
+    <div class="row gallery container col-12">
         <a href="<?php echo $imageURL; ?>" data-fancybox="gallery" data-caption="<?php echo $row["title"]; ?>" >
             <img src="<?php echo $imageURL; ?>" alt="" />
             <p><?php echo $row["title"]; ?></p>

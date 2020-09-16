@@ -8,10 +8,10 @@
  */
 class DB
 {
-    private $dbHost     = "localhost";
-    private $dbUsername = "root";
-    private $dbPassword = "";
-    private $dbName     = "test";
+    private $dbHost     = "cda27.2isa.org";
+    private $dbUsername = "cda27";
+    private $dbPassword = "3677cda27";
+    private $dbName     = "cda27_bd1";
     
     public function __construct()
     {

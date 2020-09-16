@@ -84,16 +84,16 @@ if (!empty($_POST)) {
     }
         }else if ($_POST['formulaire'] == 'inscriptionactivite') {
             //Si un login existe déjà dans mon tableau de login alors je lui renvoie une modal
-            $ListeInscription = $BDD->query('SELECT * FROM inscription WHERE IdInscription ='.$_GET['id']);
+            $ListeInscription = $BDD->query('SELECT * FROM inscription WHERE IdActivite ='.$_GET['id'].' AND IdAdherent = '.$_SESSION['Id']);
             //Je créé un tableau de login
             $TbInscription = array();
             while ($ResultatListeInscription = $ListeInscription->fetch()) {
-                $TbInscription[$ResultatListeInscription['IdAdherent']] = $ResultatListeLoginSQL;
+                $TbInscription[$ResultatListeInscription['IdAdherent']] = $ResultatListeInscription;
             }
             if (array_key_exists($_SESSION['Id'], $TbInscription)) {
                 $MonModalTitre = 'Erreur';
                 $MonModalTexte = 'Vous êtes déjà inscrit à cette activité!';
-                $MonModalBouton = '<a href="page-activite-'.$_GET['id'].'">Retourner sur l\'activité</a>';
+                $MonModalBouton = '<a href="page-activitecontent-'.$_GET['id'].'">Retourner sur l\'activité</a>';
             } else {
                 $Query = 'INSERT INTO inscription(
             DInscription,
