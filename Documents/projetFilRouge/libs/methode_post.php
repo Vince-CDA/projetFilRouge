@@ -49,28 +49,27 @@ if (!empty($_POST)) {
             CC,
             DAdhesion,
             Avatar
-            ) VALUES (
-            "'.$_POST["Login"].'",
-            "'.$password.'",
-            "'.$_POST["Nom"].'",
-            "'.$_POST["Prenom"].'",
-            "'.$_POST["DNaiss"].'",
-            "'.$_POST["Adresse1"].'",
-            "'.$_POST["CdPost"].'",
-            "'.$_POST["Ville"].'",
-            "'.$_POST["Email"].'",
-            "'.$_POST["Tel"].'",
-            "'.$_POST["CC"].'",
-            NOW(),
-            "' . $photoName . '"
-            )';
+            ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), ?)';
+            
+            $reponse = $BDD->prepare($Query);
+            /* Execution de la requête dans la base de données */
+            $reponse->execute(
+                array(
+                    $_POST["Login"],
+                    $password,
+                    $_POST["Nom"],
+                    $_POST["Prenom"],
+                    $_POST["DNaiss"],
+                    $_POST["Adresse1"],
+                    $_POST["CdPost"],
+                    $_POST["Ville"],
+                    $_POST["Email"],
+                    $_POST["Tel"],
+                    $_POST["CC"],
+                    $photoName 
 
-                /* Pour voir la requête correspondante */
-                //echo "Query : ".$query;
-
-                /* Execution de la requête dans la base de données */
-                $BDD->query($Query);
-
+                )
+                );
                 /* Changement du message de type modal */
                 $MonModalTitre = 'Succès !';
                 $MonModalTexte = 'Votre inscription a bien été prise en compte, vous serez recontacté par mail quand un organisateur aura confirmé votre inscription.';
