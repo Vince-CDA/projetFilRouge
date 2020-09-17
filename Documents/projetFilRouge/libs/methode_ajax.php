@@ -54,7 +54,7 @@ if (isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 2) {
                                 $response = $BDD->prepare($query);
                                 $result = $response->execute(
                                     array(
-                                        $_POST["title"], 
+                                        $_POST["title"],
                                         $_POST["description"],
                                         $fichier,
                                         $_POST["publier"],
@@ -110,7 +110,6 @@ if (isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 2) {
               )
                 );
                 echo 'L\'activité a bien été ajoutée';
-
             }
         }
     }

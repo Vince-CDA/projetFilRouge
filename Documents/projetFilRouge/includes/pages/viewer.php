@@ -1,3 +1,2 @@
-<?php 
-include('./gallery/viewer.php')
-?>
+<?php
+include('./gallery/viewer.php');

@@ -80,14 +80,13 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
         } else {
             $MaPage = 'accueil';
         }
-    } else if ($_GET['page'] == 'admin') {
+    } elseif ($_GET['page'] == 'admin') {
         if (isset($_SESSION['Id'])) {
             $MaPage = 'admin';
         } else {
             $MaPage = 'accueil';
         }
-    } 
-     else if ($_GET['page'] == 'newscontent') {
+    } elseif ($_GET['page'] == 'newscontent') {
         if (isset($_GET['id']) && !empty($_GET['id'])) {
             if (array_key_exists($_GET['id'], $TbNews)) {
                 //Mes id et value de boutons changent par rapport à la page où je suis. Dans le cas d'une newscontent je peux soit editer soit supprimer la nouvelle
@@ -104,7 +103,7 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
                     $titlenews = $donnees['Titre'];
                     $contenunews = urldecode($donnees['Texte']);
                 }
-            }else if (array_key_exists($_GET['id'], $TbNews0) && isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 1) {
+            } elseif (array_key_exists($_GET['id'], $TbNews0) && isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 1) {
          
                 //Mes id et value de boutons changent par rapport à la page où je suis. Dans le cas d'une newscontent je peux soit editer soit supprimer la nouvelle
                 $idboutonsuccess = 'editer';
@@ -120,11 +119,10 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
                     $titlenews = $donnees['Titre'];
                     $contenunews = urldecode($donnees['Texte']);
                 }
-            }   
-             else {
+            } else {
                 $MaPage = 'news';
             }
-         }   else {
+        } else {
             $MaPage = 'news';
         }
     } elseif ($_GET['page'] == 'activitecontent') {
@@ -141,7 +139,25 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
                
                 //la requete de la table page
                 $reponse = $BDD->query('SELECT * FROM activite WHERE IdActivite = '.$_GET['id']);
-    
+                $reponse3 = $BDD->query('SELECT * FROM inscription as i JOIN adherent as b
+                WHERE i.IdAdherent = b.IdAdherent AND i.IdActivite ='.$_GET['id']);
+                $nom = '';
+                $row=$reponse3->rowCount();
+                if ($row != 0) {
+                    while ($donnees3 = $reponse3->fetch()) {
+                        $nom .= '<li>'.$donnees3['Nom'].' '.$donnees3['Prenom'];
+                        $donnees3['NbInvités'] > 0 ? $nom .= ' qui invite '.$donnees3['NbInvités'].' invités.</li>':'</li>';
+                    }
+                    $reponse4 = $BDD->query('SELECT COUNT(i.IdAdherent)+SUM(i.NbInvités) as total FROM inscription as i JOIN adherent as b
+                WHERE i.IdAdherent = b.IdAdherent AND i.IdActivite ='.$_GET['id']);
+                    while ($donnees3 = $reponse4->fetch()) {
+                        $total = '<h5>Nous serions donc un total de '.$donnees3['total'].' motards pour l\'activité</h5>';
+                    }
+                } else {
+                    $nom = 'Il n\'y a pas encore d\'inscription à cette activité';
+                    $total = '';
+                }
+                
     
                 //boucle les données récupérées
                 while ($donnees = $reponse->fetch()) {
@@ -154,19 +170,19 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
                     $tarifi = $donnees['TarifInvite'];
                     $typeid = $donnees['IdType'];
                 }
-                if (isset($_GET['inscrireactivite']) && !empty($_GET['inscrireactivite']) && $_GET['inscrireactivite'] == 1){
+                if (isset($_GET['inscrireactivite']) && !empty($_GET['inscrireactivite']) && $_GET['inscrireactivite'] == 1) {
                     $MonModalBouton = 'Fermer';
                     $MonModalTexte = 'Vous voulez vous inscrire à '.$titreactivite.', nous avons maintenant besoin de savoir si il y aura des invités avec vous.
                     <div class="col-md-6 policesize">
                     <form action="page-activitecontent-'.$_GET['id'].'" method="post" class="register-form" enctype="multipart/form-data">
                     <input type="hidden" name="formulaire" value="inscriptionactivite" />
-                  <div class="form-group"><label class="ls text-uppercase color-3 fw-700 mb-0">Nombre d\'invités :</label><input class=" text-uppercase color-3 fw-700 
-                  form-control background-white" type="number" name="NombreInvite" min="0" max="300" value="0" required="required"></div>
-                </div>
-                <div class="col-12  mt-2">
-                <button id="'.$idboutonsuccess.'" type="submit" class="btn btn-success float-right lead">'.$valueboutonsuccess.'</button>                                               
-               </div>
-               </form>
+                    <div class="form-group"><label class="ls text-uppercase color-3 fw-700 mb-0">Nombre d\'invités :</label><input class=" text-uppercase color-3 fw-700 
+                    form-control background-white" type="number" name="NombreInvite" min="0" max="300" value="0" required="required"></div>
+                    </div>
+                    <div class="col-12  mt-2">
+                    <button id="'.$idboutonsuccess.'" type="submit" class="btn btn-success float-right lead">'.$valueboutonsuccess.'</button>                                               
+                    </div>
+                    </form>
                     ';
                     $MonModalTitre = 'Inscription à l\'activité';
                 }
@@ -174,7 +190,6 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
                 while ($donnees2 = $reponse2->fetch()) {
                     $type = $donnees2['IntituleType'];
                 }
-                
             } else {
                 $MaPage = 'activites';
             }
@@ -235,7 +250,6 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
                 $MonModalTitre = 'Impossible';
             }
         }
-        
     } elseif ($_GET['page'] == 'ajoutnews') {
         if (isset($_SESSION['User_Level']) && !empty($_SESSION['User_Level'])) {
             //Est-ce que l'utilisateur veut voir son propre profil ou a-t-il les droits d'aller en voir un autre ?
@@ -278,13 +292,12 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
                     }
                 }
             }
-        }else {
+        } else {
             $MaPage = 'news';
             $MonModalTexte = 'Vous n\'êtes pas un admin, vous ne pouvez donc pas faire d\'action de ce type';
             $MonModalBouton = 'Fermer';
             $MonModalTitre = 'Impossible';
         }
-        
     } elseif ($_GET['page'] == 'membres') {
         if (isset($_GET['action']) && !empty($_GET['action'])) {
             //est-ce que l'action c'est delete sur la page membres ?
@@ -301,17 +314,17 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
                         $MonModalBouton = 'Ok !';
                         $MaPage = 'membres';
                     }
-                }else {
+                } else {
                     $MonModalTitre = 'Erreur';
                     $MonModalTexte = 'ID inconnu pour la suppression';
                     $MonModalBouton = 'Ok !';
                     $MaPage = 'membres';
-        }
+                }
             } else {
-                        $MonModalTitre = 'Erreur';
-                        $MonModalTexte = 'Vous n\'êtes pas administrateur';
-                        $MonModalBouton = 'Ok !';
-                        $MaPage = 'membres';
+                $MonModalTitre = 'Erreur';
+                $MonModalTexte = 'Vous n\'êtes pas administrateur';
+                $MonModalBouton = 'Ok !';
+                $MaPage = 'membres';
             }
         }
     }
