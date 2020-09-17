@@ -75,7 +75,7 @@
                                         <label  for="mobile">250 cm3</label>
                                         <input type="radio" name="CC" value="> 250 cm3" <?php echo isset($CC) && $CC == "> 250 cm3" ? 'checked' : '';  ?>/>
                                         <label  for="mobile">> 250 cm3</label>
-                                        <input type="radio" name="CC" value="aucune" <?php echo isset($CC) && $CC == "aucune" ? 'checked' : '';  ?>/>
+                                        <input type="radio" name="CC" value="aucune" <?php echo isset($CC) && $CC == "aucune" ? 'checked' : 'checked';  ?>/>
                                         <label  for="mobile">aucune</label>
                                     </div>
                                     <div class="col-lg-12">
