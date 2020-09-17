@@ -27,7 +27,7 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <label class="py-0 mb-0" for="name">Identifiant</label>
-                                        <br /><input size="16" type="text" id="login" name="Login" value="<?php echo isset($Identifiant) ? $Identifiant : '' ?>" placeholder="" required />
+                                        <br /><input size="16" type="text" id="login" name="Login" value="<?php echo isset($Identifiant) ? $Identifiant.'" readonly class="field left"' : '' ?> placeholder="" required />
                                     </div>
                                     <div class="col-lg-6">
                                         <label class="py-0 mb-0"  for="name">Mot de passe</label>
