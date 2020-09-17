@@ -19,14 +19,17 @@ if (isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 2) {
                 Fichier,
                 Diffusion,
                 DPubli
-                ) VALUES (
-                "'.$_POST["title"].'",            
-                "'.$_POST["description"].'",
-                "'.$fichier.'",
-                "'.$_POST["publier"].'",
-                NOW()            
-            )';
-                $BDD->query($Query);
+                ) VALUES ( ?, ?, ?, ?, NOW() )'
+                ;
+                $response = $BDD->prepare($Query);
+                $result = $response->execute(
+                                    array(
+                                        $_POST["title"],
+                                        $_POST["description"],
+                                        $fichier,
+                                        $_POST["publier"]
+                                    )
+                                );
                 echo 'La nouvelle a bien été ajoutée';
             }
         }
