@@ -91,3 +91,13 @@ function Cryptage_Password(){
                     }
 }
 */
+function controle_adresse($addr)
+{
+    $adresse = "^([0-9a-z'àâéèêôùûçÀÂÉÈÔÙÛÇ\s-]{1,50})$";
+    if (mb_eregi($adresse, $addr)) {
+        return true;
+    }
+    if (!mb_eregi($adresse, $addr)) {
+        return false;
+    }
+}

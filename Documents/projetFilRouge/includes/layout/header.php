@@ -99,7 +99,8 @@
                         <!-- Condition si connecté alors afficher bouton déroulant avec : "Prénom Nom" -> "Mon profil"/"Membres"/"Déconnexion" & si Admin "Ajouter une activité" 
                     !!!!!!!!!!!!!!!!!!!!!    Bientôt ajout de "Voir les inscriptions aux activités" -->
                     <ul class="navbar-nav ml-auto">
-                        <?php if (isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 0) { ?>
+                        <?php if (isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 0) {
+                            ?>
 
                                 <button class="btn btn-primary btn-capsule btn-sm dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                     <?php  echo $_SESSION['Prenom'].' '.$_SESSION['Nom'] ?>
@@ -108,14 +109,17 @@
                                 <ul class="dropdown-menu shadow" aria-labelledby="dropdownMenu1">
                                     <li><a class="menu-deroul" href="page-profil-<?php echo $_SESSION['Id'] ?>">Mon profil</a></li>
                                     <li><a class="menu-deroul" href="page-membres">Membres</a></li>
-                                    <?php if (isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 1) { ?>
+                                    <?php if (isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 1) {
+                                ?>
                                     <li><a class="menu-deroul" href="page-ajoutactivite">Ajouter une activité</a></li>
                                     <li><a class="menu-deroul" href="page-ajoutnews">Ajouter une nouvelle</a></li>
-                                    <?php }?>
+                                    <?php
+                            } ?>
                                     <li role="separator" class="menu-deroul divider"></li>
                                     <li><a class="menu-deroul" href="./index.php?deconnexion=1" alt="Déconnexion" title="Cliquez-ici pour se déconnecter">Déconnexion</a></li>
                                 </ul>
-                        <?php } else {
+                        <?php
+                        } else {
                             //Sinon je ne suis pas connecté alors je peux voir Connexion et Inscription
                             ?>
                         <li><a href="page-connexion">Connexion</a></li>

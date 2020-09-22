@@ -105,7 +105,7 @@ if (!empty($_POST)) {
             Tel,
             CC,
             DAdhesion,
-            Avatar
+            Avatar,
             ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), ?)';
             
                     $reponse = $BDD->prepare($Query);
@@ -205,6 +205,9 @@ if (!empty($_POST)) {
                 $uppercase = preg_match('@[A-Z]@', $_POST['Password']);
                 $lowercase = preg_match('@[a-z]@', $_POST['Password']);
                 $number    = preg_match('@[0-9]@', $_POST['Password']);
+                if (isset($_POST['Description']) && !empty($_POST['Description'])) {
+                $Description = strip_tags($_POST['Description']);
+                }
                 //Si un login existe déjà dans mon tableau de login alors je lui renvoie une modal
                 // if (array_key_exists($_POST["Login"], $TbLogin)) {
                 //   var_dump($ResultatListeLoginSQL);
@@ -214,48 +217,49 @@ if (!empty($_POST)) {
                 if (!isset($_POST['Email']) || empty($_POST['Email']) || !preg_match('#^([\w\.-]+)@([\w\.-]+)(\.[a-z]{2,4})$#', trim($_POST['Email']))) {
                     $MonModalTitre = 'Echec !';
                     $MonModalTexte = 'Votre adresse email est incorrect';
-                    $MonModalBouton = '<a href="page-inscription">Rééssayer</a>';
-                } elseif (!isset($_POST['Login']) || empty($_POST['Login']) || !ctype_alnum($_POST['Login']) && strlen($_POST['Login']) <= 30) {
-                    $MonModalTitre = 'Echec !';
-                    $MonModalTexte = 'Votre login ne doit pas contenir de caractères spéciaux et doit avoir une longueur maximale de 30 caractères';
-                    $MonModalBouton = '<a href="page-inscription">Rééssayer</a>';
+                    $MonModalBouton = '<a href="">Rééssayer</a>';
                 } elseif (!isset($_POST['Prenom']) || empty($_POST['Prenom']) || empty($_POST['Nom']) || !preg_match('`^[[:alpha:] \'-]{2,30}$`u', $_POST['Prenom']) || !preg_match('`^[[:alpha:] \'-]{2,30}$`u', $_POST['Nom'])) {
                     $MonModalTitre = 'Echec !';
                     $MonModalTexte = 'Votre nom ou votre prénom ne doit pas avoir de caractères spéciaux et doit être de moins de 30 caractères';
-                    $MonModalBouton = '<a href="page-inscription">Rééssayer</a>';
+                    $MonModalBouton = '<a href="">Rééssayer</a>';
                 } elseif (!isset($_POST['CdPost']) || empty($_POST['CdPost']) || !preg_match('#^[0-9]{5}$#', $_POST['CdPost'])) {
                     $MonModalTitre = 'Echec !';
                     $MonModalTexte = 'Votre code postale n\'est pas valide';
-                    $MonModalBouton = '<a href="page-inscription">Rééssayer</a>';
+                    $MonModalBouton = '<a href="">Rééssayer</a>';
                 } elseif (!isset($_POST['Adresse1']) || empty($_POST['Adresse1']) || !preg_match('`^[[:alnum:][:space:] \'-]{10,50}$`u', $_POST['Adresse1'])) {
                     $MonModalTitre = 'Echec !';
                     $MonModalTexte = 'Votre adresse n\'est pas valide';
-                    $MonModalBouton = '<a href="page-inscription">Rééssayer</a>';
+                    $MonModalBouton = '<a href="">Rééssayer</a>';
                 } elseif (!isset($_POST['Ville']) || empty($_POST['Ville']) || !preg_match('`^[[:alpha:][:space:] \'-]{2,20}$`u', $_POST['Ville'])) {
                     $MonModalTitre = 'Echec !';
                     $MonModalTexte = 'Votre nom de ville n\'est pas valide';
-                    $MonModalBouton = '<a href="page-inscription">Rééssayer</a>';
+                    $MonModalBouton = '<a href="">Rééssayer</a>';
                 } elseif (!isset($_POST['Password']) || empty($_POST['Password']) || !$uppercase || !$lowercase || !$number || strlen($_POST['Password']) < 8 || strlen($_POST['Password']) > 20) {
                     $MonModalTitre = 'Echec !';
                     $MonModalTexte = 'Votre mot de passe doit avoir au moins un caractère majuscule, un minuscule, un chiffre, un caractère spécial et doit être compris entre 8 et 20 caractères.';
-                    $MonModalBouton = '<a href="page-inscription">Rééssayer</a>';
+                    $MonModalBouton = '<a href="">Rééssayer</a>';
                 } elseif (!isset($_POST['DNaiss']) || empty($_POST['DNaiss']) || !checkdate($jour, $mois, $annee)) {
                     $MonModalTitre = 'Echec !';
                     $MonModalTexte = 'Votre date de naissance n\'est pas valide!';
-                    $MonModalBouton = '<a href="page-inscription">Rééssayer</a>';
+                    $MonModalBouton = '<a href="">Rééssayer</a>';
                 } elseif (!isset($_POST['CC']) || empty($_POST['CC']) || !array_key_exists($_POST['CC'], $TbCC)) {
                     $MonModalTitre = 'Echec !';
                     $MonModalTexte = 'Vous n\'avez pas sélectionné de cylindrée';
-                    $MonModalBouton = '<a href="page-inscription">Rééssayer</a>';
+                    $MonModalBouton = '<a href="">Rééssayer</a>';
                 } elseif (!isset($_POST['Tel']) || empty($_POST['Tel']) || !preg_match('`[0-9]{10,13}`', $_POST['Tel'])) {
                     $MonModalTitre = 'Echec !';
                     $MonModalTexte = 'Le numéro que vous avez entré n\'est pas valide (0033 pour +33 accepté)';
-                    $MonModalBouton = '<a href="page-inscription">Rééssayer</a>';
+                    $MonModalBouton = '<a href="">Rééssayer</a>';
                 } else {
+                    if (isset($_POST['Organisateur']) && $_POST['Organisateur'] == 1) {
+                        $Organisateur = 1;
+                    }
+                    else {
+                        $Organisateur = 0;
+                    }
                     //Même chose que plus haut pour register sauf que c'est pour update la ligne SQL
                     list($error, $MonModalTexte, $photoName) = upload_img($directory_img_upload);
-
-                    $password = My_Crypt($_POST["Password"], $_POST["Login"]);
+                    
                 
                     $Query = 'UPDATE adherent SET 
               Password = ?,
@@ -268,7 +272,8 @@ if (!empty($_POST)) {
               Email = ?,
               Tel = ?,
               CC = ?,
-              Avatar = ?
+              Avatar = ?,
+              Organisateur = ?
               WHERE IdAdherent = ?';
                     $image = '';
                     $Query2 = 'SELECT * FROM adherent WHERE IdAdherent =' . $_GET['id'];
@@ -277,10 +282,12 @@ if (!empty($_POST)) {
                     $reponse2->execute();
                     while ($Donnees = $reponse2->fetch()) {
                         $image = $Donnees['Avatar'];
+                        $login = $Donnees['Login'];
                     }
                     if ($photoName == '') {
                         $photoName = $image;
                     }
+                    $password = My_Crypt($_POST["Password"], $login);
                     $result = $reponse->execute(
                     array(
                                                 $password,
@@ -294,12 +301,15 @@ if (!empty($_POST)) {
                                                 $_POST["Tel"],
                                                 $_POST["CC"],
                                                 $photoName,
+                                                $Organisateur,
                                                 $_POST["IdAdherent"]
                                                 )
                 );
                     //J'update mes sessions
-                    $_SESSION['Nom'] = $_POST["Nom"];
-                    $_SESSION['Prenom'] = $_POST["Prenom"];
+                    if ($_SESSION['Id'] == $_GET['id']) {
+                        $_SESSION['Nom'] = $_POST["Nom"];
+                        $_SESSION['Prenom'] = $_POST["Prenom"];
+                    }
                     //information modal html
                     $MonModalTitre = 'Mise à jour faite avec succès!';
                     $MonModalTexte = 'Le profil a bien été mis à jour.';

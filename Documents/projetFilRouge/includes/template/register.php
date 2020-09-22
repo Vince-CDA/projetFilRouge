@@ -27,7 +27,7 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <label class="py-0 mb-0" for="name">Identifiant</label>
-                                        <br /><input size="16" type="text" id="login" name="Login" value="<?php echo isset($Identifiant) ? $Identifiant.'" readonly class="field left"' : '' ?> placeholder="" required />
+                                        <br /><input size="16" type="text" id="login" name="Login" value="<?php echo isset($Identifiant) ? $Identifiant.'" disabled class="field left"' : '"' ?> placeholder="" required />
                                     </div>
                                     <div class="col-lg-6">
                                         <label class="py-0 mb-0"  for="name">Mot de passe</label>
@@ -75,12 +75,19 @@
                                         <label  for="mobile">250 cm3</label>
                                         <input type="radio" name="CC" value="> 250 cm3" <?php echo isset($CC) && $CC == "> 250 cm3" ? 'checked' : '';  ?>/>
                                         <label  for="mobile">> 250 cm3</label>
-                                        <input type="radio" name="CC" value="aucune" <?php echo isset($CC) && $CC == "aucune" ? 'checked' : 'checked';  ?>/>
+                                        <input type="radio" name="CC" value="aucune" <?php echo isset($CC) && $CC == "aucune" ? 'checked' : '';  ?>/>
                                         <label  for="mobile">aucune</label>
                                     </div>
                                     <div class="col-lg-12">
                                         <label class="py-0 mb-0"  for="mobile">En vous inscrivant, vous acceptez que votre image soit utilisée sur le site internet</label>
                                     </div>
+                                    <?php if (isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 1) {
+                                        ?>
+                                    <div class="col-lg-12">
+                                    <label class="py-0 mb-0"  for="mobile">Organisateur : </label><input type="checkbox" name="Organisateur" value="1" <?php echo isset($Organisateur) && $Organisateur == "1" ? 'checked' : ''; ?> />
+                                    </div>
+                                    <?php
+                                    } ?>
                                 <div class="g-recaptcha" data-sitekey="6LfVpssZAAAAALskuUcMWYxfZ-WYY2hOxIJi4cxr" ></div>
                                 </div>
                                 <button type="submit" class="btn btn-success float-right lead"><?php echo $Btn_Register; ?></button>

@@ -4,14 +4,12 @@
         <section class="background-11" id="content-6">
         <div class="container">
             <div class="row justify-content-center">
-              <?php if (isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 1) {
-    ?>
+              <?php if (isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 1) { ?>
             <div class="col-12">
                 <a href="page-editactivite-<?php echo $_GET['id'] ?>"> <button id= <?php echo $idboutonedit; ?> type="submit" class="btn btn-success float-right lead"><?php echo $valueboutonedit; ?></button></a>
                 <a href="page-activite-<?php echo $_GET['id'] ?>-supprimer"> <button id= <?php echo $idboutondanger; ?> type="submit" class="btn btn-danger float-right lead"><?php echo $valueboutondanger; ?></button></a>
             </div>
-              <?php
-} ?>
+              <?php } ?>
             <div class="col-lg-12">
                 <h3 class="mb-4"><?php echo $titreactivite; ?></h3>
                 <?php echo $contenuactivite; ?>
@@ -36,9 +34,11 @@
                 <div class="col-md-4">
                   <div class="form-group"><label class="ls text-uppercase color-3 fw-700 mb-0">Tarif invité</label> :  <?php echo $tarifi; ?> €</div>
                 </div>
+                <?php if (isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 0) { ?>
                 <div class="row justify-content-center col-md-12 mt-2 mb-3">
                 <a href="page-activitecontent-<?php echo $_GET['id'] ?>-1"> <button id= <?php echo $idboutonsuccess; ?> type="submit" class="btn btn-success "><?php echo $valueboutonsuccess; ?></button></a>
                 </div>
+                <?php } ?>
                 <div class="col-12">
                 <p> <label class="ls text-uppercase color-3 fw-700 mb-0"><?php echo 'Liste des participants :'; ?></label></p>
                 <ul>

@@ -75,6 +75,8 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
                     $Title_Register = 'Mise à jour de votre profil';
                     $Btn_Register = 'Mettre à jour';
                     $Action = 'update_profil';
+                    $Description = $Donnees['Description'];
+                    $Organisateur = $Donnees['Organisateur'];
                 }
             }
         } else {
@@ -101,7 +103,7 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
                 //boucle les données récupérées
                 while ($donnees = $reponse->fetch()) {
                     $titlenews = $donnees['Titre'];
-                    $contenunews = urldecode($donnees['Texte']);
+                    $contenunews = $donnees['Texte'];
                 }
             } elseif (array_key_exists($_GET['id'], $TbNews0) && isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 1) {
          
@@ -117,7 +119,7 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
                 //boucle les données récupérées
                 while ($donnees = $reponse->fetch()) {
                     $titlenews = $donnees['Titre'];
-                    $contenunews = urldecode($donnees['Texte']);
+                    $contenunews = $donnees['Texte'];
                 }
             } else {
                 $MaPage = 'news';
@@ -129,7 +131,7 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
         if (isset($_GET['id']) && !empty($_GET['id'])) {
             if (array_key_exists($_GET['id'], $TbActivites)) {
     
-                    //Mes id et value de boutons changent par rapport à la page où je suis. Dans le cas d'une newscontent je peux soit editer soit supprimer la nouvelle
+                //Mes id et value de boutons changent par rapport à la page où je suis. Dans le cas d'une newscontent je peux soit editer soit supprimer la nouvelle
                 $idboutonsuccess = 'inscriptionactivite';
                 $valueboutonsuccess = 'S\'inscrire à l\'activité';
                 $idboutondanger = 'supprimer';
@@ -154,7 +156,7 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
                         $total = '<h5>Nous serions donc un total de '.$donnees3['total'].' motards pour l\'activité</h5>';
                     }
                 } else {
-                    $nom = 'Il n\'y a pas encore d\'inscription à cette activité';
+                    $nom = '<h5>Il n\'y a pas encore d\'inscription à cette activité</h5>';
                     $total = '';
                 }
                 
@@ -162,7 +164,7 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
                 //boucle les données récupérées
                 while ($donnees = $reponse->fetch()) {
                     $titreactivite = $donnees['IntituleActivite'];
-                    $contenuactivite = urldecode($donnees['Description']);
+                    $contenuactivite = $donnees['Description'];
                     $datedebut = $donnees['DDebut'];
                     $datefin = $donnees['DFin'];
                     $datelimite = $donnees['DLimite'];
@@ -196,6 +198,23 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
         } else {
             $MaPage = 'activites';
         }
+    } elseif ($_GET['page'] == 'editactivite') {
+        if (isset($_GET['id']) && !empty($_GET['id'])) {
+            if (array_key_exists($_GET['id'], $TbActivites)) {
+                $idboutonsuccess = 'updateactivite';
+                $valueboutonsuccess = 'Mettre à jour l\'activité';
+                $reponse = $BDD->query('SELECT * FROM activite WHERE IdActivite = '.$_GET['id']);
+                while ($donnees=$reponse->fetch()) {
+                    $IntituleActivite = $donnees['IntituleActivite'];
+                    $DescriptionActivite = $donnees['Description'];
+                    $DDebut = str_replace(' ', 'T', $donnees['DDebut']);
+                    $DFin = str_replace(' ', 'T', $donnees['DFin']);
+                    $DLimite = str_replace(' ', 'T', $donnees['DLimite']);
+                    $TarifAdherent = $donnees['TarifAdherent'];
+                    $TarifInvite = $donnees['TarifInvite'];
+                }
+            }
+        }
     } elseif ($_GET['page'] == 'ajoutactivite') {
         if (isset($_SESSION['User_Level']) && !empty($_SESSION['User_Level'])) {
             //Est-ce que l'utilisateur veut voir son propre profil ou a-t-il les droits d'aller en voir un autre ?
@@ -211,7 +230,29 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
         } else {
             $MaPage = 'accueil';
         }
-    } elseif ($_GET['page'] == 'news') {
+    } elseif ($_GET['page'] == 'activite') {
+            if (isset($_GET['id']) && !empty($_GET['id'])) {
+                if (array_key_exists($_GET['id'], $TbActivites)) {
+                    if (isset($_GET['action']) && !empty($_GET['action'])) {
+                        if ($_GET['action'] == 'supprimer') {
+                            if (isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 1) {
+                                $reponse = $BDD->query('DELETE FROM activite WHERE IdActivite = '.$_GET['id']);
+                                $MonModalTexte = 'Activité supprimée';
+                                $MonModalBouton = 'Fermer';
+                                $MonModalTitre = 'L\'activité a bien été supprimée';
+                                $MaPage = 'activites';
+                            } else {
+                                $MonModalTexte = 'Accès refusé';
+                                $MonModalBouton = 'Fermer';
+                                $MonModalTitre = 'Vous n\'avez pas le droit d\'accéder à cette fonctionnalité';
+                                $MaPage = 'activites';
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    elseif ($_GET['page'] == 'news') {
         if (isset($_SESSION['User_Level']) && !empty($_SESSION['User_Level'])) {
             //Est-ce que l'utilisateur veut voir son propre profil ou a-t-il les droits d'aller en voir un autre ?
             if ($_SESSION['User_Level'] > 1) {
@@ -288,7 +329,7 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
                     //boucle les données récupérées
                     while ($donnees = $reponse->fetch()) {
                         $titlenews = $donnees['Titre'];
-                        $contenunews = urldecode($donnees['Texte']);
+                        $contenunews = $donnees['Texte'];
                     }
                 }
             }
