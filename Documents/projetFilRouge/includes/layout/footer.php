@@ -10,11 +10,11 @@
                 <a class="color-7 d-inline-block m-2" href="page-contact">Contact</a>
                 <a class="color-7 d-inline-block m-2" href="page-partenaire">Partenaire</a>
             </div>
-            <div class="col-lg text-lg-right mt-4 mt-lg-0"><a class="d-inline-block" href="#">
+            <div class="col-lg text-lg-right mt-4 mt-lg-0"><a class="d-inline-block" href="https://www.facebook.com/motomillau12100/" target="_blank">
                     <div class="border color-2 radius-round d-flex align-items-center justify-content-center m-1" style="width: 50px; height: 50px;"><span class="fab fa-twitter color-5"></span></div>
-                </a><a class="d-inline-block" href="#">
+                </a><a class="d-inline-block" href="https://www.facebook.com/motomillau12100/" target="_blank">
                     <div class="border color-2 radius-round d-flex align-items-center justify-content-center m-1" style="width: 50px; height: 50px;"><span class="fab fa-facebook-f color-5"></span></div>
-                </a><a class="d-inline-block" href="#">
+                </a><a class="d-inline-block" href="https://www.facebook.com/motomillau12100/" target="_blank">
                     <div class="border color-2 radius-round d-flex align-items-center justify-content-center m-1" style="width: 50px; height: 50px;"><span class="fab fa-google-plus-g color-5"></span></div>
                 </a></div>
         </div>

@@ -20,17 +20,35 @@
     <meta name="msapplication-TileImage" content="./images/favicons/mstile-150x150.png">
     <meta name="theme-color" content="#ffffff"><!--  -->
     <!--    Stylesheets-->
-    <!-- Bootstrap ! -->
+    <!--    =============================================-->
+    <!-- Default stylesheets-->
     <link href="./lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"><!-- Template specific stylesheets-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
+    <link href="./lib/iconsmind/iconsmind.css" rel="stylesheet">
+    <link href="./lib/flexslider/flexslider.css" rel="stylesheet">
+    <link href="./lib/loaders.css/loaders.min.css" rel="stylesheet">
+    <link href="./lib/remodal/dist/remodal.css" rel="stylesheet">
+    <link href="./lib/remodal/dist/remodal-default-theme.css" rel="stylesheet">
+    <link href="./lib/semantic-ui-dropdown/dropdown.min.css" rel="stylesheet">
+    <link href="./lib/semantic-ui-accordion/accordion.min.css" rel="stylesheet">
+    <link href="./lib/semantic-ui-transition/transition.min.css" rel="stylesheet">
+    <link href="./lib/owl.carousel/dist/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="./lib/owl.carousel/dist/assets/owl.theme.default.min.css" rel="stylesheet">
+    <link href="./lib/iconsmind/iconsmind.css" rel="stylesheet">
+    <link href="./lib/lightbox2/dist/css/lightbox.css" rel="stylesheet">
+    <link href="./lib/hamburgers/dist/hamburgers.min.css" rel="stylesheet"><!-- Main stylesheet and color file-->
+    <!-- Photobox -->
+    <link href="./libs/photobox/photobox.css" rel="stylesheet">
+    <link href="./libs/photobox/photobox.ie.css" rel="stylesheet">
     <!-- Open Street Map -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-  crossorigin=""/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="">
     <!-- FancyBox -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
     <link href="./css/style.css" rel="stylesheet">
     <link href="./css/custom.css" rel="stylesheet">
     <!-- Fichier main custom -->
-    <link href="./css/main.css?v1.<?php echo time();?>" rel="stylesheet">
+    <link href="./css/main.css?v1.1601109118" rel="stylesheet">
     <!-- CSS Spécial Wysiwyg -->
     <link rel="stylesheet" href="./css/image.css" />
     <!-- Canonical pour les moteurs de recherche -->

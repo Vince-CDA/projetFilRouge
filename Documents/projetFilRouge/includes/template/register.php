@@ -29,10 +29,22 @@
                                         <label class="py-0 mb-0" for="name">Identifiant</label>
                                         <br /><input size="16" type="text" id="login" name="Login" value="<?php echo isset($Identifiant) ? $Identifiant.'" disabled class="field left"' : '"' ?> placeholder="" required />
                                     </div>
+                                    <?php if(!isset($_SESSION['Id'])) {
+                                        ?>
                                     <div class="col-lg-6">
                                         <label class="py-0 mb-0"  for="name">Mot de passe</label>
                                         <br /><input size="16" type="password" id="password" name="Password" value="" placeholder="" required />
                                     </div>
+                                    <?php
+                                    } else { 
+                                    ?>
+                                    <div class="col-lg-6">
+                                    <label class="py-0 mb-0 col-12"  for="name">Mot de passe</label>
+                                    <a href="./page-profil-<?php echo $_GET['id']; ?>-pass" class="btn btn-warning btn-sm">Modifier</a>
+                                    </div>
+                                    <?php
+                                    } 
+                                    ?>
                                     <div class="col-lg-6">
                                         <label class="py-0 mb-0"  for="name">Prénom</label>
                                         <br /><input size="16" type="text" id="firstname" name="Prenom" value="<?php echo isset($Prenom) ? $Prenom : '' ?>" placeholder="" required />
@@ -75,7 +87,7 @@
                                         <label  for="mobile">250 cm3</label>
                                         <input type="radio" name="CC" value="> 250 cm3" <?php echo isset($CC) && $CC == "> 250 cm3" ? 'checked' : '';  ?>/>
                                         <label  for="mobile">> 250 cm3</label>
-                                        <input type="radio" name="CC" value="aucune" <?php echo isset($CC) && $CC == "aucune" ? 'checked' : '';  ?>/>
+                                        <input type="radio" name="CC" value="aucune" <?php echo isset($CC) && $CC == "aucune" ? 'checked' : ''; echo !isset($CC) ? 'checked' : ''; ?>/>
                                         <label  for="mobile">aucune</label>
                                     </div>
                                     <div class="col-lg-12">
@@ -83,12 +95,18 @@
                                     </div>
                                     <?php if (isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 1) {
                                         ?>
-                                    <div class="col-lg-12">
-                                    <label class="py-0 mb-0"  for="mobile">Organisateur : </label><input type="checkbox" name="Organisateur" value="1" <?php echo isset($Organisateur) && $Organisateur == "1" ? 'checked' : ''; ?> />
+                                    <div class="col-lg-<?php echo $col; ?>">
+                                    <label class="py-0 mb-0"  for="mobile">Organisateur</label>
+                                    <input type="checkbox" name="Organisateur" value="1" <?php echo $Organisateur == "1" ? 'checked' : ''; ?> />
+                                    </div>
+                                    <?php echo $AdminLabel; ?>
+                                    <div class="col-lg-<?php echo $col; ?>">
+                                    <label class="py-0 mb-0"  for="mobile">Activé</label>
+                                    <input type="checkbox" name="Active" value="1" <?php echo $Active == "1" ? 'checked' : ''; ?> />
                                     </div>
                                     <?php
                                     } ?>
-                                <div class="g-recaptcha" data-sitekey="6LfVpssZAAAAALskuUcMWYxfZ-WYY2hOxIJi4cxr" ></div>
+                                <div class="g-recaptcha col-12" data-sitekey="6LfVpssZAAAAALskuUcMWYxfZ-WYY2hOxIJi4cxr"></div>
                                 </div>
                                 <button type="submit" class="btn btn-success float-right lead"><?php echo $Btn_Register; ?></button>
                             </form>

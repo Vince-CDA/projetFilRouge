@@ -9,7 +9,7 @@
     $reponse2 = $BDD->query('SELECT * FROM nouvelle WHERE Diffusion = 0');
     ?>
 
-    <div class="row justify-content-center justify-content-sm-start mt-5 margincustom">
+    <div class="row justify-content-center justify-content-sm-start mt-5 margincustom col-10">
     <?php if (isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 1) { ?>
             <div class="col-12">
                 <a href="page-ajoutnews"> <button id= <?php echo $idboutonsuccess; ?> type="submit" class="btn btn-success float-right lead"><?php echo $valueboutonsuccess; ?></button></a>

@@ -1,38 +1,30 @@
 <section id="content-22">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-11 col-lg-8 col-xl-6 text-center">
-                <h2>Write your story</h2>
-                <p class="lead">Whether you are a blogger, travelers or seasonal writers, you can create simple and engaging blogs with Slick.</p>
-            </div>
-        </div>
-        <div class="row justify-content-center justify-content-sm-start mt-5">
-            <div class="col-sm-6 col-lg-4">
-                <div class="card h-100"><a class="overflow-hidden" href="#"><img class="card-img-top" src="./images/01.jpg" alt="Card image cap"></a>
-                    <div class="card-block"><a class="color-1" href="#">
-                            <h5 class="fw-400 d-inline-block mb-3">The Big Design Day 2019 Conference</h5>
-                        </a>
-                        <p class="card-text">At Tallin, Estonia the big design day 2018 will be celebrated all day long with creatives and makers</p><a class="btn btn-link pl-0 pb-0" href="#">Read more &#x27F6;</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-4 mt-4 mt-sm-0">
-                <div class="card h-100"><a class="overflow-hidden" href="#"><img class="card-img-top" src="./images/02.jpg" alt="Card image cap"></a>
-                    <div class="card-block"><a class="color-1" href="#">
-                            <h5 class="fw-400 d-inline-block mb-3">New CSS Features That Are Changing Web</h5>
-                        </a>
-                        <p class="card-text">From Facebook and Atlassian design resources, we know that the future of design is &#x2026;</p><a class="btn btn-link pl-0 pb-0" href="#">Read more &#x27F6;</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-4 mt-4 mt-lg-0">
-                <div class="card h-100"><a class="overflow-hidden" href="#"><img class="card-img-top" src="./images/03.jpg" alt="Card image cap"></a>
-                    <div class="card-block"><a class="color-1" href="#">
-                            <h5 class="fw-400 d-inline-block mb-3">Estonia makers party</h5>
-                        </a>
-                        <p class="card-text">Learn from the top designers and developers who has worked with many big companies. </p><a class="btn btn-link pl-0 pb-0" href="#">Read more &#x27F6;</a>
-                    </div>
-                </div>
+            <div class="col-12 text-center">
+            <img src="https://motoclubmillaupassion.com/img/divers/logo.jpg"/>
+
+                <h2>Bienvenue sur le site dynamique de Moto Club Millau Passion !</h2>
+                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id neque aliquam vestibulum morbi blandit. Sed viverra tellus in hac habitasse platea dictumst vestibulum. Neque convallis a cras semper auctor. Nullam eget felis eget nunc lobortis mattis aliquam. Quam adipiscing vitae proin sagittis nisl rhoncus mattis rhoncus urna. Adipiscing elit ut aliquam purus sit amet luctus venenatis lectus. Ornare aenean euismod elementum nisi quis eleifend quam adipiscing vitae. Semper risus in hendrerit gravida rutrum quisque non tellus orci. In nibh mauris cursus mattis molestie a iaculis.
+                </p>
+                <p><img src="./images/vroum.gif"/>
+                <p class="lead">Adipiscing diam donec adipiscing tristique risus nec feugiat in. Ultrices eros in cursus turpis massa tincidunt dui ut ornare. Morbi tristique senectus et netus et malesuada fames ac turpis. Non blandit massa enim nec dui. A iaculis at erat pellentesque adipiscing commodo elit. Congue eu consequat ac felis donec. Facilisis volutpat est velit egestas dui id ornare arcu. Mollis aliquam ut porttitor leo a diam sollicitudin tempor. Faucibus interdum posuere lorem ipsum dolor sit. Vitae tortor condimentum lacinia quis vel eros donec ac. Arcu odio ut sem nulla pharetra diam sit amet. Tempor orci dapibus ultrices in.
+                </p>
+                <p class="lead">Accumsan lacus vel facilisis volutpat est velit egestas dui. Enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit. Nec tincidunt praesent semper feugiat nibh. Gravida in fermentum et sollicitudin ac orci phasellus egestas tellus. Justo nec ultrices dui sapien eget mi proin sed. Risus nullam eget felis eget nunc lobortis. Consectetur adipiscing elit pellentesque habitant. Ac tortor dignissim convallis aenean et tortor at risus. In fermentum posuere urna nec tincidunt praesent semper feugiat nibh. Tincidunt vitae semper quis lectus nulla. Sed velit dignissim sodales ut eu sem integer vitae. Vel eros donec ac odio. Ut placerat orci nulla pellentesque dignissim enim. Nisi lacus sed viverra tellus in hac habitasse platea.
+                </p>
+                <p class="lead">Sapien et ligula ullamcorper malesuada proin libero nunc consequat. Est placerat in egestas erat imperdiet sed euismod nisi. Ut tristique et egestas quis ipsum suspendisse. Sit amet aliquam id diam maecenas ultricies mi eget mauris. Ut lectus arcu bibendum at varius vel. Iaculis nunc sed augue lacus viverra vitae. Quam pellentesque nec nam aliquam sem et tortor consequat id. Urna nunc id cursus metus aliquam eleifend. Dolor purus non enim praesent elementum facilisis leo vel. Donec ultrices tincidunt arcu non sodales neque sodales ut etiam. Lectus arcu bibendum at varius. In fermentum posuere urna nec tincidunt praesent semper feugiat. Aliquam eleifend mi in nulla. Fermentum odio eu feugiat pretium nibh ipsum consequat nisl vel. Semper feugiat nibh sed pulvinar proin gravida. Dui sapien eget mi proin sed libero enim. Vitae justo eget magna fermentum iaculis eu non diam.
+                </p>
+                <p class="lead">Ante in nibh mauris cursus mattis molestie a iaculis at. Amet commodo nulla facilisi nullam vehicula ipsum. Risus viverra adipiscing at in tellus integer feugiat. Consequat mauris nunc congue nisi vitae suscipit tellus mauris. Ultrices gravida dictum fusce ut placerat. Tincidunt arcu non sodales neque sodales ut etiam sit. Ultrices tincidunt arcu non sodales neque sodales ut etiam. Vitae congue eu consequat ac felis donec et. Purus in mollis nunc sed id semper risus. Condimentum vitae sapien pellentesque habitant morbi tristique senectus et. Mauris ultrices eros in cursus turpis. Tellus mauris a diam maecenas sed enim ut sem. Eu nisl nunc mi ipsum. Vitae sapien pellentesque habitant morbi tristique senectus et netus et. Ultricies mi quis hendrerit dolor magna eget est. In ornare quam viverra orci. Aliquam id diam maecenas ultricies mi.
+                </p>
+                <p class="lead">Sollicitudin aliquam ultrices sagittis orci a scelerisque purus semper eget. Lorem sed risus ultricies tristique nulla aliquet enim tortor at. Mauris ultrices eros in cursus. Phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec sagittis. Felis bibendum ut tristique et egestas quis. Lorem ipsum dolor sit amet consectetur adipiscing elit pellentesque. Pretium viverra suspendisse potenti nullam. Massa eget egestas purus viverra accumsan in nisl nisi. Nulla malesuada pellentesque elit eget gravida cum sociis natoque. Cras tincidunt lobortis feugiat vivamus. Gravida neque convallis a cras semper auctor neque vitae tempus. Netus et malesuada fames ac turpis egestas sed tempus urna. Quam adipiscing vitae proin sagittis nisl rhoncus.
+                </p>
+                <p class="lead">Massa tempor nec feugiat nisl pretium. Ipsum dolor sit amet consectetur adipiscing elit duis tristique sollicitudin. Non sodales neque sodales ut. Laoreet suspendisse interdum consectetur libero id faucibus nisl tincidunt. Eu mi bibendum neque egestas congue quisque egestas diam. Dapibus ultrices in iaculis nunc sed augue lacus viverra. Non pulvinar neque laoreet suspendisse interdum consectetur libero. Ultricies leo integer malesuada nunc vel risus commodo viverra maecenas. Ut tristique et egestas quis ipsum suspendisse. Turpis massa tincidunt dui ut ornare lectus. Ac tortor vitae purus faucibus ornare suspendisse sed nisi lacus. Feugiat pretium nibh ipsum consequat nisl vel pretium lectus. Laoreet suspendisse interdum consectetur libero id faucibus. Dui id ornare arcu odio ut sem. Nunc id cursus metus aliquam eleifend mi in.
+                </p>
+                <p class="lead">Nisi est sit amet facilisis magna etiam tempor. Enim eu turpis egestas pretium aenean pharetra. Netus et malesuada fames ac turpis egestas. Tortor id aliquet lectus proin nibh nisl condimentum. Faucibus interdum posuere lorem ipsum dolor sit amet consectetur. Urna molestie at elementum eu facilisis. Risus nec feugiat in fermentum. Pellentesque eu tincidunt tortor aliquam nulla facilisi cras fermentum odio. Cras adipiscing enim eu turpis egestas. Felis bibendum ut tristique et egestas. Praesent tristique magna sit amet purus. Eget nunc lobortis mattis aliquam faucibus. Lectus mauris ultrices eros in cursus turpis massa tincidunt dui. Vitae justo eget magna fermentum. At tempor commodo ullamcorper a lacus. Habitant morbi tristique senectus et netus et malesuada fames ac. Amet luctus venenatis lectus magna fringilla urna.
+                </p>
+                <p class="lead">Metus dictum at tempor commodo ullamcorper. A lacus vestibulum sed arcu non odio euismod lacinia. Nibh sed pulvinar proin gravida hendrerit lectus a. Aliquam ut porttitor leo a diam sollicitudin. Vel facilisis volutpat est velit egestas dui id ornare. Et molestie ac feugiat sed lectus vestibulum mattis. Id venenatis a condimentum vitae sapien pellentesque habitant morbi tristique. Quam adipiscing vitae proin sagittis nisl rhoncus mattis rhoncus urna. Posuere sollicitudin aliquam ultrices sagittis orci a scelerisque. Erat nam at lectus urna. Arcu non sodales neque sodales ut etiam sit amet. Magna sit amet purus gravida. Praesent semper feugiat nibh sed pulvinar.
+                </p>
+                <p class="lead">Aliquam nulla facilisi cras fermentum odio eu. Phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec. Et malesuada fames ac turpis egestas maecenas pharetra convallis. Aliquet enim tortor at auctor. Et molestie ac feugiat sed. Nec ullamcorper sit amet risus nullam eget felis eget. Tristique risus nec feugiat in fermentum posuere urna. Adipiscing at in tellus integer feugiat scelerisque varius. Volutpat odio facilisis mauris sit amet. Tortor condimentum lacinia quis vel eros donec ac odio tempor. Risus viverra adipiscing at in tellus.</p>
             </div>
         </div>
         <!--/.row-->

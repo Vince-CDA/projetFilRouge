@@ -27,7 +27,7 @@
                                         <label class="py-0 mb-0"  for="mobile">Veuillez saisir votre identifiant et votre mot de passe</label>
                                     </div>
                                 </div>
-                                <div class="g-recaptcha" data-sitekey="6LfVpssZAAAAALskuUcMWYxfZ-WYY2hOxIJi4cxr"></div>
+                                <div class="g-recaptcha col-12" data-sitekey="6LfVpssZAAAAALskuUcMWYxfZ-WYY2hOxIJi4cxr"></div>
                                 <button type="submit" class="btn btn-success float-right lead">Connexion</button>
                             </form>
 

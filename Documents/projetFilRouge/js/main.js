@@ -234,9 +234,9 @@ image: {
 
     console.log('btn wysiwyg ready !');
     var test = editor.getData(); 
+    var description = test;
     var title = $('input[name=title]').val();
     var publier = $('input[name=diffusion]').is(':checked') === true ? '1' : '0'; 
-    var description = encodeURI(test);
     //methode Ajax
     var request = $.ajax({
         url: "./libs/methode_ajax.php",
@@ -254,6 +254,8 @@ image: {
 
         $(".modal").show();
         //$( "#log" ).html( msg );
+      window.setTimeout("location=('./page-news')",2000);
+
     });
 
     //erreur 404 ou 500 - le serveur ne repond pas, erreur PHP ?
@@ -269,8 +271,8 @@ $('#editer').on('click', function(){
 
   console.log('btn wysiwyg ready !');
   var test = editor.getData(); 
+  var description = test;
   var title = $('input[name=title]').val();
-  var description = encodeURI(test);
   var id = $('input[name=id]').val();
   var publier = $('input[name=diffusion]').is(':checked') === true ? '1' : '0'; 
   //methode Ajax
@@ -290,6 +292,8 @@ $('#editer').on('click', function(){
 
       $(".modal").show();
       //$( "#log" ).html( msg );
+      window.setTimeout("location=('./page-newscontent-'+$('input[name=id]').val())",2000);
+
   });
 
   //erreur 404 ou 500 - le serveur ne repond pas, erreur PHP ?
@@ -307,7 +311,7 @@ $('#ajoutactivite').on('click', function(){
   var test = editor.getData(); 
   var intituleactivite = $('input[name=IntituleActivite]').val();
   var publier = $('input[name=diffusion]').is(':checked') === true ? '1' : '0'; 
-  var description = encodeURI(test);
+  var description = test;
   var ddebut = $('input[name=DDebut]').val();
   var dfin = $('input[name=DFin]').val();
   var dlimite = $('input[name=DLimite]').val();
@@ -346,6 +350,68 @@ $('#ajoutactivite').on('click', function(){
 
       $(".modal").show();
       //$( "#log" ).html( msg );
+      window.setTimeout("location=('./page-activites')",2000);
+
+  });
+
+  //erreur 404 ou 500 - le serveur ne repond pas, erreur PHP ?
+  request.fail(function( jqXHR, textStatus ) {
+      console.log( "Request failed: " + textStatus );
+  });
+
+
+
+});
+
+$('#updateactivite').on('click', function(){
+
+  console.log('btn wysiwyg ready !');
+  var test = editor.getData(); 
+  var intituleactivite = $('input[name=IntituleActivite]').val();
+  var publier = $('input[name=diffusion]').is(':checked') === true ? '1' : '0'; 
+  var description = test;
+  var ddebut = $('input[name=DDebut]').val();
+  var dfin = $('input[name=DFin]').val();
+  var dlimite = $('input[name=DLimite]').val();
+  var tarifadherent = $('input[name=TarifAdherent]').val();
+  var tarifinvite = $('input[name=TarifInvite]').val();
+  var idadherent = $('input[name=IdAdherent]').val();
+  var id = $('input[name=id]').val();
+  var idtype = $( "#IdType" ).val();
+  
+  //methode Ajax
+  var request = $.ajax({
+      url: "./libs/methode_ajax.php",
+      method: "POST",
+      data: { 
+              informations : 4,
+              intituleactivite : intituleactivite,
+              ddebut : ddebut,
+              dfin : dfin,
+              description : description,
+              tarifadherent : tarifadherent,
+              tarifinvite : tarifinvite,
+              dlimite : dlimite,
+              idadherent : idadherent,
+              idtype : idtype,
+              fichier : $('figure img').attr('src'),
+              publier : publier,
+              id : id
+            },
+      dataType: "html" //ou JSON
+  });
+  //reussite reponse 200 - Inclu le fait que vous avez pas les permissions requisent
+  request.done(function( msg ) {
+      //console.log(msg);
+      //afichage de la modal ave
+      $('.modal-body p').html(msg);
+
+      $('')
+
+      $(".modal").show();
+      //$( "#log" ).html( msg );
+      window.setTimeout("location=('./page-activitecontent-'+$('input[name=id]').val());",2000);
+
   });
 
   //erreur 404 ou 500 - le serveur ne repond pas, erreur PHP ?
@@ -405,3 +471,48 @@ function readURL(input) {
 $("#imgInp").change(function() {
   readURL(this);
 });
+
+var err = '';
+//Methode Ajax version JSON
+$('#modalbouton').on('click', function() {
+
+  if(document.getElementById("changerpassword").checkValidity()) {
+    var data = new FormData(document.getElementById("changerpassword"));
+
+    $.ajax({
+      url: "./libs/methode_ajax.php",
+      data: {action:"changerpassword", data: JSON.stringify(Object.fromEntries(data))},
+      method: "POST",
+      dataType: "json"
+    }).then( function(data) {
+
+      if(data.deco == '1') {
+
+        decoreco();
+      }
+      $('.modal .modal-body p').remove();
+      $('.modal .modal-body').html(data.data);
+      $('.modal .btn').html(data.btn);
+      $('.modal-titre').remove();
+      $('.modal-header').html('<h5 class="modal-title">'+data.titre+'</h5>');
+      $(".modal").show();
+
+    }).catch(err => console.error(err))
+    $('.modal .modal-body p').remove();
+      $('.modal .modal-body').html('<p>Une erreur est survenue :'+err+'</p>');
+      $('.modal .btn').html(data.btn);
+      $('.modal-titre').remove();
+      $('.modal-header').html('<h5 class="modal-title">'+data.titre+'</h5>');
+      $(".modal").show();
+    return false;
+  }
+
+})
+var MaFenetre;
+function decoreco () {
+ MaFenetre = window.open("./index.php?deconnexion=1", "width=10", "height=10");
+
+ window.setTimeout("MaFenetre.close()",200);
+
+ window.setTimeout("location=('./page-connexion')",300);
+}

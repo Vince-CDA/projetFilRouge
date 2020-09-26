@@ -53,6 +53,20 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
     //Est-ce qu'on cherche à voir un profil ? Il y a un id valable ?
     if ($_GET['page'] == 'profil' && isset($_GET['id']) && !empty($_GET['id'])) {
         if (!empty($_SESSION['User_Level']) && isset($_SESSION['User_Level'])) {
+            if (isset($_GET['action']) && !empty($_GET['action'])) {
+                if ($_GET['action'] == 'pass') {
+                    $MonModalTitre = 'Changer de mot de passe';
+                    $MonModalTexte = 'Tapez votre mot de passe :</p><input type="password" name="password" placeholder="Mot de passe courant..."/></p>
+                <p>Tapez votre nouveau mot de passe</p>
+                <p><input type="password" name="newpassword" placeholder="Nouveau mot de passe..."/></p>
+                <p>Confirmez votre nouveau mot de passe</p>
+                <p><input type="password" name="newpassword2" placeholder="Nouveau mot de passe..."/>
+                ';
+                    $MonModalBouton = 'Changer le mot de passe';
+                    $modalhead = '<form id="changerpassword" action="#"><input type="hidden" name="id" value="'.$_GET['id'].'"/>';
+                    $modalfoot = '</form>';
+                }
+            }
             //Est-ce que l'utilisateur veut voir son propre profil ou a-t-il les droits d'aller en voir un autre ?
             if ($_SESSION['User_Level'] > 1 && array_key_exists($_GET['id'], $TbMesId) || $_GET['id'] == $_SESSION['Id']) {
                 $Reponse = $BDD->query('SELECT * FROM adherent WHERE IdAdherent = ' . $_GET['id']);
@@ -74,9 +88,21 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
                     $Id = $_GET['id'];
                     $Title_Register = 'Mise à jour de votre profil';
                     $Btn_Register = 'Mettre à jour';
-                    $Action = 'update_profil';
-                    $Description = $Donnees['Description'];
+                    $Action = 'updateprofil';
                     $Organisateur = $Donnees['Organisateur'];
+                    $Admin = $Donnees['Admin'];
+                    $Active = $Donnees['Active'];
+                }
+                if ($_SESSION['User_Level'] > 2) {
+                    $col = 4;
+                    $checked = $Admin == 1 ? 'checked' : ''; 
+                    $AdminLabel =       '<div class="col-lg-4">
+                                        <label class="py-0 mb-0" for="mobile">Admin</label>
+                                        <input type="checkbox" name="Admin" value="1" '.$checked.'/>
+                                        </div>
+                                        ';
+                } else {
+                    $col = 6;
                 }
             }
         } else {
@@ -136,9 +162,25 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
                 $valueboutonsuccess = 'S\'inscrire à l\'activité';
                 $idboutondanger = 'supprimer';
                 $valueboutondanger = 'Supprimer l\'activité';
+                $idboutondesinscrire = 'desinscrire';
+                $valueboutondesinscrire = 'Se désinscrire de l\'activité';
                 $idboutonedit = 'inscriptionedit';
                 $valueboutonedit = 'Editer l\'activité';
-               
+                $inscription = $BDD->query('SELECT * FROM inscription WHERE IdAdherent = '.$_SESSION['Id']);
+                $rowinscrit = $inscription->rowCount();
+                if ($rowinscrit < 1) {
+                    $inscirt = null;
+                } else {
+                    $inscrit = 'nada';
+                }
+                if (isset($_GET['action']) && !empty($_GET['action'])) {
+                    if ($_GET['action'] == 'desinscrire') {
+                        $BDD->query('DELETE FROM inscription WHERE IdAdherent = ' .$_SESSION['Id']);
+                        $MonModalBouton = '<a href="./page-activitecontent-'.$_GET['id'].'">Ok</a>';
+                        $MonModalTexte = 'Vous êtes bien désinscrit de l\'activité';
+                        $MonModalTitre = 'Désinscription';
+                    }
+                }
                 //la requete de la table page
                 $reponse = $BDD->query('SELECT * FROM activite WHERE IdActivite = '.$_GET['id']);
                 $reponse3 = $BDD->query('SELECT * FROM inscription as i JOIN adherent as b
@@ -231,28 +273,27 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
             $MaPage = 'accueil';
         }
     } elseif ($_GET['page'] == 'activite') {
-            if (isset($_GET['id']) && !empty($_GET['id'])) {
-                if (array_key_exists($_GET['id'], $TbActivites)) {
-                    if (isset($_GET['action']) && !empty($_GET['action'])) {
-                        if ($_GET['action'] == 'supprimer') {
-                            if (isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 1) {
-                                $reponse = $BDD->query('DELETE FROM activite WHERE IdActivite = '.$_GET['id']);
-                                $MonModalTexte = 'Activité supprimée';
-                                $MonModalBouton = 'Fermer';
-                                $MonModalTitre = 'L\'activité a bien été supprimée';
-                                $MaPage = 'activites';
-                            } else {
-                                $MonModalTexte = 'Accès refusé';
-                                $MonModalBouton = 'Fermer';
-                                $MonModalTitre = 'Vous n\'avez pas le droit d\'accéder à cette fonctionnalité';
-                                $MaPage = 'activites';
-                            }
+        if (isset($_GET['id']) && !empty($_GET['id'])) {
+            if (array_key_exists($_GET['id'], $TbActivites)) {
+                if (isset($_GET['action']) && !empty($_GET['action'])) {
+                    if ($_GET['action'] == 'supprimer') {
+                        if (isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 1) {
+                            $reponse = $BDD->query('DELETE FROM activite WHERE IdActivite = '.$_GET['id']);
+                            $MonModalTexte = 'Activité supprimée';
+                            $MonModalBouton = 'Fermer';
+                            $MonModalTitre = 'L\'activité a bien été supprimée';
+                            $MaPage = 'activites';
+                        } else {
+                            $MonModalTexte = 'Accès refusé';
+                            $MonModalBouton = 'Fermer';
+                            $MonModalTitre = 'Vous n\'avez pas le droit d\'accéder à cette fonctionnalité';
+                            $MaPage = 'activites';
                         }
                     }
                 }
             }
         }
-    elseif ($_GET['page'] == 'news') {
+    } elseif ($_GET['page'] == 'news') {
         if (isset($_SESSION['User_Level']) && !empty($_SESSION['User_Level'])) {
             //Est-ce que l'utilisateur veut voir son propre profil ou a-t-il les droits d'aller en voir un autre ?
             if ($_SESSION['User_Level'] > 1) {
@@ -284,11 +325,6 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
                         $MonModalTitre = 'ID introuvable';
                     }
                 }
-            } else {
-                $MaPage = 'news';
-                $MonModalTexte = 'Vous n\'êtes pas un admin, vous ne pouvez donc pas faire d\'action de ce type';
-                $MonModalBouton = 'Fermer';
-                $MonModalTitre = 'Impossible';
             }
         }
     } elseif ($_GET['page'] == 'ajoutnews') {
@@ -348,6 +384,7 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
                     //est-ce que c'est sur la page membre ?
                     if ($_GET['page'] == 'membres') {
                         //lancement de la requete
+                        $BDD->query('DELETE FROM inscription WHERE IdAdherent = ' .$_GET['id']);
                         $BDD->query('DELETE FROM adherent WHERE IdAdherent = ' . $_GET['id']);
                         //information modal html
                         $MonModalTitre = 'Supprimé!';

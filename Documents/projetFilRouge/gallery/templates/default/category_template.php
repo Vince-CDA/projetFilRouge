@@ -13,7 +13,11 @@
   <footer>
    <nav>
     <ol>
+    <?php if (isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 0) {
+    ?>
      <li><a href="index.php?page=admin">Uploader des images</a></li>
+<?php
+} ?>
     </ol>
    </nav>
   </footer>

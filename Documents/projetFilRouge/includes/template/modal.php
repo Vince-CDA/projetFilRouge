@@ -1,5 +1,5 @@
             <!-- Template de ma modal avec $MonModalTexte, $MonModalBouton, $MonModalTitre -->
-<div class="modal" tabindex="-1" role="dialog">
+            <div class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -9,11 +9,14 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p><?php echo $MonModalTexte ?></p>
+               <?php echo isset($modalhead) ? $modalhead.'<p>'.$MonModalTexte : '<p>'.$MonModalTexte; ?></p>
             </div>
             <div class="modal-bouton text-right">
-                <button type="button" class="btn btn-success float-right lead"><?php echo $MonModalBouton ?></button>
+                <button  <?php echo isset($modalhead) ? 'id="modalbouton" type="submit"' : 'type="button"' ?> class="btn btn-success float-right lead modalbouton"><?php echo $MonModalBouton ?></button>
             </div>
+            <?php echo isset($modalfoot) ? $modalfoot : ''; ?>
         </div>
     </div>
+</div>
+</div>
 </div>

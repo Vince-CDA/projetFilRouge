@@ -9,7 +9,7 @@
     
     ?>
 
-    <div class="row justify-content-center justify-content-sm-start mt-5 margincustom">
+    <div class="row justify-content-center justify-content-sm-start mt-5 col-10 m-auto">
     <?php
     if (isset($_SESSION['User_Level']) && !empty($_SESSION['User_Level'])) {
         //Est-ce que l'utilisateur veut voir son propre profil ou a-t-il les droits d'aller en voir un autre ?
@@ -33,9 +33,10 @@
     //boucle les données récupérées
     while ($donnees = $reponse->fetch()) {
         //Mise du texte de la requête dans une variable
-        $texte = $donnees['Description'];
-        //Décode du texte
-        $texte = urldecode($texte);
+        $texte = strip_tags($donnees['Description']);
+        /* 
+        ------------ INUTILE GRACE AU STRIP_TAGS ------------
+         $texte = $texte;
         //Remplacement des balises titres par des espaces pour l'affichage dans la "mininews"
         $texte = str_replace('</h1>', '    ', $texte);
         $texte = str_replace('</h2>', '    ', $texte);
@@ -45,10 +46,11 @@
         $texte = str_replace('<style>', ' ', $texte);
         $texte = str_replace('</style>', ' ', $texte);
         //Balises enlevées
-        $texte = strip_tags($texte);
+        ------------ INUTILE GRACE AU STRIP_TAGS ------------
+        */
         //Mise en variable de la donnée de l'ID de la news
         $idactivite = $donnees['IdActivite'];
-        $titreactivite = $donnees['IntituleActivite'];
+        $titreactivite = strip_tags($donnees['IntituleActivite']);
         $fichieractivite = $donnees['Fichier'];
         if ($fichieractivite == ' ') {
             $fichieractivite = $directory_img_upload.'defaut.png';

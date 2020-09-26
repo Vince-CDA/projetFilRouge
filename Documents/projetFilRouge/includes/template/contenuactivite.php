@@ -34,9 +34,13 @@
                 <div class="col-md-4">
                   <div class="form-group"><label class="ls text-uppercase color-3 fw-700 mb-0">Tarif invité</label> :  <?php echo $tarifi; ?> €</div>
                 </div>
-                <?php if (isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 0) { ?>
+                <?php if (isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 0 && !isset($inscrit) && empty($inscrit)) { ?>
                 <div class="row justify-content-center col-md-12 mt-2 mb-3">
                 <a href="page-activitecontent-<?php echo $_GET['id'] ?>-1"> <button id= <?php echo $idboutonsuccess; ?> type="submit" class="btn btn-success "><?php echo $valueboutonsuccess; ?></button></a>
+                </div>
+                <?php }else{ ?>
+                <div class="row justify-content-center col-md-12 mt-2 mb-3">
+                <a href="page-activitecontent-<?php echo $_GET['id'] ?>-desinscrire"> <button id= <?php echo $idboutondesinscrire; ?> type="submit" class="btn btn-warning "><?php echo $valueboutondesinscrire; ?></button></a>
                 </div>
                 <?php } ?>
                 <div class="col-12">
