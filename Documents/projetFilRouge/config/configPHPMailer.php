@@ -1,12 +1,11 @@
 <?php
-// lance les classes de PHPMailer
-require_once './PHPMailer/src/PHPMailer.php';
+require_once './PHPMailer/PHPMailer.php';
 use PHPMailer\PHPMailer\PHPMailer;
 
-require_once './PHPMailer/src/SMTP.php';
+require_once './PHPMailer/SMTP.php';
 use PHPMailer\PHPMailer\SMTP;
 
-require_once './PHPMailer/src/Exception.php';
+require_once './PHPMailer/Exception.php';
 use PHPMailer\PHPMailer\Exception;
 
 // path du dossier PHPMailer % fichier d'envoi du mail

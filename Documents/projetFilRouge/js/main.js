@@ -472,6 +472,63 @@ $("#imgInp").change(function() {
   readURL(this);
 });
 
+
+// if(document.getElementsByClassName("membre").length) {
+//   $.ajax({
+//     url: "./libs/methode_ajax.php",
+//     data: {action:"idmembre"},
+//     method: "POST",
+//     dataType: "json"
+//   })
+//   .then( function(data) {
+//     for (const [key, value] of Object.entries(data)) {
+//         $('#detailmembre'+key).on('click', function()
+//         {
+//           $('.modal .modal-body').html(value);
+//           $('.modal-titre').html('A propos de ce membre...');
+//           $('.modal .btn').html('Fermer');
+//           $(".modal").show();
+//         }); 
+//     }
+//   })
+//   .catch(err => {
+//     console.error(err);
+//     $('.modal .modal-body p').remove();
+//     $('.modal .modal-body').html('<p>Une erreur est survenue :'+err+'</p>');
+//     $('.modal .btn').html('Fermer');
+//     $('.modal-titre').remove();
+//     $('.modal-header').html('<h5 class="modal-title">Erreur</h5>');
+//     $(".modal").show();
+//   })
+// }
+
+
+$('.aproposmembre').on('click', function (event) {
+    event.preventDefault();
+    const idmembre = $(this).data('ida');
+    console.log("idmembre", idmembre)
+    
+    $.ajax({
+      method: "POST",
+      url: "./libs/methode_ajax.php",
+      data: {action: "GetMember", id: idmembre},
+      dataType: "json"
+    }).then( function(data) {
+      console.log(data);
+      $('.modal .modal-body p').remove();
+      $('.modal .modal-body').html('<p>'+data.data+'</p>');
+      $('.modal .btn').html('Ok');
+      $('.modal-title').html('<h5 class="modal-title">'+data.titre+'</h5>');
+      $(".modal").show();
+    }).catch( err => {
+    console.log("err", err)
+      
+    });
+    
+  
+});
+
+
 var err = '';
 //Methode Ajax version JSON
 $('#modalbouton').on('click', function() {
@@ -508,6 +565,33 @@ $('#modalbouton').on('click', function() {
   }
 
 })
+
+//Methode Ajax version JSON
+$('#mdpoublier').on('click', function() {
+
+  if(document.getElementById("mdpoublie").checkValidity()) {
+    var data = new FormData(document.getElementById("mdpoublie"));
+
+    $.ajax({
+      url: "./libs/methode_ajax.php",
+      data: {action:"mdpoublie", data: JSON.stringify(Object.fromEntries(data))},
+      method: "POST",
+      dataType: "json"
+    }).then( function(data) {
+      $('.modal .modal-body p').remove();
+      $('.modal .modal-body').html('<p>'+data.data+'</p>');
+      $('.modal .btn').html(data.btn);
+      $('.modal-title').html(data.titre);
+      $(".modal").show();
+      return true;
+    }).catch(err => console.error(err))
+      $('.modal .modal-body p').html(err);
+    return false;
+  }
+
+})
+
+
 var MaFenetre;
 function decoreco () {
  MaFenetre = window.open("./index.php?deconnexion=1", "width=10", "height=10");
@@ -516,3 +600,4 @@ function decoreco () {
 
  window.setTimeout("location=('./page-connexion')",300);
 }
+

@@ -5,7 +5,7 @@
                                     <div class="mb-2">
                                         <input type="hidden" name="id" value="<?php echo $id; ?>">
                                         <input type="text" name="title" size="100%" value="<?php echo $titlenews; ?>" placeholder="Titre"/>
-                                        <input class="texte-right" type="checkbox" name="diffusion" value="1"/> Rendre public
+                                        <input class="texte-right" type="checkbox" name="diffusion" value="1" <?php echo isset($diffusion) && !empty($diffusion) && $diffusion == 1 ? 'checked' : ''; ?>/> Rendre public
                                     </div>  
                                         <div id="editor" name="description">
                                             <p><?php echo $contenunews; ?></p>

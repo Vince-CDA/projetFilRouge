@@ -22,7 +22,7 @@
         //Mise du texte de la requête dans une variable
         $texte = $donnees['Texte'];
         //Décode du texte
-        $texte = urldecode($texte);
+        /*$texte = urldecode($texte);
         //Remplacement des balises titres par des espaces pour l'affichage dans la "mininews"
         $texte = str_replace('</h1>', '    ', $texte);
         $texte = str_replace('</h2>', '    ', $texte);
@@ -31,11 +31,11 @@
         $texte = str_replace('</script>', ' ', $texte);
         $texte = str_replace('<style>', ' ', $texte);
         $texte = str_replace('</style>', ' ', $texte);
-        //Balises enlevées
+        //Balises enlevées*/
         $texte = strip_tags($texte);
         //Mise en variable de la donnée de l'ID de la news
         $idnews = $donnees['IdNouvelle'];
-        $titrenews = $donnees['Titre'];
+        $titrenews = strip_tags($donnees['Titre']);
         $fichiernews = $donnees['Fichier'];
         if ($fichiernews == ' ') {
             $fichiernews = $directory_img_upload.'defaut.png';
@@ -49,7 +49,7 @@
             //Mise du texte de la requête dans une variable
             $texte = $donnees2['Texte'];
             //Décode du texte
-            $texte = urldecode($texte);
+           /* $texte = urldecode($texte);
             //Remplacement des balises titres par des espaces pour l'affichage dans la "mininews"
             $texte = str_replace('</h1>', '    ', $texte);
             $texte = str_replace('</h2>', '    ', $texte);
@@ -58,11 +58,11 @@
             $texte = str_replace('</script>', ' ', $texte);
             $texte = str_replace('<style>', ' ', $texte);
             $texte = str_replace('</style>', ' ', $texte);
-            //Balises enlevées
+            //Balises enlevées*/
             $texte = strip_tags($texte);
             //Mise en variable de la donnée de l'ID de la news
             $idnews = $donnees2['IdNouvelle'];
-            $titrenews = $donnees2['Titre'];
+            $titrenews = strip_tags($donnees2['Titre']);
             $fichiernews = $donnees2['Fichier'];
             if ($fichiernews == ' ') {
                 $fichiernews = $directory_img_upload.'defaut.png';

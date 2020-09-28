@@ -16,6 +16,11 @@ if (!empty($_POST)) {
 
             
             if ($response != null && $response->success) {
+                if (isset($_POST['apropos']) && !empty($_POST['apropos'])) {
+                    $apropos = strip_tags($_POST['apropos']);
+                }else{
+                    $apropos = '';
+                }
                 /* Pour voir le POST après validation du formulaire */
                 //var_dump($_POST);
                 //Je fais une variable contenant le résultat de ma requête SQL suivante :
@@ -89,6 +94,7 @@ if (!empty($_POST)) {
                 } else {
                     //Sinon tout est correct alors je crypte le mot de passe puis insert une ligne sql
                     $password = My_Crypt($_POST["Password"], $_POST["Login"]);
+                    
                     //Ma ligne pour upload la photo
                     list($error, $MonModalTexte, $photoName) = upload_img($directory_img_upload);
                     //Ma requête
@@ -105,8 +111,9 @@ if (!empty($_POST)) {
             Tel,
             CC,
             DAdhesion,
-            Avatar
-            ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), ?)';
+            Avatar,
+            Apropos
+            ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), ?, ?)';
             
                     $reponse = $BDD->prepare($Query);
                     /* Execution de la requête dans la base de données */
@@ -123,7 +130,8 @@ if (!empty($_POST)) {
                     $_POST["Email"],
                     $_POST["Tel"],
                     $_POST["CC"],
-                    $photoName
+                    $photoName,
+                    $apropos
 
                 )
                     );
@@ -138,7 +146,7 @@ if (!empty($_POST)) {
                 //Sinon echec mdoal
                 $MonModalTitre = 'Echec';
                 $MonModalTexte = 'Vous n\'avez pas valider la verification reCAPTCHA';
-                $MonModalBouton = 'Ok!';
+                $MonModalBouton = '<a href="javascript:history.back()">Rééssayer</a>';
             }
         } elseif ($_POST['formulaire'] == 'inscriptionactivite' && isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 0) {
             //Si un login existe déjà dans mon tableau de login alors je lui renvoie une modal
@@ -214,35 +222,35 @@ if (!empty($_POST)) {
                 if (!isset($_POST['Email']) || empty($_POST['Email']) || !preg_match('#^([\w\.-]+)@([\w\.-]+)(\.[a-z]{2,4})$#', trim($_POST['Email']))) {
                     $MonModalTitre = 'Echec !';
                     $MonModalTexte = 'Votre adresse email est incorrect';
-                    $MonModalBouton = '<a href="">Rééssayer</a>';
+                    $MonModalBouton = '<a href="javascript:history.back()">Rééssayer</a>';
                 } elseif (!isset($_POST['Prenom']) || empty($_POST['Prenom']) || empty($_POST['Nom']) || !preg_match('`^[[:alpha:] \'-]{2,30}$`u', $_POST['Prenom']) || !preg_match('`^[[:alpha:] \'-]{2,30}$`u', $_POST['Nom'])) {
                     $MonModalTitre = 'Echec !';
                     $MonModalTexte = 'Votre nom ou votre prénom ne doit pas avoir de caractères spéciaux et doit être de moins de 30 caractères';
-                    $MonModalBouton = '<a href="">Rééssayer</a>';
+                    $MonModalBouton = '<a href="javascript:history.back()">Rééssayer</a>';
                 } elseif (!isset($_POST['CdPost']) || empty($_POST['CdPost']) || !preg_match('#^[0-9]{5}$#', $_POST['CdPost'])) {
                     $MonModalTitre = 'Echec !';
                     $MonModalTexte = 'Votre code postale n\'est pas valide';
-                    $MonModalBouton = '<a href="">Rééssayer</a>';
+                    $MonModalBouton = '<a href="javascript:history.back()">Rééssayer</a>';
                 } elseif (!isset($_POST['Adresse1']) || empty($_POST['Adresse1']) || !preg_match('`^[[:alnum:][:space:] \'-]{10,50}$`u', $_POST['Adresse1'])) {
                     $MonModalTitre = 'Echec !';
                     $MonModalTexte = 'Votre adresse n\'est pas valide';
-                    $MonModalBouton = '<a href="">Rééssayer</a>';
+                    $MonModalBouton = '<a href="javascript:history.back()">Rééssayer</a>';
                 } elseif (!isset($_POST['Ville']) || empty($_POST['Ville']) || !preg_match('`^[[:alpha:][:space:] \'-]{2,20}$`u', $_POST['Ville'])) {
                     $MonModalTitre = 'Echec !';
                     $MonModalTexte = 'Votre nom de ville n\'est pas valide';
-                    $MonModalBouton = '<a href="">Rééssayer</a>';
+                    $MonModalBouton = '<a href="javascript:history.back()">Rééssayer</a>';
                 } elseif (!isset($_POST['DNaiss']) || empty($_POST['DNaiss']) || !checkdate($jour, $mois, $annee)) {
                     $MonModalTitre = 'Echec !';
                     $MonModalTexte = 'Votre date de naissance n\'est pas valide!';
-                    $MonModalBouton = '<a href="">Rééssayer</a>';
+                    $MonModalBouton = '<a href="javascript:history.back()">Rééssayer</a>';
                 } elseif (!isset($_POST['CC']) || empty($_POST['CC']) || !array_key_exists($_POST['CC'], $TbCC)) {
                     $MonModalTitre = 'Echec !';
                     $MonModalTexte = 'Vous n\'avez pas sélectionné de cylindrée';
-                    $MonModalBouton = '<a href="">Rééssayer</a>';
+                    $MonModalBouton = '<a href="javascript:history.back()">Rééssayer</a>';
                 } elseif (!isset($_POST['Tel']) || empty($_POST['Tel']) || !preg_match('`[0-9]{10,13}`', $_POST['Tel'])) {
                     $MonModalTitre = 'Echec !';
                     $MonModalTexte = 'Le numéro que vous avez entré n\'est pas valide (0033 pour +33 accepté)';
-                    $MonModalBouton = '<a href="">Rééssayer</a>';
+                    $MonModalBouton = '<a href="javascript:history.back()">Rééssayer</a>';
                 } else {
                     if ($_SESSION['User_Level'] > 1 && isset($_POST['Organisateur']) && $_POST['Organisateur'] == 1) {
                         $Organisateur = 1;
@@ -258,6 +266,11 @@ if (!empty($_POST)) {
                         $Admin = 1;
                     } else {
                         $Admin = 0;
+                    }
+                    if (isset($_POST['apropos']) && !empty($_POST['apropos'])) {
+                        $apropos = strip_tags($_POST['apropos']);
+                    }else{
+                        $apropos = '';
                     }
                     //Même chose que plus haut pour register sauf que c'est pour update la ligne SQL
                     list($error, $MonModalTexte, $photoName) = upload_img($directory_img_upload);
@@ -276,7 +289,8 @@ if (!empty($_POST)) {
               Avatar = ?,
               Organisateur = ?,
               Active = ?,
-              Admin = ?
+              Admin = ?,
+              Apropos = ?
               WHERE IdAdherent = ?';
                     $image = '';
                     $Query2 = 'SELECT * FROM adherent WHERE IdAdherent = ?';
@@ -307,6 +321,7 @@ if (!empty($_POST)) {
                                                 $Organisateur,
                                                 $Active,
                                                 $Admin,
+                                                $apropos,
                                                 $_POST["IdAdherent"]
                                                 )
                 );
@@ -325,13 +340,13 @@ if (!empty($_POST)) {
                 //Sinon echec mdoal
                 $MonModalTitre = 'Echec';
                 $MonModalTexte = 'Vous n\'avez pas valider la verification reCAPTCHA';
-                $MonModalBouton = 'Ok!';
+                $MonModalBouton = '<a href="javascript:history.back()">Rééssayer</a>';
             }
         } else {
                 $MonModalTitre = 'Echec !';
                 $MonModalTexte = 'Vous n\'êtes pas autorisé à faire cela';
-                $MonModalBouton = 'Fermer';
-        }
+                $MonModalBouton = '<a href="javascript:history.back()">Revenir en arrière</a>';
+            }
         } elseif ($_POST['formulaire'] == 'contact') {
             if ($_POST["g-recaptcha-response"]) {
                 $response = $reCaptcha->verifyResponse(
@@ -357,9 +372,9 @@ if (!empty($_POST)) {
                     $MonModalTitre = 'Echec !';
                     $MonModalTexte = 'Votre objet de message n\'est pas complété';
                     $MonModalBouton = '<a href="javascript:history.back()">Rééssayer</a>';
-                } elseif (!preg_match('`^[[:alnum:][:space:] \'-]{5,80}$`u', $_POST['objet'])) {
+                } elseif (!preg_match('`^[[:alnum:][:space:] !?\'-]{5,200}$`u', $_POST['objet'])) {
                     $MonModalTitre = 'Echec !';
-                    $MonModalTexte = 'L\'objet du mail est invalide, vérifiez qu\'il ne possède pas des caractères spéciaux';
+                    $MonModalTexte = 'L\'objet du mail est invalide, vérifiez qu\'il ne possède pas des caractères spéciaux (5 caractères mini/200 caractères maxi)';
                     $MonModalBouton = '<a href="javascript:history.back()">Rééssayer</a>';
                 } elseif (!isset($_POST['message']) || empty($_POST['message'])) {
                     $MonModalTitre = 'Echec !';
@@ -380,7 +395,7 @@ if (!empty($_POST)) {
                     try {
                         //J'essai d'envoyer le mail puis j'indique que le message est envoyé via ma modal
                 
-                        MailEngine::send($subject, $expediteur, $nom, $message);
+                        MailEngine::send($subject, $expediteur, 'v.mundoegea@gmail.com', $nom, $message);
                         //MailEngine::SendConfirmation($subject, $message);
                         $MonModalTexte = 'Message envoyé.';
                         $MonModalTexte = 'Le message a bien été envoyé.';
@@ -437,9 +452,7 @@ if (!empty($_POST)) {
                                                 $_POST["IdAdherent"]
                                                 )
                 );
-    } elseif ($_GET) {
-
-    }elseif ($_POST['formulaire'] == 'connexion') {
+    } elseif ($_POST['formulaire'] == 'connexion') {
             //Si le login et le password crypté correspondent à une ligne d'adherent dans ma base de données SQL, alors, je me connecte en créant plusieurs SESSION qui seront valident jusqu'à la déconnexion
             // if submitted check response
             if ($_POST["g-recaptcha-response"]) {

@@ -15,7 +15,7 @@
   <footer>
    <nav>
     <ol>
-     <li><a href="index.php?page=gallery">Retour à la galerie</a></li>
+     <li><a href="index.php?page=galerie">Retour à la galerie</a></li>
     </ol>
    </nav>
   </footer>

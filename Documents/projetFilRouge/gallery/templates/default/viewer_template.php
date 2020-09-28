@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="da">
+<html lang="fr">
  <head>
    <title><?php echo $html_title; ?></title>
    <style type="text/css">

@@ -4,7 +4,9 @@ session_start();
 
 if (isset($_GET['deconnexion']) and $_GET['deconnexion'] == '1') {
     /* Destruction de la session */
+    $_SESSION = array();
     session_destroy();
+    unset($_COOKIE['ticket']);
     header("location:index.php");
 }
 

@@ -7,7 +7,7 @@ $password = 'e10adc3949ba59abbe56e057f20f883e'; // MD5 hashed password
 
 $settings = array();
 $settings['lang'] = 'fr'; // Used to change site language, and on the <html> lang attribute
-$settings['title'] = 'PHP Photo Gallery'; // Default: "PHP Photo Gallery"
+$settings['title'] = 'Galerie photo - MCMP'; // Default: "PHP Photo Gallery"
 $template = 'default'; // Default: "default"
 
 $ignored_categories_and_files = array();

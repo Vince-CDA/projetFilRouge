@@ -49,6 +49,21 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
     $MaPage = $_GET['page'];
     if ($_GET['page'] == 'connexion' && isset($_SESSION['Id']) && !empty($_SESSION['Id'])) {
         $MaPage = 'accueil';
+    } else {
+        if (isset($_GET['action']) && !empty($_GET['action'])) {
+            if ($_GET['action'] == 'mdpoublie') {
+                $MonModalTitre = 'Mot de passe oublié ?';
+                $MonModalTexte = 'Entrez votre login</p><input type="text" name="login" placeholder="Votre identifiant"/></p>
+            <p>Entrez votre adresse email</p>
+            <p><input type="email" name="email" placeholder="Votre adresse email..."/></p>
+            ';
+                $typemodal = 'type="submit"';
+                $idmodal = 'id="mdpoublier"';
+                $MonModalBouton = 'Envoyer un nouveau mot de passe';
+                $modalhead = '<div class="text-center"><form id="mdpoublie" action="#">';
+                $modalfoot = '</form></div>';
+            }
+        }
     }
     //Est-ce qu'on cherche à voir un profil ? Il y a un id valable ?
     if ($_GET['page'] == 'profil' && isset($_GET['id']) && !empty($_GET['id'])) {
@@ -62,6 +77,8 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
                 <p>Confirmez votre nouveau mot de passe</p>
                 <p><input type="password" name="newpassword2" placeholder="Nouveau mot de passe..."/>
                 ';
+                    $typemodal = 'type="submit"';
+                    $idmodal = 'id="modalbouton"';
                     $MonModalBouton = 'Changer le mot de passe';
                     $modalhead = '<form id="changerpassword" action="#"><input type="hidden" name="id" value="'.$_GET['id'].'"/>';
                     $modalfoot = '</form>';
@@ -92,6 +109,7 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
                     $Organisateur = $Donnees['Organisateur'];
                     $Admin = $Donnees['Admin'];
                     $Active = $Donnees['Active'];
+                    $apropos = $Donnees['Apropos'];
                 }
                 if ($_SESSION['User_Level'] > 2) {
                     $col = 4;
@@ -166,7 +184,7 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
                 $valueboutondesinscrire = 'Se désinscrire de l\'activité';
                 $idboutonedit = 'inscriptionedit';
                 $valueboutonedit = 'Editer l\'activité';
-                $inscription = $BDD->query('SELECT * FROM inscription WHERE IdAdherent = '.$_SESSION['Id']);
+                $inscription = $BDD->query('SELECT * FROM inscription WHERE IdActivite = '.$_GET['id'].' AND IdAdherent = '.$_SESSION['Id']);
                 $rowinscrit = $inscription->rowCount();
                 if ($rowinscrit < 1) {
                     $inscirt = null;
@@ -266,7 +284,7 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
                 $idboutonsuccess = 'ajoutactivite';
                 $valueboutonsuccess = 'Ajouter une activité';
                 $MonModalTitre = 'Message';
-                $MonModalBouton = '<a href="page-activites">Fermer</a>';
+                $MonModalBouton = 'Fermer';
                 //la requete de la table page
             }
         } else {
@@ -366,6 +384,7 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
                     while ($donnees = $reponse->fetch()) {
                         $titlenews = $donnees['Titre'];
                         $contenunews = $donnees['Texte'];
+                        $diffusion = $donnees['Diffusion'];
                     }
                 }
             }
@@ -389,23 +408,57 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
                         //information modal html
                         $MonModalTitre = 'Supprimé!';
                         $MonModalTexte = 'L\'utilisateur n°'.$_GET['id'].' a bien été supprimé.';
-                        $MonModalBouton = 'Ok !';
+                        $MonModalBouton = '<a href="javascript:history.back()">Revenir à la page précédente</a>';
                         $MaPage = 'membres';
                     }
                 } else {
                     $MonModalTitre = 'Erreur';
                     $MonModalTexte = 'ID inconnu pour la suppression';
-                    $MonModalBouton = 'Ok !';
+                    $MonModalBouton = '<a href="javascript:history.back()">Revenir à la page précédente</a>';
                     $MaPage = 'membres';
                 }
             } else {
                 $MonModalTitre = 'Erreur';
                 $MonModalTexte = 'Vous n\'êtes pas administrateur';
-                $MonModalBouton = 'Ok !';
+                $MonModalBouton = '<a href="javascript:history.back()">Revenir à la page précédente</a>';
                 $MaPage = 'membres';
             }
         }
+    } elseif ($_GET['page'] == 'liste') {
+            if (isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 1) {
+                $trie = 0;
+                if (isset($_GET['action'])) {
+                    if ($_GET['action'] == 'desc') {
+                        $trie = '0';
+                    }elseif ($_GET['action'] == 'asc') {
+                        $trie = '1';
+                    }
+                }
+                if (isset($_GET['id']) && (!empty($_GET['id'])) && array_key_exists($_GET['id'], $TbMesId)) {
+                    if (isset($_GET['action']) && !empty($_GET['action'])) {
+                        if ($_GET['action'] == 'active') {
+                            $Query = 'UPDATE adherent SET 
+                                Active = ?
+                                WHERE IdAdherent = ?';
+                            $reponse = $BDD->prepare($Query);
+                            $result = $reponse->execute(array(
+                            1,
+                            $_GET['id']
+                    ));
+                        } elseif ($_GET['action'] == 'desactive') {
+                            $Query = 'UPDATE adherent SET 
+                                Active = ?
+                                WHERE IdAdherent = ?';
+                            $reponse = $BDD->prepare($Query);
+                            $reponse->execute(array(
+                            0,
+                            $_GET['id']
+                    ));
+                        }
+                    }
+        }
     }
+}
 } else {
     $MaPage = 'accueil';
 }   //test sur les action de page

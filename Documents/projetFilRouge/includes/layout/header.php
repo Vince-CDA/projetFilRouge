@@ -47,6 +47,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
     <link href="./css/style.css" rel="stylesheet">
     <link href="./css/custom.css" rel="stylesheet">
+    <!-- JQuery UI css -->
+    <link rel="stylesheet" href="./css/jquery-ui.min.css" />
     <!-- Fichier main custom -->
     <link href="./css/main.css?v1.1601109118" rel="stylesheet">
     <!-- CSS Spécial Wysiwyg -->

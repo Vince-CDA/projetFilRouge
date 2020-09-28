@@ -12,7 +12,7 @@
                <?php echo isset($modalhead) ? $modalhead.'<p>'.$MonModalTexte : '<p>'.$MonModalTexte; ?></p>
             </div>
             <div class="modal-bouton text-right">
-                <button  <?php echo isset($modalhead) ? 'id="modalbouton" type="submit"' : 'type="button"' ?> class="btn btn-success float-right lead modalbouton"><?php echo $MonModalBouton ?></button>
+                <button  <?php echo isset($modalhead) ? '' : 'type="button" ' ?> <?php echo isset($idmodal) ? ' '.$idmodal.' '.$typemodal.' ' : ' ' ?> class="btn btn-success float-right lead modalbouton"><?php echo $MonModalBouton ?></button>
             </div>
             <?php echo isset($modalfoot) ? $modalfoot : ''; ?>
         </div>

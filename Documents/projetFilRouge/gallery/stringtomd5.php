@@ -5,5 +5,5 @@
 if ((isset($_GET['string'])) && (strlen($_GET['string'])) <= 200) {
     echo md5($_GET['string']);
 } else {
-  echo 'Max 200 characters...';
+    echo 'Max 200 characters...';
 }

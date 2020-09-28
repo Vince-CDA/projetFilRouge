@@ -12,7 +12,7 @@
    <h1><?php echo $settings['title']; ?></h1>
    <nav>
     <ol>
-     <li><a href="/">HJEM</a></li>
+     <li><a href="./page-galerie">Accueil galerie</a></li>
     </ol>
    </nav>
    <div class="clear"></div>

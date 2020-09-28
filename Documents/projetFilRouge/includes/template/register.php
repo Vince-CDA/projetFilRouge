@@ -78,6 +78,10 @@
                                         <br /><input size="16" type="text" id="mobile" name="Tel" value="<?php echo isset($Tel) ? $Tel : '' ?>" required />
                                     </div>
                                     <div class="col-lg-12">
+                                        <label class="py-0 mb-0"  for="mobile">A propos</label>
+                                        <br /><textarea type="text" id="mobile" name="apropos" rows="4" cols="40"><?php echo isset($apropos) ? $apropos : 'Ecrivez quelque chose sur vous...' ?></textarea>
+                                    </div>
+                                    <div class="col-lg-12">
                                         <label class="py-0 mb-0"  for="mobile">Votre cylindrée</label>
                                     </div>
                                     <div class="col-lg-12">

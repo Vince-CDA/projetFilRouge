@@ -29,6 +29,7 @@
                                 </div>
                                 <div class="g-recaptcha col-12" data-sitekey="6LfVpssZAAAAALskuUcMWYxfZ-WYY2hOxIJi4cxr"></div>
                                 <button type="submit" class="btn btn-success float-right lead">Connexion</button>
+                                <label class="py-0 mt-2 mb-0 lead"  for="mobile"><a href="./page-connexion-mdpoublie">Mot de passe oublié ?</label></a>
                             </form>
 
                         </div>

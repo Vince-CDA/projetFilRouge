@@ -18,7 +18,7 @@
      <li><a href="index.php?page=admin">Uploader des images</a></li>
 <?php
 } ?>
-    </ol>
+ </ol>
    </nav>
   </footer>
  </body>

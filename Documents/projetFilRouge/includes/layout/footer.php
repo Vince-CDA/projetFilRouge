@@ -48,6 +48,8 @@
 <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
     async defer>
 </script>
+<!-- JQuery UI -->
+<script src="./js/jquery-ui.min.js"></script>
 <!-- Mon custom -->
 <script src="./js/main.js?v1.<?php echo time();?>"></script>
 
