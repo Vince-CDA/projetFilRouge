@@ -172,6 +172,7 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
             $MaPage = 'news';
         }
     } elseif ($_GET['page'] == 'activitecontent') {
+        if (isset($_SESSION['Id'])) {
         if (isset($_GET['id']) && !empty($_GET['id'])) {
             if (array_key_exists($_GET['id'], $TbActivites)) {
     
@@ -258,6 +259,13 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
         } else {
             $MaPage = 'activites';
         }
+        } else {
+            $MaPage = 'accueil';
+            $MonModalTexte = 'Vous devez être enregistré pour avoir accès aux activités';
+            $MonModalTitre = 'Accès refusé';
+            $MonModalBouton = 'Fermer';
+        }
+
     } elseif ($_GET['page'] == 'editactivite') {
         if (isset($_GET['id']) && !empty($_GET['id'])) {
             if (array_key_exists($_GET['id'], $TbActivites)) {
