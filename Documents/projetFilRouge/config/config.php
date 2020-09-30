@@ -29,7 +29,16 @@ $titlenews = '';
 
 //$contenunews = ''; USELESS ?
 
+$directory_img_fichier = './upload/fichier/';
 //Chemin d'upload de pohtos pour les images profil
 $directory_img_upload = './upload/images/';
 $defautimg = 'defaut.jpg';
 setlocale(LC_TIME, "fr_FR", "French");
+$fmt = new IntlDateFormatter(
+    "fr_FR" ,
+    IntlDateFormatter::FULL,
+    IntlDateFormatter::FULL,
+    'Europe/Paris',
+    IntlDateFormatter::GREGORIAN,
+    "dd/MM/yyyy"
+);

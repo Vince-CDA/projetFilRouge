@@ -13,10 +13,11 @@
               <div class="row justify-content-center">
               <div class="col-md-12">
               <input type="hidden" name="IdAdherent" value="<?php echo $_SESSION['Id'];?>" required="required">
-              <?php if (isset($_GET['id']) && !empty($_GET['id'])) { ?>
+              <?php if (isset($_GET['id']) && !empty($_GET['id'])) {
+    ?>
               <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>" required="required">
               <?php
-              } ?>
+} ?>
                 </div>
                 <div class="col-md-12">
                   <div class="form-group"><label class="ls text-uppercase color-3 fw-700 mb-0">Initulé d'activité</label><input class="form-control background-white" type="text" name="IntituleActivite" value="<?php echo isset($IntituleActivite) ? $IntituleActivite : '';?>" required="required"></div>

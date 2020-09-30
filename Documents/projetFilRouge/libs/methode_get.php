@@ -1,20 +1,31 @@
 <?php
 /* Je récupère le résultat de la requête SQL  */
+//J'inclus une seule fois le MailEngine pour mon formulaire de contact
+require_once './libs/MailEngine.php';
+use Lib\MailEngine;
 
 $Reponse = $BDD->query('SELECT * FROM pages');
 $MesId = $BDD->query('SELECT * FROM adherent');
-$MesActivites = $BDD->query('SELECT * FROM activite');
-$MesNews = $BDD->query('SELECT * FROM nouvelle WHERE Diffusion = 1');
+$MesActivites = $BDD->query('SELECT * FROM activite WHERE Publier = 1');
+$MesActivites0 = $BDD->query('SELECT * FROM activite WHERE Publier = 0');
+$MesNews = $BDD->query('SELECT * FROM nouvelle');
 $MesNews0 = $BDD->query('SELECT * FROM nouvelle WHERE Diffusion = 0');
+$MesNews2 = $BDD->query('SELECT * FROM nouvelle WHERE Diffusion = 2');
 $MesMembres = $BDD->query('SELECT * FROM adherent');
+$TbTicketMdp = $BDD->query('SELECT * FROM adherentrecovery');
+$TbIdFichiers = $BDD->query('SELECT * FROM fichiers');
 /* Je génère un tableau  */
 
 $TbTitle = array();
 $TbActivite = array();
+$TbActivite0 = array();
 $TbMesId = array();
 $TbNews = array();
 $TbNews0 = array();
+$TbNews2 = array();
 $TbMembres = array();
+$tbticketmdp = array();
+$tbfichiers = array();
 /* Ma valeur $Donnees sur les lignes de ma requête SQL $reponse */
 
 while ($Donnees = $Reponse->fetch()) {
@@ -30,17 +41,32 @@ while ($Donnees3 = $MesActivites->fetch()) {
     /* Mon $tbTitle avec comme clée chaque valeur de la colonne 'Key' de mes $Donnees sera égale à mes lignes $Donnees correspondante */
     $TbActivites[$Donnees3['IdActivite']] = $Donnees2;
 }
+while ($Donnees8 = $MesActivites0->fetch()) {
+    /* Mon $tbTitle avec comme clée chaque valeur de la colonne 'Key' de mes $Donnees sera égale à mes lignes $Donnees correspondante */
+    $TbActivites0[$Donnees8['IdActivite']] = $Donnees8;
+}
 while ($Donnees4 = $MesNews->fetch()) {
     /* Mon $tbTitle avec comme clée chaque valeur de la colonne 'Key' de mes $Donnees sera égale à mes lignes $Donnees correspondante */
     $TbNews[$Donnees4['IdNouvelle']] = $Donnees4;
 }
-while ($Donnees6 = $MesNews0->fetch()) {
+while ($Donnees7 = $MesNews0->fetch()) {
     /* Mon $tbTitle avec comme clée chaque valeur de la colonne 'Key' de mes $Donnees sera égale à mes lignes $Donnees correspondante */
-    $TbNews0[$Donnees6['IdNouvelle']] = $Donnees6;
+    $TbNews0[$Donnees7['IdNouvelle']] = $Donnees7;
+} while ($Donnees6 = $MesNews2->fetch()) {
+    /* Mon $tbTitle avec comme clée chaque valeur de la colonne 'Key' de mes $Donnees sera égale à mes lignes $Donnees correspondante */
+    $TbNews2[$Donnees6['IdNouvelle']] = $Donnees6;
 }
 while ($Donnees5 = $MesMembres->fetch()) {
     /* Mon $tbTitle avec comme clée chaque valeur de la colonne 'Key' de mes $Donnees sera égale à mes lignes $Donnees correspondante */
     $TbMembres[$Donnees5['IdAdherent']] = $Donnees5;
+}
+while ($Donnees8 = $TbTicketMdp->fetch()) {
+    /* Mon $tbTitle avec comme clée chaque valeur de la colonne 'Key' de mes $Donnees sera égale à mes lignes $Donnees correspondante */
+    $tbticketmdp[$Donnees8['Ticket']] = $Donnees8;
+}
+while ($Donnees9 = $TbIdFichiers->fetch()) {
+    /* Mon $tbTitle avec comme clée chaque valeur de la colonne 'Key' de mes $Donnees sera égale à mes lignes $Donnees correspondante */
+    $tbfichiers[$Donnees9['IdFichier']] = $Donnees9;
 }
 
 /* Si ma valeur page contient une valeur existante dans le tableau de mes titres alors $MaPage = laValeur */
@@ -62,6 +88,37 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
                 $MonModalBouton = 'Envoyer un nouveau mot de passe';
                 $modalhead = '<div class="text-center"><form id="mdpoublie" action="#">';
                 $modalfoot = '</form></div>';
+            }
+        }
+        if (isset($_GET['ticket']) && !empty($_GET['ticket']) && array_key_exists($_GET['ticket'], $tbticketmdp)) {
+            $query = 'SELECT IdAdherent, Mail, Login, Password FROM adherentrecovery WHERE Ticket = ?';
+            $result = $BDD->prepare($query);
+            $reponse = $result->execute(array(
+                $_GET['ticket']
+            ));
+            $row = $result->rowCount();
+            if ($row==1) {
+                while ($donnees = $result->fetch()) {
+                    $id = $donnees['IdAdherent'];
+                    $query2 = 'UPDATE adherent SET Password = ?';
+                    $mdp = My_Crypt($donnees['Password'], $donnees['Login']);
+                    $result2 = $BDD->prepare($query2);
+                    $reponse = $result2->execute(array(
+                    $mdp
+                ));
+                    $requete = $BDD->prepare('DELETE FROM adherentrecovery WHERE IdAdherent = ?');
+                    $requete->execute(array(
+                        $id
+                    ));
+                    $MonModalTitre = 'Nouveau mot de passe généré';
+                    $MonModalTexte = 'Votre nouveau mot de passe vous a été envoyé par mail. Merci de le changer par la suite.';
+                    $MonModalBouton = 'Ok';
+                    MailEngine::send('Votre nouveau mot de passe à été généré', 'vince.cda3@gmail.com', $donnees['Mail'], 'Moto Club Millau Passion', 'Bonjour, voici votre mot de passe pour Moto Club Millau Passion (http://cda27.s1.2isa.org) <br /> '.$donnees['Password'].'<br />Merci de penser à le changer dès que possible dans votre profil. A bientôt!');
+                }
+            } else {
+                $MonModalTitre = 'Expiration du lien';
+                $MonModalTexte = 'Votre ticket a expirer ou a déjà été utilisé, merci de regénérer un mot de passe.';
+                $MonModalBouton = 'Ok';
             }
         }
     }
@@ -113,7 +170,7 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
                 }
                 if ($_SESSION['User_Level'] > 2) {
                     $col = 4;
-                    $checked = $Admin == 1 ? 'checked' : ''; 
+                    $checked = $Admin == 1 ? 'checked' : '';
                     $AdminLabel =       '<div class="col-lg-4">
                                         <label class="py-0 mb-0" for="mobile">Admin</label>
                                         <input type="checkbox" name="Admin" value="1" '.$checked.'/>
@@ -165,6 +222,22 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
                     $titlenews = $donnees['Titre'];
                     $contenunews = $donnees['Texte'];
                 }
+            } elseif (array_key_exists($_GET['id'], $TbNews2) && isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 0) {
+                
+                //Mes id et value de boutons changent par rapport à la page où je suis. Dans le cas d'une newscontent je peux soit editer soit supprimer la nouvelle
+                $idboutonsuccess = 'editer';
+                $idboutondanger = 'annnuler';
+                $valueboutonsuccess = 'Editer la nouvelle';
+                $valueboutondanger = 'Supprimer la nouvelle';
+                //la requete de la table page
+                $reponse = $BDD->query('SELECT * FROM nouvelle WHERE IdNouvelle = '.$_GET['id']);
+   
+   
+                //boucle les données récupérées
+                while ($donnees = $reponse->fetch()) {
+                    $titlenews = $donnees['Titre'];
+                    $contenunews = $donnees['Texte'];
+                }
             } else {
                 $MaPage = 'news';
             }
@@ -172,7 +245,6 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
             $MaPage = 'news';
         }
     } elseif ($_GET['page'] == 'activitecontent') {
-        if (isset($_SESSION['Id'])) {
         if (isset($_GET['id']) && !empty($_GET['id'])) {
             if (array_key_exists($_GET['id'], $TbActivites)) {
     
@@ -185,19 +257,21 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
                 $valueboutondesinscrire = 'Se désinscrire de l\'activité';
                 $idboutonedit = 'inscriptionedit';
                 $valueboutonedit = 'Editer l\'activité';
-                $inscription = $BDD->query('SELECT * FROM inscription WHERE IdActivite = '.$_GET['id'].' AND IdAdherent = '.$_SESSION['Id']);
-                $rowinscrit = $inscription->rowCount();
-                if ($rowinscrit < 1) {
-                    $inscirt = null;
-                } else {
-                    $inscrit = 'nada';
-                }
-                if (isset($_GET['action']) && !empty($_GET['action'])) {
-                    if ($_GET['action'] == 'desinscrire') {
-                        $BDD->query('DELETE FROM inscription WHERE IdAdherent = ' .$_SESSION['Id']);
-                        $MonModalBouton = '<a href="./page-activitecontent-'.$_GET['id'].'">Ok</a>';
-                        $MonModalTexte = 'Vous êtes bien désinscrit de l\'activité';
-                        $MonModalTitre = 'Désinscription';
+                if (isset($_SESSION['Id'])) {
+                    $inscription = $BDD->query('SELECT * FROM inscription WHERE IdActivite = '.$_GET['id'].' AND IdAdherent = '.$_SESSION['Id']);
+                    $rowinscrit = $inscription->rowCount();
+                    if ($rowinscrit < 1) {
+                        $inscirt = null;
+                    } else {
+                        $inscrit = 'nada';
+                    }
+                    if (isset($_GET['action']) && !empty($_GET['action'])) {
+                        if ($_GET['action'] == 'desinscrire') {
+                            $BDD->query('DELETE FROM inscription WHERE IdAdherent = ' .$_SESSION['Id']);
+                            $MonModalBouton = '<a href="./page-activitecontent-'.$_GET['id'].'">Ok</a>';
+                            $MonModalTexte = 'Vous êtes bien désinscrit de l\'activité';
+                            $MonModalTitre = 'Désinscription';
+                        }
                     }
                 }
                 //la requete de la table page
@@ -214,7 +288,8 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
                     $reponse4 = $BDD->query('SELECT COUNT(i.IdAdherent)+SUM(i.NbInvités) as total FROM inscription as i JOIN adherent as b
                 WHERE i.IdAdherent = b.IdAdherent AND i.IdActivite ='.$_GET['id']);
                     while ($donnees3 = $reponse4->fetch()) {
-                        $total = '<h5>Nous serions donc un total de '.$donnees3['total'].' motards pour l\'activité</h5>';
+                        $motard = $donnees3['total'] == 1 ? 'motard' : 'motards';
+                        $total = '<h5>Nous serions donc un total de '.$donnees3['total'].' '.$motard.' pour l\'activité</h5>';
                     }
                 } else {
                     $nom = '<h5>Il n\'y a pas encore d\'inscription à cette activité</h5>';
@@ -253,19 +328,92 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
                 while ($donnees2 = $reponse2->fetch()) {
                     $type = $donnees2['IntituleType'];
                 }
+            } elseif (isset($_SESSION['User_Level']) && !empty($_SESSION['User_Level']) && $_SESSION['User_Level'] > 1 && array_key_exists($_GET['id'], $TbActivites0)) {
+    
+                    //Mes id et value de boutons changent par rapport à la page où je suis. Dans le cas d'une newscontent je peux soit editer soit supprimer la nouvelle
+                $idboutonsuccess = 'inscriptionactivite';
+                $valueboutonsuccess = 'S\'inscrire à l\'activité';
+                $idboutondanger = 'supprimer';
+                $valueboutondanger = 'Supprimer l\'activité';
+                $idboutondesinscrire = 'desinscrire';
+                $valueboutondesinscrire = 'Se désinscrire de l\'activité';
+                $idboutonedit = 'inscriptionedit';
+                $valueboutonedit = 'Editer l\'activité';
+                $inscription = $BDD->query('SELECT * FROM inscription WHERE IdActivite = '.$_GET['id'].' AND IdAdherent = '.$_SESSION['Id']);
+                $rowinscrit = $inscription->rowCount();
+                if ($rowinscrit < 1) {
+                    $inscirt = null;
+                } else {
+                    $inscrit = 'nada';
+                }
+                if (isset($_GET['action']) && !empty($_GET['action'])) {
+                    if ($_GET['action'] == 'desinscrire') {
+                        $BDD->query('DELETE FROM inscription WHERE IdAdherent = ' .$_SESSION['Id']);
+                        $MonModalBouton = '<a href="./page-activitecontent-'.$_GET['id'].'">Ok</a>';
+                        $MonModalTexte = 'Vous êtes bien désinscrit de l\'activité';
+                        $MonModalTitre = 'Désinscription';
+                    }
+                }
+                //la requete de la table page
+                $reponse = $BDD->query('SELECT * FROM activite WHERE IdActivite = '.$_GET['id']);
+                $reponse3 = $BDD->query('SELECT * FROM inscription as i JOIN adherent as b
+                    WHERE i.IdAdherent = b.IdAdherent AND i.IdActivite ='.$_GET['id']);
+                $nom = '';
+                $row=$reponse3->rowCount();
+                if ($row != 0) {
+                    while ($donnees3 = $reponse3->fetch()) {
+                        $nom .= '<li>'.$donnees3['Nom'].' '.$donnees3['Prenom'];
+                        $donnees3['NbInvités'] > 0 ? $nom .= ' qui invite '.$donnees3['NbInvités'].' invités.</li>':'</li>';
+                    }
+                    $reponse4 = $BDD->query('SELECT COUNT(i.IdAdherent)+SUM(i.NbInvités) as total FROM inscription as i JOIN adherent as b
+                    WHERE i.IdAdherent = b.IdAdherent AND i.IdActivite ='.$_GET['id']);
+                    while ($donnees3 = $reponse4->fetch()) {
+                        $motard = $donnees3['total'] == 1 ? 'motard' : 'motards';
+                        $total = '<h5>Nous serions donc un total de '.$donnees3['total'].' '.$motard.' pour l\'activité</h5>';
+                    }
+                } else {
+                    $nom = '<h5>Il n\'y a pas encore d\'inscription à cette activité</h5>';
+                    $total = '';
+                }
+                    
+        
+                //boucle les données récupérées
+                while ($donnees = $reponse->fetch()) {
+                    $titreactivite = $donnees['IntituleActivite'];
+                    $contenuactivite = $donnees['Description'];
+                    $datedebut = $donnees['DDebut'];
+                    $datefin = $donnees['DFin'];
+                    $datelimite = $donnees['DLimite'];
+                    $tarifa = $donnees['TarifAdherent'];
+                    $tarifi = $donnees['TarifInvite'];
+                    $typeid = $donnees['IdType'];
+                }
+                if (isset($_GET['inscrireactivite']) && !empty($_GET['inscrireactivite']) && $_GET['inscrireactivite'] == 1) {
+                    $MonModalBouton = 'Fermer';
+                    $MonModalTexte = 'Vous voulez vous inscrire à '.$titreactivite.', nous avons maintenant besoin de savoir si il y aura des invités avec vous.
+                        <div class="col-md-6 policesize">
+                        <form action="page-activitecontent-'.$_GET['id'].'" method="post" class="register-form" enctype="multipart/form-data">
+                        <input type="hidden" name="formulaire" value="inscriptionactivite" />
+                        <div class="form-group"><label class="ls text-uppercase color-3 fw-700 mb-0">Nombre d\'invités :</label><input class=" text-uppercase color-3 fw-700 
+                        form-control background-white" type="number" name="NombreInvite" min="0" max="300" value="0" required="required"></div>
+                        </div>
+                        <div class="col-12  mt-2">
+                        <button id="'.$idboutonsuccess.'" type="submit" class="btn btn-success float-right lead">'.$valueboutonsuccess.'</button>                                               
+                        </div>
+                        </form>
+                        ';
+                    $MonModalTitre = 'Inscription à l\'activité';
+                }
+                $reponse2 = $BDD->query('SELECT * FROM type_activite WHERE IdType = '.$typeid);
+                while ($donnees2 = $reponse2->fetch()) {
+                    $type = $donnees2['IntituleType'];
+                }
             } else {
                 $MaPage = 'activites';
             }
         } else {
             $MaPage = 'activites';
         }
-        } else {
-            $MaPage = 'accueil';
-            $MonModalTexte = 'Vous devez être enregistré pour avoir accès aux activités';
-            $MonModalTitre = 'Accès refusé';
-            $MonModalBouton = 'Fermer';
-        }
-
     } elseif ($_GET['page'] == 'editactivite') {
         if (isset($_GET['id']) && !empty($_GET['id'])) {
             if (array_key_exists($_GET['id'], $TbActivites)) {
@@ -433,40 +581,59 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
             }
         }
     } elseif ($_GET['page'] == 'liste') {
-            if (isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 1) {
-                $trie = 0;
-                if (isset($_GET['action'])) {
-                    if ($_GET['action'] == 'desc') {
-                        $trie = '0';
-                    }elseif ($_GET['action'] == 'asc') {
-                        $trie = '1';
-                    }
+        if (isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 1) {
+            $trie = 0;
+            if (isset($_GET['action'])) {
+                if ($_GET['action'] == 'desc') {
+                    $trie = '0';
+                } elseif ($_GET['action'] == 'asc') {
+                    $trie = '1';
                 }
-                if (isset($_GET['id']) && (!empty($_GET['id'])) && array_key_exists($_GET['id'], $TbMesId)) {
-                    if (isset($_GET['action']) && !empty($_GET['action'])) {
-                        if ($_GET['action'] == 'active') {
-                            $Query = 'UPDATE adherent SET 
+            }
+            if (isset($_GET['id']) && (!empty($_GET['id'])) && array_key_exists($_GET['id'], $TbMesId)) {
+                if (isset($_GET['action']) && !empty($_GET['action'])) {
+                    if ($_GET['action'] == 'active') {
+                        $Query = 'UPDATE adherent SET 
                                 Active = ?
                                 WHERE IdAdherent = ?';
-                            $reponse = $BDD->prepare($Query);
-                            $result = $reponse->execute(array(
+                        $reponse = $BDD->prepare($Query);
+                        $result = $reponse->execute(array(
                             1,
                             $_GET['id']
                     ));
-                        } elseif ($_GET['action'] == 'desactive') {
-                            $Query = 'UPDATE adherent SET 
+                    } elseif ($_GET['action'] == 'desactive') {
+                        $Query = 'UPDATE adherent SET 
                                 Active = ?
                                 WHERE IdAdherent = ?';
-                            $reponse = $BDD->prepare($Query);
-                            $reponse->execute(array(
+                        $reponse = $BDD->prepare($Query);
+                        $reponse->execute(array(
                             0,
                             $_GET['id']
                     ));
-                        }
                     }
+                }
+            }
+        }
+    } elseif ($_GET['page'] == 'listefichiers' && array_key_exists($_GET['id'], $tbfichiers)) {
+        if (isset($_GET['action']) && !empty($_GET['action']) && $_GET['action'] == 'delete') {
+            $Query = 'DELETE FROM fichiers WHERE 
+                                IdFichier = ?';
+            $reponse = $BDD->prepare($Query);
+            $reponse->execute(array(
+                            $_GET['id']
+                    ));
+        }
+    } elseif ($_GET['page'] == 'ajouttype') {
+        if (isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 1) {
+            $MonModalTexte = 'Ce formulaire sert à ajouter un nom de type d\'activité</p><div class="row col-12"> <form method="post" action="./">
+        <input type="hidden" name="formulaire" value="ajouttype" />
+        <input class="col-12" type="text" name="intitule" placeholder="Ecrivez ici le nom du type d\'activité que vous voulez ajouter"/>
+        <button type="submit" class="btn btn-success btn-sm col-12 mt-1 mb-5 ">Ajouter ce type d\'activité</button>
+        </form></p>';
+            $MonModalBouton = 'Annuler';
+            $MonModalTitre = 'Ajout d\'un type d\'activité';
         }
     }
-}
 } else {
     $MaPage = 'accueil';
 }   //test sur les action de page
@@ -476,3 +643,6 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
 /* Mon titre de page présent dans header est donc égal au titre de la valeur correspondante au tableau suivant la page. (accueil par défaut) */
 
 $Titre = $TbTitle[$MaPage]['Titre'];
+$Description = $TbTitle[$MaPage]['Description'];
+$Keywords = $TbTitle[$MaPage]['Keywords'];
+$Sujet = $TbTitle[$MaPage]['Sujet'];

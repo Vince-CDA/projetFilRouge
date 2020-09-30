@@ -237,6 +237,16 @@ image: {
     var description = test;
     var title = $('input[name=title]').val();
     var publier = $('input[name=diffusion]').is(':checked') === true ? '1' : '0'; 
+    var publier2 = $('input[name=diffusion2]').is(':checked') === true ? '2' : '0'; 
+    if (publier === '0' && publier2 === '2') {
+      publier = '2';
+    } else if (publier === '1' && publier2 === '2') {
+    publier = '2';
+  } else if (publier === '1' && publier2 === '0') {
+    publier = '1';
+  } else {
+    publier = '0';
+  }
     //methode Ajax
     var request = $.ajax({
         url: "./libs/methode_ajax.php",
@@ -249,9 +259,8 @@ image: {
         //console.log(msg);
         //afichage de la modal ave
         $('.modal-body p').html(msg);
-
-        $('')
-
+        $('.modal .btn').html('Ok');
+        $('.modal-title').html('Information');
         $(".modal").show();
         //$( "#log" ).html( msg );
       window.setTimeout("location=('./page-news')",2000);
@@ -275,6 +284,16 @@ $('#editer').on('click', function(){
   var title = $('input[name=title]').val();
   var id = $('input[name=id]').val();
   var publier = $('input[name=diffusion]').is(':checked') === true ? '1' : '0'; 
+  var publier2 = $('input[name=diffusion2]').is(':checked') === true ? '2' : '0'; 
+  if (publier === '0' && publier2 === '2') {
+    publier = '2';
+  } else if (publier === '1' && publier2 === '2') {
+  publier = '2';
+} else if (publier === '1' && publier2 === '0') {
+  publier = '1';
+} else {
+  publier = '0';
+} 
   //methode Ajax
   var request = $.ajax({
       url: "./libs/methode_ajax.php",
@@ -287,9 +306,8 @@ $('#editer').on('click', function(){
       //console.log(msg);
       //afichage de la modal ave
       $('.modal-body p').html(msg);
-
-      $('')
-
+      $('.modal .btn').html('Ok');
+      $('.modal-title').html('Information');
       $(".modal").show();
       //$( "#log" ).html( msg );
       window.setTimeout("location=('./page-newscontent-'+$('input[name=id]').val())",2000);
@@ -345,13 +363,13 @@ $('#ajoutactivite').on('click', function(){
       //console.log(msg);
       //afichage de la modal ave
       $('.modal-body p').html(msg);
-
-      $('')
-
+      $('.modal .btn').html('Ok');
+      $('.modal-title').html('Information');
       $(".modal").show();
       //$( "#log" ).html( msg );
+      if (msg == 'L\'activité a bien été ajoutée') {
       window.setTimeout("location=('./page-activites')",2000);
-
+    }
   });
 
   //erreur 404 ou 500 - le serveur ne repond pas, erreur PHP ?
@@ -405,9 +423,8 @@ $('#updateactivite').on('click', function(){
       //console.log(msg);
       //afichage de la modal ave
       $('.modal-body p').html(msg);
-
-      $('')
-
+      $('.modal .btn').html('Ok');
+      $('.modal-title').html('Information');
       $(".modal").show();
       //$( "#log" ).html( msg );
       window.setTimeout("location=('./page-activitecontent-'+$('input[name=id]').val());",2000);
@@ -571,6 +588,7 @@ $('#mdpoublier').on('click', function() {
 
   if(document.getElementById("mdpoublie").checkValidity()) {
     var data = new FormData(document.getElementById("mdpoublie"));
+    $('.modal .modal-body p').remove();
 
     $.ajax({
       url: "./libs/methode_ajax.php",
@@ -579,7 +597,8 @@ $('#mdpoublier').on('click', function() {
       dataType: "json"
     }).then( function(data) {
       $('.modal .modal-body p').remove();
-      $('.modal .modal-body').html('<p>'+data.data+'</p>');
+      $('.modal .modal-body').html('<p></p>');
+      $('.modal .modal-body p').html(data.data);
       $('.modal .btn').html(data.btn);
       $('.modal-title').html(data.titre);
       $(".modal").show();

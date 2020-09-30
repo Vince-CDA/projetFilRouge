@@ -39,7 +39,7 @@
                 if (isset($_GET['action']) && !empty($_GET['action']) && $_GET['action'] == 'desc') {
                     $trie = 0;
                     $trie2 = 1;
-                }else {
+                } else {
                     $trie = 1;
                     $trie2 = 0;
                 }
@@ -51,7 +51,7 @@
                     $Nom = $donnees['Nom'];
                     $Login = $donnees['Login'];
                     $Active = $donnees['Active'];
-                    $Statut = $Active == 1 ? 'Activé' : 'Désactivé'; 
+                    $Statut = $Active == 1 ? 'Activé' : 'Désactivé';
                     $LienDesactiver = '<a href="./page-liste-'.$IdAdherent.'-desactive">Désactiver l\'adhérent</a>';
                     $LienActiver = '<a href="./page-liste-'.$IdAdherent.'-active">Activer l\'adhérent</a>';
                     $LienProfilId = '<a href="./page-profil-'.$IdAdherent.'">Profil de l\'adhérent</a>';
@@ -64,14 +64,13 @@
                     $Nom = $donnees['Nom'];
                     $Login = $donnees['Login'];
                     $Active = $donnees['Active'];
-                    $Statut = $Active == 1 ? 'Activé' : 'Désactivé'; 
+                    $Statut = $Active == 1 ? 'Activé' : 'Désactivé';
                     $LienDesactiver = '<a href="./page-liste-'.$IdAdherent.'-desactive">Désactiver l\'adhérent</a>';
                     $LienActiver = '<a href="./page-liste-'.$IdAdherent.'-active">Activer l\'adhérent</a>';
                     $LienProfilId = '<a href="./page-profil-'.$IdAdherent.'">Profil de l\'adhérent</a>';
                     $LienDeleteAdherent = '<a href="./page-membres-'.$IdAdherent.'-delete">Supprimer l\'adhérent</a>';
                     include('./includes/template/listmembres.php');
                 }
-
             }
 ?>
 

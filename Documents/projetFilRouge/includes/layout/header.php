@@ -11,6 +11,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"><!--  -->
     <!--    Document Title-->
     <title><?php echo $Titre; ?></title><!--  -->
+    <meta name="Content-Type" content="UTF-8">
+    <meta name="Content-Language" content="fr">
+    <meta name="Description" content="<?php echo $Description ?>">
+    <meta name="Keywords" content="<?php echo $Keywords ?>">
+    <meta name="Subject" content="<?php echo $Sujet ?>">
+    <meta name="Copyright" content="Vincent Mundo - CDA3">
+    <meta name="Author" content="Vincent Mundo - CDA3">
+    <meta name="Identifier-Url" content="http://cda27.s1.2isa.org/page-<?php echo isset($_GET['page']) ? $_GET['page'] : 'accueil' ;?>">
+    <meta name="Revisit-After" content="1 day">
+    <meta name="Robots" content="all">
+    <meta name="Rating" content="general">
+    <meta name="Geography" content="12100">
+    <!-- Open Graph Begin -->
+        <meta property="og:title" content="<?php echo $Titre; ?>">
+        <meta property="og:site_name" content="<?php echo $Description ?>">
+        <meta property="og:url" content="http://cda27.s1.2isa.org/page-<?php echo isset($_GET['page']) ? $_GET['page'] : 'accueil' ;?>">
+        <meta property="og:description" content="Devenez adhérent et profitez de nos sorties à moto avec Moto club Millau Passion">
+        <meta property="og:type" content="website">
+        <meta property="og:image" content="https://motoclubmillaupassion.com/img/divers/logo.jpg">
+<!-- Open Graph End -->
     <!--    Favicons-->
     <link rel="apple-touch-icon" sizes="180x180" href="./images/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./images/favicons/favicon-32x32.png">
@@ -132,7 +152,9 @@
                                     <?php if (isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 1) {
                                 ?>
                                     <li><a class="menu-deroul" href="page-ajoutactivite">Ajouter une activité</a></li>
+                                    <li><a class="menu-deroul" href="page-ajouttype">Ajouter un type d'activité</a></li>
                                     <li><a class="menu-deroul" href="page-ajoutnews">Ajouter une nouvelle</a></li>
+                                    <li><a class="menu-deroul" href="page-liste">Afficher la liste des membres</a></li>
                                     <?php
                             } ?>
                                     <li role="separator" class="menu-deroul divider"></li>

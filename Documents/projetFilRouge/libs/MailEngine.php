@@ -1,28 +1,29 @@
 <?php
 namespace Lib;
+
 if (isset($ajax) && $ajax == 1) {
     require_once './PHPMailer/PHPMailer.php';
     require_once './../config/configPHPMailer.php';
-    }else{
-        require_once './PHPMailer/PHPMailer.php';
-        require_once './config/configPHPMailer.php';
-    }
+} else {
+    require_once './PHPMailer/PHPMailer.php';
+    require_once './config/configPHPMailer.php';
+}
 use PHPMailer\PHPMailer\PHPMailer;
 
 class MailEngine
 {
     //Configuration du smtp avec les données du tableau de configPHPMailer.php
     public static function CreateMail()
-    { 
+    {
         global $ConfigServMail;
         global $ajax;
         if (isset($ajax) && $ajax == 1) {
             require_once './PHPMailer/PHPMailer.php';
             require_once './../config/configPHPMailer.php';
-            }else{
-                require_once './PHPMailer/PHPMailer.php';
-                require_once './config/configPHPMailer.php';
-            }
+        } else {
+            require_once './PHPMailer/PHPMailer.php';
+            require_once './config/configPHPMailer.php';
+        }
         $mail = new PHPMailer(true);
         //Config
         $mail->SMTPDebug = $ConfigServMail['SMTPDebug'];

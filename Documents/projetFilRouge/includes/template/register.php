@@ -29,21 +29,21 @@
                                         <label class="py-0 mb-0" for="name">Identifiant</label>
                                         <br /><input size="16" type="text" id="login" name="Login" value="<?php echo isset($Identifiant) ? $Identifiant.'" disabled class="field left"' : '"' ?> placeholder="" required />
                                     </div>
-                                    <?php if(!isset($_SESSION['Id'])) {
+                                    <?php if (!isset($_SESSION['Id'])) {
                                         ?>
                                     <div class="col-lg-6">
                                         <label class="py-0 mb-0"  for="name">Mot de passe</label>
                                         <br /><input size="16" type="password" id="password" name="Password" value="" placeholder="" required />
                                     </div>
                                     <?php
-                                    } else { 
-                                    ?>
+                                    } else {
+                                        ?>
                                     <div class="col-lg-6">
                                     <label class="py-0 mb-0 col-12"  for="name">Mot de passe</label>
                                     <a href="./page-profil-<?php echo $_GET['id']; ?>-pass" class="btn btn-warning btn-sm">Modifier</a>
                                     </div>
                                     <?php
-                                    } 
+                                    }
                                     ?>
                                     <div class="col-lg-6">
                                         <label class="py-0 mb-0"  for="name">Prénom</label>

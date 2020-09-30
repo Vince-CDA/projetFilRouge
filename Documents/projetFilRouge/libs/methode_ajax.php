@@ -35,14 +35,14 @@ if (isset($_POST['informations'])) {
                 if (isset($_POST['description']) && !empty($_POST['description'])) {
                     if (isset($_POST["title"]) && !empty($_POST["title"])) {
                         $titre = strip_tags($_POST["title"]);
-                        if (isset($_POST["id"]) && !empty($_POST["id"]) && array_key_exists($_POST["id"], $TbIdNouvelle)) {
-                            $fichier = '';
-                            if (isset($_POST['fichier']) && null !== $_POST['fichier']) {
-                                $fichier = $_POST['fichier'];
-                            } else {
-                                $fichier = ' ';
-                            }
-                            $Query = 'INSERT INTO nouvelle(
+                        
+                        $fichier = '';
+                        if (isset($_POST['fichier']) && null !== $_POST['fichier']) {
+                            $fichier = $_POST['fichier'];
+                        } else {
+                            $fichier = ' ';
+                        }
+                        $Query = 'INSERT INTO nouvelle(
                                     Titre,
                                     Texte,
                                     Fichier,
@@ -50,19 +50,16 @@ if (isset($_POST['informations'])) {
                                     DPubli
                                     ) VALUES ( ?, ?, ?, ?, NOW() )'
                                      ;
-                            $response = $BDD->prepare($Query);
-                            $result = $response->execute(
-                                    array(
+                        $response = $BDD->prepare($Query);
+                        $result = $response->execute(
+                            array(
                                         $titre,
                                         $_POST["description"],
                                         $fichier,
                                         $_POST["publier"]
                                     )
-                                );
-                            echo 'La nouvelle a bien été ajoutée';
-                        } else {
-                            echo 'L\'id de la nouvelle est invalide ou n\'existe pas';
-                        }
+                        );
+                        echo 'La nouvelle a bien été ajoutée';
                     } else {
                         echo 'Le titre est vide';
                     }
@@ -141,21 +138,21 @@ if (isset($_POST['informations'])) {
                 if (isset($_POST['intituleactivite']) && !empty($_POST['intituleactivite'])) {
                     $intitule = strip_tags($_POST['intituleactivite']);
                     if (isset($_POST['ddebut']) && isset($_POST['dfin']) && isset($_POST['dlimite']) && !empty($_POST['ddebut']) && !empty($_POST['dfin']) && !empty($_POST['dlimite'])) {
-                        if ($_POST['dfin'] > $_POST['ddebut'] && $_POST['dlimite'] < $_POST['dfin'] && $_POST['dlimite'] > $_POST['ddebut']) {
-                        if (isset($_POST['description']) && !empty($_POST['description'])) {
-                            $description = str_replace('<script>', ' ', $_POST['description']);
-                            $description = str_replace('</script>', ' ', $description);
-                            $description = str_replace('<style>', ' ', $description);
-                            $description = str_replace('</style>', ' ', $description);
-                            if (isset($_POST['tarifadherent']) && !empty($_POST['tarifadherent']) && isset($_POST['tarifinvite']) && !empty($_POST['tarifinvite'])) {
-                                if (isset($_POST['idadherent']) && !empty($_POST['idadherent'] && array_key_exists($_POST['idadherent'], $TbIdAdherent))) {
-                                    if (isset($_POST['idtype']) && !empty($_POST['idtype']) && array_key_exists($_POST['idtype'], $TbType)) {
-                                        if (isset($_POST['fichier']) && !empty($_POST['fichier'])) {
-                                            $fichier = $_POST['fichier'];
-                                        } else {
-                                            $fichier = ' ';
-                                        }
-                                        $Query = 'INSERT INTO activite (
+                        if ($_POST['dfin'] > $_POST['ddebut'] && $_POST['dlimite'] < $_POST['dfin'] && $_POST['dlimite'] < $_POST['ddebut']) {
+                            if (isset($_POST['description']) && !empty($_POST['description'])) {
+                                $description = str_replace('<script>', ' ', $_POST['description']);
+                                $description = str_replace('</script>', ' ', $description);
+                                $description = str_replace('<style>', ' ', $description);
+                                $description = str_replace('</style>', ' ', $description);
+                                if (isset($_POST['tarifadherent']) && !empty($_POST['tarifadherent']) && isset($_POST['tarifinvite']) && !empty($_POST['tarifinvite'])) {
+                                    if (isset($_POST['idadherent']) && !empty($_POST['idadherent'] && array_key_exists($_POST['idadherent'], $TbIdAdherent))) {
+                                        if (isset($_POST['idtype']) && !empty($_POST['idtype']) && array_key_exists($_POST['idtype'], $TbType)) {
+                                            if (isset($_POST['fichier']) && !empty($_POST['fichier'])) {
+                                                $fichier = $_POST['fichier'];
+                                            } else {
+                                                $fichier = ' ';
+                                            }
+                                            $Query = 'INSERT INTO activite (
                 IntituleActivite,
                 DDebut,
                 DFin,
@@ -168,9 +165,9 @@ if (isset($_POST['informations'])) {
                 Fichier,
                 Publier) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
               
-                                        $reponse = $BDD->prepare($Query);
-                                        $reponse->execute(
-                    array(
+                                            $reponse = $BDD->prepare($Query);
+                                            $reponse->execute(
+                                                array(
                                                   $intitule,
                                                   $_POST["ddebut"],
                                                   $_POST["dfin"],
@@ -183,26 +180,27 @@ if (isset($_POST['informations'])) {
                                                   $fichier,
                                                   $_POST["publier"]
               )
-                );
-                                        echo 'L\'activité a bien été ajoutée';
+                                            );
+                
+                                            echo 'L\'activité a bien été ajoutée et une catégorie de photo à été créée';
+                                        } else {
+                                            echo 'Erreur dans l\'id du type d\'activité';
+                                        }
                                     } else {
-                                        echo 'Erreur dans l\'id du type d\'activité';
+                                        echo 'Erreur dans l\'id adhérent';
                                     }
                                 } else {
-                                    echo 'Erreur dans l\'id adhérent';
+                                    echo 'Erreur dans les tarifs';
                                 }
                             } else {
-                                echo 'Erreur dans les tarifs';
+                                echo 'Erreur dans la description de l\'activité';
                             }
                         } else {
-                            echo 'Erreur dans la description de l\'activité';
+                            echo 'La date de début doit être avant la date limite et la date de fin (dans cet ordre)';
                         }
                     } else {
-                        echo 'La date de début doit être avant la date limite et la date de fin (dans cet ordre)';
+                        echo 'Erreur dans les dates';
                     }
-                } else {
-                    echo 'Erreur dans les dates';
-                }
                 } else {
                     echo 'Erreur dans l\'intitulé de l\'activité';
                 }
@@ -265,7 +263,7 @@ if (isset($_POST['informations'])) {
                                                   $_POST["publier"],
                                                   $_POST['id']
                                                      )
-                                                );
+                                        );
                                         echo 'L\'activité a bien été mise à jour';
                                     } else {
                                         echo 'Erreur dans l\'id du type d\'activité';
@@ -362,10 +360,10 @@ function GetMemberInfos($BDD, $IdMembre)
     $query = 'SELECT IdAdherent, Apropos FROM adherent where IdAdherent = :id ';
     $reponse = $BDD->prepare($query);
     $reponse->execute(array('id'=> $IdMembre));
-    while ($donnees = $reponse->fetch(PDO::FETCH_ASSOC)) {    
-    $apropos = $donnees['Apropos'];
-}
-return array (
+    while ($donnees = $reponse->fetch(PDO::FETCH_ASSOC)) {
+        $apropos = $donnees['Apropos'];
+    }
+    return array(
     "1" => $apropos,
     "2" => 'A propos de ce membre'
 );
@@ -387,18 +385,33 @@ function renvoyermdp($data, $BDD)
             $IdAdherent = $donnees['IdAdherent'];
             $login = $donnees['Login'];
         }
-        $query2 = 'INSERT INTO adherentrecovery (Password, IdAdherent, Ticket) values (?, ?, ?)';
+        $query3 = 'SELECT * FROM adherentrecovery WHERE IdAdherent = ?';
+        $reponseexist = $BDD->prepare($query3);
+        $reponseexist->execute(
+            array(
+                $IdAdherent
+            )
+        );
+        if ($reponseexist->rowCount() == 1) {
+            return array(
+                    '1'=>'Vous avez déjà fait une demande de réinitialisation de mot de passe, verifiez vos emails. Si vous avez un problème, contactez l\'administrateur dans <a href="./page-contact">Contact</a>',
+                    '2'=>'Ok',
+                    '3'=>'Echec!'
+                );
+        }
+        $query2 = 'INSERT INTO adherentrecovery (Password, IdAdherent, Ticket, Mail, Login) values (?, ?, ?, ?, ?)';
         $password = Genere_Password(20);
         $ticket = Genere_Password(40);
-        $password = My_Crypt($password, $login);
         $reponse2 = $BDD->prepare($query2);
         $reponse2->execute(array(
                 $password,
                 $IdAdherent,
-                $ticket
+                $ticket,
+                $data->{"email"},
+                $login
             ));
         $message = "Bonjour, votre mot de passe sur le site Moto Club Millau Passion peut être regénéré à l'adresse suivant : 
-            http://cda27.s1.2isa.org/index.php?page=connexion&recovery=".$ticket." <br /><br />Merci de ne pas tenir compte de cet email si vous n'êtes pas l'auteur de la demande.";
+            http://cda27.s1.2isa.org/index.php?page=connexion&ticket=".$ticket." <br /><br />Merci de ne pas tenir compte de cet email si vous n'êtes pas l'auteur de la demande.";
         MailEngine::send('Regénération du mot de passe', 'vince.cda3@gmail.com', $email, 'No reply', $message);
         return array(
                 '1'=>'Un email vous a été envoyé pour générer un nouveau mot de passe',
@@ -428,8 +441,7 @@ if (isset($_POST["action"])) {
                     'deco' => $result['4']
                 );
                 echo json_encode($retour);
-            } 
-            catch (Exception $e) {
+            } catch (Exception $e) {
                 $retour = array(
                     'success' => false,
                     'titre' => 'Echec!',
@@ -477,5 +489,5 @@ if (isset($_POST["action"])) {
                 http_response_code(400);
             }
             break;
-    }       
+    }
 }
