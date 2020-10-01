@@ -37,7 +37,9 @@ if (isset($_GET['delete'])) {
         $add_category = trim($_POST['add_category']);
         $add_category = space_or_dash(' ', $add_category); // Convert space to dash
         $add_category = strtolower($add_category);
-      
+        $search  = array(0,1,2,3,4,5,6,7,8,9);
+        $replace = array('zero', 'un', 'deux', 'trois', 'quatre', 'cinq', 'six', 'sept', 'huit', 'neuf');
+        $add_category = str_replace($search, $replace, $add_category);        
         $add_category = './gallery/'.$add_category;
         if (!file_exists($add_category)) {
             mkdir($add_category, 0777);
@@ -45,10 +47,10 @@ if (isset($_GET['delete'])) {
             // after creating the directory, on some hosts
             $action_status_message = '<p>' . $translator->string('Créer une catégorie (pas d\'espaces!):') .' <b>'. $_POST['add_category'] .'</b></p>';
         } else {
-            $action_status_message = '<p><b>'.$_POST['add_category'] .'</b> '. $translator->string('Cette catégorie existe déjà') . '</p>';
+            $action_status_message = '<p><b>'.$_POST['add_category'] .'</b> '. $translator->string('Cette catégorie existe déjà ou possède des chiffres, les chiffres sont interdits') . '</p>';
         }
     } else {
-        $action_status_message = '<p>' . $translator->string('Nom de catégorie invalide (Caractère spéciaux ou espaces ?)') .' <b>'. $_POST['add_category'] .'</b></p>';
+        $action_status_message = '<p>' . $translator->string('Nom de catégorie invalide (Caractère spéciaux, chiffres ou espaces mis en cause ?)') .' <b>'. $_POST['add_category'] .'</b></p>';
     }
 } elseif ((isset($_GET['category'])) && (isset($_GET['set_preview_image']))) {
     // SET CATEGORY PREVIEW
@@ -103,7 +105,7 @@ $HTML_article_content .= '
   <section class="column">
     <h2>'.$translator->string("Créer une catégorie :").'</h2>
     <form action="./index.php?page=admin" method="post" enctype="multipart/form-data" id="add_categoryForm">
-      <label>'.$translator->string("Nom de la catégorie (sans espaces ni caractères sépciaux) :").'</label>
+      <label>'.$translator->string("Nom de la catégorie (sans espaces ni chiffres ni caractères spéciaux) :").'</label>
       <input type="text" name="add_category">
       <input type="submit" class="button" value="'.$translator->string("Créer").'">
     </form>

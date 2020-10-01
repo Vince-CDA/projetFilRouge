@@ -6,7 +6,7 @@ use Lib\MailEngine;
 
 $Reponse = $BDD->query('SELECT * FROM pages');
 $MesId = $BDD->query('SELECT * FROM adherent');
-$MesActivites = $BDD->query('SELECT * FROM activite WHERE Publier = 1');
+$MesActivites = $BDD->query('SELECT * FROM activite WHERE Publier = 1 OR Publier = 0');
 $MesActivites0 = $BDD->query('SELECT * FROM activite WHERE Publier = 0');
 $MesNews = $BDD->query('SELECT * FROM nouvelle');
 $MesNews0 = $BDD->query('SELECT * FROM nouvelle WHERE Diffusion = 0');
@@ -613,6 +613,8 @@ if (isset($_GET['page']) && array_key_exists($_GET['page'], $TbTitle)) {
                     }
                 }
             }
+        } else {
+            $MaPage = 'accueil';
         }
     } elseif ($_GET['page'] == 'listefichiers' && array_key_exists($_GET['id'], $tbfichiers)) {
         if (isset($_GET['action']) && !empty($_GET['action']) && $_GET['action'] == 'delete') {

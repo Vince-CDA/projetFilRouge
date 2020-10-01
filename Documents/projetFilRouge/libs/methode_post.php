@@ -139,7 +139,7 @@ if (!empty($_POST)) {
                     $MonModalTitre = 'Succès !';
                     $MonModalTexte = 'Votre inscription a bien été prise en compte, vous serez recontacté par mail quand un organisateur aura confirmé votre inscription.';
                     $MonModalBouton = '<a href="./index.php">Retour à la page d\'accueil</a>';
-                    MailEngine::send('Le membre '.$_POST["Prenom"].' '.$_POST["Nom"].' vient de s\'inscrire sur MCMP', $_POST["Email"], $_POST['Login'], 'Vous avez un nouvel inscrit sur votre site MCMP, direction http://cda27.s1.2isa.org/page-liste pour activer le nouveau membre et n\'oubliez pas de répondre à cet email quand ce membre sera activé!');
+                    MailEngine::send('Le membre '.$_POST["Prenom"].' '.$_POST["Nom"].' vient de s\'inscrire sur MCMP', $_POST["Email"], 'vince.cda3@gmail.com', $_POST['Login'], 'Vous avez un nouvel inscrit sur votre site MCMP, direction http://cda27.s1.2isa.org/page-liste pour activer le nouveau membre et n\'oubliez pas de répondre à cet email quand ce membre sera activé!');
                 }
             } else {
                 //Sinon echec mdoal
@@ -400,7 +400,7 @@ if (!empty($_POST)) {
                     try {
                         //J'essai d'envoyer le mail puis j'indique que le message est envoyé via ma modal
                 
-                        MailEngine::send($subject, $expediteur, 'v.mundoegea@gmail.com', $nom, $message);
+                        MailEngine::send($subject, $expediteur, 'vince.cda3@gmail.com', $nom, $message);
                         //MailEngine::SendConfirmation($subject, $message);
                         $MonModalTexte = 'Message envoyé.';
                         $MonModalTexte = 'Le message a bien été envoyé.';
@@ -571,7 +571,7 @@ if (!empty($_POST)) {
                         $intitule = substr($intitule, 0, 250);
                         $intitule = preg_replace('/[^A-Za-z0-9\s.\s-]/', '', $intitule);
                         $intitule = preg_replace('/\d+/u', '', $intitule);
-                        mkdir('../gallery/'.$intitule.'', 0777);
+                        mkdir('./gallery/'.$intitule.'', 0777);
                         $MonModalTitre = 'Succès';
                         $MonModalTexte = 'Le type d\'activité a bien été ajouté ansi qu\'une catégorie dans galerie';
                         $MonModalBouton = '<a href="./page-ajoutactivite">Aller ajouter une activité</a>';
