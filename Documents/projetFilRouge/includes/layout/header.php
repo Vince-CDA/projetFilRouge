@@ -30,6 +30,7 @@
         <meta property="og:description" content="Devenez adhérent et profitez de nos sorties à moto avec Moto club Millau Passion">
         <meta property="og:type" content="website">
         <meta property="og:image" content="https://motoclubmillaupassion.com/img/divers/logo.jpg">
+
 <!-- Open Graph End -->
     <!--    Favicons-->
     <link rel="apple-touch-icon" sizes="180x180" href="./images/favicons/apple-touch-icon.png">
@@ -149,6 +150,7 @@
                                 <ul class="dropdown-menu shadow" aria-labelledby="dropdownMenu1">
                                     <li><a class="menu-deroul" href="page-profil-<?php echo $_SESSION['Id'] ?>">Mon profil</a></li>
                                     <li><a class="menu-deroul" href="page-membres">Membres</a></li>
+                                    <li><a class="menu-deroul" href="page-listefichiers">Fichiers ressource</a></li>
                                     <?php if (isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 1) {
                                 ?>
                                     <li><a class="menu-deroul" href="page-ajoutactivite">Ajouter une activité</a></li>

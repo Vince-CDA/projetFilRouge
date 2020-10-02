@@ -1,0 +1,2122 @@
+-- phpMyAdmin SQL Dump
+-- version 4.8.4
+-- https://www.phpmyadmin.net/
+--
+-- Hôte : localhost
+-- Généré le :  ven. 02 oct. 2020 à 13:17
+-- Version du serveur :  5.5.55-0+deb8u1
+-- Version de PHP :  7.3.0-2+0~20181217092615.24+jessie~1.gbp54e52f
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de données :  `cda27_bd1`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `activite`
+--
+
+CREATE TABLE `activite` (
+  `IdActivite` int(11) NOT NULL,
+  `IntituleActivite` varchar(100) DEFAULT NULL,
+  `DDebut` datetime DEFAULT NULL,
+  `DFin` datetime DEFAULT NULL,
+  `Description` longblob,
+  `TarifAdherent` varchar(50) DEFAULT NULL,
+  `TarifInvite` varchar(50) DEFAULT NULL,
+  `DLimite` datetime DEFAULT NULL,
+  `IdAdherent` int(11) NOT NULL,
+  `IdType` int(11) NOT NULL DEFAULT '1',
+  `Fichier` text,
+  `Publier` int(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `activite`
+--
+
+INSERT INTO `activite` (`IdActivite`, `IntituleActivite`, `DDebut`, `DFin`, `Description`, `TarifAdherent`, `TarifInvite`, `DLimite`, `IdAdherent`, `IdType`, `Fichier`, `Publier`) VALUES
+(55, 'Sortie vers la Puncho puis pique nique', '2020-01-11 08:30:00', '2020-01-11 17:00:00', 0x3c703e536f7274696520706f7572207069717565206e697175657220c3a0206c612050756e63686f2c206170706f7274657a20736175636973736f6e2065742066726f6d616765206574206269656e2073c3bb7220766f73206d6f746f73213c2f703e3c66696775726520636c6173733d22696d616765223e3c696d67207372633d2268747470733a2f2f65787465726e616c2d636f6e74656e742e6475636b6475636b676f2e636f6d2f69752f3f753d68747470253341253246253246616466682e6e657425324677702d636f6e74656e7425324675706c6f61647325324632303134253246303725324670697175652d6e697175652d322d3137393831302e6a706726616d703b663d3126616d703b6e6f66623d312220616c743d2250697175652d4e697175652064652072656e7472c3a96520c3a0204c61747465732028333429206c6520362f392f313420e280932041444648223e3c2f6669677572653e, '100', '120', '2020-01-08 18:00:00', 45, 1, 'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fadfh.net%2Fwp-content%2Fuploads%2F2014%2F07%2Fpique-nique-2-179810.jpg&f=1&nofb=1', 1),
+(56, 'Balade sentier de la colline non loin du viaduc', '2020-02-01 08:30:00', '2020-02-01 17:00:00', 0x3c703e436574746520736f72746965207327616e6e6f6e636520656e736f6c65696c6cc3a92c206e6f7573207061727469726f6e7320c3a0206c276176656e7475726520636f6d6d65206427686162697475646520657420636574746520666f6973206369206e6f75732073756976726f6e73204d6f6d6f2c206e2768c3a9736974657a2070617320c3a020766f757320696e736372697265213c2f703e3c66696775726520636c6173733d22696d616765223e3c696d67207372633d2268747470733a2f2f692e7974696d672e636f6d2f76692f33515546505550716479512f6d617872657364656661756c742e6a7067223e3c2f6669677572653e, '50.20', '60', '2020-01-28 18:00:00', 45, 1, 'https://i.ytimg.com/vi/3QUFPUPqdyQ/maxresdefault.jpg', 0),
+(57, 'Pellentesque vel metus eu lacus elementum imperdiet', '2020-03-07 08:30:00', '2020-03-07 17:00:00', 0x3c703e5365642072686f6e6375732c206e657175652076697461652074696e636964756e7420706c6163657261742c206469616d20697073756d20766f6c7574706174206c616375732c20657520636f6e64696d656e74756d20616e746520746f72746f722075742061756775652e3c2f703e3c703e266e6273703b3c2f703e3c66696775726520636c6173733d22696d616765223e3c696d67207372633d2268747470733a2f2f696d6167652e6a696d63646e2e636f6d2f6170702f636d732f696d6167652f7472616e73662f6e6f6e652f706174682f73636237623534653735366465613838302f696d6167652f69643133316633383537303863366166642f76657273696f6e2f313534323937313538342f696d6167652e6a7067223e3c2f6669677572653e, '20.50', '30', '2020-03-01 18:00:00', 45, 1, 'https://image.jimcdn.com/app/cms/image/transf/none/path/scb7b54e756dea880/image/id131f385708c6afd/version/1542971584/image.jpg', 1),
+(58, 'Sed pulvinar purus ut nulla congue eleifend. ', '2020-04-04 08:30:00', '2020-04-04 17:00:00', 0x3c703e457469616d206469676e697373696d20636f6e6775652073656d7065722e20446f6e65632074656d70757320706c616365726174206469616d2c207175697320616c697175616d206e756e632076656e656e6174697320646170696275732e20457469616d2071756973207072657469756d2072697375732e3c2f703e3c703e266e6273703b3c2f703e3c66696775726520636c6173733d22696d616765223e3c696d67207372633d2268747470733a2f2f65787465726e616c2d636f6e74656e742e6475636b6475636b676f2e636f6d2f69752f3f753d6874747073253341253246253246712d78782e627374617469632e636f6d2532467864617461253246696d61676573253246686f74656c2532466d61783530302532463236303736313335332e6a70672533466b253344366366666165663732376632366362663831383063373066633930323835613862643533333436353764396136643365643239323238663863336337353562392532366f25334426616d703b663d3126616d703b6e6f66623d312220616c743d22d09ed182d0b5d0bbd18c2044616e73206c6120506f756e63686f2064e2809941676173742c20d09cd0b8d0b9d0be2e20d091d180d0bed0bdd0b8d180d0bed0b2d0b0d0bdd0b8d0b52c20d0bed182d0b7d18bd0b2d18b202e2e2e223e3c2f6669677572653e, '100', '120', '2020-03-28 18:00:00', 45, 2, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fq-xx.bstatic.com%2Fxdata%2Fimages%2Fhotel%2Fmax500%2F260761353.jpg%3Fk%3D6cffaef727f26cbf8180c70fc90285a8bd5334657d9a6d3ed29228f8c3c755b9%26o%3D&f=1&nofb=1', 1),
+(59, 'Nullam justo odio, euismod nec nunc quis, gravida convallis dolor.', '2020-05-02 08:30:00', '2020-05-02 17:00:00', 0x3c703e536f7274696520706f7572207069717565206e697175657220c3a0206c612050756e63686f3c2f703e3c66696775726520636c6173733d22696d616765223e3c696d67207372633d2268747470733a2f2f65787465726e616c2d636f6e74656e742e6475636b6475636b676f2e636f6d2f69752f3f753d68747470732533412532462532467777772e7361696e7474726f70657a746f757269736d652e636f6d25324675706c6f6164656425324670686f746f7325324670686f746f735f666963686965725f363638312e6a706726616d703b663d3126616d703b6e6f66623d312220616c743d224c6120506f756e63686f202d20457863757273696f6e202d204d696e692d20437275697365202d20426f6174202d2041637469766974696573202e2e2e223e3c2f6669677572653e, '100', '120', '2020-04-28 18:00:00', 45, 1, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.sainttropeztourisme.com%2Fuploaded%2Fphotos%2Fphotos_fichier_6681.jpg&f=1&nofb=1', 1),
+(60, 'Sortie vers la Puncho puis pique nique', '2020-06-06 08:30:00', '2020-06-07 17:00:00', 0x3c66696775726520636c6173733d22696d616765223e3c696d67207372633d2268747470733a2f2f65787465726e616c2d636f6e74656e742e6475636b6475636b676f2e636f6d2f69752f3f753d68747470253341253246253246332e62702e626c6f6773706f742e636f6d2532462d586f6d667a366b77716f302532465562726c374869436d5f492532464141414141414141634d592532464145737a757831755f354525324673313630302532464d696c6c6175253242566961647563742532424672616e636525324232312e6a706726616d703b663d3126616d703b6e6f66623d312220616c743d2254726176656c2054726970204a6f75726e6579203a204d696c6c61752056696164756374204672616e6365223e3c2f6669677572653e3c703e566f79616765207375722064657578206a6f7572732c207072c3a9766f79657a20756e2070657520706c757320646520736f757320717565207072c3a9767520213c2f703e, '140', '110', '2020-06-01 18:00:00', 45, 1, 'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F3.bp.blogspot.com%2F-Xomfz6kwqo0%2FUbrl7HiCm_I%2FAAAAAAAAcMY%2FAEszux1u_5E%2Fs1600%2FMillau%2BViaduct%2BFrance%2B21.jpg&f=1&nofb=1', 1),
+(61, 'Sortie vers la Puncho puis pique nique', '2020-07-04 08:30:00', '2020-07-04 17:00:00', 0x3c703e536f7274696520706f7572207069717565206e697175657220c3a0206c612050756e63686f206465757869c3a86d6520c3a97069736f6465213c2f703e3c703e266e6273703b3c2f703e3c66696775726520636c6173733d22696d616765223e3c696d67207372633d2268747470733a2f2f75706c6f61642e77696b696d656469612e6f72672f77696b6970656469612f636f6d6d6f6e732f7468756d622f362f36372f50756e63686f5f642761676173742e4a50472f3132303070782d50756e63686f5f642761676173742e4a5047223e3c2f6669677572653e3c703e266e6273703b3c2f703e3c70207374796c653d22746578742d616c69676e3a63656e7465723b223e56656e657a206e6f6d62726575782e3c2f703e, '100', '120', '2020-07-01 18:00:00', 45, 1, 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Puncho_d\'agast.JPG/1200px-Puncho_d\'agast.JPG', 0),
+(62, 'Activité sans image', '2020-10-07 12:12:00', '2020-10-08 12:12:00', 0x3c703e5465737420642761637469766974c3a92073616e7320696d616765733c2f703e, '120', '125', '2020-09-06 12:12:00', 92, 1, ' ', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `adherent`
+--
+
+CREATE TABLE `adherent` (
+  `IdAdherent` int(11) NOT NULL,
+  `Nom` varchar(50) NOT NULL,
+  `Prenom` varchar(50) NOT NULL,
+  `DNaiss` date NOT NULL DEFAULT '1990-01-01',
+  `Adresse1` varchar(255) NOT NULL,
+  `Adresse2` varchar(255) DEFAULT NULL,
+  `CdPost` varchar(5) NOT NULL,
+  `Ville` varchar(50) NOT NULL,
+  `Email` varchar(100) NOT NULL,
+  `Tel` varchar(10) NOT NULL,
+  `DAdhesion` date NOT NULL,
+  `Organisateur` tinyint(1) DEFAULT '0',
+  `Admin` tinyint(1) NOT NULL DEFAULT '0',
+  `Login` varchar(30) NOT NULL,
+  `Password` varchar(100) NOT NULL,
+  `CC` varchar(25) NOT NULL DEFAULT 'aucune',
+  `Avatar` text,
+  `Active` int(1) NOT NULL DEFAULT '0',
+  `Apropos` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `adherent`
+--
+
+INSERT INTO `adherent` (`IdAdherent`, `Nom`, `Prenom`, `DNaiss`, `Adresse1`, `Adresse2`, `CdPost`, `Ville`, `Email`, `Tel`, `DAdhesion`, `Organisateur`, `Admin`, `Login`, `Password`, `CC`, `Avatar`, `Active`, `Apropos`) VALUES
+(45, 'Mundo', 'Vincent', '1993-03-06', '36 rue andré malraux', NULL, '66200', 'Latour Bas Elne', 'v.mundoegea@gmail.com', '0670941321', '2020-08-31', 1, 1, 'Vincouze', '9319990309d0df6acc01e8e042698273e6268c30682d23c7da3464d37dfddd5b', '125 cm3', '1601473026.jpg', 1, 'Salut à tous, fan de moto depuis toujours, j\'ai décidé de créer ce site internet!'),
+(70, 'Mundo Egea', 'Vincent', '1990-01-01', '36 rue André Malraux', NULL, '66200', 'Latour-Bas-Elne', 'v.mundoegea@gmail.com', '0670941321', '2020-09-30', 0, 0, 'Vince66', '9ab2d93f00e1a127f75110d5bddb28d2e2cc8887b72351b21940af0235e4990a', 'aucune', NULL, 1, 'Salut!'),
+(71, 'Elbarkani', 'Mohamed', '1990-01-01', '2 rue de la poste', NULL, '12100', 'Millau', 'momo@gmail.com', '0613114375', '2020-09-30', 1, 0, 'Elbarkhed12', 'cdapowerflower', '125 cm3', '1601472455.png', 0, 'Colaborateur officiel de Vincent Mundo, habitant sur Millau, je profite des plaisirs de la moto.'),
+(72, 'Gregoire', 'Ghislaine', '1990-01-01', '52 avenue du mont saint-michel', NULL, '12100', 'Millau', 'gg@2isa.com', '0650687952', '2020-09-30', 0, 0, 'Ghis12', 'mirabelle', '> 250 cm3', '1601472480.png', 1, 'Formatrice de 2isa à Millau et fan de moto et ce qui l\'entoure!'),
+(73, 'Martin', 'Frédéric', '1990-01-01', '21 rue du Champ de bataille', NULL, '12000', 'Rodez', 'freddy@gmail.com', '0680241521', '2020-09-30', 1, 0, 'Genius', 'mdpcompliqué', '> 250 cm3', '1601472497.png', 1, 'Hello, c\'est Freddy, plus d\'infos sur la route!!'),
+(74, 'Richier', 'Jean', '1990-01-01', '5 rue des Lasagnes', NULL, '12100', 'Millau', 'riri@laposte.net', '0658977775', '2020-09-30', 0, 0, 'Riri12100', 'pumpelup', 'aucune', '1601472511.png', 1, 'Salut c\'est Riri, avec moi pas d\'embrouille et que du plaisir'),
+(75, 'Coeurette', 'Philippe', '1990-01-01', '8 rue du stade', NULL, '12000', 'Le Monastère', 'essai@essai.fr', '0766449920', '2020-09-30', 0, 0, 'FifiDuPays', 'fifi0509', '125 cm3', '1601472542.png', 1, 'C\'est Fifi, débutant en moto mais expert en orientation, vrouuum!'),
+(76, 'Perrin', 'Cédric', '1990-01-01', '10 rue de la Sardanne', NULL, '12000', 'Onet-le-Château', 'ccdtropik@orange.fr', '0758600012', '2020-09-30', 1, 0, 'CCDTROPIK', 'wow007', 'aucune', '1601472564.png', 1, 'DJ à plein temps, motard de passion, vive l\'Aveyron, ma région natale.'),
+(82, 'Stary', 'Katarina', '1990-01-01', '8 avenue de stalingrad', NULL, '12000', 'Rodez', 'nonox@france.fr', '0669801438', '2020-09-30', 1, 0, 'Nono45', 'password45', '250 cm3', '1601473089.png', 1, 'Originaire d\'Orléans mais travaillant à présent vers Rodez je me suis achetée une Z1000 et je suis prête à faire brûler la gomme ;).'),
+(83, 'Lafeuille', 'Camille', '1990-01-01', '9 rue de la joie', NULL, '94114', 'Arccueil', 'cammacam@facebook.fr', '0612561018', '2020-09-30', 0, 0, 'Camioz', 'xoxolol', '250 cm3', '1601472625.png', 1, 'Aime la nature, le sport et les randonnés en moto.'),
+(85, 'Stanfield', 'Alexandre', '1990-01-01', '3 impasse de la cuvée', NULL, '32000', 'Bordeaux', 'lexandre88@mondomaine.com', '0613994375', '2020-09-30', 0, 0, 'Alejano88', 'pierrepapier', '125 cm3', '1601472673.png', 1, 'Je viens de loin mais ma famille habite Millau, ça tombe bien il y a un club génial pour entretenir ma conduite à moto!'),
+(86, 'Poulain', 'Amélie', '1990-01-01', '24 boulevard Jacques Albert', NULL, '66000', 'Perpignan', 'ameloche@gmail.com', '0799997952', '2020-09-30', 0, 0, 'Khris66', '4015', '> 250 cm3', '1601472730.png', 1, 'Professeur moto-école, adore la moto.'),
+(87, 'Cotchito', 'Jordi', '1990-01-01', 'SAN ANTONIO', NULL, '51412', 'Madrid', 'j.cotch@gmail.com', '0633101120', '2020-09-30', 0, 0, 'Gringo', 'mOtDePasSe@plx', '125 cm3', '1601472829.png', 1, '¡Qué alegría unirse a este equipo de motos francesas!'),
+(90, 'François', 'Alain', '1990-01-01', '10 avenue du mont saint-michel', NULL, '12100', 'Millau', 'AF@laposte.net', '0701230455', '2020-09-30', 0, 0, 'Alinator', 'groseillE', 'aucune', NULL, 0, 'Aime la route.'),
+(91, 'CDA', 'Testeur', '1993-02-01', '12 rue du pilou', NULL, '21100', 'Millau', 'test@testeur.fr', '0102030405', '2020-10-01', 0, 0, 'Test', '3cdfc09adfd26ccff32bc2a6a4490d12a2b8a13a775e74b493877b0f85f6d73e', '> 250 cm3', '', 0, 'Super test !'),
+(92, 'King', 'Georges', '1980-02-01', '31 avenue de la république', NULL, '12100', 'Millau', 'v.mundoegea@gmail.com', '0102030405', '2020-10-01', 1, 0, 'UtilisateurTest1', '7ed81dcc644e5e34c65865b80a5c9f22199b9f09dc4c17327724e61d73919fe3', '> 250 cm3', '1601555588.png', 1, 'Salut salut !'),
+(93, 'Manson', 'Kevin', '1990-02-01', '25 rue de la planete', NULL, '44500', 'Bordeaux', 'v.mundoegea@gmail.com', '0102030405', '2020-10-01', 0, 0, 'UtilisateurTest2', '54039db4a793772caad2d85af738062a6ea16289bac1f3dc714863fd373a7094', '125 cm3', '1601555995.jpg', 1, 'Super MCMP !'),
+(94, 'Dreux', 'Gerard', '1980-02-01', '12 rue du languedoc', NULL, '66200', 'Perpignan', 'v.mundoegea@gmail.com', '0102030405', '2020-10-01', 0, 0, 'UtilisateurTest3', '4b295a1e24347a392f5bf4b7400ab3d57060216da2d8229c8fc51d0447768186', '250 cm3', '', 1, 'Super super !');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `adherentrecovery`
+--
+
+CREATE TABLE `adherentrecovery` (
+  `IdAdherent` int(11) NOT NULL,
+  `Password` varchar(30) NOT NULL,
+  `Ticket` varchar(40) NOT NULL,
+  `Mail` varchar(200) NOT NULL,
+  `Login` varchar(200) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `fichiers`
+--
+
+CREATE TABLE `fichiers` (
+  `IdFichier` int(11) NOT NULL,
+  `Fichier` text NOT NULL,
+  `Date` date NOT NULL,
+  `Intitule` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `fichiers`
+--
+
+INSERT INTO `fichiers` (`IdFichier`, `Fichier`, `Date`, `Intitule`) VALUES
+(6, '1601390982.pdf', '2020-09-29', 'Mon résumé anglais');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `images`
+--
+
+CREATE TABLE `images` (
+  `id` int(11) NOT NULL,
+  `file_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1=Active, 0=Inactive'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `images`
+--
+
+INSERT INTO `images` (`id`, `file_name`, `title`, `created`, `modified`, `status`) VALUES
+(3, 'a837e071-ebb2-4c34-899a-ad7fe9c8d381.jpg', 'moi', '2020-08-25 13:43:42', '2020-08-25 13:43:42', 1),
+(6, 'tÃ©lÃ©chargement.jpg', 'Petit oiseau pour Karim', '2020-08-25 13:51:32', '2020-08-25 13:51:39', 1),
+(7, '2020-06-11 at 11-15-41.png', 'hey momo', '2020-08-25 14:12:06', '2020-08-25 14:12:06', 1),
+(8, 'tÃ©lÃ©chargement.jpg', 'Petit oiseau bis de karim', '2020-08-25 14:29:43', '2020-08-25 14:29:43', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `inscription`
+--
+
+CREATE TABLE `inscription` (
+  `IdInscription` int(11) NOT NULL,
+  `DInscription` date DEFAULT NULL,
+  `NbInvités` int(11) DEFAULT NULL,
+  `IdAdherent` int(11) NOT NULL,
+  `IdActivite` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `inscription`
+--
+
+INSERT INTO `inscription` (`IdInscription`, `DInscription`, `NbInvités`, `IdAdherent`, `IdActivite`) VALUES
+(14, '2020-10-01', 5, 92, 62),
+(15, '2020-10-01', 2, 92, 60),
+(16, '2020-10-01', 0, 93, 60),
+(17, '2020-10-01', 5, 94, 60),
+(18, '2020-10-01', 0, 45, 60);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `matomo_access`
+--
+
+CREATE TABLE `matomo_access` (
+  `idaccess` int(10) UNSIGNED NOT NULL,
+  `login` varchar(100) NOT NULL,
+  `idsite` int(10) UNSIGNED NOT NULL,
+  `access` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `matomo_archive_blob_2020_01`
+--
+
+CREATE TABLE `matomo_archive_blob_2020_01` (
+  `idarchive` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `idsite` int(10) UNSIGNED DEFAULT NULL,
+  `date1` date DEFAULT NULL,
+  `date2` date DEFAULT NULL,
+  `period` tinyint(3) UNSIGNED DEFAULT NULL,
+  `ts_archived` datetime DEFAULT NULL,
+  `value` mediumblob
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `matomo_archive_blob_2020_09`
+--
+
+CREATE TABLE `matomo_archive_blob_2020_09` (
+  `idarchive` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `idsite` int(10) UNSIGNED DEFAULT NULL,
+  `date1` date DEFAULT NULL,
+  `date2` date DEFAULT NULL,
+  `period` tinyint(3) UNSIGNED DEFAULT NULL,
+  `ts_archived` datetime DEFAULT NULL,
+  `value` mediumblob
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `matomo_archive_blob_2020_09`
+--
+
+INSERT INTO `matomo_archive_blob_2020_09` (`idarchive`, `name`, `idsite`, `date1`, `date2`, `period`, `ts_archived`, `value`) VALUES
+(84, 'Actions_actions', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c95944d6ec3201085af6271009761fc03785565517591283788486ab548561cc54e5ba9cd817a8e5eacc636b14da8952cc0c3180dbc4f6f5032915f5ad24c49b40134a94ac692146a9b1724ab64849204bb17c5d2b08290e94a85e5f1f56159d665b0284edb60a98b429d82b5aa2a5dee49a6256b46dc0c30015033a199b8e0cd0769f6226998d2c82cc06e4196b507d390229a2a88360151641220faba8c5e26682768b3ac3fba5d99e20036e036484ce1ecdc4446acd10acd1107f59a6f6a5d17f9e6a0eab7563693e41ed5675377652b5f780a1727522fce55fe5105dfc172b15c5b82cc128c2d402e3a7c168be8384193004962e2504ca6146904c44261b72060c2876072d341359bb808ae64275ed98fbb5abfebfaf7c7150f563cbbb887c2443d4de3b17ae6aa4f1df5c849e78d76fb80023a5bd8ec0d5c30f671f14819e8e0bc27fc2df6a48afca8f3ffc88025934cb9a0187301978b70b988118a5bd47b1bc3bdeb203d9a7f5e30f56a7fde57bba33ed44d6ffdd716236758006814b1395b70e63c2dc0fba765a0c5e878d117a2a47b6246eef15b898fb3f7f92af191f59118e8c6f3c68abd7017e57e9f7f5ea3bdb616775a8ecf59abff8b4ee20e6b453e00d7b7b5f2cf7fa272e467),
+(84, 'Actions_actions_url', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c9d956d8ea4201086efc2ffb5a92a15c43bec1d5c9bf490746cd33abb934ce6ee2b2a88388393f9218142b09eb73e6c9454ef46f1ba51e42650aaf741158add9b3ffaceea41958a5d4c77d56fac360aa7a7981eb093d24ec85ae53410afaf8a6705d87d82759fb09eafe319a7cade40e40c90e7d600d57a27723fc03ccc3721ae9f9d568302c5703e64dfc8ed44ba49b96c03ab3fa69545b124a4d8eb73e6c0e9a32fe3d8abcba5bd3628b201323443933d9eb7cb7c88eadfeeacd7a38ae5003ee9d13737fdabd3ff06a7093a4d0aa789ac164d1c6c456cd165f6b2609136e55e1b9e83c7c42f80284f00051e6e64b88b341cd0c8a1356dfbaacdfd40478e0ea4e07b3ec0908f623ef27cf9c2c7829086acdf8824893370efffc64e27ecc5c63e9abf66d43eb6e0e8d1d373d8c1735184f018c38b28b8243fa7876fd157e7f49e60e3cfd359ed437f6beefa69f4011e1c7cb9475fab1a029644cdaf8695f6a7e1f53e6e7845ba8981707ca61bdaa7e947f3e80ee91d04d84192f51a53d19518b535906b5bdb14411e2ed68b385bda5b90049f67840cad67e991c3997a3b053605cb9302e1ee3f90f52ffdd7e9b16f0b5c88547a88b83216c34f2b23d51003d73766912e0adf13da47d7e9b720658edc32e296496e1973cbf3b238adfbc04b87f8f11f7207287f),
+(84, 'Actions_downloads', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c4bb432b0aaae0500064f01fe),
+(84, 'Actions_outlink', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c4bb432b0aaae0500064f01fe),
+(84, 'Actions_sitesearch', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c4bb432b0aaae0500064f01fe),
+(84, 'Contents_name_piece', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c4bb432b0aaae0500064f01fe),
+(84, 'Contents_piece_name', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c4bb432b0aaae0500064f01fe),
+(84, 'CustomVariables_valueByName', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c4bb432b0aaae0500064f01fe),
+(84, 'DevicePlugins_plugin', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c85d2510e82300c06e0bbf4043014e5df1dbc43852a9529baa1c618efee5e78d3f2b0e4cfb27e69da31ca026f45e119d51c1cde096b50e0bd04f20935a81dc74185bcc2e553fb8fa2cc4f73714e95dfcd17ff912da8d328ed34c699297e32ce64723e044ebd6d544bc6513826db5899c60a74e207dbc4da242ad0b53bcc82fb29d4a6d0806e776d8749cf6277b2319dfc09280a876be0972cac676b4b25286978480c7aec279b6a6cca819e7ae9c6673a4ba7e6a83f5f6c99d649),
+(84, 'DevicesDetection_brands', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c95cf410ac2301005d0bbcc0966a689b53f2b2f60054f10d145a1bb2e43eeee44a6080115173f3f4c481ec918501670caefcd84b22182d67c7bac94363088d202f50c1609b68474c7681ddb011f0f562d6c19bd45fc52e0d7a4dac80846a9eda1f33ef88c2be874e979755d5c67a7b5a7e53badbfe8ebdcd3d1e9b07f7c725bfeb2eb130afe686a),
+(84, 'DevicesDetection_browserEngines', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c958fc10ac3201044ffc52fd8359a34e3add742af3d1b9a83547a696fe2bf770d1b0a42033d8cb38cb86f8c18501228c4ef30a3bce061725cd66cc2369f737a3e4c48b0aa41c44e0e17ee98c47dbba0d328d644a2499d591f39da922a917008a5b645d73df8dd6084b9adcb25bdfb0a561bb03620c5db1ecfc7787b8827981eec15ecf6afcf4ae6bfc8f50331006b74),
+(84, 'DevicesDetection_browsers', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c9d8f410a02310c45ef9213b469abf4772988303808e2012aba1898dd2c4bef6e5bd38d8b19c6c527c90fc9e34758a4092a4498de78a4050e34c7e77ba6b08041a70b85095ca48b4cd1b1c88657abaefadad57208f5c977ad9a2d37563527d7294221e5fa67ecc62afd7aee74163a0b5d0b5d099a77a2790b7dbb6f05f746ff99dbacc20de8310ebfc19dd0adf4ec05ae77c1f307a1358b8d),
+(84, 'DevicesDetection_browserVersions', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c9d90c10ac2300c86dfa50f309ab4756b7214441087203e40450f83dd762c7d77db9ae26d3a0f3f49fed2fc1f0964294ea43990698da7b890233587fb7356bc504f6a7fe4c1755af14498055926abcfb2fca8d5151f5c293b2e9bdecfbadaf2c7eaeaa43205d21453d933366315e17c60301d34041404140410042df9b8311fbfe55fae3f9dc01bf8f3026695c093ba8d27c6013e0ced064e18acf4e805013621a417c2ec8fe0),
+(84, 'DevicesDetection_models', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c9590410b82401085ff8aec2fd85957cd9953e0314ae8d275cba5964425eb24fef7c6180984840e6fdef096ddfd780e631c026a72df25c7a1c70455edcebe56d423a4a8e8ea1bff0897a8f2fdfdd9768a021a51cc02cbc35285197b321de84dca3649b3327100b964f5271939e23f350ee3f4d07e0e7ed3e4a8b62585f2d6367e4961040204420b815912c03a8159ef2343753cd0a9e3425cb48ba3e2e5ea254a222876ee231716f88b657c03a8e17697),
+(84, 'DevicesDetection_os', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c95cf3d0ec3200c05e0bb700243203fcf53a52e59e8d0a133513b2065cb88b87be3ca512586541d2ce367c127123a940ce2f43d4c281b02cc9a96d76a78db3766bedd0d6738ad4ebbe727ecde03cbd58c5ef341672b4b294f9fa4ca944028551e8947706a3fe6d8dad62b3e28ee68ecd5a7d677e7befbe55fe2b5f583f2fee027c5ed5f9faf6f6a6569e8),
+(84, 'DevicesDetection_osVersions', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c95903d0ac3300c85efe20304cbff799a0a5db2b84387ce2eed60c89631e4eead8b42c1d0400721e909e97da8c062add05cbec5887581879acbfd392b5e90a0a6cb95c90e41718591b0921d3f40efecb9ed5704d1a3f4d4862d9cfe285beb0a34d6ad1dc9bbf01b2040dda6cca47b7b72e21fc5dfe8140441f708e618c11c2244a8533e731aa867f082e076845100e8af1f6c2fbb266c65),
+(84, 'DevicesDetection_types', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c958d3b1280200c44efc209c24790e50ede01470b66e82c19ee6e70829d8545b2994db22fc3a01550cab07388681716a89af7b3aa34cc022365b9b4e3e6d281c0ba8c05ad9ec5cb6d10d55a9e1c3d4e678bf309ad8fa06d1adfe43740c841c06e82a360ed2f6cbf013ae244cb),
+(84, 'Events_action_category', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c4bb432b0aaae0500064f01fe),
+(84, 'Events_action_name', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c4bb432b0aaae0500064f01fe),
+(84, 'Events_category_action', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c4bb432b0aaae0500064f01fe),
+(84, 'Events_category_name', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c4bb432b0aaae0500064f01fe),
+(84, 'Events_name_action', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c4bb432b0aaae0500064f01fe),
+(84, 'Events_name_category', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c4bb432b0aaae0500064f01fe),
+(84, 'Goals_ItemsCategory', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c4bb432b0aaae0500064f01fe),
+(84, 'Goals_ItemsCategory_Cart', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c4bb432b0aaae0500064f01fe),
+(84, 'Goals_ItemsName', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c4bb432b0aaae0500064f01fe),
+(84, 'Goals_ItemsName_Cart', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c4bb432b0aaae0500064f01fe),
+(84, 'Goals_ItemsSku', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c4bb432b0aaae0500064f01fe),
+(84, 'Goals_ItemsSku_Cart', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c4bb432b0aaae0500064f01fe),
+(84, 'Goal_-1_days_until_conv', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c4bb432b0aaae0500064f01fe),
+(84, 'Goal_-1_visits_until_conv', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c4bb432b0aaae0500064f01fe),
+(84, 'Goal_0_days_until_conv', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c4bb432b0aaae0500064f01fe),
+(84, 'Goal_0_visits_until_conv', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c4bb432b0aaae0500064f01fe),
+(84, 'Goal_days_until_conv', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c4bb432b0aaae0500064f01fe),
+(84, 'Goal_visits_until_conv', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c4bb432b0aaae0500064f01fe),
+(84, 'Referrers_keywordByCampaign', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c4bb432b0aaae0500064f01fe),
+(84, 'Referrers_keywordBySearchEngine', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c4bb432b0aaae0500064f01fe),
+(84, 'Referrers_searchEngineByKeyword', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c4bb432b0aaae0500064f01fe),
+(84, 'Referrers_type', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c7d8dbb0d80300c4477c9044ec8072e3bb043101491e828a3ec8e8d9c06098af3e77cf22b706815940ba6312c681702cc59b6e334b9c2b21c2bb026d913179f7724351dcd915bd4bbd82439fbe458f4385d5e15105a97e03a8c6f7252b2d5cf5ec17e8017c5d21b6bffb0fd06430e44d3),
+(84, 'Referrers_urlBySocialNetwork', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c358c4b1280200c43efd21350c50fe9de7b1465c1e80c0b970c771750172fe9671205234718518cffe0906f4ca04b7db8486eaca04df7e0533a4922860a57c68aed1cdda7f6735566694511cbe7cc5fc29a7e296d5318e4f2b6b094f200b7e72741),
+(84, 'Referrers_urlBySocialNetwork_chunk_0_99', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c6d4f410ec22010fc8ae16e5b4a6bedf007e3c13ba1159558ac1134314dff2edb54638c21cbecccc264568363b0e0d223afd7601a39f14c6a88775363f028c13add988ed1cb1cec14c21569ea92836e4dd3f7e7a4ed5dcaa4452ec9cf42c42aa6da4f58d2ac8ed74a92af453523e7f38f229b94919846866124970d094bf19d4850a20acc9ba3339740993230022e3eeaf66642784e625c6cd7df83f18b2ed6c37a1b7b9afc6ea5d45e87789ace28678226a614fb13698ce20b8cab600b),
+(84, 'Referrers_urlByWebsite', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c4bb432b0aaae0500064f01fe),
+(84, 'Resolution_configuration', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c9dd1bd0ac2301000e077c913e4f2dbdc4da288458c4211e7880e856e5d0aa5ef6ea397c1a54587e37e02c7c725a1c1b14549097529028e3d5a145dba3f3b413d8241519f1b3aedc98019aae004b5a8383467430f84395bca6b5a743cf7dc437ecc61e47b32e52ea1c471ca4b62192c38e6e65647da1e08542507af648100433c433c4300ac658bfcd1a2962dee63b9340441c90164b58a091afeb4e8d5bb6ce28eaef148da7ddda57c90658ae15a0596c04f92e905a3c79919),
+(84, 'Resolution_resolution', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c9d91310ec3200c45efc2096c03097ceed03b50b543a46c592221ee5e48cdd0a18dd2e1cbe65bf67f12190e6501a50c3b9a88b2c1c3acf9fe5c4dda10605802edb390490ba4899b6cd3dce4d2e3a8befbec7b99523ff51ed361eb8ea3c3a9fd954128b5dfb90de33b436c0c5168670aa710d1f29f0cf293618671ecf610a741204a204ac04a409a2f17f3ed59be9d3ebe61e47bcd77da4b5400be04505f5082903f),
+(84, 'UserCountry_city', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c9591c16ac3300c865fa5f85e235b7693c8c75eca28bbec093cea8e8059204d0b23cdbb4f1e36ebb2a66c0759c96facffe3972743634be03c61f968683c912511fd6b88c29d084808d792ce855ccaf061dc812aee365d40bde1960ab8aadc95ca8f0c7c29134b6c01344e69d0731196cd554d621f563b7f1ed6dbae8ffee37a3df6731e9d7154c681cca2e72cea178b4e8e981c07c1134c2d516b36362c75ef6f495ba3045bb96f64fd18997ff67ef5d4c5360c43b8e55525bf055ef57f5e9408f627af95b8b9c5c5c7b83ceca53bf78770f1f11e6cd9b529bb6e9636fd97742b8db37441369c78c19d3e01b08cb9ce),
+(84, 'UserCountry_country', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c4d8d4b0a80300c44ef921324fd284eeee01d2a2a14bab2cbd2bb9b8a828b970c6f024910b40cd604ff8505ad22824ada8e425ae140e7459ae18cc9f0238b8da03b66dbf111127ffdd06c88bc7de0c77453f684d1fa385cb5f71bb0bb250f),
+(84, 'UserCountry_region', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c4d8d410a80300c04ff921724b655dcfcc13f54f450e8adc792bf9b16050f932cb38164087a016b46f8c28ede9040359f77256d601069c1e2ac4e18597c44bdb0f94e5348faf543b323f2f691a73157fe82d16d1c1e6af6004af92435),
+(84, 'UserId_users', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c4bb432b0aaae0500064f01fe),
+(84, 'UserLanguage_language', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c4d8d410a80300c04ff921734ad55dcfcc13f545428f4648f257f37ad081e2659260b4960b40c2709e10b2b5a450495b49f85a4c283ae9b24c31bb3117a661b931c586cc72138feee5d3b83df9ee1865153f6c4a1692f6ea2fa00b09d250e),
+(84, 'VisitorInterest_daysSinceLastVisit', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c85d3310ac3300c05d0bb183a0a2cc9765a79ebd22d63d792420643e8d0143a84dcbd5abca5d260f818fc30e26b12ccb235897512ee81645b254b58a6e7bc84ba0a0e126ef36b7e4fcb639cbff7b6b6cf1a6a13d293eade04f559944d13d7b15ffc07594284d8053a14c81310b00bf150604f20205b489ec0c0b6903d2141b285e20919b22d0c9e50a0d8c2d91306186ce1620a49c219d01904da25d58c19383a885d4ccd8c503cc4ee66d1896a39c953ec7eeace212170f1c66297543fc3259fe86a29fb0fe92524b2),
+(84, 'VisitorInterest_pageGap', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c85d1b10a03310806e077097414a2d1bbabd9fa007d87143a046ebbf1c8bbd70ed9820e0163f4e38734c5ac77d75c9b965990de978aa6b37dbe67aa97bd24044cb52bd9297574459bb3cdf1bfbe67c31508680a792950241428be50228181a7804b81234140fc0c12091bec53a0a5b0b9026b3a00b31f627709abd1fe937de3080d010a723c2383f0412fcf183fdcfcbe4b),
+(84, 'VisitorInterest_timeGap', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c85d0310ec3300805d0bb58ea8804d8719cefad07e81d5ca943a46c19a3dcbd7448ba2466b084113c010dc2d866706d8847a0d8560c084b7b7f965057240426e15067a8bd58f7196285d6baffbeaf23714f582c42f134e4d250cf8842f934f8d2885d232364db451d247591d19651264d8e32788a0994bc59b2a79860577194d1534ca0c9534a5729082690943fa397cce49eb7b03cf4d91b66ff02a4eac364),
+(84, 'VisitorInterest_visitsByVisitCount', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789c85d23b0ac4300c04d0bb18b61448f22f91bb3dc0de210b5b04d2a50cb9fbaa7117468561b0cdc39fd94c8a5dbbf1d82ccfa0769d562d1ddbf777a471fa4a12923476531f65dcbb89ef63bb3ce5f199135050d229e8a3a09190294f811f851c09850a164a2454aa58a891d0a861a14542a78e851e090b2d5858a0502cad24c153ae90f02c9534784cc1bdf4ac8d2a0708ae66f34ff57673a4e07a76bf0f0b69c8e08efa6194e5a56fa4dc7f08550b68),
+(84, 'VisitTime_localTime', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789cb5d53d8e833010c5f1bbe404f306f335dc61efc06ab788946e4bc4dd6347e32d90f252bdc2600d423fb9e0cf1e5ee2b8876d7b0c7db3c6f11763dc1efbf7efe3b6dd03562f5ed7900b63bd94ed27e67a6f7bb765aab7b650571bb777807ca1d86b72b6c77b581c679b7ff501a1e7a43bef2923654bd6afac73d629db0f6ca95aaa7651edaa1a57077e58915aa8ea2275a4ea205227aa16913a537514a90b552791ba527516a9e0895a542ccfd3aa62799ea02a053e044ad50af04441550bf04841d50bf04c41550cf050a137e3ffbf9d6e49d7d777303ec0bc55907dbfbc56507dc0ce73e5a67279af5c150ee7c17255389c07cb35e1389f47311cef),
+(84, 'VisitTime_serverTime', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 0x789cb5d5416e84300c05d0bbcc09fc4d2060eed03b50b58b9166d725e2ee4d2a6733d5fc59fd05090a902722f9fb082f71dec3f623a671b3c5f91373dc1ec7e7f7e3b6df03d606cf6bea0ba50d65ff8adae6b93fb0756953bffabb3567203f2af6b772b5a506589c57dfe8632c107aec8041a78c942d593cb3e0ac73b68ad889b2e39c2d554bd59ed47f676c5c2dfc6745ea4c5517a90b5527915aa95a44ea4ad559a46e545d442a78465515cbf36955b13c9f3615cbf309aaa2c59b8452952d78464155b8e0290555e982e71446f18eb637fa7c49d7b757f09bbe071e5558774dbf050f2ba80ac9795ab9aad33b8f2b57f57ae779e5aae0701e58ae098eeb17b6e41cf1),
+(87, 'Actions_actions', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c95944d6ec3201085af6271009761fc03785565517591283788486ab548561cc54e5ba9cd817a8e5eacc636b14da8952cc0c3180dbc4f6f5032915f5ad24c49b40134a94ac692146a9b1724ab64849204bb17c5d2b08290e94a85e5f1f56159d665b0284edb60a98b429d82b5aa2a5dee49a6256b46dc0c30015033a199b8e0cd0769f6226998d2c82cc06e4196b507d390229a2a88360151641220faba8c5e26682768b3ac3fba5d99e20036e036484ce1ecdc4446acd10acd1107f59a6f6a5d17f9e6a0eab7563693e41ed5675377652b5f780a1727522fce55fe5105dfc172b15c5b82cc128c2d402e3a7c168be8384193004962e2504ca6146904c44261b72060c2876072d341359bb808ae64275ed98fbb5abfebfaf7c7150f563cbbb887c2443d4de3b17ae6aa4f1df5c849e78d76fb80023a5bd8ec0d5c30f671f14819e8e0bc27fc2df6a48afca8f3ffc88025934cb9a0187301978b70b988118a5bd47b1bc3bdeb203d9a7f5e30f56a7fde57bba33ed44d6ffdd716236758006814b1395b70e63c2dc0fba765a0c5e878d117a2a47b6246eef15b898fb3f7f92af191f59118e8c6f3c68abd7017e57e9f7f5ea3bdb616775a8ecf59abff8b4ee20e6b453e00d7b7b5f2cf7fa272e467),
+(87, 'Actions_actions_url', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c9d956d8ea4201086efc2ffb5a92a15c43bec1d5c9bf490746cd33abb934ce6ee2b2a88388393f9218142b09eb73e6c9454ef46f1ba51e42650aaf741158add9b3ffaceea41958a5d4c77d56fac360aa7a7981eb093d24ec85ae53410afaf8a6705d87d82759fb09eafe319a7cade40e40c90e7d600d57a27723fc03ccc3721ae9f9d568302c5703e64dfc8ed44ba49b96c03ab3fa69545b124a4d8eb73e6c0e9a32fe3d8abcba5bd3628b201323443933d9eb7cb7c88eadfeeacd7a38ae5003ee9d13737fdabd3ff06a7093a4d0aa789ac164d1c6c456cd165f6b2609136e55e1b9e83c7c42f80284f00051e6e64b88b341cd0c8a1356dfbaacdfd40478e0ea4e07b3ec0908f623ef27cf9c2c7829086acdf8824893370efffc64e27ecc5c63e9abf66d43eb6e0e8d1d373d8c1735184f018c38b28b8243fa7876fd157e7f49e60e3cfd359ed437f6beefa69f4011e1c7cb9475fab1a029644cdaf8695f6a7e1f53e6e7845ba8981707ca61bdaa7e947f3e80ee91d04d84192f51a53d19518b535906b5bdb14411e2ed68b385bda5b90049f67840cad67e991c3997a3b053605cb9302e1ee3f90f52ffdd7e9b16f0b5c88547a88b83216c34f2b23d51003d73766912e0adf13da47d7e9b720658edc32e296496e1973cbf3b238adfbc04b87f8f11f7207287f),
+(87, 'Actions_downloads', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4bb432b0aaae0500064f01fe),
+(87, 'Actions_outlink', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4bb432b0aaae0500064f01fe),
+(87, 'Actions_sitesearch', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4bb432b0aaae0500064f01fe),
+(87, 'Contents_name_piece', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:46', 0x789c4bb432b0aaae0500064f01fe),
+(87, 'Contents_piece_name', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:46', 0x789c4bb432b0aaae0500064f01fe),
+(87, 'CustomVariables_valueByName', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:46', 0x789c4bb432b0aaae0500064f01fe),
+(87, 'DevicePlugins_plugin', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:46', 0x789c85d2510e82300c06e0bbf4043014e5df1dbc43852a9529baa1c618efee5e78d3f2b0e4cfb27e69da31ca026f45e119d51c1cde096b50e0bd04f20935a81dc74185bcc2e553fb8fa2cc4f73714e95dfcd17ff912da8d328ed34c699297e32ce64723e044ebd6d544bc6513826db5899c60a74e207dbc4da242ad0b53bcc82fb29d4a6d0806e776d8749cf6277b2319dfc09280a876be0972cac676b4b25286978480c7aec279b6a6cca819e7ae9c6673a4ba7e6a83f5f6c99d649),
+(87, 'DevicesDetection_brands', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c95cf410ac2301005d0bbcc0966a689b53f2b2f60054f10d145a1bb2e43eeee44a6080115173f3f4c481ec918501670caefcd84b22182d67c7bac94363088d202f50c1609b68474c7681ddb011f0f562d6c19bd45fc52e0d7a4dac80846a9eda1f33ef88c2be874e979755d5c67a7b5a7e53badbfe8ebdcd3d1e9b07f7c725bfeb2eb130afe686a),
+(87, 'DevicesDetection_browserEngines', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c958fc10ac3201044ffc52fd8359a34e3add742af3d1b9a83547a696fe2bf770d1b0a42033d8cb38cb86f8c18501228c4ef30a3bce061725cd66cc2369f737a3e4c48b0aa41c44e0e17ee98c47dbba0d328d644a2499d591f39da922a917008a5b645d73df8dd6084b9adcb25bdfb0a561bb03620c5db1ecfc7787b8827981eec15ecf6afcf4ae6bfc8f50331006b74),
+(87, 'DevicesDetection_browsers', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c9d8f410a02310c45ef9213b469abf4772988303808e2012aba1898dd2c4bef6e5bd38d8b19c6c527c90fc9e34758a4092a4498de78a4050e34c7e77ba6b08041a70b85095ca48b4cd1b1c88657abaefadad57208f5c977ad9a2d37563527d7294221e5fa67ecc62afd7aee74163a0b5d0b5d099a77a2790b7dbb6f05f746ff99dbacc20de8310ebfc19dd0adf4ec05ae77c1f307a1358b8d),
+(87, 'DevicesDetection_browserVersions', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c9d90c10ac2300c86dfa50f309ab4756b7214441087203e40450f83dd762c7d77db9ae26d3a0f3f49fed2fc1f0964294ea43990698da7b890233587fb7356bc504f6a7fe4c1755af14498055926abcfb2fca8d5151f5c293b2e9bdecfbadaf2c7eaeaa43205d21453d933366315e17c60301d34041404140410042df9b8311fbfe55fae3f9dc01bf8f3026695c093ba8d27c6013e0ced064e18acf4e805013621a417c2ec8fe0),
+(87, 'DevicesDetection_models', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c9590410b82401085ff8aec2fd85957cd9953e0314ae8d275cba5964425eb24fef7c6180984840e6fdef096ddfd780e631c026a72df25c7a1c70455edcebe56d423a4a8e8ea1bff0897a8f2fdfdd9768a021a51cc02cbc35285197b321de84dca3649b3327100b964f5271939e23f350ee3f4d07e0e7ed3e4a8b62585f2d6367e4961040204420b815912c03a8159ef2343753cd0a9e3425cb48ba3e2e5ea254a222876ee231716f88b657c03a8e17697),
+(87, 'DevicesDetection_os', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c95cf3d0ec3200c05e0bb700243203fcf53a52e59e8d0a133513b2065cb88b87be3ca512586541d2ce367c127123a940ce2f43d4c281b02cc9a96d76a78db3766bedd0d6738ad4ebbe727ecde03cbd58c5ef341672b4b294f9fa4ca944028551e8947706a3fe6d8dad62b3e28ee68ecd5a7d677e7befbe55fe2b5f583f2fee027c5ed5f9faf6f6a6569e8),
+(87, 'DevicesDetection_osVersions', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c95903d0ac3300c85efe20304cbff799a0a5db2b84387ce2eed60c89631e4eead8b42c1d0400721e909e97da8c062add05cbec5887581879acbfd392b5e90a0a6cb95c90e41718591b0921d3f40efecb9ed5704d1a3f4d4862d9cfe285beb0a34d6ad1dc9bbf01b2040dda6cca47b7b72e21fc5dfe8140441f708e618c11c2244a8533e731aa867f082e076845100e8af1f6c2fbb266c65),
+(87, 'DevicesDetection_types', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c958d3b1280200c44efc209c24790e50ede01470b66e82c19ee6e70829d8545b2994db22fc3a01550cab07388681716a89af7b3aa34cc022365b9b4e3e6d281c0ba8c05ad9ec5cb6d10d55a9e1c3d4e678bf309ad8fa06d1adfe43740c841c06e82a360ed2f6cbf013ae244cb),
+(87, 'Events_action_category', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4bb432b0aaae0500064f01fe),
+(87, 'Events_action_name', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4bb432b0aaae0500064f01fe),
+(87, 'Events_category_action', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4bb432b0aaae0500064f01fe),
+(87, 'Events_category_name', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4bb432b0aaae0500064f01fe),
+(87, 'Events_name_action', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4bb432b0aaae0500064f01fe),
+(87, 'Events_name_category', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4bb432b0aaae0500064f01fe),
+(87, 'Goals_ItemsCategory', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4bb432b0aaae0500064f01fe),
+(87, 'Goals_ItemsCategory_Cart', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4bb432b0aaae0500064f01fe),
+(87, 'Goals_ItemsName', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4bb432b0aaae0500064f01fe),
+(87, 'Goals_ItemsName_Cart', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4bb432b0aaae0500064f01fe),
+(87, 'Goals_ItemsSku', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4bb432b0aaae0500064f01fe),
+(87, 'Goals_ItemsSku_Cart', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4bb432b0aaae0500064f01fe),
+(87, 'Goal_-1_days_until_conv', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4bb432b0aaae0500064f01fe),
+(87, 'Goal_-1_visits_until_conv', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4bb432b0aaae0500064f01fe),
+(87, 'Goal_0_days_until_conv', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4bb432b0aaae0500064f01fe),
+(87, 'Goal_0_visits_until_conv', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4bb432b0aaae0500064f01fe),
+(87, 'Goal_days_until_conv', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4bb432b0aaae0500064f01fe),
+(87, 'Goal_visits_until_conv', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4bb432b0aaae0500064f01fe),
+(87, 'Referrers_keywordByCampaign', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4bb432b0aaae0500064f01fe),
+(87, 'Referrers_keywordBySearchEngine', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4bb432b0aaae0500064f01fe),
+(87, 'Referrers_searchEngineByKeyword', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4bb432b0aaae0500064f01fe),
+(87, 'Referrers_type', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c7d8dbb0d80300c4477c9044ec8072e3bb043101491e828a3ec8e8d9c06098af3e77cf22b706815940ba6312c681702cc59b6e334b9c2b21c2bb026d913179f7724351dcd915bd4bbd82439fbe458f4385d5e15105a97e03a8c6f7252b2d5cf5ec17e8017c5d21b6bffb0fd06430e44d3),
+(87, 'Referrers_urlBySocialNetwork', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c358c4b1280200c43efd21350c50fe9de7b1465c1e80c0b970c771750172fe9671205234718518cffe0906f4ca04b7db8486eaca04df7e0533a4922860a57c68aed1cdda7f6735566694511cbe7cc5fc29a7e296d5318e4f2b6b094f200b7e72741),
+(87, 'Referrers_urlBySocialNetwork_chunk_0_99', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c6d4f410ec22010fc8ae16e5b4a6bedf007e3c13ba1159558ac1134314dff2edb54638c21cbecccc264568363b0e0d223afd7601a39f14c6a88775363f028c13add988ed1cb1cec14c21569ea92836e4dd3f7e7a4ed5dcaa4452ec9cf42c42aa6da4f58d2ac8ed74a92af453523e7f38f229b94919846866124970d094bf19d4850a20acc9ba3339740993230022e3eeaf66642784e625c6cd7df83f18b2ed6c37a1b7b9afc6ea5d45e87789ace28678226a614fb13698ce20b8cab600b),
+(87, 'Referrers_urlByWebsite', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4bb432b0aaae0500064f01fe),
+(87, 'Resolution_configuration', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:46', 0x789c9dd1bd0ac2301000e077c913e4f2dbdc4da288458c4211e7880e856e5d0aa5ef6ea397c1a54587e37e02c7c725a1c1b14549097529028e3d5a145dba3f3b413d8241519f1b3aedc98019aae004b5a8383467430f84395bca6b5a743cf7dc437ecc61e47b32e52ea1c471ca4b62192c38e6e65647da1e08542507af648100433c433c4300ac658bfcd1a2962dee63b9340441c90164b58a091afeb4e8d5bb6ce28eaef148da7ddda57c90658ae15a0596c04f92e905a3c79919),
+(87, 'Resolution_resolution', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:46', 0x789c9d91310ec3200c45efc2096c03097ceed03b50b543a46c592221ee5e48cdd0a18dd2e1cbe65bf67f12190e6501a50c3b9a88b2c1c3acf9fe5c4dda10605802edb390490ba4899b6cd3dce4d2e3a8befbec7b99523ff51ed361eb8ea3c3a9fd954128b5dfb90de33b436c0c5168670aa710d1f29f0cf293618671ecf610a741204a204ac04a409a2f17f3ed59be9d3ebe61e47bcd77da4b5400be04505f5082903f),
+(87, 'UserCountry_city', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c9591c16ac3300c865fa5f85e235b7693c8c75eca28bbec093cea8e8059204d0b23cdbb4f1e36ebb2a66c0759c96facffe3972743634be03c61f968683c912511fd6b88c29d084808d792ce855ccaf061dc812aee365d40bde1960ab8aadc95ca8f0c7c29134b6c01344e69d0731196cd554d621f563b7f1ed6dbae8ffee37a3df6731e9d7154c681cca2e72cea178b4e8e981c07c1134c2d516b36362c75ef6f495ba3045bb96f64fd18997ff67ef5d4c5360c43b8e55525bf055ef57f5e9408f627af95b8b9c5c5c7b83ceca53bf78770f1f11e6cd9b529bb6e9636fd97742b8db37441369c78c19d3e01b08cb9ce),
+(87, 'UserCountry_country', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4d8d4b0a80300c44ef921324fd284eeee01d2a2a14bab2cbd2bb9b8a828b970c6f024910b40cd604ff8505ad22824ada8e425ae140e7459ae18cc9f0238b8da03b66dbf111127ffdd06c88bc7de0c77453f684d1fa385cb5f71bb0bb250f),
+(87, 'UserCountry_region', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4d8d410a80300c04ff921724b655dcfcc13f54f450e8adc792bf9b16050f932cb38164087a016b46f8c28ede9040359f77256d601069c1e2ac4e18597c44bdb0f94e5348faf543b323f2f691a73157fe82d16d1c1e6af6004af92435),
+(87, 'UserId_users', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:46', 0x789c4bb432b0aaae0500064f01fe),
+(87, 'UserLanguage_language', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4d8d410a80300c04ff921734ad55dcfcc13f545428f4648f257f37ad081e2659260b4960b40c2709e10b2b5a450495b49f85a4c283ae9b24c31bb3117a661b931c586cc72138feee5d3b83df9ee1865153f6c4a1692f6ea2fa00b09d250e),
+(87, 'VisitorInterest_daysSinceLastVisit', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c85d3310ac3300c05d0bb183a0a2cc9765a79ebd22d63d792420643e8d0143a84dcbd5abca5d260f818fc30e26b12ccb235897512ee81645b254b58a6e7bc84ba0a0e126ef36b7e4fcb639cbff7b6b6cf1a6a13d293eade04f559944d13d7b15ffc07594284d8053a14c81310b00bf150604f20205b489ec0c0b6903d2141b285e20919b22d0c9e50a0d8c2d91306186ce1620a49c219d01904da25d58c19383a885d4ccd8c503cc4ee66d1896a39c953ec7eeace212170f1c66297543fc3259fe86a29fb0fe92524b2),
+(87, 'VisitorInterest_pageGap', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c85d1b10a03310806e077097414a2d1bbabd9fa007d87143a046ebbf1c8bbd70ed9820e0163f4e38734c5ac77d75c9b965990de978aa6b37dbe67aa97bd24044cb52bd9297574459bb3cdf1bfbe67c31508680a792950241428be50228181a7804b81234140fc0c12091bec53a0a5b0b9026b3a00b31f627709abd1fe937de3080d010a723c2383f0412fcf183fdcfcbe4b),
+(87, 'VisitorInterest_timeGap', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c85d0310ec3300805d0bb58ea8804d8719cefad07e81d5ca943a46c19a3dcbd7448ba2466b084113c010dc2d866706d8847a0d8560c084b7b7f965057240426e15067a8bd58f7196285d6baffbeaf23714f582c42f134e4d250cf8842f934f8d2885d232364db451d247591d19651264d8e32788a0994bc59b2a79860577194d1534ca0c9534a5729082690943fa397cce49eb7b03cf4d91b66ff02a4eac364),
+(87, 'VisitorInterest_visitsByVisitCount', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c85d23b0ac4300c04d0bb18b61448f22f91bb3dc0de210b5b04d2a50cb9fbaa7117468561b0cdc39fd94c8a5dbbf1d82ccfa0769d562d1ddbf777a471fa4a12923476531f65dcbb89ef63bb3ce5f199135050d229e8a3a09190294f811f851c09850a164a2454aa58a891d0a861a14542a78e851e090b2d5858a0502cad24c153ae90f02c9534784cc1bdf4ac8d2a0708ae66f34ff57673a4e07a76bf0f0b69c8e08efa6194e5a56fa4dc7f08550b68),
+(87, 'VisitTime_localTime', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789cb5d53d8e833010c5f1bbe404f306f335dc61efc06ab788946e4bc4dd6347e32d90f252bdc2600d423fb9e0cf1e5ee2b8876d7b0c7db3c6f11763dc1efbf7efe3b6dd03562f5ed7900b63bd94ed27e67a6f7bb765aab7b650571bb777807ca1d86b72b6c77b581c679b7ff501a1e7a43bef2923654bd6afac73d629db0f6ca95aaa7651edaa1a57077e58915aa8ea2275a4ea205227aa16913a537514a90b552791ba527516a9e0895a542ccfd3aa62799ea02a053e044ad50af04441550bf04841d50bf04c41550cf050a137e3ffbf9d6e49d7d777303ec0bc55907dbfbc56507dc0ce73e5a67279af5c150ee7c17255389c07cb35e1389f47311cef),
+(87, 'VisitTime_serverTime', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789cb5d5416e84300c05d0bbcc09fc4d2060eed03b50b58b9166d725e2ee4d2a6733d5fc59fd05090a902722f9fb082f71dec3f623a671b3c5f91373dc1ec7e7f7e3b6df03d606cf6bea0ba50d65ff8adae6b93fb0756953bffabb3567203f2af6b772b5a506589c57dfe8632c107aec8041a78c942d593cb3e0ac73b68ad889b2e39c2d554bd59ed47f676c5c2dfc6745ea4c5517a90b5527915aa95a44ea4ad559a46e545d442a78465515cbf36955b13c9f3615cbf309aaa2c59b8452952d78464155b8e0290555e982e71446f18eb637fa7c49d7b757f09bbe071e5558774dbf050f2ba80ac9795ab9aad33b8f2b57f57ae779e5aae0701e58ae098eeb17b6e41cf1),
+(88, 'Actions_actions', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c95934b6ec3201086af62f9002ec3c306bcaab2e8ca516e1091d44a91ac3a0a4ebb4873a09ea317abc125c114b5c962c43c60e0ff342849e5494b542b49bc03a53c19c964dea94ddbe5b59194c83cdb3e2b5c15060aac8d2afac3eea1e9873e5b74c74dd6e8ae53c76ca58cd1fd6b5e6b8947a3a3c168c4ae36c1ade322cead4f50ed2e420543dc9e22302640e653807d1511e212c42780529b806adaeeaa20a6c055b0ed8c650ea58b6c5b2a738cf814e3692b76e76818b04bc7b37dfc48c3c280f1d6bddab5eb410f5dbbdeabe1c571196fb807cbd9b258face17e022e64d5092f7b27d37d947d62c9a95478c7f10638f9879c45ccc008320216016032ee78011859b08609122307be855349e4d19fc525d26553f6e07fda687afcf583b847681e1c60bc14c3caa58281ec7e2ab483ce1e160403818b761212c8525a1e40a87fc3d11e91ff8a4baf6a0dbffc0800753ceb110116281188b88b188dbc4277f45fc54affcfc0ded204257),
+(88, 'Actions_actions_url', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c9d94db6ec3200c86df85fb25d82607c83bec1d588b3aa4a8ab9ab49b54f5dd07a490439554ea85156cb0e3ef37895685ba59c51bad282ea054b7cec559abbf4ccb9a4e958ae5f6b8377facb10a9d0967e08cfcd3070abf085eedc3bc09057846b2f439042e008a15c1c1b8cb498600c50008e103500dc729387270c20efacaa81884b2e8cb0ac590d7838fc3510c796270203845dab9fbd61da58724c52ee78088eefddf7d7f5279bedb6bacb20e32b49dce7ece873c2451f31973935472a9147027d5491fccc7d1fc76512e7cc8854f72d572261748da94ab9ccbc505acf190d8e099343882e1ec0ec013194532bddb5d8c6d57e168bc0b159fe3014ef1688947094f0c78ab735ce7ae5e71a7f647747a815e8ce8bdbddadea4c9c2d4921a019ec38c9d57c5941d97ecd562b454bf012f5fc32780115f6c5fe934f8836ecdd99a557688ece59cfcf195c30465e31f1002ef0e37b518e9eeffd5d45384),
+(88, 'Actions_downloads', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c4bb432b0aaae0500064f01fe),
+(88, 'Actions_outlink', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c4bb432b0aaae0500064f01fe),
+(88, 'Actions_sitesearch', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c4bb432b0aaae0500064f01fe),
+(88, 'CustomVariables_valueByName', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c4bb432b0aaae0500064f01fe),
+(88, 'DevicePlugins_plugin', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c8dd2cd0dc2300c05e05d3c419b96bf971dd8c1b42e35040a490121d4ddc905894349b83d59f1272b36a32cf0521496517d82c12b600172bc13473660096a86e1a842566162a104d5642745199f4720a6ca6e3f85dfd01ad4aa97661cfc1755cc532649c5dc390e7ddea972ce5ed887bc53279d1a74e03be7994592a94097b6fb52ccbcb24c2a1bd0f5a6cd71d493e4275a25ad7820e485ddc5f153fe58db3aadc5c6a0ee2edee9be1ff3dc26cd19d043cfedf008276935fbfdd31be409dd81),
+(88, 'DevicesDetection_brands', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c7d8d4b0a80300c44ef9213b4f1539dacbc8078858a2e0aee5c96dedd465a104117c3842433cf8311038c78347518114f74a0c3affb4172c28048026c163fd4e8aed561144d06b4b2c165eff4c30c7db6be9cdced495b7c2e8c49f3735d7cb319342d956e5f747ec36d819b42e61f72ba00552945d4),
+(88, 'DevicesDetection_browserEngines', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c7d8ebd0a84301084df254f90448d3adb5d7b70edd5112d16838dd785bcfb65250111b4586698fdfb3c2c2243934753cd88b8a3830a7e5a82a2c3bf026fab2286c9654fd548d68a1949d6192dcde8b37632a10797c595567f68922b1e1a31c9fea706f7000eeabb4c6ffe55027321b05700530074f96e1fbea73f8c8f4982),
+(88, 'DevicesDetection_browsers', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c4bb432b6aaceb432b04e44302cadaa8bad4cad94721293527394ac8bad8cac949c3d94ac33ad0ca1d8084a1b03b13988b6b40669cdb432b14e010b988214189a822833a8943998ae05694cb432b0aaae0569f78309e0b5dcd70ddd7223a8e546e8961b422d3780da6c84d766234236070493ec6d4b6343227c5d0b00ed8a6880),
+(88, 'DevicesDetection_browserVersions', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c4bb432b6aaceb432b04e44302cadaa8bad4cad94721293527394ac8badccad949c3dac2d4cf50c94ac33ad0ca1d8084a1b03b13988b6b406e9cfb432b14e010b988214189a822833a8943998ae05694cb432b0aaae0569f78309e07581af9bb5a1b19e21ba0b8ca02e3042778121d4050650eb8df05a6f44c8fa8060f202c0d2d89008ffd702004b656b99),
+(88, 'DevicesDetection_models', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c7d8e510ac2301044af22394192b6a999fdf202d22b441b34585a31fd0bb9bb5d49400afa31cc32bb3b3c078d1420c9a1a983458ae8202677f193a0086520e8e667ff0ad7c3e8e3635d9e8202d426fda586b396074b5c15d0d2887ef38e2fe4d16c66caaaff78e616078994f9ff5c83df3016e2345018eecbec2b84da41e83d832a0cb200e83f00f90dfbc44ee2),
+(88, 'DevicesDetection_os', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c7d8db10e80200c44ffa55f80a028d72f70d1c1c119a303091b23e1df15531607874b7bed5d9e87460e50ec61dae290130650f4c71589d3f3a179dd88033a911699361dd76e40cfe71b18c45b098caf2fb5eda1904bed2eedf08bdee7853ed886eefa2f7b14b6569315bcfac1971baea44720),
+(88, 'DevicesDetection_osVersions', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c7d8e310e83300c45efe203544e0201be4f90850e1d98836088c4c618e5ee552267416a872ffb5bfe7e8eb0c8092c11ae370bf28d1174c5fdbc486ecca0f0fe88712f4f92605456e57a5da41e4818e4680ba37aaf0b53f3a5a62318b9d4ecda07bff91eb485550cd383dce96678e227c55b9ebd7ec07f3e285f93ed48c7),
+(88, 'DevicesDetection_types', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c7d8d4b0ac0200c44efd213f8b78e77e81d52da85e0ae4bf1ee3545410aed62983099e411144a8288043d868072c162c9b49f79891c26c826354973667808bd61e201dfdc7243acae99eb2bff78e52f048152f97e1bc137584e9ac1eacd959d2b3a54fd40eb0d82164432),
+(88, 'Goals_ItemsCategory', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c4bb432b0aaae0500064f01fe),
+(88, 'Goals_ItemsCategory_Cart', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c4bb432b0aaae0500064f01fe),
+(88, 'Goals_ItemsName', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c4bb432b0aaae0500064f01fe),
+(88, 'Goals_ItemsName_Cart', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c4bb432b0aaae0500064f01fe),
+(88, 'Goals_ItemsSku', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c4bb432b0aaae0500064f01fe),
+(88, 'Goals_ItemsSku_Cart', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c4bb432b0aaae0500064f01fe),
+(88, 'Goal_days_until_conv', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c4bb432b0aaae0500064f01fe),
+(88, 'Goal_visits_until_conv', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c4bb432b0aaae0500064f01fe),
+(88, 'Referrers_keywordByCampaign', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c4bb432b0aaae0500064f01fe),
+(88, 'Referrers_keywordBySearchEngine', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c4bb432b0aaae0500064f01fe),
+(88, 'Referrers_searchEngineByKeyword', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c4bb432b0aaae0500064f01fe),
+(88, 'Referrers_type', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c358c410e80200c04ffe20b400464fb07ff50a307126e1e49ff2e6bf030e9a6dda9c2a3573851843f14f407114bd3f36e8b54f84918ac836d669f188a50e3f6421e33b2e576ded214f257317e513874a37f88d90bdbf2238b),
+(88, 'Referrers_urlBySocialNetwork', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c4bb432b0aaae0500064f01fe),
+(88, 'Referrers_urlByWebsite', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c4bb432b0aaae0500064f01fe),
+(88, 'Resolution_configuration', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c95cecd0ac2300c07f077e91324fd58d7e428883b38851d3c57f450d86d9742e9bbeb6686b0c3d04348fe2529bf48864a22e0f81d0295891ca931de9fa3e289d092ea2e039f8f6cd1e636348a13a19496326b0f3cff93c8f2635970921b59f04baef37524a052e7db7e7dd861bcc3adebf97062d42d64af61eb4071f8adc38b03d139a1c02e45ef539a0fe53a30060d19a1fddf120cfe40a92f31cb72e6),
+(88, 'Resolution_resolution', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c95ce410a03210c05d0bb788224eaa8df3bf40e967621cc6e368278f78e434a61a043bb085fa231afc0a257502e9f4342dfe061d6727fae266f88302c915a1032b982b544d3ee1566a63c3fa870f97134fc7cc07ec6a257e1c831070b087dccf1dbbbf19d907642126a4cf17f43b2fc13412e0901c6b16b312d67802840ce005600e97ab9583f5e83a26c72),
+(88, 'UserCountry_city', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c758ecd0ac23010845f45726f4936e9dfe4e8c583f80e11ab148a85b61e24edbbbb2b0d48c1c332cbeccf7c0184d841fb009b9a06714201d5876bdb2b3f414329dfc170d14f59f19c348d97cb0ecedf50b116b2a1eb92a5dc46d55757f912f8615ce5fe928cffd9a6863ab7875378cdd97118fbf05e96fb9870cc0e87f63466a3d11b0aed514802ad04ce8af75d9d5b22ce756c0dcf877899cd7551f944bc7e001a4b5677),
+(88, 'UserCountry_country', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c358c4b0e80200c44efd213f05190e91dbc438d9a90b09225e1ee52838b974eda791558b40cc302ff878456b1828a1c5721ae70a0fb21ceb0033f708365661b34245657b727e298abb6cca6b73085f855ba7e1118b4aefecebdbf926f24ec),
+(88, 'UserCountry_region', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c358cc10dc0200c0377c904500a146787ee40d53e90f8f144d9bd49451f564e8eed0a8fd9e0b822fc50300722a8d7ebe9c4030e44dce05541b5a9f6c53e1914b6a6b937b2de682977d82fad42fe22622b5507a758ff6491172d872412),
+(88, 'UserId_users', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c4bb432b0aaae0500064f01fe),
+(88, 'UserLanguage_language', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c358c4b0e80200c44efd213f05190e91dbc438d9a90b09225e1ee52838b974eda791558b40cc302ff878456b1828a1c5721ae70a0fb21ceb0033f708365661b34245657b727e298abb6cca6b73085f855ba7e1118b4aefecebdbf926f24ec),
+(88, 'VisitorInterest_daysSinceLastVisit', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c8dd33d0bc3201006e0ff22743cf03c3fd273ebd22d63d762c141081d9a428790ff5e3b0432a49edb8b720f72bc2646c74b611d13d3160c2f333b56537ae449c59931b0bae6677ea5e93ee6cfadcce53dab58d8fc2e59918a6b61aca39a979a288edbc17f945869d03b058f15232908b853f4b1429262c0c88a9514029215272916acac784971e06425488a072f2b83a40408b2726e2a96d500d8b1186c97b9667440ba036a17b86642f03d50bbc3be6eb996d8f448ed1ed77f8a06817ccf9ada65ae8f22ef4ee62249eb1701b62f87),
+(88, 'VisitorInterest_pageGap', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c8dd1310ac3300c05d0bb083a0a2cd94e5269cb017a07173a18b2650cb97bb5043a14ff6cdf96fc1072334976744bde2c5f41edd8ad1a6dedfdd9c8f7a890b09077d3388991929fdd247ae375a4ecafeb62a828eb8f92fe2b8a94cc192b1929850b560a522a57ac54a44c3ce3ed4e43a5182d2c090f330f99c8127f7d63350b742aeb8d799ec85179e88a9cf30bfb83c583),
+(88, 'VisitorInterest_timeGap', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c8dd2310ac3300c05d0bb083a0a24d9719cef2d07e81d52e810c89631e4eed512e8d0c6dabe8dfc908417a8e058216d41ba82e1d83180b6e5f5dea8edc82061156a2bcc8f0a326ae70af5627fee29b5e775f19ff1accae9db91df8ef59ca45c024eba750aa8f85c1680f22d34fa60266c39200d3dc915ce919e4a4f72c5b71490c69ee40a4f11a9de4a15e40a6b95c05f9aba2bafa20f9b7b4d9d1f85cdca9c),
+(88, 'VisitorInterest_visitsByVisitCount', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c8dd33b0ac3300c06e0bb083a0a24f995c85b0fd03ba4d021902d63c8ddab25902148de7e3ff8b0657951ce7aac4a7dd17405d163d7a2b02ddfdf067db7156064e8ab8a8d5821413f5765db4b7a584afd734db88aa0dc147e56245212a69b42cf4a8a948c395672a4142cb15222a5628d951a290d5bacb44899708a95c955b2c28c3c50ded9652c7341192830fbfd6b592a161a80fc16aef6e0f6136844f2dbb8d9dd88518628bf97ed5042fc9277249d7f653a1584),
+(88, 'VisitTime_localTime', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789cb5d63b0e83301084e1bbe4043bcbc378b943ee40941448742911778f1d99866292660a6340980f0a7eb184f7b1af61f312ddb993637fc710b76d79bcb6dbbc06ac6ecae8caf036d781a1eee4b9ae5ba39f9f91ca5c4fba4d6399c6b6307d2f39eac11216fb51d7dfcf13444eed0668f2f914b8c268b0fda53a55cfd7b5865a43ed8ada05358a76fc5535684f51d7a003453b0d3a52b4d7a089a283069d283a6ad04cd1a441c1c33489541ea52c527994200a047e64499408f030411409f034419409f03841140af03c41940af04041f5d9f24441f4dd3a6f948bfe269c47ca45b9705e2917e5c279a55c928be303ce4418ce),
+(88, 'VisitTime_serverTime', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789cb5d54d0e82301086e1bb78829969a1747a07ef50a30b12762e0977979a36312c3e57df024bf87b22c9bc54b7e8fbea52aa87b1937d7ffbe4b7ad3e5edbadacaed27ececd7eb6d08ec5b6934bbb6ff5589e9ece756a57c8329fcbdc4fa5ef7ab4a75417df8f76ff7d1c00b27679e83ae42bac1d96ae2a540dab89a306a88e972c1d958eca15950b8a5f70c47f95834e10350e3a433470d004d1c84117884e1c344374e6a08acb94482aaed2425271953249c55552d2b0ea9f2e91c65571999434b08adba4a491555c27650d2dee93b2e607174a490364385146faae1b6e9491beec862365a45c18ae945172717c005ac018cf),
+(90, 'Goals_ItemsCategory', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c4bb432b0aaae0500064f01fe),
+(90, 'Goals_ItemsCategory_Cart', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c4bb432b0aaae0500064f01fe),
+(90, 'Goals_ItemsName', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c4bb432b0aaae0500064f01fe),
+(90, 'Goals_ItemsName_Cart', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c4bb432b0aaae0500064f01fe),
+(90, 'Goals_ItemsSku', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c4bb432b0aaae0500064f01fe),
+(90, 'Goals_ItemsSku_Cart', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c4bb432b0aaae0500064f01fe),
+(90, 'Goal_days_until_conv', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c4bb432b0aaae0500064f01fe),
+(90, 'Goal_visits_until_conv', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0x789c4bb432b0aaae0500064f01fe),
+(95, 'Actions_actions', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789ca5d2d16e83201406e057213c80e3808a1e2fbdda854bdfa0a19de9488c9a6293255ddf7da0d55275a6c92e20fe2772802f281478d5c832f5f88018af0623a4953a9415cd0c0a89941c3f15978181806ba382e67c7a7bafcdf1acdb4e3735f921455eec68a691df078c632a0837313b09e69a226501772b04d8084887c0b37e7316b0642888b10090b802c8e177e843ea05cefc70efcafac0fd35a11fa229dcdc81edfdddf5c1eed8aa53b9ef745795fb56755fbd448cf43508db4c641f63cf0ddc50ace2164dd790bcba1c48a1ab4a5dc84e196337a073de0de2412d8db790a59c23a7af21871332b75d535f99fd5339e46bca7f8b3cacb96f9d2ede71b44a9d37755d7e2f5ff1821846e2e44998c9c41786b970f22cdc175e796be19ac2f2b0e3ed6fbf9b4f0d77),
+(95, 'Actions_actions_url', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c9593518e83201086efc2fb22035871bcc3de81b5a62569d4549b34697af705158bb86af601e23f23e3fc9f8346892f83acd028fc039cf0d5618ae4a67faa1b293a840c49d2ea4bf565eaaebc9bb6374d4d0a837c5ae0d71c106e637613cc16104818e5ee8400570fc92878317c8851a6c680f00100e502908dafc320f24070168aa92a1b040fcfc850a4b378bb86ad5767d576f7b80f46a54d5efbbec52429cf9a67b403ca4da76973bffc01c01611c5b7aff50128638027cbcfd4e7ea4962601e1aaca14d1cf2101b2cb1f9ac8802c7d8e48c8ddb9f9187dcd8161d9eeed00969f0050d588d13f338687b6d8f912c89b02cdb21e2b3220afc6f0e84dc711a74feb12c42cbf9ca71ea2f50d9d475f50caecfb66d15d956bbb6556c5b6d9acb8f863c68d23b7cff02ec0220bd),
+(95, 'Actions_downloads', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c4bb432b0aaae0500064f01fe),
+(95, 'Actions_outlink', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c4bb432b0aaae0500064f01fe),
+(95, 'Actions_sitesearch', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c4bb432b0aaae0500064f01fe),
+(95, 'CustomVariables_valueByName', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c4bb432b0aaae0500064f01fe),
+(95, 'DevicePlugins_plugin', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c8dd2c10dc2300c05d05d3c419b42a13f3bb083690d35040a49698510bb930b120748b87d59f63bd86694051e8ac232aa773078042c418eb7e2c806d4a076188e2a641526164a9021fb5494b13d02315576f32efc86d6a04ebdb4e3e03fa8e23b659254cc3bc7a1cf3b55ced90bfb9077164967013af0c4796699642ad0a5dbe5953aa934a0eb4ddbe3a827c95baba4151f84bcb0bb38becb1f675ba7b53818d44de29deefb31cf3569ce80663d77c31c4ed26976fdcf17dbfddd7d),
+(95, 'DevicesDetection_brands', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c358b410e80200c04ffd217208886ed1ff4e00b6af440c28d23e9dfa58a8749b79b1dc18496e15810fe90d02a22a8c87917e20a0f3a76e28c69e007a113ed26363563e6abf395deca6518eb3b507b040e4d4dde58f5011c402417),
+(95, 'DevicesDetection_browserEngines', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c358c4b0e80200c44efd213f0110dd33b78871a5c90b063497a77a9e2e2a59d495f051ea3c2b120fe4bc6e848a026d7dd883b1c88b8c22fc2224e92cdcc26566c5c265f19acdc9771bc076a41e6b7a1269facfa00cc7a2373),
+(95, 'DevicesDetection_browsers', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c4bb432b4aaceb432b04eb43286312cadaa8bad4cad94721293527394ac8b81324aa17ede4ad6995686506c04c5c6406c0aa22dad417a33ad4cac538018226804123483ea30072ba8057112ad0cacaa6b419afdac6b6b0142e22464),
+(95, 'DevicesDetection_browserVersions', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c358c4b0e80200c44efc2010c1f51991ec1849d07c0e882841d4bd2bb4b15172fedbc749a60d0323425b87f0968151eaaa4f32e8a6a17ea883bd9cd4c5a518619d881eb789981e443c64c57e79356e4321aeb7bc01212341a4b3912f303fcd5259e),
+(95, 'DevicesDetection_models', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c358c3d0a80300c85af223d81b556f16575141d5c5c233a143a88e2547a771badc34792f713864670288961fea543b860a13cafbb577441b750f344cbb19f8e8bc114fdcdc970d0992a6312566647f2caa1a62df18995884d6eb46f20cac12811a294478af101c6dd2936),
+(95, 'DevicesDetection_os', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c4bb432b4aaceb432b04eb43286312cadaa8bad4cad94721293527394ac8b81324a8e7e2e4ad6995686506c04c5c6406c0aa22dad417a33ad4cac538018226804123483ea30072ba8057112ad0cacaa6b419afdac6b6b0139722449),
+(95, 'DevicesDetection_osVersions', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c358b3b0e80201044efb207307c5464b632b1e60e182d48e828097797552c5e7676322f42a326288eb07ff0a8050b28c7f3cec4050eb48783b7491327e88119d8ce22d7b3f809335f9daf3452aec370efa0c913a1509bc8815b7b00b5c5251f),
+(95, 'DevicesDetection_types', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c4bb432b4aaceb432b04eb43286312cadaa8bad4cad94721293527394ac33ad0c91b011141b03b12988b6b406e9cab432b14e016288a01148d00caac31caca016c449b432b0aaae0569f6b3aead05007c8922ec),
+(95, 'Goals_ItemsCategory', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c4bb432b0aaae0500064f01fe),
+(95, 'Goals_ItemsCategory_Cart', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c4bb432b0aaae0500064f01fe),
+(95, 'Goals_ItemsName', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c4bb432b0aaae0500064f01fe),
+(95, 'Goals_ItemsName_Cart', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c4bb432b0aaae0500064f01fe),
+(95, 'Goals_ItemsSku', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c4bb432b0aaae0500064f01fe),
+(95, 'Goals_ItemsSku_Cart', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c4bb432b0aaae0500064f01fe),
+(95, 'Goal_days_until_conv', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c4bb432b0aaae0500064f01fe),
+(95, 'Goal_visits_until_conv', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c4bb432b0aaae0500064f01fe),
+(95, 'Referrers_keywordByCampaign', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c4bb432b0aaae0500064f01fe),
+(95, 'Referrers_keywordBySearchEngine', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c4bb432b0aaae0500064f01fe);
+INSERT INTO `matomo_archive_blob_2020_09` (`idarchive`, `name`, `idsite`, `date1`, `date2`, `period`, `ts_archived`, `value`) VALUES
+(95, 'Referrers_searchEngineByKeyword', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c4bb432b0aaae0500064f01fe),
+(95, 'Referrers_type', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c4bb432b2aaceb432b04eb43286312cadaa8bad4cad94721293527394ac33ad0c91b011943686d196d6205d995626d62960015328df0caac01cccaf057112ad0cacaa6b417afd6002b82d35c761a909baa526504b8d2ca1b61ae0b1b51600e266439b),
+(95, 'Referrers_urlBySocialNetwork', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c358c410e80200c04ffc20b4044657bf71f55391049387024fc5d8b78d84cbbed2ec3a0466862d87ff0a8050e2af11192a2820d6ae7331c39df8a22ccd034685fcd424f5220cbd50d274f622ee3b076368931346afbc2865a7b00934d2718),
+(95, 'Referrers_urlBySocialNetwork_chunk_0_99', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c354cdb0d83400cdb2503700f7a45383b748740a94080ae12fc9db27b09d00fcbb1635b10502604de109207c9a53d0beaffd1a26c48a045ba61a123192368dcf72f9c5bab8ff44397f35cf57975c4b67521de5c1f7818b76c7b26dea7912c64e6f37e3427abd5041e45adfc625562fd0114c73076),
+(95, 'Referrers_urlByWebsite', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c4bb432b0aaae0500064f01fe),
+(95, 'Resolution_configuration', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c358c3b0e80201044efc209f82884d9cac4ce84ce0360b420a1a33121dc5d56b178d999c9cc4628d4044911e6171eb56086c8f1b8b2a002d5cd1256dac346c6cadb692928410df4c07466be9ef851c24467e70b3587762cdc5b686c22246ae371a0d61e0bf4278a),
+(95, 'Resolution_resolution', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c358b4b0e80200c44efc209f80884e91dbc438d2e48d8b13121bdbb5471f1d2e9641ec361545862843f148c8e08d3f8b89aa18e0c1392bdb3b7862adcc22fc224ea2da47ec546e7e42bbd966919f91d883e0c8b212aef24f200b71a2524),
+(95, 'UserCountry_city', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c858e410ec2201045af62d84b2803ad0c3730c68d27c0140d09b149a96edadedda1a126baa80b32fc9f3ff39f43896340611dc2fa313826d4c8a2bbfac86cc28ac4c9ed8e5d0c7e18fc34dd7a660356e5c932619dc6e64301956d1743175d9740b3e8390b97fb137553dbc028af8083d054aac8ea1ef7ec690e7593f360cfebda062d1dbb74cfbef52f17b758d52fab2aacd21458f10ff6c01b09dfb07bc18d941fdaf90d6d9064ad),
+(95, 'UserCountry_country', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c4d8bc909c0300c047b51053e72e0550fe941210918fc8a9f46bdc7ca01790c5a2d3b028f96e15810bf90d02a465091752fc41501749cc419be137ec4ce6837b1a919036f9da70c564eaf35df03b547e0d0d4e485552f2f32244e),
+(95, 'UserCountry_region', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c4bb432b4aaceb432b04eb43286312cadaa8bad4cad94721293527394ac8bad0cac9494ac33ad0c81d808091b03b12988b6b40669ccb432b14e016288a01148d00caacb1caca016c449049a565d0bd2ec675d5b0b00ccc92374),
+(95, 'UserId_users', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c4bb432b0aaae0500064f01fe),
+(95, 'UserLanguage_language', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c358b410e80200c04ffd217208886ed1ffc438d9a90709223e9dfa58a8749b79b1dc18496e15810fe90d02a22a8c87e16e20a0fba6ee28c69e007a113ed26363563e6a3f395deca6518eb3b507b040e4d4dde58f5012ee3244d),
+(95, 'VisitorInterest_daysSinceLastVisit', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c8dd33d0b03210c06e0ff22740c18e3c7356e5dbaddd8b55870108e0eb5d0e1b8ff5e3b1c74688ddb8b920709af89d1f15a58c7c4b407c36b65c76a49b7bca8581903ab73bee7475aae737e5d4a2dcfaa6261f3b964852a6e85b18d6a5e5ba238ef07ff5162a541cb8a911404fc52f46f8524c58091152b2904242b4e522c5859f192e2c0c94a90140f5e562649091064e5d8552cab09706031d82f73cbe880f400d42f70cb84e047a07e877ddb722bb11991fa3d6eff140d02f99135f5cbdc1e45de1dcc4992b637f9ab2f85),
+(95, 'VisitorInterest_pageGap', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c8dd1310ac3300c05d0bb08320a2cd94e5269eb017a07173a18b2650cb97bb4043a14ff6e5fb6fc9070334976744bde2cdf41edd8ad1a6dedfdd9c8f7b8216121efa6514954e4673789de781d29fbeb3e182acafaa5a4df8a222573c64a464ae182372a48a95cf12c1529332f5899874a315a59126696211359e2af0b7656e854d63fe679204765d22772ce0bf847c581),
+(95, 'VisitorInterest_timeGap', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c8dd0310ac3300c05d0bb083a0a24d9719cef2d07e81d52e810c89631e4eed512e8d0c6dabe8cf4b0b44005c70a690bd2150cc78e01b42daff7466d470609ab505b615e2a48a99d2bd49b7ddc536acfebe13fe3599553c0b19e9394cbb723bf9d74eb1450f1bd2c00e55b68f4454cd872401a7a922b9c237f2a3dc915bf52401a7b922b3c45a47a2b55902bac35424ddd9357d187cd3de9fc0084c5ca9a),
+(95, 'VisitorInterest_visitsByVisitCount', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789c8dd33b0ac3300c06e0bb183a0a24f995c85b0fd03bb8d0c1902da3c9ddab25d0a148de7e3ff8b065b90b259943b07589776099a76409477f7f8ed04e5d090414da10d611e928b46b08e95e94a929b6d73d612a0cec2bec2911e28f82ff95e8290992af244fc9907d257b4a81e22bc5532a545fa99eb2c1e62b9ba924093bd042797793d14c1978a1c064f7af662e907101b25bb8e883eb4fc015c96ee3aa7743025ea2ec5ed64331d2839f9e747d015dcc1582),
+(95, 'VisitTime_localTime', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789cb5d4310e83301044d1bbe4049e3518bcdc2177204a0a24ba9488bb27464b83944935053831584f14fb67b7ceb7c5d3347b3e7f54dfdedefb6d9d1faff5362d8ed26e7159acf97b756dad533bd6fe3c8f8dbebdd4364b3c188e756fc7664fbeededf0fddc20ecf083c59545b0295450d5a89ae27c0a34059aae68baa0fc5333ff540dda51d434684fd1ac410b453b0d3a50b4d7a023458b06ad141d342878954691caa354452a8f124455c29f2c89ba041e2688ca049e2688da041e2788ea049e2788fa041e28a8c696270aa2b935de2813cdadf14899686e8d57ca44736bbc522699dbfd03fd2b182f),
+(95, 'VisitTime_serverTime', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0x789cb5d4310e83301044d1bbe4049eb53178b943eee0282990e85222ee9e18990629936a0a7062b09e28f657b7e4dbe261ae1ecf1fc5b7b70f7e5bebe3b5dee6c591dbad5fd6d7f8bd525bcbdc8eb53fcf6363682fb5cddc1f8cc7bab763d5836f7b3b7c3f37083bfd607165d1d9d05550d5a81afaf9d0d1d0d17045c305e59f1af9a76ad04451d3a00345a306cd144d1a74a4e8a041278a660d5a283a6a50f02a4d229547a988541e2588aa843f591275093c4c1095093c4d10b5093c4e10d5093c4f10f5093c5050c582270aa2b935de2813cdadf14899686e8d57ca44736bbc522699dbfd03050f182f),
+(108, 'Goals_ItemsCategory', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4bb432b0aaae0500064f01fe),
+(108, 'Goals_ItemsCategory_Cart', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4bb432b0aaae0500064f01fe),
+(108, 'Goals_ItemsName', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4bb432b0aaae0500064f01fe),
+(108, 'Goals_ItemsName_Cart', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4bb432b0aaae0500064f01fe),
+(108, 'Goals_ItemsSku', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4bb432b0aaae0500064f01fe),
+(108, 'Goals_ItemsSku_Cart', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4bb432b0aaae0500064f01fe),
+(108, 'Goal_-1_days_until_conv', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4bb432b0aaae0500064f01fe),
+(108, 'Goal_-1_visits_until_conv', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4bb432b0aaae0500064f01fe),
+(108, 'Goal_0_days_until_conv', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4bb432b0aaae0500064f01fe),
+(108, 'Goal_0_visits_until_conv', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4bb432b0aaae0500064f01fe),
+(108, 'Goal_days_until_conv', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4bb432b0aaae0500064f01fe),
+(108, 'Goal_visits_until_conv', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 0x789c4bb432b0aaae0500064f01fe),
+(121, 'Goals_ItemsCategory', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:48', 0x789c4bb432b0aaae0500064f01fe),
+(121, 'Goals_ItemsCategory_Cart', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:48', 0x789c4bb432b0aaae0500064f01fe),
+(121, 'Goals_ItemsName', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:48', 0x789c4bb432b0aaae0500064f01fe),
+(121, 'Goals_ItemsName_Cart', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:48', 0x789c4bb432b0aaae0500064f01fe),
+(121, 'Goals_ItemsSku', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:48', 0x789c4bb432b0aaae0500064f01fe),
+(121, 'Goals_ItemsSku_Cart', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:48', 0x789c4bb432b0aaae0500064f01fe),
+(121, 'Goal_-1_days_until_conv', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:48', 0x789c4bb432b0aaae0500064f01fe),
+(121, 'Goal_-1_visits_until_conv', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:48', 0x789c4bb432b0aaae0500064f01fe),
+(121, 'Goal_0_days_until_conv', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:48', 0x789c4bb432b0aaae0500064f01fe),
+(121, 'Goal_0_visits_until_conv', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:48', 0x789c4bb432b0aaae0500064f01fe),
+(121, 'Goal_days_until_conv', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:48', 0x789c4bb432b0aaae0500064f01fe),
+(121, 'Goal_visits_until_conv', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:48', 0x789c4bb432b0aaae0500064f01fe);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `matomo_archive_blob_2020_10`
+--
+
+CREATE TABLE `matomo_archive_blob_2020_10` (
+  `idarchive` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `idsite` int(10) UNSIGNED DEFAULT NULL,
+  `date1` date DEFAULT NULL,
+  `date2` date DEFAULT NULL,
+  `period` tinyint(3) UNSIGNED DEFAULT NULL,
+  `ts_archived` datetime DEFAULT NULL,
+  `value` mediumblob
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `matomo_archive_numeric_2020_01`
+--
+
+CREATE TABLE `matomo_archive_numeric_2020_01` (
+  `idarchive` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `idsite` int(10) UNSIGNED DEFAULT NULL,
+  `date1` date DEFAULT NULL,
+  `date2` date DEFAULT NULL,
+  `period` tinyint(3) UNSIGNED DEFAULT NULL,
+  `ts_archived` datetime DEFAULT NULL,
+  `value` double DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `matomo_archive_numeric_2020_09`
+--
+
+CREATE TABLE `matomo_archive_numeric_2020_09` (
+  `idarchive` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `idsite` int(10) UNSIGNED DEFAULT NULL,
+  `date1` date DEFAULT NULL,
+  `date2` date DEFAULT NULL,
+  `period` tinyint(3) UNSIGNED DEFAULT NULL,
+  `ts_archived` datetime DEFAULT NULL,
+  `value` double DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `matomo_archive_numeric_2020_09`
+--
+
+INSERT INTO `matomo_archive_numeric_2020_09` (`idarchive`, `name`, `idsite`, `date1`, `date2`, `period`, `ts_archived`, `value`) VALUES
+(1, 'done', 1, '2020-09-14', '2020-09-14', 1, '2020-09-15 07:49:02', 1),
+(5, 'done', 1, '2020-09-07', '2020-09-13', 2, '2020-09-15 08:22:47', 1),
+(6, 'done', 1, '2020-09-12', '2020-09-12', 1, '2020-09-15 08:22:47', 1),
+(8, 'done', 1, '2020-09-13', '2020-09-13', 1, '2020-09-15 08:22:47', 1),
+(9, 'done90a5a511e1974bca37613b6daec137ba.VisitsSummary', 1, '2020-09-12', '2020-09-12', 1, '2020-09-15 08:22:47', 1),
+(12, 'done90a5a511e1974bca37613b6daec137ba.VisitsSummary', 1, '2020-09-13', '2020-09-13', 1, '2020-09-15 08:22:48', 1),
+(13, 'done90a5a511e1974bca37613b6daec137ba.VisitsSummary', 1, '2020-09-14', '2020-09-14', 1, '2020-09-15 08:22:48', 1),
+(16, 'donefea44bece172bc9696ae57c26888bf8a.VisitsSummary', 1, '2020-09-12', '2020-09-12', 1, '2020-09-15 08:22:48', 1),
+(18, 'donefea44bece172bc9696ae57c26888bf8a.VisitsSummary', 1, '2020-09-13', '2020-09-13', 1, '2020-09-15 08:22:49', 1),
+(20, 'donefea44bece172bc9696ae57c26888bf8a.VisitsSummary', 1, '2020-09-14', '2020-09-14', 1, '2020-09-15 08:22:49', 1),
+(23, 'done90a5a511e1974bca37613b6daec137ba.Goals', 1, '2020-09-12', '2020-09-12', 1, '2020-09-15 08:22:49', 1),
+(24, 'done90a5a511e1974bca37613b6daec137ba.Goals', 1, '2020-09-13', '2020-09-13', 1, '2020-09-15 08:22:50', 1),
+(25, 'done90a5a511e1974bca37613b6daec137ba.VisitsSummary', 1, '2020-09-14', '2020-09-20', 2, '2020-09-15 08:22:50', 1),
+(25, 'max_actions', 1, '2020-09-14', '2020-09-20', 2, '2020-09-15 08:22:50', 4),
+(25, 'nb_actions', 1, '2020-09-14', '2020-09-20', 2, '2020-09-15 08:22:50', 4),
+(25, 'nb_uniq_visitors', 1, '2020-09-14', '2020-09-20', 2, '2020-09-15 08:22:50', 1),
+(25, 'nb_visits', 1, '2020-09-14', '2020-09-20', 2, '2020-09-15 08:22:50', 1),
+(25, 'sum_visit_length', 1, '2020-09-14', '2020-09-20', 2, '2020-09-15 08:22:50', 21),
+(26, 'done90a5a511e1974bca37613b6daec137ba.Goals', 1, '2020-09-14', '2020-09-14', 1, '2020-09-15 08:22:50', 1),
+(27, 'done90a5a511e1974bca37613b6daec137ba.VisitsSummary', 1, '2020-09-16', '2020-09-16', 1, '2020-09-15 08:22:50', 1),
+(28, 'donefea44bece172bc9696ae57c26888bf8a.Goals', 1, '2020-09-12', '2020-09-12', 1, '2020-09-15 08:22:50', 1),
+(29, 'done90a5a511e1974bca37613b6daec137ba.VisitsSummary', 1, '2020-09-17', '2020-09-17', 1, '2020-09-15 08:22:50', 1),
+(30, 'donefea44bece172bc9696ae57c26888bf8a.Goals', 1, '2020-09-13', '2020-09-13', 1, '2020-09-15 08:22:50', 1),
+(31, 'donefea44bece172bc9696ae57c26888bf8a.Goals', 1, '2020-09-14', '2020-09-14', 1, '2020-09-15 08:22:50', 1),
+(35, 'donefea44bece172bc9696ae57c26888bf8a.VisitsSummary', 1, '2020-09-14', '2020-09-20', 2, '2020-09-15 08:22:52', 1),
+(36, 'donefea44bece172bc9696ae57c26888bf8a.VisitsSummary', 1, '2020-09-16', '2020-09-16', 1, '2020-09-15 08:22:51', 1),
+(37, 'donefea44bece172bc9696ae57c26888bf8a.VisitsSummary', 1, '2020-09-17', '2020-09-17', 1, '2020-09-15 08:22:52', 1),
+(39, 'done90a5a511e1974bca37613b6daec137ba.VisitsSummary', 1, '2020-09-01', '2020-09-30', 3, '2020-09-15 08:22:53', 1),
+(39, 'max_actions', 1, '2020-09-01', '2020-09-30', 3, '2020-09-15 08:22:53', 4),
+(39, 'nb_actions', 1, '2020-09-01', '2020-09-30', 3, '2020-09-15 08:22:53', 4),
+(39, 'nb_uniq_visitors', 1, '2020-09-01', '2020-09-30', 3, '2020-09-15 08:22:53', 1),
+(39, 'nb_visits', 1, '2020-09-01', '2020-09-30', 3, '2020-09-15 08:22:53', 1),
+(39, 'sum_visit_length', 1, '2020-09-01', '2020-09-30', 3, '2020-09-15 08:22:53', 21),
+(40, 'done90a5a511e1974bca37613b6daec137ba.VisitsSummary', 1, '2020-09-07', '2020-09-13', 2, '2020-09-15 08:22:52', 1),
+(42, 'done90a5a511e1974bca37613b6daec137ba.Goals', 1, '2020-09-07', '2020-09-13', 2, '2020-09-15 08:22:53', 1),
+(43, 'donefea44bece172bc9696ae57c26888bf8a.VisitsSummary', 1, '2020-09-01', '2020-09-30', 3, '2020-09-15 08:22:54', 1),
+(44, 'donefea44bece172bc9696ae57c26888bf8a.VisitsSummary', 1, '2020-09-07', '2020-09-13', 2, '2020-09-15 08:22:53', 1),
+(60, 'done90a5a511e1974bca37613b6daec137ba.VisitsSummary', 1, '2020-09-15', '2020-09-15', 1, '2020-09-15 08:45:21', 1),
+(60, 'max_actions', 1, '2020-09-15', '2020-09-15', 1, '2020-09-15 08:45:21', 7),
+(60, 'nb_actions', 1, '2020-09-15', '2020-09-15', 1, '2020-09-15 08:45:21', 11),
+(60, 'nb_uniq_visitors', 1, '2020-09-15', '2020-09-15', 1, '2020-09-15 08:45:21', 2),
+(60, 'nb_visits', 1, '2020-09-15', '2020-09-15', 1, '2020-09-15 08:45:21', 2),
+(60, 'sum_visit_length', 1, '2020-09-15', '2020-09-15', 1, '2020-09-15 08:45:21', 1273),
+(61, 'donefea44bece172bc9696ae57c26888bf8a.VisitsSummary', 1, '2020-09-15', '2020-09-15', 1, '2020-09-15 08:45:21', 1),
+(84, 'Actions_nb_hits_with_time_generation', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 21),
+(84, 'Actions_nb_pageviews', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 21),
+(84, 'Actions_nb_uniq_pageviews', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 15),
+(84, 'Actions_sum_time_generation', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 1.29),
+(84, 'bounce_count', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 3),
+(84, 'done', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 1),
+(84, 'max_actions', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 7),
+(84, 'nb_actions', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 21),
+(84, 'nb_uniq_visitors', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 4),
+(84, 'nb_visits', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 6),
+(84, 'Referrers_distinctSocialNetworks', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 1),
+(84, 'sum_visit_length', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 2115),
+(84, 'UserCountry_distinctCountries', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:49', 1),
+(86, 'done', 1, '2020-09-24', '2020-09-24', 1, '2020-09-24 07:56:40', 1),
+(87, 'Actions_nb_hits_with_time_generation', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:46', 21),
+(87, 'Actions_nb_pageviews', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:46', 21),
+(87, 'Actions_nb_uniq_pageviews', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:46', 15),
+(87, 'Actions_sum_time_generation', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:46', 1.29),
+(87, 'bounce_count', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:46', 3),
+(87, 'done', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:46', 1),
+(87, 'max_actions', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:46', 7),
+(87, 'nb_actions', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:46', 21),
+(87, 'nb_uniq_visitors', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:46', 4),
+(87, 'nb_visits', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:46', 6),
+(87, 'Referrers_distinctSocialNetworks', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:46', 1),
+(87, 'sum_visit_length', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:46', 2115),
+(87, 'UserCountry_distinctCountries', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:46', 1),
+(88, 'Actions_nb_hits_with_time_generation', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 16),
+(88, 'Actions_nb_pageviews', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 16),
+(88, 'Actions_nb_uniq_pageviews', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 10),
+(88, 'Actions_sum_time_generation', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 0.82),
+(88, 'bounce_count', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 2),
+(88, 'done', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 1),
+(88, 'max_actions', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 7),
+(88, 'nb_actions', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 16),
+(88, 'nb_uniq_visitors', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 3),
+(88, 'nb_visits', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 4),
+(88, 'sum_visit_length', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 2086),
+(88, 'UserCountry_distinctCountries', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 1),
+(90, 'done90a5a511e1974bca37613b6daec137ba.Goals', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 1),
+(91, 'donefea44bece172bc9696ae57c26888bf8a.Goals', 1, '2020-09-15', '2020-09-15', 1, '2020-09-24 07:56:41', 1),
+(93, 'done', 1, '2020-09-16', '2020-09-16', 1, '2020-09-24 07:56:42', 1),
+(95, 'Actions_nb_hits_with_time_generation', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 5),
+(95, 'Actions_nb_pageviews', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 5),
+(95, 'Actions_nb_uniq_pageviews', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 5),
+(95, 'Actions_sum_time_generation', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 0.47),
+(95, 'bounce_count', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 1),
+(95, 'done', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 1),
+(95, 'max_actions', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 4),
+(95, 'nb_actions', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 5),
+(95, 'nb_uniq_visitors', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 1),
+(95, 'nb_visits', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 2),
+(95, 'Referrers_distinctSocialNetworks', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 1),
+(95, 'sum_visit_length', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 29),
+(95, 'UserCountry_distinctCountries', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 1),
+(97, 'done90a5a511e1974bca37613b6daec137ba.Goals', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 1),
+(99, 'donefea44bece172bc9696ae57c26888bf8a.Goals', 1, '2020-09-17', '2020-09-17', 1, '2020-09-24 07:56:42', 1),
+(101, 'done', 1, '2020-09-18', '2020-09-18', 1, '2020-09-24 07:56:43', 1),
+(103, 'done', 1, '2020-09-19', '2020-09-19', 1, '2020-09-24 07:56:43', 1),
+(105, 'done', 1, '2020-09-20', '2020-09-20', 1, '2020-09-24 07:56:43', 1),
+(106, 'done', 1, '2020-09-21', '2020-09-21', 1, '2020-09-24 07:56:43', 1),
+(107, 'done', 1, '2020-09-22', '2020-09-22', 1, '2020-09-24 07:56:44', 1),
+(108, 'done90a5a511e1974bca37613b6daec137ba.Goals', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 1),
+(109, 'done', 1, '2020-09-23', '2020-09-23', 1, '2020-09-24 07:56:44', 1),
+(110, 'done90a5a511e1974bca37613b6daec137ba.Goals', 1, '2020-09-16', '2020-09-16', 1, '2020-09-24 07:56:44', 1),
+(111, 'done90a5a511e1974bca37613b6daec137ba.VisitsSummary', 1, '2020-09-18', '2020-09-18', 1, '2020-09-24 07:56:44', 1),
+(112, 'done90a5a511e1974bca37613b6daec137ba.Goals', 1, '2020-09-18', '2020-09-18', 1, '2020-09-24 07:56:44', 1),
+(113, 'done90a5a511e1974bca37613b6daec137ba.VisitsSummary', 1, '2020-09-19', '2020-09-19', 1, '2020-09-24 07:56:45', 1),
+(114, 'done90a5a511e1974bca37613b6daec137ba.Goals', 1, '2020-09-19', '2020-09-19', 1, '2020-09-24 07:56:45', 1),
+(115, 'done90a5a511e1974bca37613b6daec137ba.VisitsSummary', 1, '2020-09-20', '2020-09-20', 1, '2020-09-24 07:56:45', 1),
+(116, 'done90a5a511e1974bca37613b6daec137ba.Goals', 1, '2020-09-20', '2020-09-20', 1, '2020-09-24 07:56:45', 1),
+(117, 'donefea44bece172bc9696ae57c26888bf8a.Goals', 1, '2020-09-14', '2020-09-20', 2, '2020-09-24 07:56:45', 1),
+(118, 'done', 1, '2020-09-21', '2020-09-27', 2, '2020-09-24 07:56:46', 1),
+(119, 'done', 1, '2020-09-25', '2020-09-25', 1, '2020-09-24 07:56:46', 1),
+(120, 'done', 1, '2020-09-26', '2020-09-26', 1, '2020-09-24 07:56:46', 1),
+(121, 'done90a5a511e1974bca37613b6daec137ba.Goals', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:48', 1),
+(122, 'done90a5a511e1974bca37613b6daec137ba.VisitsSummary', 1, '2020-09-21', '2020-09-27', 2, '2020-09-24 07:56:48', 1),
+(123, 'done90a5a511e1974bca37613b6daec137ba.VisitsSummary', 1, '2020-09-21', '2020-09-21', 1, '2020-09-24 07:56:47', 1),
+(124, 'done90a5a511e1974bca37613b6daec137ba.VisitsSummary', 1, '2020-09-22', '2020-09-22', 1, '2020-09-24 07:56:47', 1),
+(125, 'done90a5a511e1974bca37613b6daec137ba.VisitsSummary', 1, '2020-09-23', '2020-09-23', 1, '2020-09-24 07:56:47', 1),
+(126, 'done90a5a511e1974bca37613b6daec137ba.VisitsSummary', 1, '2020-09-24', '2020-09-24', 1, '2020-09-24 07:56:47', 1),
+(127, 'done90a5a511e1974bca37613b6daec137ba.VisitsSummary', 1, '2020-09-25', '2020-09-25', 1, '2020-09-24 07:56:47', 1),
+(128, 'done90a5a511e1974bca37613b6daec137ba.VisitsSummary', 1, '2020-09-26', '2020-09-26', 1, '2020-09-24 07:56:48', 1),
+(129, 'done90a5a511e1974bca37613b6daec137ba.Goals', 1, '2020-09-21', '2020-09-27', 2, '2020-09-24 07:56:48', 1),
+(130, 'donefea44bece172bc9696ae57c26888bf8a.Goals', 1, '2020-09-01', '2020-09-30', 3, '2020-09-24 07:56:48', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `matomo_archive_numeric_2020_10`
+--
+
+CREATE TABLE `matomo_archive_numeric_2020_10` (
+  `idarchive` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `idsite` int(10) UNSIGNED DEFAULT NULL,
+  `date1` date DEFAULT NULL,
+  `date2` date DEFAULT NULL,
+  `period` tinyint(3) UNSIGNED DEFAULT NULL,
+  `ts_archived` datetime DEFAULT NULL,
+  `value` double DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `matomo_brute_force_log`
+--
+
+CREATE TABLE `matomo_brute_force_log` (
+  `id_brute_force_log` bigint(11) NOT NULL,
+  `ip_address` varchar(60) DEFAULT NULL,
+  `attempted_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `matomo_goal`
+--
+
+CREATE TABLE `matomo_goal` (
+  `idsite` int(11) NOT NULL,
+  `idgoal` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `description` varchar(255) NOT NULL DEFAULT '',
+  `match_attribute` varchar(20) NOT NULL,
+  `pattern` varchar(255) NOT NULL,
+  `pattern_type` varchar(25) NOT NULL,
+  `case_sensitive` tinyint(4) NOT NULL,
+  `allow_multiple` tinyint(4) NOT NULL,
+  `revenue` float NOT NULL,
+  `deleted` tinyint(4) NOT NULL DEFAULT '0',
+  `event_value_as_revenue` tinyint(4) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `matomo_locks`
+--
+
+CREATE TABLE `matomo_locks` (
+  `key` varchar(70) NOT NULL,
+  `value` varchar(255) DEFAULT NULL,
+  `expiry_time` bigint(20) UNSIGNED DEFAULT '9999999999'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `matomo_logger_message`
+--
+
+CREATE TABLE `matomo_logger_message` (
+  `idlogger_message` int(10) UNSIGNED NOT NULL,
+  `tag` varchar(50) DEFAULT NULL,
+  `timestamp` timestamp NULL DEFAULT NULL,
+  `level` varchar(16) DEFAULT NULL,
+  `message` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `matomo_log_action`
+--
+
+CREATE TABLE `matomo_log_action` (
+  `idaction` int(10) UNSIGNED NOT NULL,
+  `name` varchar(4096) DEFAULT NULL,
+  `hash` int(10) UNSIGNED NOT NULL,
+  `type` tinyint(3) UNSIGNED DEFAULT NULL,
+  `url_prefix` tinyint(2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `matomo_log_action`
+--
+
+INSERT INTO `matomo_log_action` (`idaction`, `name`, `hash`, `type`, `url_prefix`) VALUES
+(1, 'cda27.s1.2isa.org/Moto Club Millau Passion', 2747032299, 4, NULL),
+(2, 'cda27.s1.2isa.org/', 4017337560, 1, 0),
+(3, 'cda27.s1.2isa.org/News | MCMP', 2293733081, 4, NULL),
+(4, 'cda27.s1.2isa.org/page-news', 3740561080, 1, 0),
+(5, 'cda27.s1.2isa.org/Galerie | MCMP', 3759563838, 4, NULL),
+(6, 'cda27.s1.2isa.org/page-galerie', 3346749018, 1, 0),
+(7, 'cda27.s1.2isa.org/page-accueil', 1537150836, 1, 0),
+(8, 'cda27.s1.2isa.org/Activités | MCMP', 3551173230, 4, NULL),
+(9, 'cda27.s1.2isa.org/page-activites', 2829789277, 1, 0),
+(10, 'cda27.s1.2isa.org/Connexion | MCMP', 1715454559, 4, NULL),
+(11, 'cda27.s1.2isa.org/page-connexion', 1303089012, 1, 0),
+(12, 'cda27.s1.2isa.org/Inscription | MCMP', 89763368, 4, NULL),
+(13, 'cda27.s1.2isa.org/page-inscription', 1901168123, 1, 0),
+(14, 'cda27.s1.2isa.org/index.php', 319206554, 1, 0),
+(15, 'cda27.s1.2isa.org/Règlement | MCMP', 3189722318, 4, NULL),
+(16, 'cda27.s1.2isa.org/page-reglement', 891598756, 1, 0),
+(17, 'cda27.s1.2isa.org/Historique | MCMP', 3849869883, 4, NULL),
+(18, 'cda27.s1.2isa.org/page-historique', 1135640528, 1, 0),
+(19, 'cda27.s1.2isa.org/Information activité - MCMP', 1085645059, 4, NULL),
+(20, 'cda27.s1.2isa.org/page-activitecontent-62', 1835934495, 1, 0),
+(21, 'cda27.s1.2isa.org/page-activitecontent-61', 4100420261, 1, 0),
+(22, 'cda27.s1.2isa.org/index.php?page=galerie&category=puncho', 1443640889, 1, 0),
+(23, 'cda27.s1.2isa.org/index.php?page=galerie&category=sortiesgroscube', 565886738, 1, 0),
+(24, 'cda27.s1.2isa.org/Membres | MCMP', 484853351, 4, NULL),
+(25, 'cda27.s1.2isa.org/page-membres', 5021782, 1, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `matomo_log_conversion`
+--
+
+CREATE TABLE `matomo_log_conversion` (
+  `idvisit` bigint(10) UNSIGNED NOT NULL,
+  `idsite` int(10) UNSIGNED NOT NULL,
+  `idvisitor` binary(8) NOT NULL,
+  `server_time` datetime NOT NULL,
+  `idaction_url` int(10) UNSIGNED DEFAULT NULL,
+  `idlink_va` bigint(10) UNSIGNED DEFAULT NULL,
+  `idgoal` int(10) NOT NULL,
+  `buster` int(10) UNSIGNED NOT NULL,
+  `idorder` varchar(100) DEFAULT NULL,
+  `items` smallint(5) UNSIGNED DEFAULT NULL,
+  `url` varchar(4096) NOT NULL,
+  `visitor_days_since_first` smallint(5) UNSIGNED DEFAULT NULL,
+  `visitor_days_since_order` smallint(5) UNSIGNED DEFAULT NULL,
+  `visitor_returning` tinyint(1) DEFAULT NULL,
+  `visitor_count_visits` int(11) UNSIGNED NOT NULL,
+  `referer_keyword` varchar(255) DEFAULT NULL,
+  `referer_name` varchar(70) DEFAULT NULL,
+  `referer_type` tinyint(1) UNSIGNED DEFAULT NULL,
+  `config_device_brand` varchar(100) DEFAULT NULL,
+  `config_device_model` varchar(100) DEFAULT NULL,
+  `config_device_type` tinyint(100) DEFAULT NULL,
+  `location_city` varchar(255) DEFAULT NULL,
+  `location_country` char(3) DEFAULT NULL,
+  `location_latitude` decimal(9,6) DEFAULT NULL,
+  `location_longitude` decimal(9,6) DEFAULT NULL,
+  `location_region` char(3) DEFAULT NULL,
+  `revenue` float DEFAULT NULL,
+  `revenue_discount` float DEFAULT NULL,
+  `revenue_shipping` float DEFAULT NULL,
+  `revenue_subtotal` float DEFAULT NULL,
+  `revenue_tax` float DEFAULT NULL,
+  `custom_var_k1` varchar(200) DEFAULT NULL,
+  `custom_var_v1` varchar(200) DEFAULT NULL,
+  `custom_var_k2` varchar(200) DEFAULT NULL,
+  `custom_var_v2` varchar(200) DEFAULT NULL,
+  `custom_var_k3` varchar(200) DEFAULT NULL,
+  `custom_var_v3` varchar(200) DEFAULT NULL,
+  `custom_var_k4` varchar(200) DEFAULT NULL,
+  `custom_var_v4` varchar(200) DEFAULT NULL,
+  `custom_var_k5` varchar(200) DEFAULT NULL,
+  `custom_var_v5` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `matomo_log_conversion_item`
+--
+
+CREATE TABLE `matomo_log_conversion_item` (
+  `idsite` int(10) UNSIGNED NOT NULL,
+  `idvisitor` binary(8) NOT NULL,
+  `server_time` datetime NOT NULL,
+  `idvisit` bigint(10) UNSIGNED NOT NULL,
+  `idorder` varchar(100) NOT NULL,
+  `idaction_sku` int(10) UNSIGNED NOT NULL,
+  `idaction_name` int(10) UNSIGNED NOT NULL,
+  `idaction_category` int(10) UNSIGNED NOT NULL,
+  `idaction_category2` int(10) UNSIGNED NOT NULL,
+  `idaction_category3` int(10) UNSIGNED NOT NULL,
+  `idaction_category4` int(10) UNSIGNED NOT NULL,
+  `idaction_category5` int(10) UNSIGNED NOT NULL,
+  `price` float NOT NULL,
+  `quantity` int(10) UNSIGNED NOT NULL,
+  `deleted` tinyint(1) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `matomo_log_link_visit_action`
+--
+
+CREATE TABLE `matomo_log_link_visit_action` (
+  `idlink_va` bigint(10) UNSIGNED NOT NULL,
+  `idsite` int(10) UNSIGNED NOT NULL,
+  `idvisitor` binary(8) NOT NULL,
+  `idvisit` bigint(10) UNSIGNED NOT NULL,
+  `idaction_url_ref` int(10) UNSIGNED DEFAULT '0',
+  `idaction_name_ref` int(10) UNSIGNED DEFAULT NULL,
+  `custom_float` float DEFAULT NULL,
+  `server_time` datetime NOT NULL,
+  `idpageview` char(6) DEFAULT NULL,
+  `interaction_position` smallint(5) UNSIGNED DEFAULT NULL,
+  `idaction_name` int(10) UNSIGNED DEFAULT NULL,
+  `idaction_url` int(10) UNSIGNED DEFAULT NULL,
+  `time_spent_ref_action` int(10) UNSIGNED DEFAULT NULL,
+  `idaction_event_action` int(10) UNSIGNED DEFAULT NULL,
+  `idaction_event_category` int(10) UNSIGNED DEFAULT NULL,
+  `idaction_content_interaction` int(10) UNSIGNED DEFAULT NULL,
+  `idaction_content_name` int(10) UNSIGNED DEFAULT NULL,
+  `idaction_content_piece` int(10) UNSIGNED DEFAULT NULL,
+  `idaction_content_target` int(10) UNSIGNED DEFAULT NULL,
+  `custom_var_k1` varchar(200) DEFAULT NULL,
+  `custom_var_v1` varchar(200) DEFAULT NULL,
+  `custom_var_k2` varchar(200) DEFAULT NULL,
+  `custom_var_v2` varchar(200) DEFAULT NULL,
+  `custom_var_k3` varchar(200) DEFAULT NULL,
+  `custom_var_v3` varchar(200) DEFAULT NULL,
+  `custom_var_k4` varchar(200) DEFAULT NULL,
+  `custom_var_v4` varchar(200) DEFAULT NULL,
+  `custom_var_k5` varchar(200) DEFAULT NULL,
+  `custom_var_v5` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `matomo_log_link_visit_action`
+--
+
+INSERT INTO `matomo_log_link_visit_action` (`idlink_va`, `idsite`, `idvisitor`, `idvisit`, `idaction_url_ref`, `idaction_name_ref`, `custom_float`, `server_time`, `idpageview`, `interaction_position`, `idaction_name`, `idaction_url`, `time_spent_ref_action`, `idaction_event_action`, `idaction_event_category`, `idaction_content_interaction`, `idaction_content_name`, `idaction_content_piece`, `idaction_content_target`, `custom_var_k1`, `custom_var_v1`, `custom_var_k2`, `custom_var_v2`, `custom_var_k3`, `custom_var_v3`, `custom_var_k4`, `custom_var_v4`, `custom_var_k5`, `custom_var_v5`) VALUES
+(1, 1, 0x1f0ac8fba1d671ce, 1, 0, 0, 47, '2020-09-15 08:21:52', '6WNMF1', 1, 1, 2, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 1, 0x1f0ac8fba1d671ce, 1, 2, 1, 41, '2020-09-15 08:21:54', '1PNH0t', 2, 3, 4, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, 1, 0x1f0ac8fba1d671ce, 1, 4, 3, 39, '2020-09-15 08:22:06', '7CPkNd', 3, 5, 6, 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(4, 1, 0x1f0ac8fba1d671ce, 1, 6, 5, 41, '2020-09-15 08:22:12', 'Go4OZm', 4, 3, 4, 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(5, 1, 0x1f0ac8fba1d671ce, 1, 4, 3, 38, '2020-09-15 08:23:24', 'uFeXdC', 5, 3, 4, 72, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(6, 1, 0x1f0ac8fba1d671ce, 1, 4, 3, 33, '2020-09-15 08:23:26', 'Qp2cyf', 6, 1, 7, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(7, 1, 0xb2445f2d4025ce05, 2, 0, 0, 58, '2020-09-15 08:38:38', 'lj8b5g', 1, 1, 2, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(8, 1, 0xb2445f2d4025ce05, 2, 2, 1, 37, '2020-09-15 08:38:52', 't74hLo', 2, 3, 4, 14, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(9, 1, 0xb2445f2d4025ce05, 2, 4, 3, 37, '2020-09-15 08:38:54', 'gDfNbC', 3, 8, 9, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(10, 1, 0xb2445f2d4025ce05, 2, 9, 8, 40, '2020-09-15 08:40:35', '0lQCzN', 4, 1, 7, 101, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(11, 1, 0x1f0ac8fba1d671ce, 1, 7, 1, 39, '2020-09-15 08:41:06', 'KoMsbD', 7, 1, 7, 1060, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(12, 1, 0xb2445f2d4025ce05, 2, 7, 1, 39, '2020-09-15 08:54:05', 'H1nTNu', 5, 1, 2, 810, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(13, 1, 0xb2445f2d4025ce05, 2, 2, 1, 36, '2020-09-15 08:54:07', 'aFzK5e', 6, 3, 4, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(14, 1, 0xb2445f2d4025ce05, 2, 4, 3, 38, '2020-09-15 08:54:08', 'k6Rb65', 7, 8, 9, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(15, 1, 0x90240abfd7bafe9e, 3, 0, 0, 108, '2020-09-15 09:09:49', '7tOSjJ', 1, 1, 2, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(16, 1, 0x90240abfd7bafe9e, 4, 0, 0, 144, '2020-09-15 15:33:22', 'tRPqgQ', 1, 1, 2, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(17, 1, 0x3f215bd24cfaf091, 5, 0, 0, 119, '2020-09-17 14:33:51', 'bwzcNt', 1, 1, 2, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(18, 1, 0x3f215bd24cfaf091, 5, 2, 1, 78, '2020-09-17 14:34:01', 'QidmEB', 2, 10, 11, 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19, 1, 0x3f215bd24cfaf091, 5, 11, 10, 82, '2020-09-17 14:34:09', 'G9F1f7', 3, 12, 13, 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(20, 1, 0x3f215bd24cfaf091, 5, 13, 12, 77, '2020-09-17 14:34:19', 'TpuWVz', 4, 1, 14, 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21, 1, 0x3f215bd24cfaf091, 6, 0, 0, 118, '2020-09-17 16:03:16', 'Muou4o', 1, 12, 13, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22, 1, 0x3c0dfc88b4bb46f2, 7, 0, 0, 93, '2020-09-28 12:13:18', '8ODkLJ', 1, 1, 2, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(23, 1, 0x3c0dfc88b4bb46f2, 7, 2, 1, 43, '2020-09-28 12:13:24', '1e06g4', 2, 15, 16, 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(24, 1, 0x3c0dfc88b4bb46f2, 7, 16, 15, 35, '2020-09-28 12:13:28', 'w15h6E', 3, 1, 7, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(25, 1, 0x3c0dfc88b4bb46f2, 7, 7, 1, 44, '2020-09-28 12:13:30', 'q0yMri', 4, 3, 4, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(26, 1, 0x3c0dfc88b4bb46f2, 7, 4, 3, 55, '2020-09-28 12:13:36', 'k8CILq', 5, 8, 9, 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(27, 1, 0x3c0dfc88b4bb46f2, 7, 9, 8, 50, '2020-09-28 12:13:45', '64NJG9', 6, 5, 6, 9, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(28, 1, 0x3c0dfc88b4bb46f2, 7, 6, 5, 40, '2020-09-28 12:13:49', 'epqDiH', 7, 17, 18, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(29, 1, 0x3c0dfc88b4bb46f2, 7, 18, 17, 35, '2020-09-28 12:13:52', 'URNONd', 8, 1, 7, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(30, 1, 0x3c0dfc88b4bb46f2, 7, 7, 1, 42, '2020-09-28 12:13:57', '0cWu9s', 9, 1, 14, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(31, 1, 0x684e4196d026097e, 8, 0, 0, 79, '2020-09-28 19:55:28', 'N9bV21', 1, 1, 2, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(32, 1, 0x684e4196d026097e, 8, 2, 1, 77, '2020-09-28 19:55:44', 'uzOQfA', 2, 5, 6, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(33, 1, 0xde8505c02cb0a91e, 9, 0, 0, 165, '2020-10-01 12:58:15', 'lQBiBm', 1, 1, 2, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(34, 1, 0xde8505c02cb0a91e, 9, 2, 1, 124, '2020-10-01 12:58:20', 'swld5L', 2, 8, 9, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(35, 1, 0x0802fa34c00a3d5a, 10, 0, 0, 69, '2020-10-02 08:45:43', 'YAV7kb', 1, 1, 2, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(36, 1, 0x0802fa34c00a3d5a, 10, 2, 1, 64, '2020-10-02 08:46:00', 'A17QWc', 2, 10, 11, 17, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(37, 1, 0x0802fa34c00a3d5a, 10, 11, 10, 187, '2020-10-02 08:46:30', 'JNG7LE', 3, 1, 11, 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(38, 1, 0x0802fa34c00a3d5a, 10, 11, 1, 175, '2020-10-02 08:47:26', 'NVfuWm', 4, 1, 7, 56, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(39, 1, 0x0802fa34c00a3d5a, 10, 7, 1, 333, '2020-10-02 08:47:39', '05mp1v', 5, 3, 4, 13, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(40, 1, 0x0802fa34c00a3d5a, 10, 4, 3, 70, '2020-10-02 08:47:55', 'EDu8WE', 6, 8, 9, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(41, 1, 0x0802fa34c00a3d5a, 10, 9, 8, 100, '2020-10-02 08:48:18', 'mMjC5C', 7, 19, 20, 23, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(42, 1, 0x0802fa34c00a3d5a, 10, 20, 19, 98, '2020-10-02 08:48:30', '8lT3mH', 8, 8, 9, 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(43, 1, 0x0802fa34c00a3d5a, 10, 9, 8, 65, '2020-10-02 08:48:32', 'u41O89', 9, 19, 21, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(44, 1, 0x0802fa34c00a3d5a, 10, 21, 19, 65, '2020-10-02 08:48:46', 'z0Jqrf', 10, 5, 6, 14, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(45, 1, 0x0802fa34c00a3d5a, 10, 6, 5, 67, '2020-10-02 08:48:49', '4xoq55', 11, 5, 22, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(46, 1, 0x0802fa34c00a3d5a, 10, 22, 5, 63, '2020-10-02 08:48:53', 'NSoZIs', 12, 5, 6, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(47, 1, 0x0802fa34c00a3d5a, 10, 6, 5, 64, '2020-10-02 08:48:55', 'A65xa3', 13, 5, 23, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(48, 1, 0x0802fa34c00a3d5a, 10, 23, 5, 65, '2020-10-02 08:48:57', 'TvnQFZ', 14, 5, 6, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(49, 1, 0x0802fa34c00a3d5a, 10, 6, 5, 71, '2020-10-02 08:49:00', 'epqVtj', 15, 17, 18, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(50, 1, 0x0802fa34c00a3d5a, 10, 18, 17, 66, '2020-10-02 08:49:23', 'Om5i6n', 16, 24, 25, 23, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `matomo_log_profiling`
+--
+
+CREATE TABLE `matomo_log_profiling` (
+  `query` text NOT NULL,
+  `count` int(10) UNSIGNED DEFAULT NULL,
+  `sum_time_ms` float DEFAULT NULL,
+  `idprofiling` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `matomo_log_visit`
+--
+
+CREATE TABLE `matomo_log_visit` (
+  `idvisit` bigint(10) UNSIGNED NOT NULL,
+  `idsite` int(10) UNSIGNED NOT NULL,
+  `idvisitor` binary(8) NOT NULL,
+  `visit_last_action_time` datetime NOT NULL,
+  `config_id` binary(8) NOT NULL,
+  `location_ip` varbinary(16) NOT NULL,
+  `user_id` varchar(200) DEFAULT NULL,
+  `visit_first_action_time` datetime NOT NULL,
+  `visit_goal_buyer` tinyint(1) DEFAULT NULL,
+  `visit_goal_converted` tinyint(1) DEFAULT NULL,
+  `visitor_days_since_first` smallint(5) UNSIGNED DEFAULT NULL,
+  `visitor_days_since_order` smallint(5) UNSIGNED DEFAULT NULL,
+  `visitor_returning` tinyint(1) DEFAULT NULL,
+  `visitor_count_visits` int(11) UNSIGNED NOT NULL,
+  `visit_entry_idaction_name` int(10) UNSIGNED DEFAULT NULL,
+  `visit_entry_idaction_url` int(11) UNSIGNED DEFAULT NULL,
+  `visit_exit_idaction_name` int(10) UNSIGNED DEFAULT NULL,
+  `visit_exit_idaction_url` int(10) UNSIGNED DEFAULT '0',
+  `visit_total_actions` int(11) UNSIGNED DEFAULT NULL,
+  `visit_total_interactions` smallint(5) UNSIGNED DEFAULT '0',
+  `visit_total_searches` smallint(5) UNSIGNED DEFAULT NULL,
+  `referer_keyword` varchar(255) DEFAULT NULL,
+  `referer_name` varchar(70) DEFAULT NULL,
+  `referer_type` tinyint(1) UNSIGNED DEFAULT NULL,
+  `referer_url` text,
+  `location_browser_lang` varchar(20) DEFAULT NULL,
+  `config_browser_engine` varchar(10) DEFAULT NULL,
+  `config_browser_name` varchar(10) DEFAULT NULL,
+  `config_browser_version` varchar(20) DEFAULT NULL,
+  `config_device_brand` varchar(100) DEFAULT NULL,
+  `config_device_model` varchar(100) DEFAULT NULL,
+  `config_device_type` tinyint(100) DEFAULT NULL,
+  `config_os` char(3) DEFAULT NULL,
+  `config_os_version` varchar(100) DEFAULT NULL,
+  `visit_total_events` int(11) UNSIGNED DEFAULT NULL,
+  `visitor_localtime` time DEFAULT NULL,
+  `visitor_days_since_last` smallint(5) UNSIGNED DEFAULT NULL,
+  `config_resolution` varchar(18) DEFAULT NULL,
+  `config_cookie` tinyint(1) DEFAULT NULL,
+  `config_director` tinyint(1) DEFAULT NULL,
+  `config_flash` tinyint(1) DEFAULT NULL,
+  `config_gears` tinyint(1) DEFAULT NULL,
+  `config_java` tinyint(1) DEFAULT NULL,
+  `config_pdf` tinyint(1) DEFAULT NULL,
+  `config_quicktime` tinyint(1) DEFAULT NULL,
+  `config_realplayer` tinyint(1) DEFAULT NULL,
+  `config_silverlight` tinyint(1) DEFAULT NULL,
+  `config_windowsmedia` tinyint(1) DEFAULT NULL,
+  `visit_total_time` int(11) UNSIGNED NOT NULL,
+  `location_city` varchar(255) DEFAULT NULL,
+  `location_country` char(3) DEFAULT NULL,
+  `location_latitude` decimal(9,6) DEFAULT NULL,
+  `location_longitude` decimal(9,6) DEFAULT NULL,
+  `location_region` char(3) DEFAULT NULL,
+  `custom_var_k1` varchar(200) DEFAULT NULL,
+  `custom_var_v1` varchar(200) DEFAULT NULL,
+  `custom_var_k2` varchar(200) DEFAULT NULL,
+  `custom_var_v2` varchar(200) DEFAULT NULL,
+  `custom_var_k3` varchar(200) DEFAULT NULL,
+  `custom_var_v3` varchar(200) DEFAULT NULL,
+  `custom_var_k4` varchar(200) DEFAULT NULL,
+  `custom_var_v4` varchar(200) DEFAULT NULL,
+  `custom_var_k5` varchar(200) DEFAULT NULL,
+  `custom_var_v5` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `matomo_log_visit`
+--
+
+INSERT INTO `matomo_log_visit` (`idvisit`, `idsite`, `idvisitor`, `visit_last_action_time`, `config_id`, `location_ip`, `user_id`, `visit_first_action_time`, `visit_goal_buyer`, `visit_goal_converted`, `visitor_days_since_first`, `visitor_days_since_order`, `visitor_returning`, `visitor_count_visits`, `visit_entry_idaction_name`, `visit_entry_idaction_url`, `visit_exit_idaction_name`, `visit_exit_idaction_url`, `visit_total_actions`, `visit_total_interactions`, `visit_total_searches`, `referer_keyword`, `referer_name`, `referer_type`, `referer_url`, `location_browser_lang`, `config_browser_engine`, `config_browser_name`, `config_browser_version`, `config_device_brand`, `config_device_model`, `config_device_type`, `config_os`, `config_os_version`, `visit_total_events`, `visitor_localtime`, `visitor_days_since_last`, `config_resolution`, `config_cookie`, `config_director`, `config_flash`, `config_gears`, `config_java`, `config_pdf`, `config_quicktime`, `config_realplayer`, `config_silverlight`, `config_windowsmedia`, `visit_total_time`, `location_city`, `location_country`, `location_latitude`, `location_longitude`, `location_region`, `custom_var_k1`, `custom_var_v1`, `custom_var_k2`, `custom_var_v2`, `custom_var_k3`, `custom_var_v3`, `custom_var_k4`, `custom_var_v4`, `custom_var_k5`, `custom_var_v5`) VALUES
+(1, 1, 0x1f0ac8fba1d671ce, '2020-09-15 08:41:06', 0x6d2fc8f8e0eb1164, 0x253a0000, NULL, '2020-09-15 08:21:52', 0, 0, 0, 0, 0, 1, 1, 2, 1, 7, 7, 7, 0, NULL, NULL, 1, '', 'fr-fr', 'Blink', 'CH', '85.0', '', 'generic desktop', 0, 'WIN', '10', 0, '10:10:21', 0, '1280x720', 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1155, NULL, 'fr', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 1, 0xb2445f2d4025ce05, '2020-09-15 08:54:08', 0x58c306530ca263c4, 0x253a0000, NULL, '2020-09-15 08:38:38', 0, 0, 0, 0, 0, 1, 1, 2, 8, 9, 7, 7, 0, NULL, NULL, 1, '', 'fr', 'Blink', 'PS', '85.0', '', 'generic desktop', 0, 'WIN', '10', 0, '10:26:01', 0, '1920x1080', 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 931, NULL, 'fr', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, 1, 0x90240abfd7bafe9e, '2020-09-15 09:09:49', 0x91aca9da23ea7742, 0x5cb80000, NULL, '2020-09-15 09:09:49', 0, 0, 0, 0, 0, 1, 1, 2, 1, 2, 1, 1, 0, NULL, NULL, 1, '', 'fr-fr', 'WebKit', 'MF', '13.1', 'AP', 'iPhone', 1, 'IOS', '13.6', 0, '10:57:12', 0, '414x896', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Le Haut-Corlay', 'fr', '48.322000', '-3.057000', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(4, 1, 0x90240abfd7bafe9e, '2020-09-15 15:33:22', 0x91aca9da23ea7742, 0x5cb80000, NULL, '2020-09-15 15:33:22', 0, 0, 0, 0, 1, 2, 1, 2, 1, 2, 1, 1, 0, NULL, NULL, 1, '', 'fr-fr', 'WebKit', 'MF', '13.1', 'AP', 'iPhone', 1, 'IOS', '13.6', 0, '17:20:44', 0, '414x896', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Le Haut-Corlay', 'fr', '48.322000', '-3.057000', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(5, 1, 0x3f215bd24cfaf091, '2020-09-17 14:34:19', 0xd74c9cdba851b6f4, 0xb9e40000, NULL, '2020-09-17 14:33:51', 0, 0, 0, 0, 0, 1, 1, 2, 1, 14, 4, 4, 0, '', 'Facebook', 7, 'http://m.facebook.com/', 'fr-fr', '', 'UNK', '281.0', 'SO', 'Xperia L3 Dual', 1, 'AND', '8.1', 0, '16:21:10', 0, '360x720', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 29, 'Sourdeval', 'fr', '48.723000', '-0.922000', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(6, 1, 0x3f215bd24cfaf091, '2020-09-17 16:03:16', 0x9b7a1a10ff4bf3b9, 0x5d170000, NULL, '2020-09-17 16:03:16', 0, 0, 0, 0, 1, 2, 12, 13, 12, 13, 1, 1, 0, NULL, NULL, 1, 'http://cda27.s1.2isa.org/page-connexion', 'fr-fr', '', 'UNK', '281.0', 'SO', 'Xperia L3 Dual', 1, 'AND', '8.1', 0, '17:50:35', 0, '360x720', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'La Joliette', 'fr', '43.305000', '5.367000', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(7, 1, 0x3c0dfc88b4bb46f2, '2020-09-28 12:13:57', 0x38d9fbc91f887a27, 0x253a0000, NULL, '2020-09-28 12:13:18', 0, 0, 0, 0, 0, 1, 1, 2, 1, 14, 9, 9, 0, NULL, 'cda27.2isa.org', 3, 'http://cda27.2isa.org/', 'fr-fr', 'Blink', 'CH', '85.0', '', 'generic desktop', 0, 'WIN', '10', 0, '14:00:18', 0, '1536x864', 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 40, 'Maxéville', 'fr', '48.704000', '6.139000', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(8, 1, 0x684e4196d026097e, '2020-09-28 19:55:44', 0x3e83bf9c11d718dd, 0x50d60000, NULL, '2020-09-28 19:55:28', 0, 0, 0, 0, 0, 1, 1, 2, 5, 6, 2, 2, 0, NULL, 'cda27.2isa.org', 3, 'http://cda27.2isa.org/', 'fr-fr', 'Blink', 'CH', '85.0', '', 'generic desktop', 0, 'WIN', '10', 0, '21:42:29', 0, '1209x680', 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 17, 'Neuville-sur-Saône', 'fr', '45.876000', '4.841000', 'ARA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(9, 1, 0xde8505c02cb0a91e, '2020-10-01 12:58:20', 0xc1a3fcdaf1a31921, 0x4ec80000, NULL, '2020-10-01 12:58:15', 0, 0, 0, 0, 0, 1, 1, 2, 8, 9, 2, 2, 0, NULL, NULL, 1, '', 'fr-fr', 'Blink', 'CH', '85.0', '', 'generic desktop', 0, 'WIN', '10', 0, '14:45:07', 0, '1536x864', 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 6, 'La Canourgue', 'fr', '44.431000', '3.215000', 'OCC', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(10, 1, 0x0802fa34c00a3d5a, '2020-10-02 08:49:23', 0x983c3f8efe2a4e37, 0x5a370000, NULL, '2020-10-02 08:45:43', 0, 0, 0, 0, 0, 1, 1, 2, 24, 25, 16, 16, 0, NULL, NULL, 1, '', 'fr', 'Gecko', 'FF', '81.0', '', 'generic desktop', 0, 'WIN', '10', 0, '10:33:41', 0, '1280x720', 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 221, 'Rodez', 'fr', '44.349000', '2.576000', 'OCC', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `matomo_option`
+--
+
+CREATE TABLE `matomo_option` (
+  `option_name` varchar(255) NOT NULL,
+  `option_value` longtext NOT NULL,
+  `autoload` tinyint(4) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `matomo_option`
+--
+
+INSERT INTO `matomo_option` (`option_name`, `option_value`, `autoload`) VALUES
+('fingerprint_salt_1_2020-09-28', '{\"value\":\"y9159a7d8jdmjfsk5v9i1zvvtlpp4htl\",\"time\":1601197162}', 0),
+('fingerprint_salt_1_2020-09-29', '{\"value\":\"zekra1f88we9fael8e0xzigg6zhjvwdt\",\"time\":1601277135}', 0),
+('fingerprint_salt_1_2020-09-30', '{\"value\":\"sgdpjsmyc4s5hxdvpmldgpzu17ig5mrx\",\"time\":1601368839}', 0),
+('fingerprint_salt_1_2020-10-01', '{\"value\":\"tujh9sxxxn6g1npl6h9pst6gr3n8hel3\",\"time\":1601451545}', 0),
+('fingerprint_salt_1_2020-10-02', '{\"value\":\"p9ikis1gut84ypvfryef5sx2sh7i2xmy\",\"time\":1601535818}', 0),
+('fingerprint_salt_1_2020-10-03', '{\"value\":\"cr9a0g9w2ee8hbu7trkticuxdkuwtor4\",\"time\":1601622799}', 0),
+('install_mail_sent', '1', 0),
+('install_version', '3.14.1', 0),
+('lastTrackerCronRun', '1601633476', 0),
+('MobileMessaging_DelegatedManagement', 'false', 0),
+('piwikUrl', 'http://cda27.s1.2isa.org/matomo/', 1),
+('PrivacyManager.doNotTrackEnabled', '1', 0),
+('PrivacyManager.ipAnonymizerEnabled', '1', 0);
+INSERT INTO `matomo_option` (`option_name`, `option_value`, `autoload`) VALUES
+('referrer_spam_blacklist', 'a:2033:{i:0;s:13:\"01casino-x.ru\";i:1;s:26:\"033nachtvandeliteratuur.nl\";i:2;s:8:\"03e.info\";i:3;s:8:\"03p.info\";i:4;s:10:\"0n-line.tv\";i:5;s:11:\"1-99seo.com\";i:6;s:14:\"1-best-seo.com\";i:7;s:24:\"1-free-share-buttons.com\";i:8;s:23:\"100-reasons-for-seo.com\";i:9;s:18:\"100dollars-seo.com\";i:10;s:22:\"12-reasons-for-seo.net\";i:11;s:14:\"12masterov.com\";i:12;s:8:\"12u.info\";i:13;s:22:\"15-reasons-for-seo.com\";i:14;s:14:\"1kreditzaim.ru\";i:15;s:8:\"1pamm.ru\";i:16;s:12:\"1st-urist.ru\";i:17;s:13:\"1webmaster.ml\";i:18;s:8:\"1wek.top\";i:19;s:9:\"1winru.ru\";i:20;s:12:\"1x-slot.site\";i:21;s:13:\"1x-slots.site\";i:22;s:14:\"1xbet-entry.ru\";i:23;s:11:\"1xbetcc.com\";i:24;s:16:\"1xbetonlines1.ru\";i:25;s:17:\"1xbetportugal.com\";i:26;s:10:\"1xbetts.ru\";i:27;s:20:\"1xslot-casino.online\";i:28;s:16:\"1xslot-casino.ru\";i:29;s:18:\"1xslot-casino.site\";i:30;s:11:\"1xslot.site\";i:31;s:19:\"1xslots-africa.site\";i:32;s:19:\"1xslots-brasil.site\";i:33;s:19:\"1xslots-casino.site\";i:34;s:14:\"1xslots.africa\";i:35;s:12:\"1xslots.site\";i:36;s:14:\"2-best-seo.com\";i:37;s:10:\"2-easy.xyz\";i:38;s:12:\"2-go-now.xyz\";i:39;s:10:\"24chasa.bg\";i:40;s:10:\"24h.doctor\";i:41;s:24:\"24x7-server-support.site\";i:42;s:10:\"2your.site\";i:43;s:14:\"3-best-seo.com\";i:44;s:20:\"3-letter-domains.net\";i:45;s:12:\"3dgame3d.com\";i:46;s:16:\"3waynetworks.com\";i:47;s:14:\"4-best-seo.com\";i:48;s:17:\"40momporntube.com\";i:49;s:7:\"4inn.ru\";i:50;s:6:\"4ip.su\";i:51;s:13:\"4istoshop.com\";i:52;s:15:\"4webmasters.org\";i:53;s:11:\"4xcasino.ru\";i:54;s:14:\"5-best-seo.com\";i:55;s:29:\"5-steps-to-start-business.com\";i:56;s:13:\"5elementov.ru\";i:57;s:9:\"5forex.ru\";i:58;s:14:\"6-best-seo.com\";i:59;s:11:\"69-13-59.ru\";i:60;s:12:\"6hopping.com\";i:61;s:14:\"7-best-seo.com\";i:62;s:15:\"70casino.online\";i:63;s:7:\"7kop.ru\";i:64;s:20:\"7makemoneyonline.com\";i:65;s:19:\"7milliondollars.com\";i:66;s:7:\"7ooo.ru\";i:67;s:8:\"7zap.com\";i:68;s:14:\"8-best-seo.com\";i:69;s:8:\"8xv8.com\";i:70;s:14:\"9-best-seo.com\";i:71;s:22:\"99-reasons-for-seo.com\";i:72;s:13:\"a-elita.in.ua\";i:73;s:11:\"abcdefh.xyz\";i:74;s:10:\"abcdeg.xyz\";i:75;s:15:\"abclauncher.com\";i:76;s:11:\"abuser.shop\";i:77;s:9:\"acads.net\";i:78;s:10:\"acarreo.ru\";i:79;s:15:\"account-my1.xyz\";i:80;s:13:\"accs-store.ru\";i:81;s:15:\"actualremont.ru\";i:82;s:21:\"acunetix-referrer.com\";i:83;s:10:\"adanih.com\";i:84;s:10:\"adcash.com\";i:85;s:15:\"adelachrist.top\";i:86;s:6:\"adf.ly\";i:87;s:15:\"adpostmalta.com\";i:88;s:17:\"adrenalinebot.net\";i:89;s:16:\"adrenalinebot.ru\";i:90;s:11:\"adspart.com\";i:91;s:10:\"adtiger.tk\";i:92;s:19:\"adult-video-chat.ru\";i:93;s:26:\"adventureparkcostarica.com\";i:94;s:16:\"adviceforum.info\";i:95;s:13:\"advokateg.xyz\";i:96;s:14:\"aerodizain.com\";i:97;s:11:\"aerotour.ru\";i:98;s:22:\"affiliate-programs.biz\";i:99;s:35:\"affordablewebsitesandmobileapps.com\";i:100;s:8:\"afora.ru\";i:101;s:12:\"agro-gid.com\";i:102;s:11:\"agtl.com.ua\";i:103;s:19:\"ai-seo-services.com\";i:104;s:12:\"aibolita.com\";i:105;s:13:\"aidarmebel.kz\";i:106;s:10:\"aitiman.ae\";i:107;s:9:\"akuhni.by\";i:108;s:14:\"albuteroli.com\";i:109;s:15:\"alcobutik24.com\";i:110;s:13:\"alexsander.ch\";i:111;s:11:\"alfabot.xyz\";i:112;s:15:\"alibestsale.com\";i:113;s:12:\"aliexsale.ru\";i:114;s:16:\"alinabaniecka.pl\";i:115;s:14:\"alkanfarma.org\";i:116;s:11:\"all-news.kz\";i:117;s:11:\"all4bath.ru\";i:118;s:17:\"allcryptonews.com\";i:119;s:13:\"allergick.com\";i:120;s:13:\"allergija.com\";i:121;s:9:\"allfan.ru\";i:122;s:12:\"allknow.info\";i:123;s:22:\"allmarketsnewdayli.gdn\";i:124;s:10:\"allnews.md\";i:125;s:12:\"allnews24.in\";i:126;s:14:\"allproblog.com\";i:127;s:13:\"allvacancy.ru\";i:128;s:13:\"allwomen.info\";i:129;s:14:\"allwrighter.ru\";i:130;s:18:\"alma-mramor.com.ua\";i:131;s:9:\"alp-rk.ru\";i:132;s:13:\"alphaopt24.ru\";i:133;s:12:\"alpharma.net\";i:134;s:11:\"altermix.ua\";i:135;s:22:\"amazon-seo-service.com\";i:136;s:12:\"amos-kids.ru\";i:137;s:15:\"amp-project.pro\";i:138;s:8:\"amt-k.ru\";i:139;s:20:\"amtel-vredestein.com\";i:140;s:18:\"amylynnandrews.xyz\";i:141;s:14:\"anabolics.shop\";i:142;s:17:\"analytics-ads.xyz\";i:143;s:12:\"ananumous.ru\";i:144;s:13:\"anapa-inns.ru\";i:145;s:17:\"andrewancheta.com\";i:146;s:17:\"android-style.com\";i:147;s:16:\"animalphotos.xyz\";i:148;s:12:\"animenime.ru\";i:149;s:15:\"annaeydlish.top\";i:150;s:19:\"anti-crisis-seo.com\";i:151;s:15:\"anticrawler.org\";i:152;s:17:\"antiguabarbuda.ru\";i:153;s:24:\"antonovich-design.com.ua\";i:154;s:12:\"anydesk.site\";i:155;s:22:\"apollon-market-url.org\";i:156;s:14:\"applepharma.ru\";i:157;s:13:\"apteka-doc.ru\";i:158;s:15:\"apteka-pharm.ru\";i:159;s:11:\"apteka.info\";i:160;s:17:\"arabic-poetry.com\";i:161;s:16:\"arendadogovor.ru\";i:162;s:16:\"arendakvartir.kz\";i:163;s:15:\"arendovalka.xyz\";i:164;s:12:\"argo-visa.ru\";i:165;s:15:\"arkkivoltti.net\";i:166;s:11:\"artblog.top\";i:167;s:13:\"artclipart.ru\";i:168;s:12:\"artdeko.info\";i:169;s:18:\"artpaint-market.ru\";i:170;s:13:\"artparquet.ru\";i:171;s:12:\"artpress.top\";i:172;s:13:\"arturs.moscow\";i:173;s:16:\"aruplighting.com\";i:174;s:11:\"ask-yug.com\";i:175;s:10:\"asupro.com\";i:176;s:9:\"asynt.net\";i:177;s:16:\"atleticpharm.org\";i:178;s:8:\"atyks.ru\";i:179;s:24:\"auto-b2b-seo-service.com\";i:180;s:15:\"auto-complex.by\";i:181;s:21:\"auto-kia-fulldrive.ru\";i:182;s:20:\"auto-seo-service.org\";i:183;s:15:\"autoblog.org.ua\";i:184;s:11:\"autofuct.ru\";i:185;s:19:\"automobile-spec.com\";i:186;s:19:\"autoseo-service.org\";i:187;s:19:\"autoseo-traffic.com\";i:188;s:15:\"autoseotips.com\";i:189;s:13:\"autoservic.by\";i:190;s:22:\"autovideobroadcast.com\";i:191;s:11:\"avcoast.com\";i:192;s:13:\"aviaseller.su\";i:193;s:16:\"aviva-limoux.com\";i:194;s:17:\"avkzarabotok.info\";i:195;s:14:\"avtointeres.ru\";i:196;s:17:\"avtorskoe-vino.ru\";i:197;s:12:\"avtovykup.kz\";i:198;s:11:\"aworlds.com\";i:199;s:9:\"axcus.top\";i:200;s:13:\"azartclub.org\";i:201;s:14:\"azbukafree.com\";i:202;s:8:\"azlex.uz\";i:203;s:22:\"backlinks-fast-top.com\";i:204;s:21:\"bahisgunceladresi.com\";i:205;s:25:\"baixar-musicas-gratis.com\";i:206;s:10:\"baladur.ru\";i:207;s:15:\"balakhna.online\";i:208;s:12:\"balayazh.com\";i:209;s:18:\"balitouroffice.com\";i:210;s:15:\"balkanfarma.org\";i:211;s:13:\"bankhummer.co\";i:212;s:15:\"barbarahome.top\";i:213;s:16:\"bard-real.com.ua\";i:214;s:14:\"batietiket.com\";i:215;s:12:\"batut-fun.ru\";i:216;s:13:\"bavariagid.de\";i:217;s:15:\"bdf-tracker.top\";i:218;s:13:\"beachtoday.ru\";i:219;s:17:\"beauty-lesson.com\";i:220;s:13:\"beclean-nn.ru\";i:221;s:18:\"bedroomlighting.us\";i:222;s:16:\"belreferatov.net\";i:223;s:17:\"beremenyashka.com\";i:224;s:12:\"berglion.com\";i:225;s:17:\"best-deal-hdd.pro\";i:226;s:11:\"best-mam.ru\";i:227;s:26:\"best-ping-service-usa.blue\";i:228;s:16:\"best-printmsk.ru\";i:229;s:18:\"best-seo-offer.com\";i:230;s:21:\"best-seo-software.xyz\";i:231;s:21:\"best-seo-solution.com\";i:232;s:15:\"bestbookclub.ru\";i:233;s:18:\"bestfortraders.com\";i:234;s:29:\"bestmobilityscooterstoday.com\";i:235;s:20:\"bestofferhddbyt.info\";i:236;s:20:\"bestofferhddeed.info\";i:237;s:17:\"bestvpnrating.com\";i:238;s:22:\"bestwebsitesawards.com\";i:239;s:14:\"bet-winner1.ru\";i:240;s:11:\"bet2much.ru\";i:241;s:11:\"betslive.ru\";i:242;s:22:\"betterhealthbeauty.com\";i:243;s:15:\"bettorschool.ru\";i:244;s:13:\"bez-zabora.ru\";i:245;s:17:\"bezprostatita.com\";i:246;s:6:\"bhf.vc\";i:247;s:11:\"bif-ru.info\";i:248;s:21:\"biglistofwebsites.com\";i:249;s:23:\"billiard-classic.com.ua\";i:250;s:16:\"billyblog.online\";i:251;s:15:\"bin-brokers.com\";i:252;s:10:\"binokna.ru\";i:253;s:13:\"bio-market.kz\";i:254;s:16:\"biplanecentre.ru\";i:255;s:8:\"bird1.ru\";i:256;s:14:\"bitcoin-ua.top\";i:257;s:9:\"biteg.xyz\";i:258;s:11:\"bitniex.com\";i:259;s:10:\"biz-law.ru\";i:260;s:10:\"bizru.info\";i:261;s:10:\"bki24.info\";i:262;s:15:\"black-friday.ga\";i:263;s:13:\"black-tip.top\";i:264;s:17:\"blackhatworth.com\";i:265;s:11:\"blog.xsk.in\";i:266;s:11:\"blog100.org\";i:267;s:12:\"blog2019.top\";i:268;s:12:\"blog2019.xyz\";i:269;s:10:\"blog4u.top\";i:270;s:12:\"blogking.top\";i:271;s:11:\"bloglag.com\";i:272;s:11:\"blogseo.xyz\";i:273;s:12:\"blogstar.fun\";i:274;s:12:\"blogtotal.de\";i:275;s:10:\"blogua.org\";i:276;s:15:\"blue-square.biz\";i:277;s:14:\"bluerobot.info\";i:278;s:11:\"bo-vtb24.ru\";i:279;s:12:\"boltalko.xyz\";i:280;s:16:\"boltushkiclub.ru\";i:281;s:12:\"bonkers.name\";i:282;s:16:\"bonus-betting.ru\";i:283;s:25:\"bonus-spasibo-sberbank.ru\";i:284;s:12:\"bonus-vtb.ru\";i:285;s:13:\"books-top.com\";i:286;s:11:\"boost24.biz\";i:287;s:14:\"boostmyppc.com\";i:288;s:12:\"botamycos.fr\";i:289;s:20:\"bottraffic4free.club\";i:290;s:20:\"bottraffic4free.host\";i:291;s:9:\"bpro1.top\";i:292;s:13:\"brakehawk.com\";i:293;s:10:\"brateg.xyz\";i:294;s:13:\"brauni.com.ua\";i:295;s:11:\"bravica.biz\";i:296;s:11:\"bravica.com\";i:297;s:10:\"bravica.me\";i:298;s:11:\"bravica.net\";i:299;s:12:\"bravica.news\";i:300;s:14:\"bravica.online\";i:301;s:11:\"bravica.pro\";i:302;s:10:\"bravica.ru\";i:303;s:10:\"bravica.su\";i:304;s:20:\"break-the-chains.com\";i:305;s:16:\"briankatrine.top\";i:306;s:15:\"brickmaster.pro\";i:307;s:15:\"brillianty.info\";i:308;s:10:\"brk-rti.ru\";i:309;s:16:\"brooklynsays.com\";i:310;s:19:\"brothers-smaller.ru\";i:311;s:11:\"brusilov.ru\";i:312;s:8:\"bsell.ru\";i:313;s:10:\"btcnix.com\";i:314;s:12:\"btt-club.pro\";i:315;s:12:\"budilneg.xyz\";i:316;s:21:\"budmavtomatika.com.ua\";i:317;s:11:\"bufetout.ru\";i:318;s:12:\"buhproffi.ru\";i:319;s:10:\"buildnw.ru\";i:320;s:18:\"buildwithwendy.com\";i:321;s:11:\"buketeg.xyz\";i:322;s:12:\"bukleteg.xyz\";i:323;s:27:\"bulgaria-web-developers.com\";i:324;s:9:\"bur-rk.ru\";i:325;s:18:\"burger-imperia.com\";i:326;s:11:\"burn-fat.ga\";i:327;s:27:\"business-online-sberbank.ru\";i:328;s:23:\"buttons-for-website.com\";i:329;s:28:\"buttons-for-your-website.com\";i:330;s:21:\"buy-cheap-online.info\";i:331;s:32:\"buy-cheap-pills-order-online.com\";i:332;s:12:\"buy-forum.ru\";i:333;s:14:\"buy-meds24.com\";i:334;s:12:\"buynorxx.com\";i:335;s:21:\"buypillsonline24h.com\";i:336;s:13:\"buypuppies.ca\";i:337;s:8:\"c2bit.hk\";i:338;s:17:\"call-of-duty.info\";i:339;s:16:\"cancerfungus.com\";i:340;s:22:\"candida-society.org.uk\";i:341;s:19:\"cannazon-market.org\";i:342;s:9:\"carder.me\";i:343;s:9:\"carder.tv\";i:344;s:10:\"carders.ug\";i:345;s:18:\"cardiosport.com.ua\";i:346;s:14:\"cardsdumps.com\";i:347;s:10:\"carezi.com\";i:348;s:14:\"carivka.com.ua\";i:349;s:12:\"carscrim.com\";i:350;s:13:\"cartechnic.ru\";i:351;s:12:\"cashforum.cc\";i:352;s:15:\"casino-top3.fun\";i:353;s:18:\"casino-top3.online\";i:354;s:14:\"casino-top3.ru\";i:355;s:16:\"casino-top3.site\";i:356;s:17:\"casino-top3.space\";i:357;s:19:\"casino-top3.website\";i:358;s:13:\"casino-v.site\";i:359;s:18:\"casino-vulkane.com\";i:360;s:15:\"casino-x-now.ru\";i:361;s:13:\"casino-x.host\";i:362;s:19:\"casinosbewertung.de\";i:363;s:14:\"casinox-jp.com\";i:364;s:17:\"catherinemill.xyz\";i:365;s:17:\"catterybengal.com\";i:366;s:15:\"cattyhealth.com\";i:367;s:15:\"cazino-v.online\";i:368;s:11:\"cazino-v.ru\";i:369;s:15:\"ccfullzshop.com\";i:370;s:15:\"celestepage.xyz\";i:371;s:10:\"cenokos.ru\";i:372;s:10:\"cenoval.ru\";i:373;s:18:\"certifywebsite.win\";i:374;s:13:\"cezartabac.ro\";i:375;s:10:\"chainii.ru\";i:376;s:14:\"chatrazvrat.ru\";i:377;s:17:\"chatroulette.life\";i:378;s:8:\"chcu.net\";i:379;s:27:\"cheap-trusted-backlinks.com\";i:380;s:13:\"cheapkeys.ovh\";i:381;s:17:\"cheappills24h.com\";i:382;s:18:\"chinese-amezon.com\";i:383;s:9:\"chip35.ru\";i:384;s:10:\"chipmp3.ru\";i:385;s:12:\"chizhik-2.ru\";i:386;s:5:\"ci.ua\";i:387;s:14:\"cityadspix.com\";i:388;s:10:\"citybur.ru\";i:389;s:11:\"cityreys.ru\";i:390;s:19:\"civilwartheater.com\";i:391;s:14:\"cleandom.in.ua\";i:392;s:12:\"clicksor.com\";i:393;s:10:\"climate.by\";i:394;s:18:\"clothing-deal.club\";i:395;s:14:\"club-lukojl.ru\";i:396;s:14:\"coderstate.com\";i:397;s:12:\"codysbbq.com\";i:398;s:18:\"coeus-solutions.de\";i:399;s:16:\"coffeemashiny.ru\";i:400;s:15:\"coinswitch.cash\";i:401;s:9:\"coleso.md\";i:402;s:20:\"collectinviolity.com\";i:403;s:13:\"columb.net.ua\";i:404;s:13:\"commentag.com\";i:405;s:12:\"commerage.ru\";i:406;s:15:\"comp-pomosch.ru\";i:407;s:19:\"compliance-alex.xyz\";i:408;s:20:\"compliance-alexa.xyz\";i:409;s:21:\"compliance-andrew.xyz\";i:410;s:20:\"compliance-barak.xyz\";i:411;s:20:\"compliance-brian.xyz\";i:412;s:18:\"compliance-don.xyz\";i:413;s:21:\"compliance-donald.xyz\";i:414;s:20:\"compliance-elena.xyz\";i:415;s:19:\"compliance-fred.xyz\";i:416;s:21:\"compliance-george.xyz\";i:417;s:20:\"compliance-irvin.xyz\";i:418;s:19:\"compliance-ivan.xyz\";i:419;s:19:\"compliance-john.top\";i:420;s:23:\"compliance-julianna.top\";i:421;s:18:\"computer-remont.ru\";i:422;s:18:\"conciergegroup.org\";i:423;s:15:\"concretepol.com\";i:424;s:20:\"connectikastudio.com\";i:425;s:19:\"constanceonline.top\";i:426;s:29:\"cookie-law-enforcement-aa.xyz\";i:427;s:29:\"cookie-law-enforcement-bb.xyz\";i:428;s:29:\"cookie-law-enforcement-cc.xyz\";i:429;s:29:\"cookie-law-enforcement-dd.xyz\";i:430;s:29:\"cookie-law-enforcement-ee.xyz\";i:431;s:29:\"cookie-law-enforcement-ff.xyz\";i:432;s:29:\"cookie-law-enforcement-gg.xyz\";i:433;s:29:\"cookie-law-enforcement-hh.xyz\";i:434;s:29:\"cookie-law-enforcement-ii.xyz\";i:435;s:29:\"cookie-law-enforcement-jj.xyz\";i:436;s:29:\"cookie-law-enforcement-kk.xyz\";i:437;s:29:\"cookie-law-enforcement-ll.xyz\";i:438;s:29:\"cookie-law-enforcement-mm.xyz\";i:439;s:29:\"cookie-law-enforcement-nn.xyz\";i:440;s:29:\"cookie-law-enforcement-oo.xyz\";i:441;s:29:\"cookie-law-enforcement-pp.xyz\";i:442;s:29:\"cookie-law-enforcement-qq.xyz\";i:443;s:29:\"cookie-law-enforcement-rr.xyz\";i:444;s:29:\"cookie-law-enforcement-ss.xyz\";i:445;s:29:\"cookie-law-enforcement-tt.xyz\";i:446;s:29:\"cookie-law-enforcement-uu.xyz\";i:447;s:29:\"cookie-law-enforcement-vv.xyz\";i:448;s:29:\"cookie-law-enforcement-ww.xyz\";i:449;s:29:\"cookie-law-enforcement-xx.xyz\";i:450;s:29:\"cookie-law-enforcement-yy.xyz\";i:451;s:29:\"cookie-law-enforcement-zz.xyz\";i:452;s:15:\"cool-mining.com\";i:453;s:19:\"copyrightclaims.org\";i:454;s:22:\"copyrightinstitute.org\";i:455;s:14:\"coral-info.com\";i:456;s:21:\"cosmediqueresults.com\";i:457;s:16:\"covadhosting.biz\";i:458;s:15:\"coverage-my.com\";i:459;s:21:\"covid-schutzmasken.de\";i:460;s:11:\"cp24.com.ua\";i:461;s:16:\"crazy-mining.org\";i:462;s:22:\"credit-card-tinkoff.ru\";i:463;s:24:\"credit-cards-online24.ru\";i:464;s:12:\"credit.co.ua\";i:465;s:15:\"crypto-bear.com\";i:466;s:16:\"crypto-bears.com\";i:467;s:18:\"crypto-mining.club\";i:468;s:18:\"crypto-wallets.org\";i:469;s:13:\"crypto1x1.com\";i:470;s:22:\"curenaturalicancro.com\";i:471;s:21:\"curenaturalicancro.nl\";i:472;s:16:\"customsua.com.ua\";i:473;s:15:\"cyber-monday.ga\";i:474;s:23:\"dacha-svoimi-rukami.com\";i:475;s:13:\"dailyrank.net\";i:476;s:12:\"dailyseo.xyz\";i:477;s:13:\"dailystorm.ru\";i:478;s:11:\"damianis.ru\";i:479;s:23:\"darknet-hydra-onion.biz\";i:480;s:10:\"darknet.sb\";i:481;s:21:\"darknetsitesguide.com\";i:482;s:18:\"darleneblog.online\";i:483;s:11:\"darodar.com\";i:484;s:6:\"dav.kz\";i:485;s:12:\"dawlenie.com\";i:486;s:11:\"dbutton.net\";i:487;s:14:\"dcdcapital.com\";i:488;s:11:\"deart-13.ru\";i:489;s:11:\"deirdre.top\";i:490;s:18:\"delfin-aqua.com.ua\";i:491;s:9:\"delo.fund\";i:492;s:14:\"deluxewatch.su\";i:493;s:14:\"demenageur.com\";i:494;s:20:\"dengi-v-kredit.in.ua\";i:495;s:15:\"denisecarey.top\";i:496;s:16:\"deniseconnie.top\";i:497;s:12:\"dent-home.ru\";i:498;s:12:\"dentuled.net\";i:499;s:23:\"dermatovenerologiya.com\";i:500;s:10:\"deryie.com\";i:501;s:27:\"descargar-musica-gratis.net\";i:502;s:18:\"detailedvideos.com\";i:503;s:23:\"detskie-konstruktory.ru\";i:504;s:19:\"deutsche-poesie.com\";i:505;s:12:\"dev-seo.blog\";i:506;s:17:\"devochki-video.ru\";i:507;s:12:\"diatelier.ru\";i:508;s:10:\"dicru.info\";i:509;s:9:\"dienai.ru\";i:510;s:15:\"diplomas-ru.com\";i:511;s:11:\"dipstar.org\";i:512;s:15:\"discounttaxi.kz\";i:513;s:13:\"distonija.com\";i:514;s:18:\"divan-dekor.com.ua\";i:515;s:12:\"dividendo.ru\";i:516;s:9:\"djekxa.ru\";i:517;s:12:\"djonwatch.ru\";i:518;s:7:\"dktr.ru\";i:519;s:12:\"dna-sklad.ru\";i:520;s:11:\"dnmetall.ru\";i:521;s:12:\"docs4all.com\";i:522;s:15:\"docsarchive.net\";i:523;s:14:\"docsportal.net\";i:524;s:17:\"doctornadezhda.ru\";i:525;s:16:\"documentbase.net\";i:526;s:18:\"documentserver.net\";i:527;s:16:\"documentsite.net\";i:528;s:14:\"dodge-forum.eu\";i:529;s:16:\"doggyhealthy.com\";i:530;s:18:\"dogovorpodryada.ru\";i:531;s:11:\"dogsrun.net\";i:532;s:14:\"dojki-devki.ru\";i:533;s:12:\"dojki-hd.com\";i:534;s:20:\"dom-international.ru\";i:535;s:18:\"domain-tracker.com\";i:536;s:18:\"domashniy-hotel.ru\";i:537;s:20:\"domashniy-recepti.ru\";i:538;s:16:\"dominateforex.ml\";i:539;s:13:\"domination.ml\";i:540;s:11:\"dommdom.com\";i:541;s:12:\"domovozik.ru\";i:542;s:12:\"dompechey.by\";i:543;s:16:\"domsadiogorod.ru\";i:544;s:13:\"doska-vsem.ru\";i:545;s:19:\"dostavka-v-krym.com\";i:546;s:16:\"dosugrostov.site\";i:547;s:13:\"doxyporno.com\";i:548;s:12:\"doxysexy.com\";i:549;s:11:\"draniki.org\";i:550;s:16:\"dreamland-bg.com\";i:551;s:16:\"dreams-works.net\";i:552;s:8:\"drev.biz\";i:553;s:16:\"drugs-no-rx.info\";i:554;s:19:\"drugstoreforyou.com\";i:555;s:9:\"drupa.com\";i:556;s:18:\"dspautomations.com\";i:557;s:12:\"duitbux.info\";i:558;s:15:\"dumpsccshop.com\";i:559;s:12:\"dvk-stroi.ru\";i:560;s:10:\"dvr.biz.ua\";i:561;s:16:\"dzinerstudio.com\";i:562;s:13:\"e-buyeasy.com\";i:563;s:18:\"e-commerce-seo.com\";i:564;s:19:\"e-commerce-seo1.com\";i:565;s:14:\"e-stroymart.kz\";i:566;s:14:\"eaptekaplus.ru\";i:567;s:22:\"earn-from-articles.com\";i:568;s:18:\"earnian-money.info\";i:569;s:15:\"easycommerce.cf\";i:570;s:10:\"ecblog.xyz\";i:571;s:17:\"ecommerce-seo.org\";i:572;s:9:\"ecomp3.ru\";i:573;s:9:\"econom.co\";i:574;s:13:\"edakgfvwql.ru\";i:575;s:17:\"edmed-sonline.com\";i:576;s:15:\"eduardoluis.com\";i:577;s:11:\"educhess.ru\";i:578;s:11:\"edudocs.net\";i:579;s:15:\"eduinfosite.com\";i:580;s:13:\"eduserver.net\";i:581;s:12:\"ege-essay.ru\";i:582;s:18:\"ege-krasnoyarsk.ru\";i:583;s:11:\"egovaleo.it\";i:584;s:12:\"ek-invest.ru\";i:585;s:12:\"ekatalog.xyz\";i:586;s:13:\"ekbspravka.ru\";i:587;s:12:\"eko-gazon.ru\";i:588;s:15:\"ekoproekt-kr.ru\";i:589;s:7:\"ekto.ee\";i:590;s:15:\"eldoradorent.az\";i:591;s:28:\"electric-blue-industries.com\";i:592;s:19:\"elegante-vitrage.ru\";i:593;s:16:\"elektrikovich.ru\";i:594;s:16:\"elementspluss.ru\";i:595;s:21:\"elenatkachenko.com.ua\";i:596;s:14:\"elentur.com.ua\";i:597;s:18:\"elizabethbruno.top\";i:598;s:14:\"ellemarket.com\";i:599;s:16:\"elmifarhangi.com\";i:600;s:12:\"elvel.com.ua\";i:601;s:13:\"emctestlab.ru\";i:602;s:14:\"emerson-rus.ru\";i:603;s:17:\"empire-market.org\";i:604;s:17:\"empire-market.xyz\";i:605;s:21:\"empiremarket-link.org\";i:606;s:22:\"empiremarketlink24.com\";i:607;s:15:\"empirestuff.org\";i:608;s:14:\"energomash.net\";i:609;s:14:\"energysexy.com\";i:610;s:15:\"englishtopic.ru\";i:611;s:18:\"enter-unicredit.ru\";i:612;s:14:\"epicdiving.com\";i:613;s:12:\"eraglass.com\";i:614;s:14:\"eric-artem.com\";i:615;s:18:\"ero-video-chat.org\";i:616;s:13:\"erofus.online\";i:617;s:10:\"eropho.com\";i:618;s:10:\"eropho.net\";i:619;s:7:\"erot.co\";i:620;s:10:\"erotag.com\";i:621;s:26:\"eroticheskij-video-chat.ru\";i:622;s:10:\"es-pfrf.ru\";i:623;s:18:\"escort-russian.com\";i:624;s:11:\"eskei83.com\";i:625;s:16:\"esoterikforum.at\";i:626;s:9:\"estdj.com\";i:627;s:16:\"este-line.com.ua\";i:628;s:16:\"etairikavideo.gr\";i:629;s:15:\"etehnika.com.ua\";i:630;s:10:\"etotupo.ru\";i:631;s:12:\"ets-2-mod.ru\";i:632;s:30:\"eu-cookie-law-enforcement2.xyz\";i:633;s:14:\"eurocredit.xyz\";i:634;s:18:\"euromasterclass.ru\";i:635;s:16:\"europages.com.ru\";i:636;s:16:\"eurosamodelki.ru\";i:637;s:18:\"event-tracking.com\";i:638;s:15:\"eventiyahall.ru\";i:639;s:20:\"exclusive-profit.com\";i:640;s:15:\"exdocsfiles.com\";i:641;s:20:\"exotic-video-chat.ru\";i:642;s:35:\"expediacustomerservicenumber.online\";i:643;s:14:\"expert-find.ru\";i:644;s:16:\"express-vyvoz.ru\";i:645;s:14:\"eyes-on-you.ga\";i:646;s:10:\"f1nder.org\";i:647;s:13:\"fainaidea.com\";i:648;s:11:\"falco3d.com\";i:649;s:13:\"falcoware.com\";i:650;s:11:\"fanoboi.com\";i:651;s:14:\"fartunabest.ru\";i:652;s:11:\"fashiong.ru\";i:653;s:24:\"fast-wordpress-start.com\";i:654;s:10:\"fastgg.net\";i:655;s:16:\"favoritki-msk.ru\";i:656;s:9:\"fazika.ru\";i:657;s:16:\"fbdownloader.com\";i:658;s:15:\"feminist.org.ua\";i:659;s:15:\"fialka.tomsk.ru\";i:660;s:10:\"fidalsa.de\";i:661;s:13:\"fierrohack.ru\";i:662;s:13:\"filesclub.net\";i:663;s:17:\"filesdatabase.net\";i:664;s:13:\"films2018.com\";i:665;s:20:\"filter-ot-zheleza.ru\";i:666;s:24:\"financial-simulation.com\";i:667;s:13:\"finansov.info\";i:668;s:11:\"finder.cool\";i:669;s:19:\"findercarphotos.com\";i:670;s:13:\"firstblog.top\";i:671;s:15:\"fit-discount.ru\";i:672;s:14:\"fitodar.com.ua\";i:673;s:22:\"fix-website-errors.com\";i:674;s:13:\"flexderek.com\";i:675;s:26:\"floating-share-buttons.com\";i:676;s:16:\"flowertherapy.ru\";i:677;s:11:\"flyblog.xyz\";i:678;s:9:\"foojo.net\";i:679;s:19:\"for-marketersy.info\";i:680;s:16:\"for-your.website\";i:681;s:15:\"forex-procto.ru\";i:682;s:11:\"forsex.info\";i:683;s:17:\"fortwosmartcar.pw\";i:684;s:12:\"forum69.info\";i:685;s:12:\"foxweber.com\";i:686;s:9:\"fpclub.ru\";i:687;s:20:\"francaise-poesie.com\";i:688;s:16:\"frankofficial.ru\";i:689;s:11:\"frauplus.ru\";i:690;s:19:\"free-fb-traffic.com\";i:691;s:22:\"free-fbook-traffic.com\";i:692;s:25:\"free-floating-buttons.com\";i:693;s:33:\"free-games-download.falcoware.com\";i:694;s:22:\"free-share-buttons.com\";i:695;s:23:\"free-social-buttons.com\";i:696;s:23:\"free-social-buttons.xyz\";i:697;s:24:\"free-social-buttons7.xyz\";i:698;s:16:\"free-traffic.xyz\";i:699;s:18:\"free-video-chat.ru\";i:700;s:19:\"free-video-tool.com\";i:701;s:24:\"free-website-traffic.com\";i:702;s:13:\"freenode.info\";i:703;s:20:\"freewhatsappload.com\";i:704;s:13:\"freewlan.info\";i:705;s:17:\"freshnails.com.ua\";i:706;s:10:\"fsalas.com\";i:707;s:15:\"fsin-pokypka.ru\";i:708;s:13:\"fullzdumps.cc\";i:709;s:22:\"furniturehomewares.com\";i:710;s:11:\"galblog.top\";i:711;s:13:\"gamblingpp.ru\";i:712;s:10:\"game300.ru\";i:713;s:14:\"gandikapper.ru\";i:714;s:15:\"garantprava.com\";i:715;s:17:\"gasvleningrade.ru\";i:716;s:10:\"gatwick.ru\";i:717;s:18:\"gays-video-chat.ru\";i:718;s:11:\"gazel-72.ru\";i:719;s:13:\"gbh-invest.ru\";i:720;s:12:\"gearcraft.us\";i:721;s:18:\"gearsadspromo.club\";i:722;s:14:\"geliyballon.ru\";i:723;s:11:\"gelstate.ru\";i:724;s:15:\"generalporn.org\";i:725;s:16:\"geniusfood.co.uk\";i:726;s:17:\"georgeblog.online\";i:727;s:16:\"gepatit-info.top\";i:728;s:16:\"germes-trans.com\";i:729;s:17:\"get-clickize.info\";i:730;s:27:\"get-free-social-traffic.com\";i:731;s:24:\"get-free-traffic-now.com\";i:732;s:29:\"get-more-freeer-visitors.info\";i:733;s:30:\"get-more-freeish-visitors.info\";i:734;s:16:\"get-seo-help.com\";i:735;s:28:\"get-your-social-buttons.info\";i:736;s:18:\"getaadsincome.info\";i:737;s:19:\"getadsincomely.info\";i:738;s:16:\"getfy-click.info\";i:739;s:17:\"getlamborghini.ga\";i:740;s:16:\"getpy-click.info\";i:741;s:15:\"getrichquick.ml\";i:742;s:19:\"getrichquickly.info\";i:743;s:13:\"gezlev.com.ua\";i:744;s:9:\"ghazel.ru\";i:745;s:16:\"ghostvisitor.com\";i:746;s:13:\"gidonline.one\";i:747;s:16:\"gidro-partner.ru\";i:748;s:10:\"giftbig.ru\";i:749;s:11:\"girlporn.ru\";i:750;s:13:\"gk-casino.fun\";i:751;s:16:\"gk-casino.online\";i:752;s:12:\"gk-casino.ru\";i:753;s:14:\"gk-casino.site\";i:754;s:15:\"gk-casino.space\";i:755;s:17:\"gk-casino.website\";i:756;s:11:\"gkvector.ru\";i:757;s:13:\"glavprofit.ru\";i:758;s:13:\"global-smm.ru\";i:759;s:12:\"gobongo.info\";i:760;s:15:\"golden-praga.ru\";i:761;s:17:\"golyedevushki.com\";i:762;s:15:\"good-potolok.ru\";i:763;s:19:\"goodbyecellulite.ru\";i:764;s:15:\"goodhumor24.com\";i:765;s:14:\"goodprotein.ru\";i:766;s:14:\"google-liar.ru\";i:767;s:14:\"googlemare.com\";i:768;s:14:\"googlsucks.com\";i:769;s:11:\"gorgaz.info\";i:770;s:11:\"grafaman.ru\";i:771;s:13:\"greatblog.top\";i:772;s:15:\"greentechsy.com\";i:773;s:20:\"groshi-kredut.com.ua\";i:774;s:21:\"growth-hackingan.info\";i:775;s:21:\"growth-hackingor.info\";i:776;s:20:\"growth-hackingy.info\";i:777;s:14:\"gruzchiki24.ru\";i:778;s:13:\"guardlink.org\";i:779;s:21:\"guidetopetersburg.com\";i:780;s:9:\"halat.xyz\";i:781;s:10:\"halefa.com\";i:782;s:20:\"handicapvantoday.com\";i:783;s:14:\"hankspring.xyz\";i:784;s:12:\"happysong.ru\";i:785;s:14:\"hard-porn.mobi\";i:786;s:13:\"havepussy.com\";i:787;s:14:\"hawaiisurf.com\";i:788;s:13:\"hd1080film.ru\";i:789;s:9:\"hdhc.site\";i:790;s:17:\"hdmoviecamera.net\";i:791;s:15:\"hdmoviecams.com\";i:792;s:18:\"hdsmartvideoreg.ru\";i:793;s:16:\"headpharmacy.com\";i:794;s:10:\"healbio.ru\";i:795;s:14:\"healgastro.com\";i:796;s:14:\"healthhacks.ru\";i:797;s:17:\"hentai-manga.porn\";i:798;s:11:\"heroero.com\";i:799;s:13:\"hexometer.com\";i:800;s:11:\"hit-kino.ru\";i:801;s:15:\"holiday-shop.ru\";i:802;s:17:\"holistickenko.com\";i:803;s:15:\"holodkovich.com\";i:804;s:17:\"homeafrikalike.tk\";i:805;s:16:\"homemypicture.tk\";i:806;s:13:\"hongfanji.com\";i:807;s:11:\"hostiman.ru\";i:808;s:19:\"hosting-tracker.com\";i:809;s:18:\"hotblognetwork.com\";i:810;s:11:\"hottour.com\";i:811;s:17:\"housedesigning.ru\";i:812;s:12:\"housediz.com\";i:813;s:13:\"housemilan.ru\";i:814;s:10:\"howopen.ru\";i:815;s:24:\"howtostopreferralspam.eu\";i:816;s:14:\"hoztorg-opt.ru\";i:817;s:10:\"hseipaa.kz\";i:818;s:18:\"hulfingtonpost.com\";i:819;s:21:\"humanorightswatch.org\";i:820;s:11:\"hundejo.com\";i:821;s:13:\"huntdown.info\";i:822;s:13:\"hvd-store.com\";i:823;s:13:\"hydra-2019.ru\";i:824;s:17:\"hydra-2020.online\";i:825;s:13:\"hydra-2020.ru\";i:826;s:15:\"hydra-centr.fun\";i:827;s:16:\"hydra-dealer.com\";i:828;s:15:\"hydra-guide.org\";i:829;s:16:\"hydra-new.online\";i:830;s:19:\"hydra-onion-faq.com\";i:831;s:12:\"hydra-pc.com\";i:832;s:14:\"hydra-shop.org\";i:833;s:13:\"hydra-site.ru\";i:834;s:14:\"hydra-slon.net\";i:835;s:18:\"hydra-vhod2020.com\";i:836;s:19:\"hydra-zerkalo20.com\";i:837;s:12:\"hydra.online\";i:838;s:13:\"hydra1717.com\";i:839;s:13:\"hydra2.market\";i:840;s:13:\"hydra2020.top\";i:841;s:17:\"hydra2020gate.com\";i:842;s:19:\"hydra2020market.com\";i:843;s:18:\"hydra2020onion.com\";i:844;s:15:\"hydra2020ru.com\";i:845;s:20:\"hydra2020zerkala.com\";i:846;s:20:\"hydra2020zerkalo.com\";i:847;s:16:\"hydra20onion.com\";i:848;s:17:\"hydra20online.com\";i:849;s:19:\"hydra20original.com\";i:850;s:13:\"hydra2use.com\";i:851;s:15:\"hydra2zahod.com\";i:852;s:12:\"hydraena.com\";i:853;s:12:\"hydrahow.com\";i:854;s:14:\"hydrahudra.com\";i:855;s:13:\"hydraland.net\";i:856;s:19:\"hydramarket2020.com\";i:857;s:19:\"hydramirror2020.com\";i:858;s:13:\"hydranten.net\";i:859;s:18:\"hydraonion2019.net\";i:860;s:18:\"hydrarusmarket.com\";i:861;s:17:\"hydraruz-2020.com\";i:862;s:21:\"hydraruzonion2020.com\";i:863;s:17:\"hydraruzonionx.ru\";i:864;s:23:\"hydraruzxpnew4af.com.co\";i:865;s:20:\"hydraruzxpnew4af.ink\";i:866;s:20:\"hydraruzxpnew4aff.ru\";i:867;s:26:\"hydraruzxpwnew4afonion.com\";i:868;s:22:\"hydraulicoilcooler.net\";i:869;s:16:\"hydrauliczny.com\";i:870;s:20:\"hydravizoficial.info\";i:871;s:20:\"hydrazerkalo2019.net\";i:872;s:20:\"hydrazerkalo2020.com\";i:873;s:14:\"hyip-zanoza.me\";i:874;s:10:\"i-spare.ru\";i:875;s:16:\"ib-homecredit.ru\";i:876;s:15:\"ib-rencredit.ru\";i:877;s:10:\"iceton.net\";i:878;s:6:\"ico.re\";i:879;s:10:\"ideayz.com\";i:880;s:17:\"igadgetsworld.com\";i:881;s:14:\"igamingtop.com\";i:882;s:13:\"igru-xbox.net\";i:883;s:15:\"ilikevitaly.com\";i:884;s:13:\"iloveitaly.ro\";i:885;s:13:\"iloveitaly.ru\";i:886;s:14:\"ilovevitaly.co\";i:887;s:15:\"ilovevitaly.com\";i:888;s:16:\"ilovevitaly.info\";i:889;s:15:\"ilovevitaly.org\";i:890;s:14:\"ilovevitaly.ru\";i:891;s:15:\"ilovevitaly.xyz\";i:892;s:11:\"iminent.com\";i:893;s:18:\"immigrational.info\";i:894;s:14:\"imperiafilm.ru\";i:895;s:14:\"impotentik.com\";i:896;s:13:\"in-mostbet.ru\";i:897;s:9:\"in-sto.ru\";i:898;s:13:\"incanto.in.ua\";i:899;s:14:\"incitystroy.ru\";i:900;s:13:\"incomekey.net\";i:901;s:23:\"increasewwwtraffic.info\";i:902;s:12:\"inet-shop.su\";i:903;s:13:\"infektsii.com\";i:904;s:18:\"infodocsportal.com\";i:905;s:13:\"infogame.name\";i:906;s:14:\"inform-ua.info\";i:907;s:14:\"ingramreed.xyz\";i:908;s:10:\"inmoll.com\";i:909;s:11:\"insider.pro\";i:910;s:20:\"installspartners.com\";i:911;s:17:\"instasexyblog.com\";i:912;s:14:\"insultu-net.ru\";i:913;s:16:\"interferencer.ru\";i:914;s:12:\"intex-air.ru\";i:915;s:13:\"intimchats.ru\";i:916;s:13:\"investpamm.ru\";i:917;s:10:\"iskalko.ru\";i:918;s:13:\"iskussnica.ru\";i:919;s:12:\"isotoner.com\";i:920;s:24:\"ispaniya-costa-blanca.ru\";i:921;s:13:\"it-max.com.ua\";i:922;s:13:\"it-worlds.com\";i:923;s:12:\"izamorfix.ru\";i:924;s:13:\"izhstrelok.ru\";i:925;s:8:\"izi24.ru\";i:926;s:12:\"janemill.xyz\";i:927;s:14:\"jav-fetish.com\";i:928;s:15:\"jav-fetish.site\";i:929;s:12:\"jav-idol.com\";i:930;s:12:\"javcoast.com\";i:931;s:13:\"javlibrary.cc\";i:932;s:14:\"jeffbullas.xyz\";i:933;s:10:\"jintub.com\";i:934;s:12:\"jjbabskoe.ru\";i:935;s:12:\"job-opros.ru\";i:936;s:13:\"job-prosto.ru\";i:937;s:12:\"jobgirl24.ru\";i:938;s:13:\"jobius.com.ua\";i:939;s:17:\"josephineblog.top\";i:940;s:11:\"jumkite.com\";i:941;s:16:\"justkillingti.me\";i:942;s:14:\"justprofit.xyz\";i:943;s:9:\"jweber.ru\";i:944;s:26:\"kabbalah-red-bracelets.com\";i:945;s:14:\"kabinet-5ka.ru\";i:946;s:20:\"kabinet-alfaclick.ru\";i:947;s:18:\"kabinet-binbank.ru\";i:948;s:19:\"kabinet-card-5ka.ru\";i:949;s:25:\"kabinet-click-alfabank.ru\";i:950;s:25:\"kabinet-esia-gosuslugi.ru\";i:951;s:19:\"kabinet-faberlic.ru\";i:952;s:20:\"kabinet-gosuslugi.ru\";i:953;s:27:\"kabinet-ipoteka-domclick.ru\";i:954;s:20:\"kabinet-karta-5ka.ru\";i:955;s:21:\"kabinet-lk-megafon.ru\";i:956;s:16:\"kabinet-lk-rt.ru\";i:957;s:20:\"kabinet-login-mts.ru\";i:958;s:14:\"kabinet-mil.ru\";i:959;s:14:\"kabinet-mos.ru\";i:960;s:21:\"kabinet-my-beeline.ru\";i:961;s:24:\"kabinet-my-pochtabank.ru\";i:962;s:16:\"kabinet-nalog.ru\";i:963;s:20:\"kabinet-online-bm.ru\";i:964;s:22:\"kabinet-online-open.ru\";i:965;s:21:\"kabinet-online-rsb.ru\";i:966;s:22:\"kabinet-online-rshb.ru\";i:967;s:26:\"kabinet-online-sberbank.ru\";i:968;s:28:\"kabinet-online-sovcombank.ru\";i:969;s:21:\"kabinet-online-vtb.ru\";i:970;s:14:\"kabinet-pfr.ru\";i:971;s:15:\"kabinet-pfrf.ru\";i:972;s:17:\"kabinet-platon.ru\";i:973;s:15:\"kabinet-qiwi.ru\";i:974;s:16:\"kabinet-tele2.ru\";i:975;s:18:\"kabinet-tinkoff.ru\";i:976;s:19:\"kabinet-tricolor.ru\";i:977;s:14:\"kabinet-ttk.ru\";i:978;s:16:\"kabinet-vtb24.ru\";i:979;s:12:\"kakablog.net\";i:980;s:22:\"kakadu-interior.com.ua\";i:981;s:18:\"kakworldoftanks.ru\";i:982;s:13:\"kambasoft.com\";i:983;s:12:\"kamin-sam.ru\";i:984;s:11:\"kanakox.com\";i:985;s:14:\"karapuz.org.ua\";i:986;s:8:\"kazka.ru\";i:987;s:11:\"kazlenta.kz\";i:988;s:11:\"kazrent.com\";i:989;s:10:\"kerch.site\";i:990;s:11:\"kevblog.top\";i:991;s:31:\"keywords-monitoring-success.com\";i:992;s:36:\"keywords-monitoring-your-success.com\";i:993;s:10:\"kharkov.ua\";i:994;s:17:\"kierowca-praca.pl\";i:995;s:18:\"kinnarimasajes.com\";i:996;s:11:\"kino-fun.ru\";i:997;s:13:\"kino-key.info\";i:998;s:11:\"kino2018.cc\";i:999;s:11:\"kinobum.org\";i:1000;s:13:\"kinopolet.net\";i:1001;s:11:\"kinosed.net\";i:1002;s:15:\"kinostar.online\";i:1003;s:30:\"kiyany-za-spravedluvist.com.ua\";i:1004;s:14:\"knigonosha.net\";i:1005;s:15:\"kollekcioner.ru\";i:1006;s:15:\"komp-pomosch.ru\";i:1007;s:17:\"komputers-best.ru\";i:1008;s:13:\"komukc.com.ua\";i:1009;s:13:\"konkursov.net\";i:1010;s:15:\"kosunnyclub.com\";i:1011;s:15:\"kozhakoshek.com\";i:1012;s:14:\"kozhasobak.com\";i:1013;s:18:\"kozhniebolezni.com\";i:1014;s:15:\"krasivoe-hd.net\";i:1015;s:24:\"krasnodar-avtolombard.ru\";i:1016;s:19:\"krasota-zdorovie.pw\";i:1017;s:10:\"krasota.ru\";i:1018;s:14:\"kredutu.com.ua\";i:1019;s:17:\"kredytbank.com.ua\";i:1020;s:14:\"kruiz-sochi.ru\";i:1021;s:18:\"krumble-adsde.info\";i:1022;s:18:\"krumble-adsen.info\";i:1023;s:19:\"krumbleent-ads.info\";i:1024;s:12:\"kursy-ege.ru\";i:1025;s:9:\"l2soft.eu\";i:1026;s:14:\"lakiikraski.ru\";i:1027;s:11:\"lalalove.ru\";i:1028;s:14:\"laminat.com.ua\";i:1029;s:13:\"landliver.org\";i:1030;s:18:\"landoftracking.com\";i:1031;s:17:\"laptop-4-less.com\";i:1032;s:17:\"law-check-two.xyz\";i:1033;s:26:\"law-enforcement-bot-ff.xyz\";i:1034;s:31:\"law-enforcement-check-three.xyz\";i:1035;s:22:\"law-enforcement-ee.xyz\";i:1036;s:11:\"law-six.xyz\";i:1037;s:19:\"lawrenceblog.online\";i:1038;s:13:\"laxdrills.com\";i:1039;s:10:\"leboard.ru\";i:1040;s:10:\"ledalfa.by\";i:1041;s:10:\"leddjc.net\";i:1042;s:7:\"ledx.by\";i:1043;s:16:\"leeboyrussia.com\";i:1044;s:11:\"legalrc.biz\";i:1045;s:18:\"leon-official.site\";i:1046;s:12:\"lerporn.info\";i:1047;s:13:\"leto-dacha.ru\";i:1048;s:10:\"lider82.ru\";i:1049;s:14:\"lifespeaker.ru\";i:1050;s:16:\"ligastavok-in.ru\";i:1051;s:18:\"lindsayblog.online\";i:1052;s:18:\"lipidofobia.com.br\";i:1053;s:14:\"littleberry.ru\";i:1054;s:13:\"live-xbet.com\";i:1055;s:13:\"livefixer.com\";i:1056;s:15:\"livejournal.top\";i:1057;s:14:\"livia-pache.ru\";i:1058;s:33:\"livingroomdecoratingideas.website\";i:1059;s:15:\"lk-gosuslugi.ru\";i:1060;s:11:\"lk-lk-rt.ru\";i:1061;s:36:\"local-seo-for-multiple-locations.com\";i:1062;s:16:\"login-tinkoff.ru\";i:1063;s:11:\"logo-all.ru\";i:1064;s:9:\"lolz.guru\";i:1065;s:15:\"lolzteam.online\";i:1066;s:12:\"lolzteam.org\";i:1067;s:11:\"lookover.ru\";i:1068;s:13:\"lotoflotto.ru\";i:1069;s:14:\"loveorganic.ch\";i:1070;s:18:\"lowpricesiterx.com\";i:1071;s:8:\"lsex.xyz\";i:1072;s:12:\"luckybull.io\";i:1073;s:13:\"lukoilcard.ru\";i:1074;s:7:\"lumb.co\";i:1075;s:15:\"luton-invest.ru\";i:1076;s:8:\"luxup.ru\";i:1077;s:12:\"luxurybet.ru\";i:1078;s:14:\"magicart.store\";i:1079;s:12:\"magicdiet.gq\";i:1080;s:21:\"magnetic-bracelets.ru\";i:1081;s:14:\"mainhunter.com\";i:1082;s:19:\"makemoneyonline.com\";i:1083;s:15:\"makeprogress.ga\";i:1084;s:13:\"makler.org.ua\";i:1085;s:18:\"maltadailypost.com\";i:1086;s:10:\"mamylik.ru\";i:1087;s:16:\"manimpotence.com\";i:1088;s:17:\"marathonbet-in.ru\";i:1089;s:14:\"marblestyle.ru\";i:1090;s:14:\"maridan.com.ua\";i:1091;s:17:\"marinetraffic.com\";i:1092;s:19:\"marjorieblog.online\";i:1093;s:13:\"marketland.ml\";i:1094;s:15:\"martinahome.xyz\";i:1095;s:14:\"masterseek.com\";i:1096;s:12:\"matomete.net\";i:1097;s:12:\"matras.space\";i:1098;s:13:\"mattgibson.us\";i:1099;s:15:\"max-apprais.com\";i:1100;s:16:\"maxinesamson.top\";i:1101;s:13:\"maxxximoda.ru\";i:1102;s:14:\"mebel-arts.com\";i:1103;s:13:\"mebel-ekb.com\";i:1104;s:23:\"mebel-iz-dereva.kiev.ua\";i:1105;s:16:\"mebelcomplekt.ru\";i:1106;s:17:\"mebeldekor.com.ua\";i:1107;s:12:\"meblieco.com\";i:1108;s:16:\"med-dopomoga.com\";i:1109;s:13:\"med-recept.ru\";i:1110;s:19:\"med-zdorovie.com.ua\";i:1111;s:14:\"medbrowse.info\";i:1112;s:14:\"medcor-list.ru\";i:1113;s:11:\"medic-al.ru\";i:1114;s:19:\"medicaltranslate.ru\";i:1115;s:20:\"medicineseasybuy.com\";i:1116;s:17:\"meds-online24.com\";i:1117;s:17:\"meduza-consult.ru\";i:1118;s:12:\"megalit-d.ru\";i:1119;s:15:\"megapolis-96.ru\";i:1120;s:12:\"megatkani.ru\";i:1121;s:12:\"melbet-in.ru\";i:1122;s:15:\"melissahome.top\";i:1123;s:10:\"meriton.ru\";i:1124;s:23:\"metallo-konstruktsii.ru\";i:1125;s:17:\"metallosajding.ru\";i:1126;s:13:\"meteocast.net\";i:1127;s:6:\"mhp.su\";i:1128;s:10:\"miaxxx.com\";i:1129;s:11:\"midnight.im\";i:1130;s:15:\"mifepriston.net\";i:1131;s:12:\"migronis.com\";i:1132;s:13:\"mikozstop.com\";i:1133;s:18:\"mikrocement.com.ua\";i:1134;s:14:\"mikrozaim.site\";i:1135;s:16:\"mikrozaym2you.ru\";i:1136;s:11:\"minegam.com\";i:1137;s:15:\"miningblack.net\";i:1138;s:15:\"mirfairytale.ru\";i:1139;s:15:\"mirobuvi.com.ua\";i:1140;s:14:\"mirtorrent.net\";i:1141;s:11:\"misselle.ru\";i:1142;s:9:\"mksoap.ru\";i:1143;s:10:\"mksport.ru\";i:1144;s:10:\"mmdoors.ru\";i:1145;s:6:\"mmm.lc\";i:1146;s:6:\"mmm.sb\";i:1147;s:15:\"mnogabukaff.net\";i:1148;s:16:\"mobicover.com.ua\";i:1149;s:14:\"mobilemedia.md\";i:1150;s:12:\"mobisport.ru\";i:1151;s:12:\"mockupui.com\";i:1152;s:12:\"modforwot.ru\";i:1153;s:19:\"modnie-futbolki.net\";i:1154;s:7:\"moe1.ru\";i:1155;s:13:\"moinozhki.com\";i:1156;s:15:\"moiragracie.top\";i:1157;s:15:\"moisadogorod.ru\";i:1158;s:20:\"monetizationking.net\";i:1159;s:30:\"money-for-placing-articles.com\";i:1160;s:14:\"money7777.info\";i:1161;s:11:\"moneytop.ru\";i:1162;s:11:\"moneyzzz.ru\";i:1163;s:14:\"monicablog.xyz\";i:1164;s:11:\"moon.market\";i:1165;s:9:\"moonci.ru\";i:1166;s:14:\"mosputana.info\";i:1167;s:13:\"mosputana.top\";i:1168;s:9:\"mosrif.ru\";i:1169;s:19:\"mostbet-original.ru\";i:1170;s:12:\"mostcool.top\";i:1171;s:15:\"mostorgnerud.ru\";i:1172;s:16:\"moy-dokument.com\";i:1173;s:14:\"moy-evroopt.ru\";i:1174;s:13:\"moyakuhnia.ru\";i:1175;s:13:\"moyaskidka.ru\";i:1176;s:18:\"moygorod-online.ru\";i:1177;s:13:\"moyparnik.com\";i:1178;s:15:\"mrbojikobi4.biz\";i:1179;s:11:\"mrt-info.ru\";i:1180;s:15:\"msk-sprawka.com\";i:1181;s:10:\"mtsguru.ru\";i:1182;s:8:\"mukis.ru\";i:1183;s:21:\"muscle-factory.com.ua\";i:1184;s:17:\"musichallaudio.ru\";i:1185;s:14:\"mwductwork.com\";i:1186;s:17:\"mybestoffers.club\";i:1187;s:11:\"myborder.ru\";i:1188;s:8:\"mybuh.kz\";i:1189;s:18:\"mycheaptraffic.com\";i:1190;s:19:\"mycollegereview.com\";i:1191;s:16:\"mydirtystuff.com\";i:1192;s:13:\"mydoctorok.ru\";i:1193;s:12:\"myecomir.com\";i:1194;s:15:\"myftpupload.com\";i:1195;s:14:\"myplaycity.com\";i:1196;s:12:\"mysexpics.ru\";i:1197;s:17:\"mytherealshop.com\";i:1198;s:13:\"nachalka21.ru\";i:1199;s:11:\"nakozhe.com\";i:1200;s:13:\"nancyblog.top\";i:1201;s:15:\"nanochskazki.ru\";i:1202;s:14:\"naobumium.info\";i:1203;s:19:\"narkomaniya-stop.ru\";i:1204;s:11:\"narosty.com\";i:1205;s:16:\"natali-forex.com\";i:1206;s:10:\"natprof.ru\";i:1207;s:19:\"naturalpharm.com.ua\";i:1208;s:8:\"navek.by\";i:1209;s:8:\"nbok.net\";i:1210;s:25:\"needtosellmyhousefast.com\";i:1211;s:15:\"net-profits.xyz\";i:1212;s:11:\"nethouse.ru\";i:1213;s:14:\"nevapotolok.ru\";i:1214;s:13:\"newagebev.com\";i:1215;s:14:\"newsrosprom.ru\";i:1216;s:20:\"newstaffadsshop.club\";i:1217;s:10:\"nicola.top\";i:1218;s:11:\"niki-mlt.ru\";i:1219;s:16:\"ninacecillia.top\";i:1220;s:10:\"no-rx.info\";i:1221;s:15:\"nomerounddec.cf\";i:1222;s:28:\"novosibirsk.gidro-partner.ru\";i:1223;s:15:\"novosti-avto.ru\";i:1224;s:18:\"novosti-hi-tech.ru\";i:1225;s:11:\"novostic.ru\";i:1226;s:17:\"now-hydra2020.com\";i:1227;s:8:\"ntdtv.ru\";i:1228;s:17:\"nubuilderian.info\";i:1229;s:9:\"nufaq.com\";i:1230;s:9:\"nwrcz.com\";i:1231;s:10:\"nyinfo.org\";i:1232;s:14:\"o-o-11-o-o.com\";i:1233;s:13:\"o-o-6-o-o.com\";i:1234;s:12:\"o-o-6-o-o.ru\";i:1235;s:13:\"o-o-8-o-o.com\";i:1236;s:12:\"o-o-8-o-o.ru\";i:1237;s:20:\"o-promyshlennosti.ru\";i:1238;s:12:\"obnallpro.cc\";i:1239;s:20:\"obsessionphrases.com\";i:1240;s:14:\"obyavka.org.ua\";i:1241;s:21:\"obzor-casino-x.online\";i:1242;s:17:\"obzor-casino-x.ru\";i:1243;s:15:\"odiabetikah.com\";i:1244;s:16:\"odsadsmobile.biz\";i:1245;s:13:\"ofermerah.com\";i:1246;s:14:\"office2web.com\";i:1247;s:19:\"officedocuments.net\";i:1248;s:13:\"ogorodnic.com\";i:1249;s:16:\"okna-systems.pro\";i:1250;s:10:\"okna.pp.ua\";i:1251;s:8:\"okno.ooo\";i:1252;s:12:\"okoshkah.com\";i:1253;s:11:\"olovoley.ru\";i:1254;s:10:\"omega.best\";i:1255;s:14:\"one-a-plus.xyz\";i:1256;s:12:\"onenews24.ru\";i:1257;s:15:\"onion20hydra.ru\";i:1258;s:14:\"onionhydra.net\";i:1259;s:15:\"onionshydra.com\";i:1260;s:16:\"online-akbars.ru\";i:1261;s:17:\"online-binbank.ru\";i:1262;s:15:\"online-hit.info\";i:1263;s:16:\"online-intim.com\";i:1264;s:13:\"online-mkb.ru\";i:1265;s:16:\"online-pharma.ru\";i:1266;s:20:\"online-pochtabank.ru\";i:1267;s:20:\"online-raiffeisen.ru\";i:1268;s:15:\"online-sbank.ru\";i:1269;s:24:\"online-templatestore.com\";i:1270;s:20:\"online-video-chat.ru\";i:1271;s:18:\"online-vostbank.ru\";i:1272;s:13:\"online-vtb.ru\";i:1273;s:13:\"onlinedic.net\";i:1274;s:17:\"onlinetvseries.me\";i:1275;s:12:\"onlinewot.ru\";i:1276;s:13:\"onlywoman.org\";i:1277;s:15:\"oohlivecams.com\";i:1278;s:11:\"ooo-olni.ru\";i:1279;s:8:\"oooh.pro\";i:1280;s:9:\"optsol.ru\";i:1281;s:7:\"oqex.io\";i:1282;s:17:\"oracle-patches.ru\";i:1283;s:13:\"orakul.spb.ru\";i:1284;s:18:\"osteochondrosis.ru\";i:1285;s:20:\"otdbiaxaem-vmeste.ru\";i:1286;s:20:\"otdyx-s-komfortom.ru\";i:1287;s:12:\"oudallas.net\";i:1288;s:10:\"ownshop.cf\";i:1289;s:8:\"ozas.net\";i:1290;s:15:\"pacobarrero.com\";i:1291;s:15:\"pageinsider.org\";i:1292;s:19:\"paidonlinesites.com\";i:1293;s:19:\"painting-planet.com\";i:1294;s:17:\"palma-de-sochi.ru\";i:1295;s:14:\"palvira.com.ua\";i:1296;s:16:\"pamjatnik.com.ua\";i:1297;s:16:\"pamyatnik-spb.ru\";i:1298;s:18:\"pamyatnik-tsena.ru\";i:1299;s:10:\"paretto.ru\";i:1300;s:17:\"parking-invest.ru\";i:1301;s:13:\"partizan19.ru\";i:1302;s:25:\"partnerskie-programmy.net\";i:1303;s:11:\"paulinho.ru\";i:1304;s:6:\"pay.ru\";i:1305;s:14:\"pc-services.ru\";i:1306;s:9:\"penzu.xyz\";i:1307;s:28:\"perform-like-alibabaity.info\";i:1308;s:28:\"perform-likeism-alibaba.info\";i:1309;s:12:\"perimetor.ru\";i:1310;s:14:\"perm.dienai.ru\";i:1311;s:9:\"perper.ru\";i:1312;s:19:\"petrovka-online.com\";i:1313;s:21:\"petrushka-restoran.ru\";i:1314;s:10:\"petscar.ru\";i:1315;s:15:\"pfrf-kabinet.ru\";i:1316;s:14:\"pharm--shop.ru\";i:1317;s:16:\"phimmakinhdi.com\";i:1318;s:13:\"photo-clip.ru\";i:1319;s:22:\"photokitchendesign.com\";i:1320;s:13:\"php-market.ru\";i:1321;s:17:\"picturesmania.com\";i:1322;s:12:\"pills24h.com\";i:1323;s:11:\"piluli.info\";i:1324;s:15:\"pinupcasinos.ru\";i:1325;s:16:\"pinupcasinos1.ru\";i:1326;s:11:\"pinupp1.com\";i:1327;s:12:\"piratbike.ru\";i:1328;s:18:\"pirelli-matador.ru\";i:1329;s:11:\"piulatte.cz\";i:1330;s:13:\"pizdeishn.com\";i:1331;s:13:\"pizdeishn.net\";i:1332;s:17:\"pizza-imperia.com\";i:1333;s:16:\"pizza-tycoon.com\";i:1334;s:13:\"pk-pomosch.ru\";i:1335;s:14:\"pk-services.ru\";i:1336;s:12:\"plagscan.com\";i:1337;s:14:\"podarkilove.ru\";i:1338;s:16:\"poddon-moskva.ru\";i:1339;s:12:\"podemnik.pro\";i:1340;s:11:\"podseka1.ru\";i:1341;s:14:\"poiskzakona.ru\";i:1342;s:18:\"poker-royal777.com\";i:1343;s:15:\"pokupaylegko.ru\";i:1344;s:12:\"polemikon.ru\";i:1345;s:11:\"politika.bg\";i:1346;s:21:\"polyana-skazok.org.ua\";i:1347;s:10:\"popads.net\";i:1348;s:12:\"popelina.com\";i:1349;s:15:\"pops.foundation\";i:1350;s:12:\"popugauka.ru\";i:1351;s:16:\"popugaychiki.com\";i:1352;s:18:\"porn-video-chat.ru\";i:1353;s:10:\"porndl.org\";i:1354;s:12:\"pornhive.org\";i:1355;s:16:\"pornhub-forum.ga\";i:1356;s:14:\"pornhub-ru.com\";i:1357;s:14:\"porno-asia.com\";i:1358;s:17:\"porno-chaman.info\";i:1359;s:16:\"porno-gallery.ru\";i:1360;s:12:\"porno2xl.net\";i:1361;s:12:\"pornobest.su\";i:1362;s:15:\"pornoelita.info\";i:1363;s:17:\"pornoforadult.com\";i:1364;s:13:\"pornofoto.org\";i:1365;s:12:\"pornogig.com\";i:1366;s:18:\"pornohd1080.online\";i:1367;s:12:\"pornoklad.ru\";i:1368;s:12:\"pornonik.com\";i:1369;s:13:\"pornoplen.com\";i:1370;s:17:\"pornorasskazy.net\";i:1371;s:15:\"pornosemki.info\";i:1372;s:14:\"pornoslave.net\";i:1373;s:14:\"portnoff.od.ua\";i:1374;s:11:\"pospektr.ru\";i:1375;s:12:\"posteezy.xyz\";i:1376;s:16:\"potolokelekor.ru\";i:1377;s:15:\"povodok-shop.ru\";i:1378;s:18:\"pozdravleniya-c.ru\";i:1379;s:14:\"predmety.in.ua\";i:1380;s:16:\"prezidentshop.ru\";i:1381;s:10:\"priceg.com\";i:1382;s:19:\"pricheski-video.com\";i:1383;s:16:\"primfootball.com\";i:1384;s:19:\"print-technology.ru\";i:1385;s:20:\"private-service.best\";i:1386;s:11:\"prizrn.site\";i:1387;s:8:\"prlog.ru\";i:1388;s:15:\"probenzo.com.ua\";i:1389;s:12:\"procrafts.ru\";i:1390;s:16:\"prodaemdveri.com\";i:1391;s:10:\"producm.ru\";i:1392;s:14:\"prodvigator.ua\";i:1393;s:24:\"professionalsolutions.eu\";i:1394;s:20:\"profnastil-moscow.ru\";i:1395;s:19:\"progressive-seo.com\";i:1396;s:15:\"prointer.net.ua\";i:1397;s:9:\"prom23.ru\";i:1398;s:13:\"promoforum.ru\";i:1399;s:18:\"promoteapps.online\";i:1400;s:19:\"promotion-for99.com\";i:1401;s:8:\"pron.pro\";i:1402;s:13:\"prosmibank.ru\";i:1403;s:26:\"prostitutki-rostova.ru.com\";i:1404;s:13:\"prostoacc.com\";i:1405;s:8:\"psa48.ru\";i:1406;s:11:\"psn-card.ru\";i:1407;s:16:\"ptashkatextil.ua\";i:1408;s:9:\"ptfic.org\";i:1409;s:11:\"punch.media\";i:1410;s:21:\"purchasepillsnorx.com\";i:1411;s:12:\"puzzleweb.ru\";i:1412;s:8:\"QIWI.xyz\";i:1413;s:10:\"qoinex.top\";i:1414;s:21:\"qualitymarketzone.com\";i:1415;s:14:\"quickchange.cc\";i:1416;s:15:\"quit-smoking.ga\";i:1417;s:8:\"qwesa.ru\";i:1418;s:17:\"rachelblog.online\";i:1419;s:12:\"rainbirds.ru\";i:1420;s:12:\"rangjued.com\";i:1421;s:19:\"rank-checker.online\";i:1422;s:22:\"rankings-analytics.com\";i:1423;s:14:\"ranksonic.info\";i:1424;s:13:\"ranksonic.net\";i:1425;s:13:\"ranksonic.org\";i:1426;s:18:\"rapidgator-porn.ga\";i:1427;s:14:\"rapidsites.pro\";i:1428;s:18:\"raschtextil.com.ua\";i:1429;s:15:\"raymondblog.top\";i:1430;s:21:\"razborka-skoda.org.ua\";i:1431;s:9:\"rb-str.ru\";i:1432;s:9:\"rcb101.ru\";i:1433;s:19:\"realresultslist.com\";i:1434;s:17:\"recinziireale.com\";i:1435;s:11:\"rednise.com\";i:1436;s:15:\"redraincine.com\";i:1437;s:14:\"reginablog.top\";i:1438;s:15:\"reginanahum.top\";i:1439;s:14:\"regionshop.biz\";i:1440;s:16:\"reklamnoe.agency\";i:1441;s:11:\"releshop.ru\";i:1442;s:10:\"rembash.ru\";i:1443;s:12:\"remkompov.ru\";i:1444;s:21:\"remont-kvartirspb.com\";i:1445;s:12:\"remontvau.ru\";i:1446;s:11:\"rent2spb.ru\";i:1447;s:16:\"replica-watch.ru\";i:1448;s:16:\"research.ifmo.ru\";i:1449;s:23:\"resell-seo-services.com\";i:1450;s:16:\"resellerclub.com\";i:1451;s:19:\"responsive-test.net\";i:1452;s:14:\"resurs-2012.ru\";i:1453;s:12:\"reversing.cc\";i:1454;s:11:\"revolgc.pro\";i:1455;s:9:\"rfavon.ru\";i:1456;s:27:\"rightenergysolutions.com.au\";i:1457;s:14:\"robocheck.info\";i:1458;s:12:\"roof-city.ru\";i:1459;s:13:\"room-mebel.ru\";i:1460;s:14:\"rospromtest.ru\";i:1461;s:19:\"royal-casino.online\";i:1462;s:15:\"royal-casino.ru\";i:1463;s:20:\"royal-casinos.online\";i:1464;s:16:\"royal-casinos.ru\";i:1465;s:19:\"royal-cazino.online\";i:1466;s:15:\"royal-cazino.ru\";i:1467;s:11:\"rspectr.com\";i:1468;s:11:\"ru-lk-rt.ru\";i:1469;s:12:\"ru-onion.com\";i:1470;s:21:\"ru-online-sberbank.ru\";i:1471;s:15:\"rufreechats.com\";i:1472;s:12:\"ruhydraru.ru\";i:1473;s:13:\"ruinfocomp.ru\";i:1474;s:9:\"rulate.ru\";i:1475;s:11:\"rumamba.com\";i:1476;s:18:\"runetki-online.net\";i:1477;s:14:\"rupolitshow.ru\";i:1478;s:11:\"rus-lit.com\";i:1479;s:14:\"ruscams-com.ru\";i:1480;s:10:\"rusexy.xyz\";i:1481;s:11:\"ruspoety.ru\";i:1482;s:20:\"russian-postindex.ru\";i:1483;s:22:\"russian-translator.com\";i:1484;s:21:\"russian-videochats.ru\";i:1485;s:22:\"russkie-sochineniya.ru\";i:1486;s:9:\"rustag.ru\";i:1487;s:11:\"rutor.group\";i:1488;s:9:\"rxshop.md\";i:1489;s:14:\"rybalka-opt.ru\";i:1490;s:11:\"s-forum.biz\";i:1491;s:9:\"s-luna.me\";i:1492;s:14:\"sabinablog.xyz\";i:1493;s:15:\"sad-torg.com.ua\";i:1494;s:13:\"sady-urala.ru\";i:1495;s:12:\"saltspray.ru\";i:1496;s:19:\"samanthablog.online\";i:1497;s:18:\"samara-airport.com\";i:1498;s:17:\"samara-comfort.ru\";i:1499;s:11:\"samchist.ru\";i:1500;s:17:\"samlaurabrown.top\";i:1501;s:13:\"samogonius.ru\";i:1502;s:19:\"sanjosestartups.com\";i:1503;s:11:\"santaren.by\";i:1504;s:13:\"santasgift.ml\";i:1505;s:15:\"santehnovich.ru\";i:1506;s:11:\"sapaship.ru\";i:1507;s:14:\"sauna-v-ufe.ru\";i:1508;s:16:\"sauni-lipetsk.ru\";i:1509;s:15:\"sauni-moskva.ru\";i:1510;s:17:\"savetubevideo.com\";i:1511;s:18:\"savetubevideo.info\";i:1512;s:12:\"scansafe.net\";i:1513;s:9:\"scat.porn\";i:1514;s:13:\"screen-led.ru\";i:1515;s:17:\"screentoolkit.com\";i:1516;s:12:\"scripted.com\";i:1517;s:16:\"search-error.com\";i:1518;s:17:\"searchencrypt.com\";i:1519;s:27:\"security-corporation.com.ua\";i:1520;s:11:\"sel-hoz.com\";i:1521;s:14:\"selfhotdog.com\";i:1522;s:22:\"sell-fb-group-here.com\";i:1523;s:10:\"semalt.com\";i:1524;s:15:\"semaltmedia.com\";i:1525;s:11:\"seo-2-0.com\";i:1526;s:16:\"seo-platform.com\";i:1527;s:20:\"seo-services-b2b.com\";i:1528;s:26:\"seo-services-wordpress.com\";i:1529;s:10:\"seo-smm.kz\";i:1530;s:12:\"seo-tips.top\";i:1531;s:15:\"seoanalyses.com\";i:1532;s:11:\"seobook.top\";i:1533;s:15:\"seocheckupx.com\";i:1534;s:15:\"seocheckupx.net\";i:1535;s:17:\"seoexperimenty.ru\";i:1536;s:12:\"seojokes.net\";i:1537;s:10:\"seopub.net\";i:1538;s:22:\"seoriseome.netlify.app\";i:1539;s:19:\"seoservices2018.com\";i:1540;s:11:\"serialsx.ru\";i:1541;s:14:\"sex-porno.site\";i:1542;s:13:\"sex-spying.ru\";i:1543;s:17:\"sex-videochats.ru\";i:1544;s:17:\"sexpornotales.net\";i:1545;s:12:\"sexreliz.com\";i:1546;s:12:\"sexreliz.net\";i:1547;s:11:\"sexsaoy.com\";i:1548;s:11:\"sexuria.net\";i:1549;s:11:\"sexwife.net\";i:1550;s:17:\"sexy-girl-chat.ru\";i:1551;s:11:\"sexyali.com\";i:1552;s:12:\"shagtomsk.ru\";i:1553;s:15:\"shanscasino1.ru\";i:1554;s:26:\"share-buttons-for-free.com\";i:1555;s:17:\"share-buttons.xyz\";i:1556;s:14:\"sharebutton.io\";i:1557;s:15:\"sharebutton.net\";i:1558;s:14:\"sharebutton.to\";i:1559;s:11:\"shcrose.com\";i:1560;s:12:\"sheki-spb.ru\";i:1561;s:11:\"shnyagi.net\";i:1562;s:14:\"shop-garena.ru\";i:1563;s:18:\"shop.garena.ru.com\";i:1564;s:14:\"shop2hydra.com\";i:1565;s:11:\"shop4fit.ru\";i:1566;s:18:\"shopfishing.com.ua\";i:1567;s:22:\"shoppingmiracles.co.uk\";i:1568;s:14:\"shoprybalka.ru\";i:1569;s:11:\"shops-ru.ru\";i:1570;s:22:\"shopsellcardsdumps.com\";i:1571;s:14:\"shtaketniki.ru\";i:1572;s:11:\"shulepov.ru\";i:1573;s:12:\"sib-kukla.ru\";i:1574;s:13:\"sibecoprom.ru\";i:1575;s:11:\"sibkukla.ru\";i:1576;s:15:\"sign-service.ru\";i:1577;s:13:\"silvergull.ru\";i:1578;s:13:\"sim-dealer.ru\";i:1579;s:19:\"similarmoviesdb.com\";i:1580;s:26:\"simoncinicancertherapy.com\";i:1581;s:24:\"simple-share-buttons.com\";i:1582;s:17:\"sinhronperevod.ru\";i:1583;s:19:\"site-auditor.online\";i:1584;s:9:\"site5.com\";i:1585;s:12:\"siteripz.net\";i:1586;s:12:\"sitesadd.com\";i:1587;s:17:\"sitevaluation.org\";i:1588;s:13:\"skidku.org.ua\";i:1589;s:11:\"skinali.com\";i:1590;s:21:\"skinali.photo-clip.ru\";i:1591;s:16:\"sladkoevideo.com\";i:1592;s:18:\"sledstvie-veli.net\";i:1593;s:13:\"slftsdybbg.ru\";i:1594;s:8:\"slkrm.ru\";i:1595;s:8:\"slomm.ru\";i:1596;s:11:\"slotron.com\";i:1597;s:16:\"slow-website.xyz\";i:1598;s:11:\"smailik.org\";i:1599;s:23:\"smartphonediscount.info\";i:1600;s:7:\"smt4.ru\";i:1601;s:8:\"snabs.kz\";i:1602;s:14:\"snaiper-bg.net\";i:1603;s:18:\"sneakerfreaker.com\";i:1604;s:19:\"snegozaderzhatel.ru\";i:1605;s:7:\"snip.to\";i:1606;s:7:\"snip.tw\";i:1607;s:11:\"soaksoak.ru\";i:1608;s:11:\"sochi-3d.ru\";i:1609;s:17:\"social-button.xyz\";i:1610;s:21:\"social-buttons-ii.xyz\";i:1611;s:18:\"social-buttons.com\";i:1612;s:20:\"social-traffic-1.xyz\";i:1613;s:20:\"social-traffic-2.xyz\";i:1614;s:20:\"social-traffic-3.xyz\";i:1615;s:20:\"social-traffic-4.xyz\";i:1616;s:20:\"social-traffic-5.xyz\";i:1617;s:20:\"social-traffic-7.xyz\";i:1618;s:17:\"social-widget.xyz\";i:1619;s:17:\"socialbuttons.xyz\";i:1620;s:13:\"socialseet.ru\";i:1621;s:15:\"socialtrade.biz\";i:1622;s:13:\"sohoindia.net\";i:1623;s:11:\"solartek.ru\";i:1624;s:17:\"solitaire-game.ru\";i:1625;s:12:\"solnplast.ru\";i:1626;s:19:\"sosdepotdebilan.com\";i:1627;s:14:\"souvenirua.com\";i:1628;s:14:\"sovetogorod.ru\";i:1629;s:20:\"sovetskie-plakaty.ru\";i:1630;s:9:\"sowhoz.ru\";i:1631;s:18:\"soyuzexpedition.ru\";i:1632;s:12:\"sp-laptop.ru\";i:1633;s:13:\"sp-zakupki.ru\";i:1634;s:13:\"space2019.top\";i:1635;s:16:\"spain-poetry.com\";i:1636;s:16:\"spartania.com.ua\";i:1637;s:13:\"spb-plitka.ru\";i:1638;s:13:\"spb-scenar.ru\";i:1639;s:14:\"specstroy36.ru\";i:1640;s:15:\"speedup-my.site\";i:1641;s:11:\"spin2016.cf\";i:1642;s:14:\"sportobzori.ru\";i:1643;s:14:\"sportwizard.ru\";i:1644;s:13:\"spravka130.ru\";i:1645;s:15:\"spravkavspb.net\";i:1646;s:16:\"spravkavspb.work\";i:1647;s:16:\"sprawka-help.com\";i:1648;s:12:\"spy-app.info\";i:1649;s:10:\"sqadia.com\";i:1650;s:15:\"squarespace.top\";i:1651;s:10:\"sribno.net\";i:1652;s:6:\"ssn.is\";i:1653;s:11:\"sssexxx.net\";i:1654;s:7:\"ssve.ru\";i:1655;s:10:\"st-komf.ru\";i:1656;s:12:\"sta-grand.ru\";i:1657;s:12:\"stat.lviv.ua\";i:1658;s:14:\"stavimdveri.ru\";i:1659;s:9:\"steame.ru\";i:1660;s:15:\"stiralkovich.ru\";i:1661;s:15:\"stocktwists.com\";i:1662;s:11:\"stoletie.ru\";i:1663;s:11:\"stoliar.org\";i:1664;s:18:\"stomatologi.moscow\";i:1665;s:12:\"stop-nark.ru\";i:1666;s:19:\"stop-zavisimost.com\";i:1667;s:12:\"store-rx.com\";i:1668;s:13:\"strady.org.ua\";i:1669;s:14:\"stream-tds.com\";i:1670;s:11:\"stroi-24.ru\";i:1671;s:14:\"strongtools.ga\";i:1672;s:15:\"stroy-matrix.ru\";i:1673;s:11:\"stroyalp.ru\";i:1674;s:14:\"stroyka-gid.ru\";i:1675;s:12:\"stroyka47.ru\";i:1676;s:15:\"studentguide.ru\";i:1677;s:14:\"stuffhydra.com\";i:1678;s:15:\"stylecaster.top\";i:1679;s:9:\"su1ufa.ru\";i:1680;s:15:\"success-seo.com\";i:1681;s:17:\"sudachitravel.com\";i:1682;s:16:\"sundrugstore.com\";i:1683;s:18:\"super-seo-guru.com\";i:1684;s:14:\"superiends.org\";i:1685;s:13:\"supermama.top\";i:1686;s:17:\"supermodni.com.ua\";i:1687;s:16:\"superoboi.com.ua\";i:1688;s:24:\"superslots-casino.online\";i:1689;s:22:\"superslots-casino.site\";i:1690;s:24:\"superslots-cazino.online\";i:1691;s:22:\"superslots-cazino.site\";i:1692;s:22:\"superslotz-casino.site\";i:1693;s:22:\"superslotz-cazino.site\";i:1694;s:13:\"supervesti.ru\";i:1695;s:18:\"suzanneboswell.top\";i:1696;s:18:\"svadba-teplohod.ru\";i:1697;s:16:\"svensk-poesi.com\";i:1698;s:12:\"svet-depo.ru\";i:1699;s:11:\"svetka.info\";i:1700;s:14:\"svetoch.moscow\";i:1701;s:17:\"svoimi-rukamy.com\";i:1702;s:12:\"svs-avto.com\";i:1703;s:10:\"swaplab.io\";i:1704;s:8:\"sweet.tv\";i:1705;s:14:\"t-machinery.ru\";i:1706;s:8:\"t-rec.su\";i:1707;s:11:\"taihouse.ru\";i:1708;s:15:\"tam-gde-more.ru\";i:1709;s:12:\"tamada69.com\";i:1710;s:16:\"tammyblog.online\";i:1711;s:12:\"targetpay.nl\";i:1712;s:18:\"tattoo-stickers.ru\";i:1713;s:12:\"tattooha.com\";i:1714;s:15:\"tcenavoprosa.ru\";i:1715;s:9:\"td-abs.ru\";i:1716;s:14:\"td-l-market.ru\";i:1717;s:14:\"td-perimetr.ru\";i:1718;s:11:\"tdbatik.com\";i:1719;s:11:\"tds-west.ru\";i:1720;s:18:\"technika-remont.ru\";i:1721;s:10:\"tedxrj.com\";i:1722;s:9:\"telfer.ru\";i:1723;s:12:\"teman.com.ua\";i:1724;s:13:\"tennis-bet.ru\";i:1725;s:15:\"tentcomplekt.ru\";i:1726;s:18:\"teplohod-gnezdo.ru\";i:1727;s:15:\"teplokomplex.ru\";i:1728;s:14:\"teresablog.top\";i:1729;s:14:\"tesla-audit.ru\";i:1730;s:14:\"texnika.com.ua\";i:1731;s:10:\"tgsubs.com\";i:1732;s:12:\"tgtclick.com\";i:1733;s:19:\"thaimassage-slon.ru\";i:1734;s:15:\"thaoduoctoc.com\";i:1735;s:12:\"the-world.ru\";i:1736;s:16:\"theautoprofit.ml\";i:1737;s:15:\"theguardlan.com\";i:1738;s:12:\"thelotter.su\";i:1739;s:24:\"therealshop.exaccess.com\";i:1740;s:22:\"thesensehousehotel.com\";i:1741;s:18:\"thesmartsearch.net\";i:1742;s:8:\"timmy.by\";i:1743;s:9:\"tocan.biz\";i:1744;s:12:\"tocan.com.ua\";i:1745;s:14:\"tokshow.online\";i:1746;s:9:\"tomck.com\";i:1747;s:10:\"top-gan.ru\";i:1748;s:18:\"top-instagram.info\";i:1749;s:14:\"top-kasyna.com\";i:1750;s:10:\"top-l2.com\";i:1751;s:20:\"top1-seo-service.com\";i:1752;s:22:\"top10-online-games.com\";i:1753;s:13:\"top10-way.com\";i:1754;s:15:\"topmebeltorg.ru\";i:1755;s:13:\"toposvita.com\";i:1756;s:13:\"topquality.cf\";i:1757;s:17:\"topseoservices.co\";i:1758;s:6:\"tor.vc\";i:1759;s:13:\"torobrand.com\";i:1760;s:10:\"torospa.ru\";i:1761;s:16:\"torrentgamer.net\";i:1762;s:16:\"torrentred.games\";i:1763;s:21:\"track-rankings.online\";i:1764;s:16:\"tracker24-gps.ru\";i:1765;s:11:\"trafers.com\";i:1766;s:16:\"traffic-cash.xyz\";i:1767;s:16:\"traffic2cash.org\";i:1768;s:16:\"traffic2cash.xyz\";i:1769;s:17:\"traffic2money.com\";i:1770;s:17:\"trafficgenius.xyz\";i:1771;s:19:\"trafficmonetize.org\";i:1772;s:20:\"trafficmonetizer.org\";i:1773;s:13:\"transit.in.ua\";i:1774;s:21:\"transsex-videochat.ru\";i:1775;s:19:\"traphouselatino.net\";i:1776;s:20:\"travel-semantics.com\";i:1777;s:15:\"trex-casino.com\";i:1778;s:11:\"trex.casino\";i:1779;s:21:\"tricolortv-online.com\";i:1780;s:10:\"trieste.io\";i:1781;s:11:\"trion.od.ua\";i:1782;s:13:\"truebeauty.cc\";i:1783;s:12:\"tsatu.edu.ua\";i:1784;s:13:\"tsc-koleso.ru\";i:1785;s:12:\"tuningdom.ru\";i:1786;s:9:\"tvfru.org\";i:1787;s:9:\"twsufa.ru\";i:1788;s:5:\"ua.tc\";i:1789;s:7:\"uasb.ru\";i:1790;s:10:\"ucanfly.ru\";i:1791;s:7:\"ucoz.ru\";i:1792;s:8:\"udav.net\";i:1793;s:13:\"ufa.dienai.ru\";i:1794;s:11:\"ufolabs.net\";i:1795;s:15:\"uginekologa.com\";i:1796;s:20:\"ukrainian-poetry.com\";i:1797;s:12:\"ukrcargo.com\";i:1798;s:14:\"ukrtvory.in.ua\";i:1799;s:13:\"ul-potolki.ru\";i:1800;s:24:\"undergroundcityphoto.com\";i:1801;s:9:\"unibus.su\";i:1802;s:15:\"univerfiles.com\";i:1803;s:15:\"unlimitdocs.net\";i:1804;s:16:\"unpredictable.ga\";i:1805;s:13:\"uptime-as.net\";i:1806;s:13:\"uptime-eu.net\";i:1807;s:13:\"uptime-us.net\";i:1808;s:10:\"uptime.com\";i:1809;s:17:\"uptimechecker.com\";i:1810;s:10:\"urblog.xyz\";i:1811;s:8:\"uruto.ru\";i:1812;s:19:\"uslugi-tatarstan.ru\";i:1813;s:12:\"uyut-dom.pro\";i:1814;s:15:\"uyutmaster73.ru\";i:1815;s:11:\"uzpaket.com\";i:1816;s:11:\"uzungil.com\";i:1817;s:12:\"v-casino.fun\";i:1818;s:13:\"v-casino.host\";i:1819;s:11:\"v-casino.ru\";i:1820;s:13:\"v-casino.site\";i:1821;s:16:\"v-casino.website\";i:1822;s:12:\"v-casino.xyz\";i:1823;s:15:\"v-cazino.online\";i:1824;s:11:\"v-cazino.ru\";i:1825;s:14:\"vaderenergy.ru\";i:1826;s:12:\"valid-cc.com\";i:1827;s:17:\"validccseller.com\";i:1828;s:11:\"validus.pro\";i:1829;s:9:\"vape-x.ru\";i:1830;s:16:\"vardenafil20.com\";i:1831;s:13:\"varikozdok.ru\";i:1832;s:18:\"vavada-casino.host\";i:1833;s:17:\"vavada-casino.top\";i:1834;s:18:\"vavada-cazino.host\";i:1835;s:18:\"vavada-cazino.site\";i:1836;s:10:\"vbikse.com\";i:1837;s:12:\"vchulkah.net\";i:1838;s:10:\"veles.shop\";i:1839;s:14:\"veloland.in.ua\";i:1840;s:10:\"ventopt.by\";i:1841;s:16:\"veronicablog.top\";i:1842;s:12:\"vescenter.ru\";i:1843;s:14:\"veselokloun.ru\";i:1844;s:14:\"vesnatehno.com\";i:1845;s:9:\"vetbvc.ru\";i:1846;s:15:\"vezdevoz.com.ua\";i:1847;s:15:\"vgoloveboli.net\";i:1848;s:14:\"viagra-soft.ru\";i:1849;s:21:\"video--production.com\";i:1850;s:20:\"video-girl-online.ru\";i:1851;s:15:\"video-woman.com\";i:1852;s:19:\"videochat-dating.ru\";i:1853;s:14:\"videochat.guru\";i:1854;s:15:\"videochat.world\";i:1855;s:28:\"videos-for-your-business.com\";i:1856;s:12:\"videotop.biz\";i:1857;s:7:\"viel.su\";i:1858;s:18:\"viktoria-center.ru\";i:1859;s:12:\"virtchats.ru\";i:1860;s:21:\"virtual-love-video.ru\";i:1861;s:19:\"virtual-sex-chat.ru\";i:1862;s:19:\"virtual-sex-time.ru\";i:1863;s:24:\"virtual-sex-videochat.ru\";i:1864;s:15:\"virtual-zaim.ru\";i:1865;s:13:\"virtualbb.com\";i:1866;s:21:\"virus-schutzmasken.de\";i:1867;s:11:\"vkonche.com\";i:1868;s:8:\"vksex.ru\";i:1869;s:11:\"vladtime.ru\";i:1870;s:10:\"vodabur.by\";i:1871;s:14:\"vodaodessa.com\";i:1872;s:11:\"vodkoved.ru\";i:1873;s:10:\"volond.com\";i:1874;s:7:\"vpdr.pl\";i:1875;s:12:\"vrazbor59.ru\";i:1876;s:10:\"vsdelke.ru\";i:1877;s:11:\"vseigru.one\";i:1878;s:11:\"vseigry.fun\";i:1879;s:13:\"vseprobrak.ru\";i:1880;s:17:\"vulkan-nadengi.ru\";i:1881;s:18:\"vulkan-oficial.com\";i:1882;s:16:\"vulkanrussia1.ru\";i:1883;s:13:\"vzheludke.com\";i:1884;s:10:\"vzubah.com\";i:1885;s:9:\"vzube.com\";i:1886;s:11:\"vzubkah.com\";i:1887;s:15:\"w2mobile-za.com\";i:1888;s:16:\"w3javascript.com\";i:1889;s:23:\"wakeupseoconsultant.com\";i:1890;s:20:\"wallabag.malooma.bzh\";i:1891;s:18:\"wallet-prlzn.space\";i:1892;s:14:\"wallinside.top\";i:1893;s:18:\"wallpaperdesk.info\";i:1894;s:18:\"wallpapers-all.com\";i:1895;s:13:\"warmex.com.ua\";i:1896;s:13:\"wave-games.ru\";i:1897;s:14:\"wayfcoin.space\";i:1898;s:11:\"wdss.com.ua\";i:1899;s:22:\"we-ping-for-youic.info\";i:1900;s:18:\"web-analytics.date\";i:1901;s:15:\"web-revenue.xyz\";i:1902;s:11:\"webalex.pro\";i:1903;s:14:\"weblibrary.win\";i:1904;s:21:\"webmaster-traffic.com\";i:1905;s:16:\"webmonetizer.net\";i:1906;s:24:\"website-analytics.online\";i:1907;s:21:\"website-analyzer.info\";i:1908;s:24:\"website-speed-check.site\";i:1909;s:26:\"website-speed-checker.site\";i:1910;s:22:\"websitebottraffic.host\";i:1911;s:20:\"websites-reviews.com\";i:1912;s:12:\"websocial.me\";i:1913;s:16:\"weburlopener.com\";i:1914;s:10:\"weebly.com\";i:1915;s:14:\"weightbelts.ru\";i:1916;s:17:\"wfdesigngroup.com\";i:1917;s:15:\"wmasterlead.com\";i:1918;s:15:\"woman-orgasm.ru\";i:1919;s:18:\"wordpress-crew.net\";i:1920;s:17:\"wordpresscore.com\";i:1921;s:10:\"workius.ru\";i:1922;s:11:\"workona.com\";i:1923;s:11:\"works.if.ua\";i:1924;s:17:\"worldgamenews.com\";i:1925;s:13:\"worldmed.info\";i:1926;s:14:\"worldofbtc.com\";i:1927;s:10:\"wpnull.org\";i:1928;s:11:\"wrc-info.ru\";i:1929;s:9:\"wufak.com\";i:1930;s:14:\"ww2awards.info\";i:1931;s:12:\"www-lk-rt.ru\";i:1932;s:10:\"x-lime.com\";i:1933;s:10:\"x-lime.net\";i:1934;s:11:\"x5market.ru\";i:1935;s:11:\"xaker26.net\";i:1936;s:9:\"xexe.club\";i:1937;s:9:\"xion.cash\";i:1938;s:8:\"xkaz.org\";i:1939;s:56:\"xn-------53dbcapga5atlplfdm6ag1ab1bvehl0b7toa0k.xn--p1ai\";i:1940;s:44:\"xn------6cdbciescapvf0a8bibwx0a1bu.xn--90ais\";i:1941;s:43:\"xn-----6kcacs9ajdmhcwdcbwwcnbgd13a.xn--p1ai\";i:1942;s:33:\"xn-----6kcamwewcd9bayelq.xn--p1ai\";i:1943;s:41:\"xn-----7kcaaxchbbmgncr7chzy0k0hk.xn--p1ai\";i:1944;s:42:\"xn-----clckdac3bsfgdft3aebjp5etek.xn--p1ai\";i:1945;s:35:\"xn----7sbabb9a1b7bddgm6a1i.xn--p1ai\";i:1946;s:37:\"xn----7sbabhjc3ccc5aggbzfmfi.xn--p1ai\";i:1947;s:35:\"xn----7sbabhv4abd8aih6bb7k.xn--p1ai\";i:1948;s:26:\"xn----7sbabm1ahc4b2aqff.su\";i:1949;s:33:\"xn----7sbabn5abjehfwi8bj.xn--p1ai\";i:1950;s:28:\"xn----7sbbpe3afguye.xn--p1ai\";i:1951;s:31:\"xn----7sbho2agebbhlivy.xn--p1ai\";i:1952;s:29:\"xn----8sbaki4azawu5b.xn--p1ai\";i:1953;s:40:\"xn----8sbarihbihxpxqgaf0g1e.xn--80adxhks\";i:1954;s:28:\"xn----8sbbjimdeyfsi.xn--p1ai\";i:1955;s:41:\"xn----8sbhefaln6acifdaon5c6f4axh.xn--p1ai\";i:1956;s:64:\"xn----8sblgmbj1a1bk8l.xn----161-4vemb6cjl7anbaea3afninj.xn--p1ai\";i:1957;s:29:\"xn----8sbowe2akbcd4h.xn--p1ai\";i:1958;s:33:\"xn----8sbpmgeilbd8achi0c.xn--p1ai\";i:1959;s:35:\"xn----btbdvdh4aafrfciljm6k.xn--p1ai\";i:1960;s:30:\"xn----ctbbcjd3dbsehgi.xn--p1ai\";i:1961;s:34:\"xn----ctbfcdjl8baejhfb1oh.xn--p1ai\";i:1962;s:27:\"xn----ctbigni3aj4h.xn--p1ai\";i:1963;s:29:\"xn----dtbffp5aagjgfm.xn--p1ai\";i:1964;s:32:\"xn----ftbeoaiyg1ak1cb7d.xn--p1ai\";i:1965;s:25:\"xn----itbbudqejbfpg3l.com\";i:1966;s:32:\"xn----jtbjfcbdfr0afji4m.xn--p1ai\";i:1967;s:29:\"xn--78-6kc6akkhn3a3k.xn--p1ai\";i:1968;s:32:\"xn--78-6kcmzqfpcb1amd1q.xn--p1ai\";i:1969;s:34:\"xn--80aaajkrncdlqdh6ane8t.xn--p1ai\";i:1970;s:28:\"xn--80aabcsc3bqirlt.xn--p1ai\";i:1971;s:29:\"xn--80aanaardaperhcem4a6i.com\";i:1972;s:38:\"xn--80adaggc5bdhlfamsfdij4p7b.xn--p1ai\";i:1973;s:30:\"xn--80adgcaax6acohn6r.xn--p1ai\";i:1974;s:23:\"xn--80aeb6argv.xn--p1ai\";i:1975;s:26:\"xn--80aebzmbfeebe.xn--p1ai\";i:1976;s:25:\"xn--80ahdheogk5l.xn--p1ai\";i:1977;s:31:\"xn--90acenikpebbdd4f6d.xn--p1ai\";i:1978;s:29:\"xn--90acjmaltae3acm.xn--p1acf\";i:1979;s:27:\"xn--b1adccayqiirhu.xn--p1ai\";i:1980;s:20:\"xn--c1acygb.xn--p1ai\";i:1981;s:21:\"xn--d1abj0abs9d.in.ua\";i:1982;s:19:\"xn--d1aifoe0a9a.top\";i:1983;s:23:\"xn--e1aaajzchnkg.ru.com\";i:1984;s:25:\"xn--e1aahcgdjkg4aeje6j.kz\";i:1985;s:24:\"xn--e1agf4c.xn--80adxhks\";i:1986;s:12:\"xpert.com.ua\";i:1987;s:15:\"xrp-ripple.info\";i:1988;s:13:\"xtraffic.plus\";i:1989;s:16:\"xtrafficplus.com\";i:1990;s:13:\"xxxhamster.me\";i:1991;s:15:\"xxxvideochat.ru\";i:1992;s:9:\"xz618.com\";i:1993;s:14:\"yaderenergy.ru\";i:1994;s:11:\"yes-com.com\";i:1995;s:14:\"yes-do-now.com\";i:1996;s:11:\"yhirurga.ru\";i:1997;s:13:\"ykecwqlixx.ru\";i:1998;s:8:\"yodse.io\";i:1999;s:8:\"yoga4.ru\";i:2000;s:11:\"yougame.biz\";i:2001;s:12:\"youhack.info\";i:2002;s:16:\"youporn-forum.ga\";i:2003;s:14:\"youporn-ru.com\";i:2004;s:19:\"your-good-links.com\";i:2005;s:13:\"your-tales.ru\";i:2006;s:20:\"yourserverisdown.com\";i:2007;s:8:\"yur-p.ru\";i:2008;s:11:\"yurcons.pro\";i:2009;s:15:\"yuristproffi.ru\";i:2010;s:13:\"zagadki.in.ua\";i:2011;s:16:\"zahodi2hydra.net\";i:2012;s:9:\"zahvat.ru\";i:2013;s:15:\"zakaznoy.com.ua\";i:2014;s:16:\"zakis-azota24.ru\";i:2015;s:23:\"zakisazota-official.com\";i:2016;s:13:\"zamolotkom.ru\";i:2017;s:10:\"zapnado.ru\";i:2018;s:25:\"zarabotat-v-internete.biz\";i:2019;s:13:\"zastroyka.org\";i:2020;s:11:\"zavod-gm.ru\";i:2021;s:12:\"zdm-auto.com\";i:2022;s:11:\"zdm-auto.ru\";i:2023;s:18:\"zdorovie-nogi.info\";i:2024;s:19:\"zelena-mriya.com.ua\";i:2025;s:11:\"zhcsapp.net\";i:2026;s:17:\"zhoobintravel.com\";i:2027;s:13:\"zonefiles.bid\";i:2028;s:10:\"zot.moscow\";i:2029;s:7:\"zt-m.ru\";i:2030;s:9:\"zvetki.ru\";i:2031;s:8:\"zvooq.eu\";i:2032;s:10:\"zvuker.net\";}', 0);
+INSERT INTO `matomo_option` (`option_name`, `option_value`, `autoload`) VALUES
+('SearchEngineDefinitions', 'YTo2MzI6e3M6NDoiMS5jeiI7YTo0OntzOjY6InBhcmFtcyI7YToyOntpOjA7czoxMzoiL3NcLyhbXlwvXSspLyI7aToxO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6NToicy97a30iO3M6ODoiY2hhcnNldHMiO2E6MTp7aTowO3M6MTA6Imlzby04ODU5LTIiO31zOjQ6Im5hbWUiO3M6NDoiMS5jeiI7fXM6MTM6Ind3dy4xMTg3MDAuc2UiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTQ6InNvay5hc3B4P3E9e2t9IjtzOjQ6Im5hbWUiO3M6NzoiMTE4IDcwMCI7fXM6MTc6ImZvcmV0YWcuMTE4NzAwLnNlIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjE0OiJzb2suYXNweD9xPXtrfSI7czo0OiJuYW1lIjtzOjc6IjExOCA3MDAiO31zOjE2OiJ3ZWJiZW4uMTE4NzAwLnNlIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjE0OiJzb2suYXNweD9xPXtrfSI7czo0OiJuYW1lIjtzOjc6IjExOCA3MDAiO31zOjE3OiJ3d3cuMTIzcGVvcGxlLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToyOntpOjA7czoxMzoiL3NcLyhbXlwvXSspLyI7aToxO3M6MTE6InNlYXJjaF90ZXJtIjt9czo4OiJiYWNrbGluayI7czo1OiJzL3trfSI7czo0OiJuYW1lIjtzOjk6IjEyM3Blb3BsZSI7fXM6MTI6IjEyM3Blb3BsZS57fSI7YTozOntzOjY6InBhcmFtcyI7YToyOntpOjA7czoxMzoiL3NcLyhbXlwvXSspLyI7aToxO3M6MTE6InNlYXJjaF90ZXJtIjt9czo4OiJiYWNrbGluayI7czo1OiJzL3trfSI7czo0OiJuYW1lIjtzOjk6IjEyM3Blb3BsZSI7fXM6OToic28uMzYwLmNuIjthOjQ6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjc6InM/cT17a30iO3M6ODoiY2hhcnNldHMiO2E6Mjp7aTowO3M6NToiVVRGLTgiO2k6MTtzOjY6ImdiMjMxMiI7fXM6NDoibmFtZSI7czo5OiIzNjBzZWFyY2giO31zOjEwOiJ3d3cuc28uY29tIjthOjQ6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjc6InM/cT17a30iO3M6ODoiY2hhcnNldHMiO2E6Mjp7aTowO3M6NToiVVRGLTgiO2k6MTtzOjY6ImdiMjMxMiI7fXM6NDoibmFtZSI7czo5OiIzNjBzZWFyY2giO31zOjg6Im0uc28uY29tIjthOjQ6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjc6InM/cT17a30iO3M6ODoiY2hhcnNldHMiO2E6Mjp7aTowO3M6NToiVVRGLTgiO2k6MTtzOjY6ImdiMjMxMiI7fXM6NDoibmFtZSI7czo5OiIzNjBzZWFyY2giO31zOjEzOiJ3d3cuYWJhY2hvLmRlIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjExOiJzdWNoZT9xPXtrfSI7czo0OiJuYW1lIjtzOjY6IkFiYWNobyI7fXM6MTQ6Ind3dy5hYmFjaG8uY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjExOiJzdWNoZT9xPXtrfSI7czo0OiJuYW1lIjtzOjY6IkFiYWNobyI7fXM6MTY6Ind3dy5hYmFjaG8uY28udWsiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTE6InN1Y2hlP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NjoiQWJhY2hvIjt9czoxNzoid3d3LnNlLmFiYWNoby5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTE6InN1Y2hlP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NjoiQWJhY2hvIjt9czoxNzoid3d3LnRyLmFiYWNoby5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTE6InN1Y2hlP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NjoiQWJhY2hvIjt9czoxMzoid3d3LmFiYWNoby5hdCI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxMToic3VjaGU/cT17a30iO3M6NDoibmFtZSI7czo2OiJBYmFjaG8iO31zOjEzOiJ3d3cuYWJhY2hvLmZyIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjExOiJzdWNoZT9xPXtrfSI7czo0OiJuYW1lIjtzOjY6IkFiYWNobyI7fXM6MTM6Ind3dy5hYmFjaG8uZXMiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTE6InN1Y2hlP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NjoiQWJhY2hvIjt9czoxMzoid3d3LmFiYWNoby5jaCI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxMToic3VjaGU/cT17a30iO3M6NDoibmFtZSI7czo2OiJBYmFjaG8iO31zOjEzOiJ3d3cuYWJhY2hvLml0IjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjExOiJzdWNoZT9xPXtrfSI7czo0OiJuYW1lIjtzOjY6IkFiYWNobyI7fXM6OToiYWJjc29rLm5vIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjY6Ij9xPXtrfSI7czo0OiJuYW1lIjtzOjc6IkFCQ3PDuGsiO31zOjE2OiJ2ZXJkZW4uYWJjc29rLm5vIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjY6Ij9xPXtrfSI7czo0OiJuYW1lIjtzOjc6IkFCQ3PDuGsiO31zOjEyOiJ3d3cuYWNvb24uZGUiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NzoiYmVncmlmZiI7fXM6ODoiYmFja2xpbmsiO3M6MzA6ImNnaS1iaW4vc2VhcmNoLmV4ZT9iZWdyaWZmPXtrfSI7czo0OiJuYW1lIjtzOjU6IkFjb29uIjt9czoyMDoiY2hlcmNoZXJmci5hZ3VlYS5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTA6InMucHk/cT17a30iO3M6NDoibmFtZSI7czo1OiJBZ3VlYSI7fXM6MjM6Ind3dy5hbGxhdmVya3NhbWhldGVyLnNlIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjQ6IldoYXQiO31zOjg6ImJhY2tsaW5rIjtzOjI2OiJTZWFyY2hSZXN1bHQuYXNweD9XaGF0PXtrfSI7czo0OiJuYW1lIjtzOjE2OiJBbGxhdmVya3NhbWhldGVyIjt9czo5OiJhbGV4YS5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTI6InNlYXJjaD9xPXtrfSI7czo0OiJuYW1lIjtzOjU6IkFsZXhhIjt9czoyNToic2VhcmNoLnRvb2xiYXJzLmFsZXhhLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxMjoic2VhcmNoP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NToiQWxleGEiO31zOjIzOiJyZWNoZXJjaGVyLmFsaWNlYWRzbC5mciI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoyOiJxcyI7fXM6ODoiYmFja2xpbmsiO3M6MTY6Imdvb2dsZS5wbD9xcz17a30iO3M6NDoibmFtZSI7czoxMDoiQWxpY2UgQWRzbCI7fXM6NjoiYWxsLmJ5IjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjU6InF1ZXJ5Ijt9czo4OiJiYWNrbGluayI7czozNjoiY2dpLWJpbi9zZWFyY2guY2dpP21vZGU9YnkmcXVlcnk9e2t9IjtzOjQ6Im5hbWUiO3M6NjoiQWxsLmJ5Ijt9czoxNjoid3d3LmFsbGVza2xhci5kZSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo1OiJ3b3JkcyI7fXM6ODoiYmFja2xpbmsiO3M6MTA6Ij93b3Jkcz17a30iO3M6NDoibmFtZSI7czo5OiJBbGxlc2tsYXIiO31zOjE2OiJ3d3cuYWxsZXNrbGFyLmF0IjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjU6IndvcmRzIjt9czo4OiJiYWNrbGluayI7czoxMDoiP3dvcmRzPXtrfSI7czo0OiJuYW1lIjtzOjk6IkFsbGVza2xhciI7fXM6MTY6Ind3dy5hbGxlc2tsYXIuY2giO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NToid29yZHMiO31zOjg6ImJhY2tsaW5rIjtzOjEwOiI/d29yZHM9e2t9IjtzOjQ6Im5hbWUiO3M6OToiQWxsZXNrbGFyIjt9czoxNzoid3d3LmFsbHRoZXdlYi5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTI6InNlYXJjaD9xPXtrfSI7czo0OiJuYW1lIjtzOjk6IkFsbFRoZVdlYiI7fXM6MTM6ImFsb2hhZmluZC5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTM6InNlYXJjaC8/cT17a30iO3M6NDoibmFtZSI7czo5OiJBbG9oYUZpbmQiO31zOjE3OiJ3d3cuYWx0YXZpc3RhLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxNzoid2ViL3Jlc3VsdHM/cT17a30iO3M6NDoibmFtZSI7czo5OiJBbHRhVmlzdGEiO31zOjIwOiJzZWFyY2guYWx0YXZpc3RhLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxNzoid2ViL3Jlc3VsdHM/cT17a30iO3M6NDoibmFtZSI7czo5OiJBbHRhVmlzdGEiO31zOjIyOiJsaXN0aW5ncy5hbHRhdmlzdGEuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjE3OiJ3ZWIvcmVzdWx0cz9xPXtrfSI7czo0OiJuYW1lIjtzOjk6IkFsdGFWaXN0YSI7fXM6MTI6ImFsdGF2aXN0YS5kZSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxNzoid2ViL3Jlc3VsdHM/cT17a30iO3M6NDoibmFtZSI7czo5OiJBbHRhVmlzdGEiO31zOjEyOiJhbHRhdmlzdGEuZnIiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTc6IndlYi9yZXN1bHRzP3E9e2t9IjtzOjQ6Im5hbWUiO3M6OToiQWx0YVZpc3RhIjt9czoxNjoie30uYWx0YXZpc3RhLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxNzoid2ViL3Jlc3VsdHM/cT17a30iO3M6NDoibmFtZSI7czo5OiJBbHRhVmlzdGEiO31zOjE5OiJiZS1ubC5hbHRhdmlzdGEuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjE3OiJ3ZWIvcmVzdWx0cz9xPXtrfSI7czo0OiJuYW1lIjtzOjk6IkFsdGFWaXN0YSI7fXM6MTk6ImJlLWZyLmFsdGF2aXN0YS5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTc6IndlYi9yZXN1bHRzP3E9e2t9IjtzOjQ6Im5hbWUiO3M6OToiQWx0YVZpc3RhIjt9czoxNDoic2VhcmNoLmFvbC5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6Mjp7aTowO3M6NToicXVlcnkiO2k6MTtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjE2OiJhb2wvc2VhcmNoP3E9e2t9IjtzOjQ6Im5hbWUiO3M6MzoiQU9MIjt9czoxMzoic2VhcmNoLmFvbC5pdCI7YTozOntzOjY6InBhcmFtcyI7YToyOntpOjA7czo1OiJxdWVyeSI7aToxO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTY6ImFvbC9zZWFyY2g/cT17a30iO3M6NDoibmFtZSI7czozOiJBT0wiO31zOjE3OiJhb2xzZWFyY2guYW9sLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToyOntpOjA7czo1OiJxdWVyeSI7aToxO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTY6ImFvbC9zZWFyY2g/cT17a30iO3M6NDoibmFtZSI7czozOiJBT0wiO31zOjIzOiJ3d3cuYW9scmVjaGVyY2hlLmFvbC5mciI7YTozOntzOjY6InBhcmFtcyI7YToyOntpOjA7czo1OiJxdWVyeSI7aToxO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTY6ImFvbC9zZWFyY2g/cT17a30iO3M6NDoibmFtZSI7czozOiJBT0wiO31zOjI0OiJ3d3cuYW9scmVjaGVyY2hlcy5hb2wuZnIiO2E6Mzp7czo2OiJwYXJhbXMiO2E6Mjp7aTowO3M6NToicXVlcnkiO2k6MTtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjE2OiJhb2wvc2VhcmNoP3E9e2t9IjtzOjQ6Im5hbWUiO3M6MzoiQU9MIjt9czoyMDoid3d3LmFvbGltYWdlcy5hb2wuZnIiO2E6Mzp7czo2OiJwYXJhbXMiO2E6Mjp7aTowO3M6NToicXVlcnkiO2k6MTtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjE2OiJhb2wvc2VhcmNoP3E9e2t9IjtzOjQ6Im5hbWUiO3M6MzoiQU9MIjt9czoxODoiYWltLnNlYXJjaC5hb2wuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjI6e2k6MDtzOjU6InF1ZXJ5IjtpOjE7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxNjoiYW9sL3NlYXJjaD9xPXtrfSI7czo0OiJuYW1lIjtzOjM6IkFPTCI7fXM6MjA6Ind3dy5yZWNoZXJjaGUuYW9sLmZyIjthOjM6e3M6NjoicGFyYW1zIjthOjI6e2k6MDtzOjU6InF1ZXJ5IjtpOjE7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxNjoiYW9sL3NlYXJjaD9xPXtrfSI7czo0OiJuYW1lIjtzOjM6IkFPTCI7fXM6MTY6InJlY2hlcmNoZS5hb2wuZnIiO2E6Mzp7czo2OiJwYXJhbXMiO2E6Mjp7aTowO3M6NToicXVlcnkiO2k6MTtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjE2OiJhb2wvc2VhcmNoP3E9e2t9IjtzOjQ6Im5hbWUiO3M6MzoiQU9MIjt9czoxNjoiZmluZC53ZWIuYW9sLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToyOntpOjA7czo1OiJxdWVyeSI7aToxO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTY6ImFvbC9zZWFyY2g/cT17a30iO3M6NDoibmFtZSI7czozOiJBT0wiO31zOjE2OiJyZWNoZXJjaGUuYW9sLmNhIjthOjM6e3M6NjoicGFyYW1zIjthOjI6e2k6MDtzOjU6InF1ZXJ5IjtpOjE7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxNjoiYW9sL3NlYXJjaD9xPXtrfSI7czo0OiJuYW1lIjtzOjM6IkFPTCI7fXM6MTk6ImFvbHNlYXJjaC5hb2wuY28udWsiO2E6Mzp7czo2OiJwYXJhbXMiO2E6Mjp7aTowO3M6NToicXVlcnkiO2k6MTtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjE2OiJhb2wvc2VhcmNoP3E9e2t9IjtzOjQ6Im5hbWUiO3M6MzoiQU9MIjt9czoxNjoic2VhcmNoLmFvbC5jby51ayI7YTozOntzOjY6InBhcmFtcyI7YToyOntpOjA7czo1OiJxdWVyeSI7aToxO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTY6ImFvbC9zZWFyY2g/cT17a30iO3M6NDoibmFtZSI7czozOiJBT0wiO31zOjE5OiJhb2xyZWNoZXJjaGUuYW9sLmZyIjthOjM6e3M6NjoicGFyYW1zIjthOjI6e2k6MDtzOjU6InF1ZXJ5IjtpOjE7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxNjoiYW9sL3NlYXJjaD9xPXtrfSI7czo0OiJuYW1lIjtzOjM6IkFPTCI7fXM6MTU6InN1Y2hlYW9sLmFvbC5kZSI7YTozOntzOjY6InBhcmFtcyI7YToyOntpOjA7czo1OiJxdWVyeSI7aToxO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTY6ImFvbC9zZWFyY2g/cT17a30iO3M6NDoibmFtZSI7czozOiJBT0wiO31zOjEyOiJzdWNoZS5hb2wuZGUiO2E6Mzp7czo2OiJwYXJhbXMiO2E6Mjp7aTowO3M6NToicXVlcnkiO2k6MTtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjE2OiJhb2wvc2VhcmNoP3E9e2t9IjtzOjQ6Im5hbWUiO3M6MzoiQU9MIjt9czoxNDoibzJzdWNoZS5hb2wuZGUiO2E6Mzp7czo2OiJwYXJhbXMiO2E6Mjp7aTowO3M6NToicXVlcnkiO2k6MTtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjE2OiJhb2wvc2VhcmNoP3E9e2t9IjtzOjQ6Im5hbWUiO3M6MzoiQU9MIjt9czoxNToic3VjaGUuYW9sc3ZjLmRlIjthOjM6e3M6NjoicGFyYW1zIjthOjI6e2k6MDtzOjU6InF1ZXJ5IjtpOjE7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxNjoiYW9sL3NlYXJjaD9xPXtrfSI7czo0OiJuYW1lIjtzOjM6IkFPTCI7fXM6MjI6ImFvbGJ1c3F1ZWRhLmFvbC5jb20ubXgiO2E6Mzp7czo2OiJwYXJhbXMiO2E6Mjp7aTowO3M6NToicXVlcnkiO2k6MTtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjE2OiJhb2wvc2VhcmNoP3E9e2t9IjtzOjQ6Im5hbWUiO3M6MzoiQU9MIjt9czoxNzoiYWxpY2VzdWNoZS5hb2wuZGUiO2E6Mzp7czo2OiJwYXJhbXMiO2E6Mjp7aTowO3M6NToicXVlcnkiO2k6MTtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjE2OiJhb2wvc2VhcmNoP3E9e2t9IjtzOjQ6Im5hbWUiO3M6MzoiQU9MIjt9czoxODoiYWxpY2VzdWNoZXQuYW9sLmRlIjthOjM6e3M6NjoicGFyYW1zIjthOjI6e2k6MDtzOjU6InF1ZXJ5IjtpOjE7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxNjoiYW9sL3NlYXJjaD9xPXtrfSI7czo0OiJuYW1lIjtzOjM6IkFPTCI7fXM6MTQ6InN1Y2hldDIuYW9sLmRlIjthOjM6e3M6NjoicGFyYW1zIjthOjI6e2k6MDtzOjU6InF1ZXJ5IjtpOjE7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxNjoiYW9sL3NlYXJjaD9xPXtrfSI7czo0OiJuYW1lIjtzOjM6IkFPTCI7fXM6MjM6InNlYXJjaC5ocC5teS5hb2wuY29tLmF1IjthOjM6e3M6NjoicGFyYW1zIjthOjI6e2k6MDtzOjU6InF1ZXJ5IjtpOjE7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxNjoiYW9sL3NlYXJjaD9xPXtrfSI7czo0OiJuYW1lIjtzOjM6IkFPTCI7fXM6MTk6InNlYXJjaC5ocC5teS5hb2wuZGUiO2E6Mzp7czo2OiJwYXJhbXMiO2E6Mjp7aTowO3M6NToicXVlcnkiO2k6MTtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjE2OiJhb2wvc2VhcmNoP3E9e2t9IjtzOjQ6Im5hbWUiO3M6MzoiQU9MIjt9czoxOToic2VhcmNoLmhwLm15LmFvbC5pdCI7YTozOntzOjY6InBhcmFtcyI7YToyOntpOjA7czo1OiJxdWVyeSI7aToxO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTY6ImFvbC9zZWFyY2g/cT17a30iO3M6NDoibmFtZSI7czozOiJBT0wiO31zOjI0OiJzZWFyY2gtaW50bC5uZXRzY2FwZS5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6Mjp7aTowO3M6NToicXVlcnkiO2k6MTtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjE2OiJhb2wvc2VhcmNoP3E9e2t9IjtzOjQ6Im5hbWUiO3M6MzoiQU9MIjt9czoxNjoiZGUuYW9sc2VhcmNoLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxMjoic2VhcmNoP3E9e2t9IjtzOjQ6Im5hbWUiO3M6MzoiQU9MIjt9czoyNDoiYXBvbGxvLmx2L3BvcnRhbC9zZWFyY2gvIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjM4OiI/Y29mPUZPUklEJTNBMTEmcT17a30mc2VhcmNoX3doZXJlPXd3dyI7czo0OiJuYW1lIjtzOjk6IkFwb2xsbyBsdiI7fXM6MTA6ImFwb2xsbzcuZGUiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NToicXVlcnkiO31zOjg6ImJhY2tsaW5rIjtzOjExMjoiYTdkYi9pbmRleC5waHA/cXVlcnk9e2t9JmRlX3NoYXJlbG9vaz10cnVlJmRlX2Jpbmc9dHJ1ZSZkZV93aXRjaD10cnVlJmRlX2dvb2dsZT10cnVlJmRlX3lhaG9vPXRydWUmZGVfbHljb3M9dHJ1ZSI7czo0OiJuYW1lIjtzOjc6IkFwb2xsbzciO31zOjExOiJzbS5hcG9ydC5ydSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJyIjt9czo4OiJiYWNrbGluayI7czoxMjoic2VhcmNoP3I9e2t9IjtzOjQ6Im5hbWUiO3M6NToiQXBvcnQiO31zOjk6ImFyYW1hLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxNzoic2VhcmNoLnBocDM/cT17a30iO3M6NDoibmFtZSI7czo1OiJBcmFtYSI7fXM6MTI6Ind3dy5hcmNvci5kZSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo4OiJLZXl3b3JkcyI7fXM6ODoiYmFja2xpbmsiO3M6Mzc6ImNvbnRlbnQvc2VhcmNocmVzdWx0LmpzcD9LZXl3b3Jkcz17a30iO3M6NDoibmFtZSI7czo1OiJBcmNvciI7fXM6MTc6ImFyaWFubmEubGliZXJvLml0IjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjU6InF1ZXJ5Ijt9czo4OiJiYWNrbGluayI7czozNToic2VhcmNoL2FiaW4vaW50ZWdyYXRhLmNnaT9xdWVyeT17a30iO3M6NDoibmFtZSI7czo3OiJBcmlhbm5hIjt9czoxNToid3d3LmFyaWFubmEuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjU6InF1ZXJ5Ijt9czo4OiJiYWNrbGluayI7czozNToic2VhcmNoL2FiaW4vaW50ZWdyYXRhLmNnaT9xdWVyeT17a30iO3M6NDoibmFtZSI7czo3OiJBcmlhbm5hIjt9czo3OiJhc2suY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjM6e2k6MDtzOjM6ImFzayI7aToxO3M6MToicSI7aToyO3M6OToic2VhcmNoZm9yIjt9czo4OiJiYWNrbGluayI7czo5OiJ3ZWI/cT17a30iO3M6NDoibmFtZSI7czozOiJBc2siO31zOjExOiJ3ZWIuYXNrLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YTozOntpOjA7czozOiJhc2siO2k6MTtzOjE6InEiO2k6MjtzOjk6InNlYXJjaGZvciI7fXM6ODoiYmFja2xpbmsiO3M6OToid2ViP3E9e2t9IjtzOjQ6Im5hbWUiO3M6MzoiQXNrIjt9czoxMToiaW50LmFzay5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6Mzp7aTowO3M6MzoiYXNrIjtpOjE7czoxOiJxIjtpOjI7czo5OiJzZWFyY2hmb3IiO31zOjg6ImJhY2tsaW5rIjtzOjk6IndlYj9xPXtrfSI7czo0OiJuYW1lIjtzOjM6IkFzayI7fXM6MTE6Im13cy5hc2suY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjM6e2k6MDtzOjM6ImFzayI7aToxO3M6MToicSI7aToyO3M6OToic2VhcmNoZm9yIjt9czo4OiJiYWNrbGluayI7czo5OiJ3ZWI/cT17a30iO3M6NDoibmFtZSI7czozOiJBc2siO31zOjE0OiJpbWFnZXMuYXNrLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YTozOntpOjA7czozOiJhc2siO2k6MTtzOjE6InEiO2k6MjtzOjk6InNlYXJjaGZvciI7fXM6ODoiYmFja2xpbmsiO3M6OToid2ViP3E9e2t9IjtzOjQ6Im5hbWUiO3M6MzoiQXNrIjt9czoxNzoiaW1hZ2VzLnt9LmFzay5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6Mzp7aTowO3M6MzoiYXNrIjtpOjE7czoxOiJxIjtpOjI7czo5OiJzZWFyY2hmb3IiO31zOjg6ImJhY2tsaW5rIjtzOjk6IndlYj9xPXtrfSI7czo0OiJuYW1lIjtzOjM6IkFzayI7fXM6MTc6ImFzay5yZWZlcmVuY2UuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjM6e2k6MDtzOjM6ImFzayI7aToxO3M6MToicSI7aToyO3M6OToic2VhcmNoZm9yIjt9czo4OiJiYWNrbGluayI7czo5OiJ3ZWI/cT17a30iO3M6NDoibmFtZSI7czozOiJBc2siO31zOjE1OiJ3d3cuYXNra2lkcy5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6Mzp7aTowO3M6MzoiYXNrIjtpOjE7czoxOiJxIjtpOjI7czo5OiJzZWFyY2hmb3IiO31zOjg6ImJhY2tsaW5rIjtzOjk6IndlYj9xPXtrfSI7czo0OiJuYW1lIjtzOjM6IkFzayI7fXM6MTI6Iml3b24uYXNrLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YTozOntpOjA7czozOiJhc2siO2k6MTtzOjE6InEiO2k6MjtzOjk6InNlYXJjaGZvciI7fXM6ODoiYmFja2xpbmsiO3M6OToid2ViP3E9e2t9IjtzOjQ6Im5hbWUiO3M6MzoiQXNrIjt9czoxMzoid3d3LmFzay5jby51ayI7YTozOntzOjY6InBhcmFtcyI7YTozOntpOjA7czozOiJhc2siO2k6MTtzOjE6InEiO2k6MjtzOjk6InNlYXJjaGZvciI7fXM6ODoiYmFja2xpbmsiO3M6OToid2ViP3E9e2t9IjtzOjQ6Im5hbWUiO3M6MzoiQXNrIjt9czoxMDoie30uYXNrLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YTozOntpOjA7czozOiJhc2siO2k6MTtzOjE6InEiO2k6MjtzOjk6InNlYXJjaGZvciI7fXM6ODoiYmFja2xpbmsiO3M6OToid2ViP3E9e2t9IjtzOjQ6Im5hbWUiO3M6MzoiQXNrIjt9czoxMzoid3d3LnFieXJkLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YTozOntpOjA7czozOiJhc2siO2k6MTtzOjE6InEiO2k6MjtzOjk6InNlYXJjaGZvciI7fXM6ODoiYmFja2xpbmsiO3M6OToid2ViP3E9e2t9IjtzOjQ6Im5hbWUiO3M6MzoiQXNrIjt9czoxMjoie30ucWJ5cmQuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjM6e2k6MDtzOjM6ImFzayI7aToxO3M6MToicSI7aToyO3M6OToic2VhcmNoZm9yIjt9czo4OiJiYWNrbGluayI7czo5OiJ3ZWI/cT17a30iO3M6NDoibmFtZSI7czozOiJBc2siO31zOjIyOiJ3d3cuc2VhcmNoLXJlc3VsdHMuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjM6e2k6MDtzOjM6ImFzayI7aToxO3M6MToicSI7aToyO3M6OToic2VhcmNoZm9yIjt9czo4OiJiYWNrbGluayI7czo5OiJ3ZWI/cT17a30iO3M6NDoibmFtZSI7czozOiJBc2siO31zOjIzOiJ3d3cxLnNlYXJjaC1yZXN1bHRzLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YTozOntpOjA7czozOiJhc2siO2k6MTtzOjE6InEiO2k6MjtzOjk6InNlYXJjaGZvciI7fXM6ODoiYmFja2xpbmsiO3M6OToid2ViP3E9e2t9IjtzOjQ6Im5hbWUiO3M6MzoiQXNrIjt9czoyMjoiaW50LnNlYXJjaC1yZXN1bHRzLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YTozOntpOjA7czozOiJhc2siO2k6MTtzOjE6InEiO2k6MjtzOjk6InNlYXJjaGZvciI7fXM6ODoiYmFja2xpbmsiO3M6OToid2ViP3E9e2t9IjtzOjQ6Im5hbWUiO3M6MzoiQXNrIjt9czoyMToie30uc2VhcmNoLXJlc3VsdHMuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjM6e2k6MDtzOjM6ImFzayI7aToxO3M6MToicSI7aToyO3M6OToic2VhcmNoZm9yIjt9czo4OiJiYWNrbGluayI7czo5OiJ3ZWI/cT17a30iO3M6NDoibmFtZSI7czozOiJBc2siO31zOjE0OiJzZWFyY2guYXNrLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YTozOntpOjA7czozOiJhc2siO2k6MTtzOjE6InEiO2k6MjtzOjk6InNlYXJjaGZvciI7fXM6ODoiYmFja2xpbmsiO3M6OToid2ViP3E9e2t9IjtzOjQ6Im5hbWUiO3M6MzoiQXNrIjt9czoxNzoie30uc2VhcmNoLmFzay5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6Mzp7aTowO3M6MzoiYXNrIjtpOjE7czoxOiJxIjtpOjI7czo5OiJzZWFyY2hmb3IiO31zOjg6ImJhY2tsaW5rIjtzOjk6IndlYj9xPXtrfSI7czo0OiJuYW1lIjtzOjM6IkFzayI7fXM6MTc6ImF2aXJhLWludC5hc2suY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjM6e2k6MDtzOjM6ImFzayI7aToxO3M6MToicSI7aToyO3M6OToic2VhcmNoZm9yIjt9czo4OiJiYWNrbGluayI7czo5OiJ3ZWI/cT17a30iO3M6NDoibmFtZSI7czozOiJBc2siO31zOjEyOiJzZWFyY2hxdS5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6Mzp7aTowO3M6MzoiYXNrIjtpOjE7czoxOiJxIjtpOjI7czo5OiJzZWFyY2hmb3IiO31zOjg6ImJhY2tsaW5rIjtzOjk6IndlYj9xPXtrfSI7czo0OiJuYW1lIjtzOjM6IkFzayI7fXM6MTc6InNlYXJjaC50Yi5hc2suY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjM6e2k6MDtzOjM6ImFzayI7aToxO3M6MToicSI7aToyO3M6OToic2VhcmNoZm9yIjt9czo4OiJiYWNrbGluayI7czo5OiJ3ZWI/cT17a30iO3M6NDoibmFtZSI7czozOiJBc2siO31zOjI1OiJub3J0b25zYWZlLnNlYXJjaC5hc2suY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjM6e2k6MDtzOjM6ImFzayI7aToxO3M6MToicSI7aToyO3M6OToic2VhcmNoZm9yIjt9czo4OiJiYWNrbGluayI7czo5OiJ3ZWI/cT17a30iO3M6NDoibmFtZSI7czozOiJBc2siO31zOjIwOiJhdmlyYS5zZWFyY2guYXNrLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YTozOntpOjA7czozOiJhc2siO2k6MTtzOjE6InEiO2k6MjtzOjk6InNlYXJjaGZvciI7fXM6ODoiYmFja2xpbmsiO3M6OToid2ViP3E9e2t9IjtzOjQ6Im5hbWUiO3M6MzoiQXNrIjt9czoyMToiaW50LnNlYXJjaC50Yi5hc2suY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjM6e2k6MDtzOjM6ImFzayI7aToxO3M6MToicSI7aToyO3M6OToic2VhcmNoZm9yIjt9czo4OiJiYWNrbGluayI7czo5OiJ3ZWI/cT17a30iO3M6NDoibmFtZSI7czozOiJBc2siO31zOjE2OiJzZWFyY2guYXZpcmEuY29tIjthOjQ6e3M6NjoicGFyYW1zIjthOjM6e2k6MDtzOjM6ImFzayI7aToxO3M6MToicSI7aToyO3M6OToic2VhcmNoZm9yIjt9czo4OiJiYWNrbGluayI7czoxODoiIy93ZWIvcmVzdWx0P3E9e2t9IjtzOjEzOiJoaWRkZW5rZXl3b3JkIjthOjI6e2k6MDtzOjQ6Ii9eJC8iO2k6MTtzOjE6Ii8iO31zOjQ6Im5hbWUiO3M6MTY6IkF2aXJhIFNhZmVTZWFyY2giO31zOjE2OiJzZWFyY2guYXZpcmEubmV0IjthOjQ6e3M6NjoicGFyYW1zIjthOjM6e2k6MDtzOjM6ImFzayI7aToxO3M6MToicSI7aToyO3M6OToic2VhcmNoZm9yIjt9czo4OiJiYWNrbGluayI7czoxODoiIy93ZWIvcmVzdWx0P3E9e2t9IjtzOjEzOiJoaWRkZW5rZXl3b3JkIjthOjI6e2k6MDtzOjQ6Ii9eJC8iO2k6MTtzOjE6Ii8iO31zOjQ6Im5hbWUiO3M6MTY6IkF2aXJhIFNhZmVTZWFyY2giO31zOjIwOiJzYWZlc2VhcmNoLmF2aXJhLmNvbSI7YTo0OntzOjY6InBhcmFtcyI7YTozOntpOjA7czozOiJhc2siO2k6MTtzOjE6InEiO2k6MjtzOjk6InNlYXJjaGZvciI7fXM6ODoiYmFja2xpbmsiO3M6MTg6IiMvd2ViL3Jlc3VsdD9xPXtrfSI7czoxMzoiaGlkZGVua2V5d29yZCI7YToyOntpOjA7czo0OiIvXiQvIjtpOjE7czoxOiIvIjt9czo0OiJuYW1lIjtzOjE2OiJBdmlyYSBTYWZlU2VhcmNoIjt9czoyMjoic2VhcmNoYXRsYXMuY2VudHJ1bS5jeiI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czo2OiI/cT17a30iO3M6NDoibmFtZSI7czo1OiJBdGxhcyI7fXM6MTU6InNlYXJjaC5hdW9uZS5qcCI7YTo0OntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czo2OiI/cT17a30iO3M6ODoiY2hhcnNldHMiO2E6Mzp7aTowO3M6NToidXRmLTgiO2k6MTtzOjY6ImV1Yy1qcCI7aToyO3M6NToibXM5MzIiO31zOjQ6Im5hbWUiO3M6NToiYXVvbmUiO31zOjE4OiJzcC1zZWFyY2guYXVvbmUuanAiO2E6NDp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6NjoiP3E9e2t9IjtzOjg6ImNoYXJzZXRzIjthOjM6e2k6MDtzOjU6InV0Zi04IjtpOjE7czo2OiJldWMtanAiO2k6MjtzOjU6Im1zOTMyIjt9czo0OiJuYW1lIjtzOjU6ImF1b25lIjt9czoyNDoic3AtaW1hZ2Uuc2VhcmNoLmF1b25lLmpwIjthOjQ6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjY6Ij9xPXtrfSI7czo4OiJjaGFyc2V0cyI7YTozOntpOjA7czo1OiJ1dGYtOCI7aToxO3M6NjoiZXVjLWpwIjtpOjI7czo1OiJtczkzMiI7fXM6NDoibmFtZSI7czoxMjoiYXVvbmUgSW1hZ2VzIjt9czoxODoid3d3Mi5hdXN0cm9uYXV0LmF0IjthOjI6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjQ6Im5hbWUiO3M6MTA6IkF1c3Ryb25hdXQiO31zOjE4OiJ3d3cxLmF1c3Ryb25hdXQuYXQiO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6NDoibmFtZSI7czoxMDoiQXVzdHJvbmF1dCI7fXM6MTg6InNlYXJjaC5iYWJ5bG9uLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToyOntpOjA7czoxOiJxIjtpOjE7czoxMzoiL1wvd2ViXC8oLiopLyI7fXM6ODoiYmFja2xpbmsiO3M6NjoiP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NzoiQmFieWxvbiI7fXM6MjQ6InNlYXJjaGFzc2lzdC5iYWJ5bG9uLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToyOntpOjA7czoxOiJxIjtpOjE7czoxMzoiL1wvd2ViXC8oLiopLyI7fXM6ODoiYmFja2xpbmsiO3M6NjoiP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NzoiQmFieWxvbiI7fXM6MTM6Ind3dy5iYWlkdS5jb20iO2E6NTp7czo2OiJwYXJhbXMiO2E6Mzp7aTowO3M6Mjoid2QiO2k6MTtzOjQ6IndvcmQiO2k6MjtzOjI6Imt3Ijt9czo4OiJiYWNrbGluayI7czo4OiJzP3dkPXtrfSI7czo4OiJjaGFyc2V0cyI7YToyOntpOjA7czo1OiJVVEYtOCI7aToxO3M6NjoiZ2IyMzEyIjt9czoxMzoiaGlkZGVua2V5d29yZCI7YToyOntpOjA7czo0OiIvXiQvIjtpOjE7czoxOiIvIjt9czo0OiJuYW1lIjtzOjU6IkJhaWR1Ijt9czoxNDoid3d3MS5iYWlkdS5jb20iO2E6NTp7czo2OiJwYXJhbXMiO2E6Mzp7aTowO3M6Mjoid2QiO2k6MTtzOjQ6IndvcmQiO2k6MjtzOjI6Imt3Ijt9czo4OiJiYWNrbGluayI7czo4OiJzP3dkPXtrfSI7czo4OiJjaGFyc2V0cyI7YToyOntpOjA7czo1OiJVVEYtOCI7aToxO3M6NjoiZ2IyMzEyIjt9czoxMzoiaGlkZGVua2V5d29yZCI7YToyOntpOjA7czo0OiIvXiQvIjtpOjE7czoxOiIvIjt9czo0OiJuYW1lIjtzOjU6IkJhaWR1Ijt9czo5OiJiYWlkdS5jb20iO2E6NTp7czo2OiJwYXJhbXMiO2E6Mzp7aTowO3M6Mjoid2QiO2k6MTtzOjQ6IndvcmQiO2k6MjtzOjI6Imt3Ijt9czo4OiJiYWNrbGluayI7czo4OiJzP3dkPXtrfSI7czo4OiJjaGFyc2V0cyI7YToyOntpOjA7czo1OiJVVEYtOCI7aToxO3M6NjoiZ2IyMzEyIjt9czoxMzoiaGlkZGVua2V5d29yZCI7YToyOntpOjA7czo0OiIvXiQvIjtpOjE7czoxOiIvIjt9czo0OiJuYW1lIjtzOjU6IkJhaWR1Ijt9czoxMToibS5iYWlkdS5jb20iO2E6NTp7czo2OiJwYXJhbXMiO2E6Mzp7aTowO3M6Mjoid2QiO2k6MTtzOjQ6IndvcmQiO2k6MjtzOjI6Imt3Ijt9czo4OiJiYWNrbGluayI7czo4OiJzP3dkPXtrfSI7czo4OiJjaGFyc2V0cyI7YToyOntpOjA7czo1OiJVVEYtOCI7aToxO3M6NjoiZ2IyMzEyIjt9czoxMzoiaGlkZGVua2V5d29yZCI7YToyOntpOjA7czo0OiIvXiQvIjtpOjE7czoxOiIvIjt9czo0OiJuYW1lIjtzOjU6IkJhaWR1Ijt9czoxNToid3d3LmJhaWR1LmNvLnRoIjthOjU6e3M6NjoicGFyYW1zIjthOjM6e2k6MDtzOjI6IndkIjtpOjE7czo0OiJ3b3JkIjtpOjI7czoyOiJrdyI7fXM6ODoiYmFja2xpbmsiO3M6ODoicz93ZD17a30iO3M6ODoiY2hhcnNldHMiO2E6Mjp7aTowO3M6NToiVVRGLTgiO2k6MTtzOjY6ImdiMjMxMiI7fXM6MTM6ImhpZGRlbmtleXdvcmQiO2E6Mjp7aTowO3M6NDoiL14kLyI7aToxO3M6MToiLyI7fXM6NDoibmFtZSI7czo1OiJCYWlkdSI7fXM6MTY6InpoaWRhby5iYWlkdS5jb20iO2E6NTp7czo2OiJwYXJhbXMiO2E6Mzp7aTowO3M6Mjoid2QiO2k6MTtzOjQ6IndvcmQiO2k6MjtzOjI6Imt3Ijt9czo4OiJiYWNrbGluayI7czo4OiJzP3dkPXtrfSI7czo4OiJjaGFyc2V0cyI7YToyOntpOjA7czo1OiJVVEYtOCI7aToxO3M6NjoiZ2IyMzEyIjt9czoxMzoiaGlkZGVua2V5d29yZCI7YToyOntpOjA7czo0OiIvXiQvIjtpOjE7czoxOiIvIjt9czo0OiJuYW1lIjtzOjU6IkJhaWR1Ijt9czoxNToidGllYmEuYmFpZHUuY29tIjthOjU6e3M6NjoicGFyYW1zIjthOjM6e2k6MDtzOjI6IndkIjtpOjE7czo0OiJ3b3JkIjtpOjI7czoyOiJrdyI7fXM6ODoiYmFja2xpbmsiO3M6ODoicz93ZD17a30iO3M6ODoiY2hhcnNldHMiO2E6Mjp7aTowO3M6NToiVVRGLTgiO2k6MTtzOjY6ImdiMjMxMiI7fXM6MTM6ImhpZGRlbmtleXdvcmQiO2E6Mjp7aTowO3M6NDoiL14kLyI7aToxO3M6MToiLyI7fXM6NDoibmFtZSI7czo1OiJCYWlkdSI7fXM6MTQ6Im5ld3MuYmFpZHUuY29tIjthOjU6e3M6NjoicGFyYW1zIjthOjM6e2k6MDtzOjI6IndkIjtpOjE7czo0OiJ3b3JkIjtpOjI7czoyOiJrdyI7fXM6ODoiYmFja2xpbmsiO3M6ODoicz93ZD17a30iO3M6ODoiY2hhcnNldHMiO2E6Mjp7aTowO3M6NToiVVRGLTgiO2k6MTtzOjY6ImdiMjMxMiI7fXM6MTM6ImhpZGRlbmtleXdvcmQiO2E6Mjp7aTowO3M6NDoiL14kLyI7aToxO3M6MToiLyI7fXM6NDoibmFtZSI7czo1OiJCYWlkdSI7fXM6MTQ6IndlYi5nb3Vnb3UuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjY6InNlYXJjaCI7fXM6ODoiYmFja2xpbmsiO3M6MTc6InNlYXJjaD9zZWFyY2g9e2t9IjtzOjQ6Im5hbWUiO3M6NToiQmFpZHUiO31zOjI0OiJjZ2kuc2VhcmNoLmJpZ2xvYmUubmUuanAiO2E6NDp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MjM6ImNnaS1iaW4vc2VhcmNoLXN0P3E9e2t9IjtzOjg6ImNoYXJzZXRzIjthOjM6e2k6MDtzOjU6InV0Zi04IjtpOjE7czo2OiJldWMtanAiO2k6MjtzOjU6Im1zOTMyIjt9czo0OiJuYW1lIjtzOjc6IkJpZ2xvYmUiO31zOjI3OiJpbWFnZXMuc2VhcmNoLmJpZ2xvYmUubmUuanAiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MjM6ImNnaS1iaW4vc2VhcmNoLXN0P3E9e2t9IjtzOjQ6Im5hbWUiO3M6MTQ6IkJpZ2xvYmUgSW1hZ2VzIjt9czo4OiJiaW5nLmNvbSI7YTo0OntzOjY6InBhcmFtcyI7YToyOntpOjA7czoxOiJxIjtpOjE7czoxOiJRIjt9czo4OiJiYWNrbGluayI7czoxMjoic2VhcmNoP3E9e2t9IjtzOjEzOiJoaWRkZW5rZXl3b3JkIjthOjM6e2k6MDtzOjEwOiIvXC9jclw/LiovIjtpOjE7czo0OiIvXiQvIjtpOjI7czoxOiIvIjt9czo0OiJuYW1lIjtzOjQ6IkJpbmciO31zOjExOiJ7fS5iaW5nLmNvbSI7YTo0OntzOjY6InBhcmFtcyI7YToyOntpOjA7czoxOiJxIjtpOjE7czoxOiJRIjt9czo4OiJiYWNrbGluayI7czoxMjoic2VhcmNoP3E9e2t9IjtzOjEzOiJoaWRkZW5rZXl3b3JkIjthOjM6e2k6MDtzOjEwOiIvXC9jclw/LiovIjtpOjE7czo0OiIvXiQvIjtpOjI7czoxOiIvIjt9czo0OiJuYW1lIjtzOjQ6IkJpbmciO31zOjE1OiJnbG9iYWwuYmluZy5jb20iO2E6NDp7czo2OiJwYXJhbXMiO2E6Mjp7aTowO3M6MToicSI7aToxO3M6MToiUSI7fXM6ODoiYmFja2xpbmsiO3M6MTI6InNlYXJjaD9xPXtrfSI7czoxMzoiaGlkZGVua2V5d29yZCI7YTozOntpOjA7czoxMDoiL1wvY3JcPy4qLyI7aToxO3M6NDoiL14kLyI7aToyO3M6MToiLyI7fXM6NDoibmFtZSI7czo0OiJCaW5nIjt9czoxMzoibXNuYmMubXNuLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToyOntpOjA7czoxOiJxIjtpOjE7czoxOiJRIjt9czo4OiJiYWNrbGluayI7czoxMjoic2VhcmNoP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NDoiQmluZyI7fXM6MjE6ImRpemlvbmFyaW8uaXQubXNuLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToyOntpOjA7czoxOiJxIjtpOjE7czoxOiJRIjt9czo4OiJiYWNrbGluayI7czoxMjoic2VhcmNoP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NDoiQmluZyI7fXM6MjM6ImVuY2ljbG9wZWRpYS5pdC5tc24uY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjI6e2k6MDtzOjE6InEiO2k6MTtzOjE6IlEiO31zOjg6ImJhY2tsaW5rIjtzOjEyOiJzZWFyY2g/cT17a30iO3M6NDoibmFtZSI7czo0OiJCaW5nIjt9czoxMjoiY2MuYmluZ2ouY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjI6e2k6MDtzOjE6InEiO2k6MTtzOjE6IlEiO31zOjg6ImJhY2tsaW5rIjtzOjEyOiJzZWFyY2g/cT17a30iO3M6NDoibmFtZSI7czo0OiJCaW5nIjt9czoyMjoiYmluZy5jb20vaW1hZ2VzL3NlYXJjaCI7YTozOntzOjY6InBhcmFtcyI7YToyOntpOjA7czoxOiJxIjtpOjE7czoxOiJRIjt9czo4OiJiYWNrbGluayI7czo2OiI/cT17a30iO3M6NDoibmFtZSI7czoxMToiQmluZyBJbWFnZXMiO31zOjI1OiJ7fS5iaW5nLmNvbS9pbWFnZXMvc2VhcmNoIjthOjM6e3M6NjoicGFyYW1zIjthOjI6e2k6MDtzOjE6InEiO2k6MTtzOjE6IlEiO31zOjg6ImJhY2tsaW5rIjtzOjY6Ij9xPXtrfSI7czo0OiJuYW1lIjtzOjExOiJCaW5nIEltYWdlcyI7fXM6MTA6ImJsZWtrby5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6Mjp7aTowO3M6MToicSI7aToxO3M6MTI6Ii9cL3dzXC8oLiopLyI7fXM6ODoiYmFja2xpbmsiO3M6Njoid3Mve2t9IjtzOjQ6Im5hbWUiO3M6NjoiYmxla2tvIjt9czoxODoid3d3LmJsb2dkaWdnZXIuY29tIjthOjI6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjQ6Im5hbWUiO3M6MTA6IkJsb2dkaWdnZXIiO31zOjE3OiJ3d3cuYmxvZ3B1bHNlLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo1OiJxdWVyeSI7fXM6ODoiYmFja2xpbmsiO3M6MTY6InNlYXJjaD9xdWVyeT17a30iO3M6NDoibmFtZSI7czo5OiJCbG9ncHVsc2UiO31zOjE3OiJzZWFyY2guYmx1ZXdpbi5jaCI7YTozOntzOjY6InBhcmFtcyI7YToyOntpOjA7czoxMDoic2VhcmNoVGVybSI7aToxO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTg6InYyL2luZGV4LnBocD9xPXtrfSI7czo0OiJuYW1lIjtzOjc6IkJsdWV3aW4iO31zOjEyOiJ3ZWIuY2Fub2UuY2EiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTI6InNlYXJjaD9xPXtrfSI7czo0OiJuYW1lIjtzOjg6IkNhbm9lLmNhIjt9czoxNzoic2VhcmNoLmNlbnRydW0uY3oiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6NjoiP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NzoiQ2VudHJ1bSI7fXM6MTc6Im1vcmZlby5jZW50cnVtLmN6IjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjY6Ij9xPXtrfSI7czo0OiJuYW1lIjtzOjc6IkNlbnRydW0iO31zOjE1OiJ3d3cuY2hhcnRlci5uZXQiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MjI6InNlYXJjaC9pbmRleC5waHA/cT17a30iO3M6NDoibmFtZSI7czo3OiJDaGFydGVyIjt9czoxNjoiY2xhcm8tc2VhcmNoLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czo2OiI/cT17a30iO3M6NDoibmFtZSI7czoxMjoiQ2xhcm8gU2VhcmNoIjt9czoxNjoicGVzcXVpc2EuY2xpeC5wdCI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo4OiJxdWVzdGlvbiI7fXM6ODoiYmFja2xpbmsiO3M6Mzg6InJlc3VsdGFkby5odG1sP2luPU11bmRpYWwmcXVlc3Rpb249e2t9IjtzOjQ6Im5hbWUiO3M6NDoiQ2xpeCI7fXM6MTA6ImNvY2NvYy5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NToicXVlcnkiO31zOjg6ImJhY2tsaW5rIjtzOjE2OiJzZWFyY2gjcXVlcnk9e2t9IjtzOjQ6Im5hbWUiO3M6MTE6IkPhu5FjIEPhu5FjIjt9czoxODoic2VhcmNoLmNvbWNhc3QubmV0IjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjY6Ij9xPXtrfSI7czo0OiJuYW1lIjtzOjc6IkNvbWNhc3QiO31zOjE2OiJ3ZWJzZWFyY2guY3MuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjU6InF1ZXJ5Ijt9czo4OiJiYWNrbGluayI7czoxOToiY3Mvc2VhcmNoP3F1ZXJ5PXtrfSI7czo0OiJuYW1lIjtzOjM1OiJDb21wdXNlcnZlLmNvbSAoRW5oYW5jZWQgYnkgR29vZ2xlKSI7fXM6MTg6InNlYXJjaC5jb25kdWl0LmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxODoiUmVzdWx0cy5hc3B4P3E9e2t9IjtzOjQ6Im5hbWUiO3M6MTE6IkNvbmR1aXQuY29tIjt9czoyNToiaW1hZ2VzLnNlYXJjaC5jb25kdWl0LmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxODoiUmVzdWx0cy5hc3B4P3E9e2t9IjtzOjQ6Im5hbWUiO3M6MTE6IkNvbmR1aXQuY29tIjt9czoxNToid3d3LmNyYXdsZXIuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjI2OiJzZWFyY2gvcmVzdWx0czEuYXNweD9xPXtrfSI7czo0OiJuYW1lIjtzOjc6IkNyYXdsZXIiO31zOjEyOiJ3d3cuY3VpbC5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTI6InNlYXJjaD9xPXtrfSI7czo0OiJuYW1lIjtzOjQ6IkN1aWwiO31zOjE3OiJkYWVtb24tc2VhcmNoLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxNzoiZXhwbG9yZS93ZWI/cT17a30iO3M6NDoibmFtZSI7czoxMzoiRGFlbW9uIHNlYXJjaCI7fXM6MjA6Im15LmRhZW1vbi1zZWFyY2guY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjE3OiJleHBsb3JlL3dlYj9xPXtrfSI7czo0OiJuYW1lIjtzOjEzOiJEYWVtb24gc2VhcmNoIjt9czoxOToid3d3LmRhc29lcnRsaWNoZS5kZSI7YToyOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoyOiJrdyI7fXM6NDoibmFtZSI7czoxMjoiRGFzT2VydGxpY2hlIjt9czoyMDoid3d3Mi5kYXNvZXJ0bGljaGUuZGUiO2E6Mjp7czo2OiJwYXJhbXMiO2E6Mjp7aTowO3M6MjoicGgiO2k6MTtzOjI6Imt3Ijt9czo0OiJuYW1lIjtzOjEyOiJEYXNPZXJ0bGljaGUiO31zOjIyOiJ3d3cxLmRhc3RlbGVmb25idWNoLmRlIjthOjI6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjI6Imt3Ijt9czo0OiJuYW1lIjtzOjE0OiJEYXNUZWxlZm9uYnVjaCI7fXM6MTU6InNlYXJjaC5kYXVtLm5ldCI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxMjoic2VhcmNoP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NDoiRGF1bSI7fXM6MTU6Im90c2luZy5kZWxmaS5lZSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxMDoiZmluZD9xPXtrfSI7czo0OiJuYW1lIjtzOjg6IkRlbGZpIEVFIjt9czoxNDoic21hcnQuZGVsZmkubHYiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTA6ImZpbmQ/cT17a30iO3M6NDoibmFtZSI7czo4OiJEZWxmaSBsdiI7fXM6ODoiZGlnZy5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicyI7fXM6ODoiYmFja2xpbmsiO3M6MTI6InNlYXJjaD9zPXtrfSI7czo0OiJuYW1lIjtzOjQ6IkRpZ2ciO31zOjEwOiJmci5kaXIuY29tIjthOjI6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjM6InJlcSI7fXM6NDoibmFtZSI7czo3OiJkaXIuY29tIjt9czoyMDoic2VhcmNoLmRpc2Nvbm5lY3QubWUiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MDp7fXM6MTM6ImhpZGRlbmtleXdvcmQiO2E6MTp7aTowO3M6NDoiLy4qLyI7fXM6NDoibmFtZSI7czoxNjoiRGlzY29ubmVjdFNlYXJjaCI7fXM6ODoiZG1vei5vcmciO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6Njoic2VhcmNoIjt9czo0OiJuYW1lIjtzOjQ6ImRtb3oiO31zOjE2OiJlZGl0b3JzLmRtb3oub3JnIjthOjI6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjY6InNlYXJjaCI7fXM6NDoibmFtZSI7czo0OiJkbW96Ijt9czoxNDoiZHVja2R1Y2tnby5jb20iO2E6NDp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6MTM6ImhpZGRlbmtleXdvcmQiO2E6MTp7aTowO3M6NDoiLy4qLyI7fXM6ODoiYmFja2xpbmsiO3M6NjoiP3E9e2t9IjtzOjQ6Im5hbWUiO3M6MTA6IkR1Y2tEdWNrR28iO31zOjE2OiJyLmR1Y2tkdWNrZ28uY29tIjthOjQ6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjEzOiJoaWRkZW5rZXl3b3JkIjthOjE6e2k6MDtzOjQ6Ii8uKi8iO31zOjg6ImJhY2tsaW5rIjtzOjY6Ij9xPXtrfSI7czo0OiJuYW1lIjtzOjEwOiJEdWNrRHVja0dvIjt9czoyMDoic2VhcmNoLmVhcnRobGluay5uZXQiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTI6InNlYXJjaD9xPXtrfSI7czo0OiJuYW1lIjtzOjk6IkVhcnRobGluayI7fXM6MTA6ImVjb3NpYS5vcmciO2E6NDp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTI6InNlYXJjaD9xPXtrfSI7czoxMzoiaGlkZGVua2V5d29yZCI7YToyOntpOjA7czo0OiIvXiQvIjtpOjE7czoxOiIvIjt9czo0OiJuYW1lIjtzOjY6IkVjb3NpYSI7fXM6MTQ6Ind3dy5lY29zaWEub3JnIjthOjQ6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjEyOiJzZWFyY2g/cT17a30iO3M6MTM6ImhpZGRlbmtleXdvcmQiO2E6Mjp7aTowO3M6NDoiL14kLyI7aToxO3M6MToiLyI7fXM6NDoibmFtZSI7czo2OiJFY29zaWEiO31zOjE4OiJhcmlhZG5hLmVsbXVuZG8uZXMiO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6NDoibmFtZSI7czo4OiJFbCBNdW5kbyI7fXM6MTI6Ind3dy5lbmlyby5zZSI7YTozOntzOjY6InBhcmFtcyI7YToyOntpOjA7czoxOiJxIjtpOjE7czoxMToic2VhcmNoX3dvcmQiO31zOjg6ImJhY2tsaW5rIjtzOjExOiJxdWVyeT9xPXtrfSI7czo0OiJuYW1lIjtzOjU6IkVuaXJvIjt9czoxNzoid3d3LmVudGlyZXdlYi5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6OToid2ViP3E9e2t9IjtzOjQ6Im5hbWUiO3M6OToiRW50aXJld2ViIjt9czo1OiJlby5zdCI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo3OiJ4X3F1ZXJ5Ijt9czo4OiJiYWNrbGluayI7czozMDoiY2dpLWJpbi9lb2xvc3QuY2dpP3hfcXVlcnk9e2t9IjtzOjQ6Im5hbWUiO3M6MjoiZW8iO31zOjEzOiJlcGljc2VhcmNoLmluIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjEzOiJzZWFyY2gvP3E9e2t9IjtzOjQ6Im5hbWUiO3M6MTM6IkVwaWNTZWFyY2guaW4iO31zOjE3OiJ3d3cuZXBpY3NlYXJjaC5pbiI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxMzoic2VhcmNoLz9xPXtrfSI7czo0OiJuYW1lIjtzOjEzOiJFcGljU2VhcmNoLmluIjt9czoxMzoid3d3LmV1cmlwLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxMzoic2VhcmNoLz9xPXtrfSI7czo0OiJuYW1lIjtzOjU6IkV1cmlwIjt9czoxNjoid3d3LmV1cm9zZWVrLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo2OiJzdHJpbmciO31zOjg6ImJhY2tsaW5rIjtzOjI4OiJzeXN0ZW0vc2VhcmNoLmNnaT9zdHJpbmc9e2t9IjtzOjQ6Im5hbWUiO3M6ODoiRXVyb3NlZWsiO31zOjE4OiJ3d3cuZXZlcnljbGljay5jb20iO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6Nzoia2V5d29yZCI7fXM6NDoibmFtZSI7czoxMDoiRXZlcnljbGljayI7fXM6MTQ6Ind3dy5leGFsZWFkLmZyIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjIwOiJzZWFyY2gvcmVzdWx0cz9xPXtrfSI7czo0OiJuYW1lIjtzOjc6IkV4YWxlYWQiO31zOjE1OiJ3d3cuZXhhbGVhZC5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MjA6InNlYXJjaC9yZXN1bHRzP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NzoiRXhhbGVhZCI7fXM6MTY6InNlYXJjaC5leGNpdGUuaXQiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTA6IndlYi8/cT17a30iO3M6NDoibmFtZSI7czo2OiJFeGNpdGUiO31zOjE2OiJzZWFyY2guZXhjaXRlLmZyIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjEwOiJ3ZWIvP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NjoiRXhjaXRlIjt9czoxNjoic2VhcmNoLmV4Y2l0ZS5kZSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxMDoid2ViLz9xPXtrfSI7czo0OiJuYW1lIjtzOjY6IkV4Y2l0ZSI7fXM6MTk6InNlYXJjaC5leGNpdGUuY28udWsiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTA6IndlYi8/cT17a30iO3M6NDoibmFtZSI7czo2OiJFeGNpdGUiO31zOjE2OiJzZWFyY2guZXhjaXRlLmVzIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjEwOiJ3ZWIvP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NjoiRXhjaXRlIjt9czoxNjoic2VhcmNoLmV4Y2l0ZS5ubCI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxMDoid2ViLz9xPXtrfSI7czo0OiJuYW1lIjtzOjY6IkV4Y2l0ZSI7fXM6MTY6Im1zeG1sLmV4Y2l0ZS5jb20iO2E6Mjp7czo2OiJwYXJhbXMiO2E6Mjp7aTowO3M6NDE6Ii9cL1teXC9dK1wvd3NcL3Jlc3VsdHNcL1teXC9dK1wvKFteXC9dKykvIjtpOjE7czoxOiJxIjt9czo0OiJuYW1lIjtzOjY6IkV4Y2l0ZSI7fXM6MTY6Ind3dy5leGNpdGUuY28uanAiO2E6NDp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6Njoic2VhcmNoIjt9czo4OiJiYWNrbGluayI7czoyMDoic2VhcmNoLmd3P3NlYXJjaD17a30iO3M6ODoiY2hhcnNldHMiO2E6MTp7aTowO3M6OToiU0hJRlRfSklTIjt9czo0OiJuYW1lIjtzOjY6IkV4Y2l0ZSI7fXM6MTY6Ind3dy5mYWNlYm9vay5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTM6InNlYXJjaC8/cT17a30iO3M6NDoibmFtZSI7czo4OiJGYWNlYm9vayI7fXM6MjU6Ind3dy5mYXN0YnJvd3NlcnNlYXJjaC5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MjY6InJlc3VsdHMvcmVzdWx0cy5hc3B4P3E9e2t9IjtzOjQ6Im5hbWUiO3M6MTk6IkZhc3QgQnJvd3NlciBTZWFyY2giO31zOjE3OiJ3d3cuZmluZGh1cnRpZy5kayI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czo5OiJ3ZWI/cT17a30iO3M6NDoibmFtZSI7czoxMDoiRmluZGh1cnRpZyI7fXM6MTU6Ind3dy5maXJlYmFsbC5kZSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxNDoiYWpheC5hc3A/cT17a30iO3M6NDoibmFtZSI7czo4OiJGaXJlYmFsbCI7fXM6MTg6Ind3dy5maXJzdHNmaW5kLmNvbSI7YToyOntzOjY6InBhcmFtcyI7YToxOntpOjA7czozOiJxcnkiO31zOjQ6Im5hbWUiO3M6MTA6IkZpcnN0c2ZpbmQiO31zOjE1OiJ3d3cuZml4c3VjaGUuZGUiO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6NDoibmFtZSI7czo4OiJGaXhzdWNoZSI7fXM6MTE6Ind3dy5mbGl4LmRlIjthOjI6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjc6ImtleXdvcmQiO31zOjQ6Im5hbWUiO3M6NzoiRmxpeC5kZSI7fXM6MTc6InNlYXJjaC5mb29vb28uY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjEwOiJ3ZWIvP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NjoiRm9vb29vIjt9czoxMjoiZm9yZXN0bGUub3JnIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjE2OiJzZWFyY2gucGhwP3E9e2t9IjtzOjQ6Im5hbWUiO3M6ODoiRm9yZXN0bGUiO31zOjE1OiJ7fS5mb3Jlc3RsZS5vcmciO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTY6InNlYXJjaC5waHA/cT17a30iO3M6NDoibmFtZSI7czo4OiJGb3Jlc3RsZSI7fXM6MTM6ImZvcmVzdGxlLm1vYmkiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTY6InNlYXJjaC5waHA/cT17a30iO3M6NDoibmFtZSI7czo4OiJGb3Jlc3RsZSI7fXM6MjI6InJlY2hlcmNoZS5mcmFuY2l0ZS5jb20iO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NDoibmFtZSI7fXM6NDoibmFtZSI7czo4OiJGcmFuY2l0ZSI7fXM6MTQ6InNlYXJjaC5mcmVlLmZyIjthOjI6e3M6NjoicGFyYW1zIjthOjI6e2k6MDtzOjE6InEiO2k6MTtzOjI6InFzIjt9czo0OiJuYW1lIjtzOjQ6IkZyZWUiO31zOjE3OiJzZWFyY2gxLTIuZnJlZS5mciI7YToyOntzOjY6InBhcmFtcyI7YToyOntpOjA7czoxOiJxIjtpOjE7czoyOiJxcyI7fXM6NDoibmFtZSI7czo0OiJGcmVlIjt9czoxNzoic2VhcmNoMS0xLmZyZWUuZnIiO2E6Mjp7czo2OiJwYXJhbXMiO2E6Mjp7aTowO3M6MToicSI7aToxO3M6MjoicXMiO31zOjQ6Im5hbWUiO3M6NDoiRnJlZSI7fXM6MjA6InNlYXJjaC5mcmVlY2F1c2UuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InAiO31zOjg6ImJhY2tsaW5rIjtzOjY6Ij9wPXtrfSI7czo0OiJuYW1lIjtzOjk6IkZyZWVDYXVzZSI7fXM6MTY6InN1Y2hlLmZyZWVuZXQuZGUiO2E6Mzp7czo2OiJwYXJhbXMiO2E6Mjp7aTowO3M6NToicXVlcnkiO2k6MTtzOjg6IktleXdvcmRzIjt9czo4OiJiYWNrbGluayI7czoxNjoic3VjaGUvP3F1ZXJ5PXtrfSI7czo0OiJuYW1lIjtzOjc6IkZyZWVuZXQiO31zOjE0OiJmcmllbmRmZWVkLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxMjoic2VhcmNoP3E9e2t9IjtzOjQ6Im5hbWUiO3M6MTA6IkZyaWVuZEZlZWQiO31zOjE4OiJnYWlzLmNzLmNjdS5lZHUudHciO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTY6InNlYXJjaC5waHA/cT17a30iO3M6NDoibmFtZSI7czo0OiJHQUlTIjt9czoxNzoic2VhcmNoLmdlbmllby5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6NjoiJnE9e2t9IjtzOjQ6Im5hbWUiO3M6NjoiR2VuaWVvIjt9czo5OiJnZW9uYS5uZXQiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTI6InNlYXJjaD9xPXtrfSI7czo0OiJuYW1lIjtzOjU6Ikdlb25hIjt9czoxMDoiZ2liaXJ1LmNvbSI7YTo0OntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxODoicmVzdWx0cy5odG1sP3E9e2t9IjtzOjEzOiJoaWRkZW5rZXl3b3JkIjthOjI6e2k6MDtzOjQ6Ii9eJC8iO2k6MTtzOjE6Ii8iO31zOjQ6Im5hbWUiO3M6NjoiR2liaXJ1Ijt9czoxNDoid3d3LmdpYmlydS5jb20iO2E6NDp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTg6InJlc3VsdHMuaHRtbD9xPXtrfSI7czoxMzoiaGlkZGVua2V5d29yZCI7YToyOntpOjA7czo0OiIvXiQvIjtpOjE7czoxOiIvIjt9czo0OiJuYW1lIjtzOjY6IkdpYmlydSI7fXM6MTc6Ind3dy5naWdhYmxhc3QuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjEyOiJzZWFyY2g/cT17a30iO3M6NDoibmFtZSI7czo5OiJHaWdhYmxhc3QiO31zOjE3OiJkaXIuZ2lnYWJsYXN0LmNvbSI7YToyOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo0OiJuYW1lIjtzOjIxOiJHaWdhYmxhc3QgKERpcmVjdG9yeSkiO31zOjE3OiJ3d3cuZ25hZGVubWVlci5kZSI7YToyOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo3OiJrZXl3b3JkIjt9czo0OiJuYW1lIjtzOjEwOiJHbmFkZW5tZWVyIjt9czoxMzoid3d3LmdvbWVvLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToyOntpOjA7czo4OiJLZXl3b3JkcyI7aToxO3M6MjA6Ii9cL3NlYXJjaFwvKFteXC9dKykvIjt9czo4OiJiYWNrbGluayI7czoxMToiL3NlYXJjaC97a30iO3M6NDoibmFtZSI7czo1OiJHb21lbyI7fXM6MTY6InNlYXJjaC5nb28ubmUuanAiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MjoiTVQiO31zOjg6ImJhY2tsaW5rIjtzOjE0OiJ3ZWIuanNwP01UPXtrfSI7czo0OiJuYW1lIjtzOjM6ImdvbyI7fXM6MTk6Im9jbnNlYXJjaC5nb28ubmUuanAiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MjoiTVQiO31zOjg6ImJhY2tsaW5rIjtzOjE0OiJ3ZWIuanNwP01UPXtrfSI7czo0OiJuYW1lIjtzOjM6ImdvbyI7fXM6MTA6Imdvb2dsZS5jb20iO2E6NDp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6MTM6ImhpZGRlbmtleXdvcmQiO2E6NDp7aTowO3M6NDoiL14kLyI7aToxO3M6MToiLyI7aToyO3M6MTc6Ii9cL3NlYXJjaChcPy4qKT8vIjtpOjM7czoxMToiL1wvdXJsXD8uKi8iO31zOjg6ImJhY2tsaW5rIjtzOjEyOiJzZWFyY2g/cT17a30iO3M6NDoibmFtZSI7czo2OiJHb29nbGUiO31zOjk6Imdvb2dsZS57fSI7YTo0OntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czoxMzoiaGlkZGVua2V5d29yZCI7YTo0OntpOjA7czo0OiIvXiQvIjtpOjE7czoxOiIvIjtpOjI7czoxNzoiL1wvc2VhcmNoKFw/LiopPy8iO2k6MztzOjExOiIvXC91cmxcPy4qLyI7fXM6ODoiYmFja2xpbmsiO3M6MTI6InNlYXJjaD9xPXtrfSI7czo0OiJuYW1lIjtzOjY6Ikdvb2dsZSI7fXM6MjA6ImVuY3J5cHRlZC5nb29nbGUuY29tIjthOjQ6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjEzOiJoaWRkZW5rZXl3b3JkIjthOjQ6e2k6MDtzOjQ6Ii9eJC8iO2k6MTtzOjE6Ii8iO2k6MjtzOjE3OiIvXC9zZWFyY2goXD8uKik/LyI7aTozO3M6MTE6Ii9cL3VybFw/LiovIjt9czo4OiJiYWNrbGluayI7czoxMjoic2VhcmNoP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NjoiR29vZ2xlIjt9czoxNToid3d3Mi5nb29nbGUuY29tIjthOjQ6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjEzOiJoaWRkZW5rZXl3b3JkIjthOjQ6e2k6MDtzOjQ6Ii9eJC8iO2k6MTtzOjE6Ii8iO2k6MjtzOjE3OiIvXC9zZWFyY2goXD8uKik/LyI7aTozO3M6MTE6Ii9cL3VybFw/LiovIjt9czo4OiJiYWNrbGluayI7czoxMjoic2VhcmNoP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NjoiR29vZ2xlIjt9czoxNToiaXB2Ni5nb29nbGUuY29tIjthOjQ6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjEzOiJoaWRkZW5rZXl3b3JkIjthOjQ6e2k6MDtzOjQ6Ii9eJC8iO2k6MTtzOjE6Ii8iO2k6MjtzOjE3OiIvXC9zZWFyY2goXD8uKik/LyI7aTozO3M6MTE6Ii9cL3VybFw/LiovIjt9czo4OiJiYWNrbGluayI7czoxMjoic2VhcmNoP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NjoiR29vZ2xlIjt9czoxMzoiZ28uZ29vZ2xlLmNvbSI7YTo0OntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czoxMzoiaGlkZGVua2V5d29yZCI7YTo0OntpOjA7czo0OiIvXiQvIjtpOjE7czoxOiIvIjtpOjI7czoxNzoiL1wvc2VhcmNoKFw/LiopPy8iO2k6MztzOjExOiIvXC91cmxcPy4qLyI7fXM6ODoiYmFja2xpbmsiO3M6MTI6InNlYXJjaD9xPXtrfSI7czo0OiJuYW1lIjtzOjY6Ikdvb2dsZSI7fXM6MTM6Ind3d2dvb2dsZS5jb20iO2E6NDp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6MTM6ImhpZGRlbmtleXdvcmQiO2E6NDp7aTowO3M6NDoiL14kLyI7aToxO3M6MToiLyI7aToyO3M6MTc6Ii9cL3NlYXJjaChcPy4qKT8vIjtpOjM7czoxMToiL1wvdXJsXD8uKi8iO31zOjg6ImJhY2tsaW5rIjtzOjEyOiJzZWFyY2g/cT17a30iO3M6NDoibmFtZSI7czo2OiJHb29nbGUiO31zOjEyOiJ3d3dnb29nbGUue30iO2E6NDp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6MTM6ImhpZGRlbmtleXdvcmQiO2E6NDp7aTowO3M6NDoiL14kLyI7aToxO3M6MToiLyI7aToyO3M6MTc6Ii9cL3NlYXJjaChcPy4qKT8vIjtpOjM7czoxMToiL1wvdXJsXD8uKi8iO31zOjg6ImJhY2tsaW5rIjtzOjEyOiJzZWFyY2g/cT17a30iO3M6NDoibmFtZSI7czo2OiJHb29nbGUiO31zOjEwOiJnb2dvbGUuY29tIjthOjQ6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjEzOiJoaWRkZW5rZXl3b3JkIjthOjQ6e2k6MDtzOjQ6Ii9eJC8iO2k6MTtzOjE6Ii8iO2k6MjtzOjE3OiIvXC9zZWFyY2goXD8uKik/LyI7aTozO3M6MTE6Ii9cL3VybFw/LiovIjt9czo4OiJiYWNrbGluayI7czoxMjoic2VhcmNoP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NjoiR29vZ2xlIjt9czo5OiJnb2dvbGUue30iO2E6NDp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6MTM6ImhpZGRlbmtleXdvcmQiO2E6NDp7aTowO3M6NDoiL14kLyI7aToxO3M6MToiLyI7aToyO3M6MTc6Ii9cL3NlYXJjaChcPy4qKT8vIjtpOjM7czoxMToiL1wvdXJsXD8uKi8iO31zOjg6ImJhY2tsaW5rIjtzOjEyOiJzZWFyY2g/cT17a30iO3M6NDoibmFtZSI7czo2OiJHb29nbGUiO31zOjEwOiJncHBnbGUuY29tIjthOjQ6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjEzOiJoaWRkZW5rZXl3b3JkIjthOjQ6e2k6MDtzOjQ6Ii9eJC8iO2k6MTtzOjE6Ii8iO2k6MjtzOjE3OiIvXC9zZWFyY2goXD8uKik/LyI7aTozO3M6MTE6Ii9cL3VybFw/LiovIjt9czo4OiJiYWNrbGluayI7czoxMjoic2VhcmNoP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NjoiR29vZ2xlIjt9czo5OiJncHBnbGUue30iO2E6NDp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6MTM6ImhpZGRlbmtleXdvcmQiO2E6NDp7aTowO3M6NDoiL14kLyI7aToxO3M6MToiLyI7aToyO3M6MTc6Ii9cL3NlYXJjaChcPy4qKT8vIjtpOjM7czoxMToiL1wvdXJsXD8uKi8iO31zOjg6ImJhY2tsaW5rIjtzOjEyOiJzZWFyY2g/cT17a30iO3M6NDoibmFtZSI7czo2OiJHb29nbGUiO31zOjEwOiJnb29nZWwuY29tIjthOjQ6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjEzOiJoaWRkZW5rZXl3b3JkIjthOjQ6e2k6MDtzOjQ6Ii9eJC8iO2k6MTtzOjE6Ii8iO2k6MjtzOjE3OiIvXC9zZWFyY2goXD8uKik/LyI7aTozO3M6MTE6Ii9cL3VybFw/LiovIjt9czo4OiJiYWNrbGluayI7czoxMjoic2VhcmNoP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NjoiR29vZ2xlIjt9czo5OiJnb29nZWwue30iO2E6NDp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6MTM6ImhpZGRlbmtleXdvcmQiO2E6NDp7aTowO3M6NDoiL14kLyI7aToxO3M6MToiLyI7aToyO3M6MTc6Ii9cL3NlYXJjaChcPy4qKT8vIjtpOjM7czoxMToiL1wvdXJsXD8uKi8iO31zOjg6ImJhY2tsaW5rIjtzOjEyOiJzZWFyY2g/cT17a30iO3M6NDoibmFtZSI7czo2OiJHb29nbGUiO31zOjE0OiJzZWFyY2guYXZnLmNvbSI7YTo0OntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czoxMzoiaGlkZGVua2V5d29yZCI7YTo0OntpOjA7czo0OiIvXiQvIjtpOjE7czoxOiIvIjtpOjI7czoxNzoiL1wvc2VhcmNoKFw/LiopPy8iO2k6MztzOjExOiIvXC91cmxcPy4qLyI7fXM6ODoiYmFja2xpbmsiO3M6MTI6InNlYXJjaD9xPXtrfSI7czo0OiJuYW1lIjtzOjY6Ikdvb2dsZSI7fXM6MTU6ImlzZWFyY2guYXZnLmNvbSI7YTo0OntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czoxMzoiaGlkZGVua2V5d29yZCI7YTo0OntpOjA7czo0OiIvXiQvIjtpOjE7czoxOiIvIjtpOjI7czoxNzoiL1wvc2VhcmNoKFw/LiopPy8iO2k6MztzOjExOiIvXC91cmxcPy4qLyI7fXM6ODoiYmFja2xpbmsiO3M6MTI6InNlYXJjaD9xPXtrfSI7czo0OiJuYW1lIjtzOjY6Ikdvb2dsZSI7fXM6Mzk6ImNvbS5nb29nbGUuYW5kcm9pZC5nb29nbGVxdWlja3NlYXJjaGJveCI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czoxMzoiaGlkZGVua2V5d29yZCI7YToxOntpOjA7czo0OiIvLiovIjt9czo0OiJuYW1lIjtzOjY6Ikdvb2dsZSI7fXM6NzM6ImFuZHJvaWQtYXBwLy9jb20uZ29vZ2xlLmFuZHJvaWQuZ29vZ2xlcXVpY2tzZWFyY2hib3gvaHR0cHMvd3d3Lmdvb2dsZS5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6MTM6ImhpZGRlbmtleXdvcmQiO2E6MTp7aTowO3M6NDoiLy4qLyI7fXM6NDoibmFtZSI7czo2OiJHb29nbGUiO31zOjE3OiJzZWFyY2guY2hlZG90LmNvbSI7YToyOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo0OiJ0ZXh0Ijt9czo0OiJuYW1lIjtzOjY6Ikdvb2dsZSI7fXM6MTE6Ind3dy5jbm4uY29tIjthOjI6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjU6InF1ZXJ5Ijt9czo0OiJuYW1lIjtzOjY6Ikdvb2dsZSI7fXM6MTM6ImRhcmtvb2dsZS5jb20iO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NToicXVlcnkiO31zOjQ6Im5hbWUiO3M6NjoiR29vZ2xlIjt9czoyMDoic2VhcmNoLmRhcmtvb2dsZS5jb20iO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NToicXVlcnkiO31zOjQ6Im5hbWUiO3M6NjoiR29vZ2xlIjt9czoxNzoic2VhcmNoLmZveHRhYi5jb20iO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NToicXVlcnkiO31zOjQ6Im5hbWUiO3M6NjoiR29vZ2xlIjt9czoyMjoid3d3Lmdvb29mdWxsc2VhcmNoLmNvbSI7YToyOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo4OiJLZXl3b3JkcyI7fXM6NDoibmFtZSI7czo2OiJHb29nbGUiO31zOjE1OiJzZWFyY2guaGl5by5jb20iO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6ODoiS2V5d29yZHMiO31zOjQ6Im5hbWUiO3M6NjoiR29vZ2xlIjt9czoyMjoic2VhcmNoLmluY3JlZGltYWlsLmNvbSI7YToyOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo4OiJLZXl3b3JkcyI7fXM6NDoibmFtZSI7czo2OiJHb29nbGUiO31zOjIzOiJzZWFyY2gxLmluY3JlZGltYWlsLmNvbSI7YToyOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo4OiJLZXl3b3JkcyI7fXM6NDoibmFtZSI7czo2OiJHb29nbGUiO31zOjIzOiJzZWFyY2gyLmluY3JlZGltYWlsLmNvbSI7YToyOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo4OiJLZXl3b3JkcyI7fXM6NDoibmFtZSI7czo2OiJHb29nbGUiO31zOjIzOiJzZWFyY2gzLmluY3JlZGltYWlsLmNvbSI7YToyOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo4OiJLZXl3b3JkcyI7fXM6NDoibmFtZSI7czo2OiJHb29nbGUiO31zOjIzOiJzZWFyY2g0LmluY3JlZGltYWlsLmNvbSI7YToyOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo4OiJLZXl3b3JkcyI7fXM6NDoibmFtZSI7czo2OiJHb29nbGUiO31zOjE4OiJzZWFyY2guc3dlZXRpbS5jb20iO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6ODoiS2V5d29yZHMiO31zOjQ6Im5hbWUiO3M6NjoiR29vZ2xlIjt9czoxNDoid3d3LmZhc3R3ZWIuaXQiO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6ODoiS2V5d29yZHMiO31zOjQ6Im5hbWUiO3M6NjoiR29vZ2xlIjt9czoxNToic2VhcmNoLmp1bm8uY29tIjthOjI6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjU6InF1ZXJ5Ijt9czo0OiJuYW1lIjtzOjY6Ikdvb2dsZSI7fXM6MTQ6InNlYXJjaC56dW0uY29tIjthOjI6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjU6InF1ZXJ5Ijt9czo0OiJuYW1lIjtzOjY6Ikdvb2dsZSI7fXM6MTE6ImZpbmQudGRjLmRrIjthOjI6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjU6InF1ZXJ5Ijt9czo0OiJuYW1lIjtzOjY6Ikdvb2dsZSI7fXM6MTA6Iml0Lmx1bmEudHYiO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NToicXVlcnkiO31zOjQ6Im5hbWUiO3M6NjoiR29vZ2xlIjt9czoyNToic2VhcmNocmVzdWx0cy52ZXJpem9uLmNvbSI7YToyOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo1OiJxdWVyeSI7fXM6NDoibmFtZSI7czo2OiJHb29nbGUiO31zOjE4OiJzZWFyY2gud2FsbGEuY28uaWwiO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NToicXVlcnkiO31zOjQ6Im5hbWUiO3M6NjoiR29vZ2xlIjt9czoxNToic2VhcmNoLmFsb3QuY29tIjthOjI6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjU6InF1ZXJ5Ijt9czo0OiJuYW1lIjtzOjY6Ikdvb2dsZSI7fXM6MTM6InN1Y2hlLmdteC5uZXQiO2E6NDp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6OToid2ViP3E9e2t9IjtzOjEzOiJoaWRkZW5rZXl3b3JkIjthOjI6e2k6MDtzOjQ6Ii9eJC8iO2k6MTtzOjE6Ii8iO31zOjQ6Im5hbWUiO3M6NjoiR29vZ2xlIjt9czoxNDoic2VhcmNoLmdteC5jb20iO2E6NDp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6OToid2ViP3E9e2t9IjtzOjEzOiJoaWRkZW5rZXl3b3JkIjthOjI6e2k6MDtzOjQ6Ii9eJC8iO2k6MTtzOjE6Ii8iO31zOjQ6Im5hbWUiO3M6NjoiR29vZ2xlIjt9czoyMToic2VhcmNoLmluY3JlZGliYXIuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjE2OiJzZWFyY2gucGhwP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NjoiR29vZ2xlIjt9czoyMDoid3d3LmRlbHRhLXNlYXJjaC5jb20iO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6NDoibmFtZSI7czo2OiJHb29nbGUiO31zOjIxOiJ3d3cxLmRlbHRhLXNlYXJjaC5jb20iO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6NDoibmFtZSI7czo2OiJHb29nbGUiO31zOjE1OiJzZWFyY2guMXVuZDEuZGUiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6OToid2ViP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NjoiR29vZ2xlIjt9czoxNDoic3VjaGUuMXVuZDEuZGUiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6OToid2ViP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NjoiR29vZ2xlIjt9czoyMDoic2VhcmNoLnpvbmVhbGFybS5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6OToid2ViP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NjoiR29vZ2xlIjt9czoxNjoic3RhcnQubGVub3ZvLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoyMjoic2VhcmNoL2luZGV4LnBocD9xPXtrfSI7czo0OiJuYW1lIjtzOjY6Ikdvb2dsZSI7fXM6Nzoid293LmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoyMjoic2VhcmNoL2luZGV4LnBocD9xPXtrfSI7czo0OiJuYW1lIjtzOjY6Ikdvb2dsZSI7fXM6MTA6Int9Lndvdy5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MjI6InNlYXJjaC9pbmRleC5waHA/cT17a30iO3M6NDoibmFtZSI7czo2OiJHb29nbGUiO31zOjE4OiJzZWFyY2gubGVvbmFyZG8uaXQiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MjI6InNlYXJjaC9pbmRleC5waHA/cT17a30iO3M6NDoibmFtZSI7czo2OiJHb29nbGUiO31zOjE5OiJ3d3cub3B0dXN6b28uY29tLmF1IjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjIyOiJzZWFyY2gvaW5kZXgucGhwP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NjoiR29vZ2xlIjt9czoyNToic2VhcmNoLmRvbHBoaW4tYnJvd3Nlci5qcCI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoyMjoic2VhcmNoL2luZGV4LnBocD9xPXtrfSI7czo0OiJuYW1lIjtzOjY6Ikdvb2dsZSI7fXM6MTg6Im5ldGxhdmlzLmF6aW9uZS5qcCI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoyMjoic2VhcmNoL2luZGV4LnBocD9xPXtrfSI7czo0OiJuYW1lIjtzOjY6Ikdvb2dsZSI7fXM6MTM6InNlYXJjaC5uYW4uc28iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MjI6InNlYXJjaC9pbmRleC5waHA/cT17a30iO3M6NDoibmFtZSI7czo2OiJHb29nbGUiO31zOjE5OiJjZ2kyLm5pbnRlbmRvLmNvLmpwIjthOjI6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjU6ImdzYy5xIjt9czo0OiJuYW1lIjtzOjY6Ikdvb2dsZSI7fXM6MjM6InNlYXJjaC5zbXQuZG9jb21vLm5lLmpwIjthOjI6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjI6Ik1UIjt9czo0OiJuYW1lIjtzOjY6Ikdvb2dsZSI7fXM6Mjk6ImltYWdlLnNlYXJjaC5zbXQuZG9jb21vLm5lLmpwIjthOjI6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjI6Ik1UIjt9czo0OiJuYW1lIjtzOjY6Ikdvb2dsZSI7fXM6MTA6Imdmc29zby5jb20iO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6NDoibmFtZSI7czo2OiJHb29nbGUiO31zOjI1OiJzZWFyY2hlcy5zYWZlaG9tZXBhZ2UuY29tIjthOjI6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjQ6Im5hbWUiO3M6NjoiR29vZ2xlIjt9czoyMToic2VhcmNoZXMuZi1zZWN1cmUuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjU6InF1ZXJ5Ijt9czo4OiJiYWNrbGluayI7czoxNjoic2VhcmNoP3F1ZXJ5PXtrfSI7czo0OiJuYW1lIjtzOjY6Ikdvb2dsZSI7fXM6MTk6InNlYXJjaC5mLXNlY3VyZS5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NToicXVlcnkiO31zOjg6ImJhY2tsaW5rIjtzOjE2OiJzZWFyY2g/cXVlcnk9e2t9IjtzOjQ6Im5hbWUiO3M6NjoiR29vZ2xlIjt9czozMDoid2ViY2FjaGUuZ29vZ2xldXNlcmNvbnRlbnQuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjQ5OiIvXC9zZWFyY2hcP3E9Y2FjaGU6KD86W0EtWmEtejAtOV0rKTpbXitdKyhbXiZdKykvIjt9czo4OiJiYWNrbGluayI7czoxMjoic2VhcmNoP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NjoiR29vZ2xlIjt9czoxMzoic2VhcmNoLmJ0LmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJwIjt9czo4OiJiYWNrbGluayI7czoxMjoicmVzdWx0P3A9e2t9IjtzOjQ6Im5hbWUiO3M6NjoiR29vZ2xlIjt9czoxMDoic3RhcnRhYi5tZSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxMzoic2VhcmNoLz9xPXtrfSI7czo0OiJuYW1lIjtzOjY6Ikdvb2dsZSI7fXM6MjE6ImJsb2dzZWFyY2guZ29vZ2xlLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxNjoiYmxvZ3NlYXJjaD9xPXtrfSI7czo0OiJuYW1lIjtzOjE3OiJHb29nbGUgQmxvZ3NlYXJjaCI7fXM6MjA6ImJsb2dzZWFyY2guZ29vZ2xlLnt9IjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjE2OiJibG9nc2VhcmNoP3E9e2t9IjtzOjQ6Im5hbWUiO3M6MTc6Ikdvb2dsZSBCbG9nc2VhcmNoIjt9czoxNDoiZ29vZ2xlLmNvbS9jc2UiO2E6Mjp7czo2OiJwYXJhbXMiO2E6Mjp7aTowO3M6MToicSI7aToxO3M6NToicXVlcnkiO31zOjQ6Im5hbWUiO3M6MjA6Ikdvb2dsZSBDdXN0b20gU2VhcmNoIjt9czoxMzoiZ29vZ2xlLnt9L2NzZSI7YToyOntzOjY6InBhcmFtcyI7YToyOntpOjA7czoxOiJxIjtpOjE7czo1OiJxdWVyeSI7fXM6NDoibmFtZSI7czoyMDoiR29vZ2xlIEN1c3RvbSBTZWFyY2giO31zOjE0OiJjc2UuZ29vZ2xlLmNvbSI7YToyOntzOjY6InBhcmFtcyI7YToyOntpOjA7czoxOiJxIjtpOjE7czo1OiJxdWVyeSI7fXM6NDoibmFtZSI7czoyMDoiR29vZ2xlIEN1c3RvbSBTZWFyY2giO31zOjEzOiJjc2UuZ29vZ2xlLnt9IjthOjI6e3M6NjoicGFyYW1zIjthOjI6e2k6MDtzOjE6InEiO2k6MTtzOjU6InF1ZXJ5Ijt9czo0OiJuYW1lIjtzOjIwOiJHb29nbGUgQ3VzdG9tIFNlYXJjaCI7fXM6MTc6Imdvb2dsZS5jb20vY3VzdG9tIjthOjI6e3M6NjoicGFyYW1zIjthOjI6e2k6MDtzOjE6InEiO2k6MTtzOjU6InF1ZXJ5Ijt9czo0OiJuYW1lIjtzOjIwOiJHb29nbGUgQ3VzdG9tIFNlYXJjaCI7fXM6MTY6Imdvb2dsZS57fS9jdXN0b20iO2E6Mjp7czo2OiJwYXJhbXMiO2E6Mjp7aTowO3M6MToicSI7aToxO3M6NToicXVlcnkiO31zOjQ6Im5hbWUiO3M6MjA6Ikdvb2dsZSBDdXN0b20gU2VhcmNoIjt9czoxNzoiaW1hZ2VzLmdvb2dsZS5jb20iO2E6NDp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6MTM6ImhpZGRlbmtleXdvcmQiO2E6MTp7aTowO3M6NDoiLy4qLyI7fXM6ODoiYmFja2xpbmsiO3M6MTI6ImltYWdlcz9xPXtrfSI7czo0OiJuYW1lIjtzOjEzOiJHb29nbGUgSW1hZ2VzIjt9czoxNjoiaW1hZ2VzLmdvb2dsZS57fSI7YTo0OntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czoxMzoiaGlkZGVua2V5d29yZCI7YToxOntpOjA7czo0OiIvLiovIjt9czo4OiJiYWNrbGluayI7czoxMjoiaW1hZ2VzP3E9e2t9IjtzOjQ6Im5hbWUiO3M6MTM6Ikdvb2dsZSBJbWFnZXMiO31zOjE3OiJnb29nbGUuY29tL2ltZ3JlcyI7YTo0OntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czoxMzoiaGlkZGVua2V5d29yZCI7YToxOntpOjA7czo0OiIvLiovIjt9czo4OiJiYWNrbGluayI7czoxMjoiaW1hZ2VzP3E9e2t9IjtzOjQ6Im5hbWUiO3M6MTM6Ikdvb2dsZSBJbWFnZXMiO31zOjE2OiJnb29nbGUue30vaW1ncmVzIjthOjQ6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjEzOiJoaWRkZW5rZXl3b3JkIjthOjE6e2k6MDtzOjQ6Ii8uKi8iO31zOjg6ImJhY2tsaW5rIjtzOjEyOiJpbWFnZXM/cT17a30iO3M6NDoibmFtZSI7czoxMzoiR29vZ2xlIEltYWdlcyI7fXM6MTU6Im1hcHMuZ29vZ2xlLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxMDoibWFwcz9xPXtrfSI7czo0OiJuYW1lIjtzOjExOiJHb29nbGUgTWFwcyI7fXM6MTQ6Im1hcHMuZ29vZ2xlLnt9IjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjEwOiJtYXBzP3E9e2t9IjtzOjQ6Im5hbWUiO3M6MTE6Ikdvb2dsZSBNYXBzIjt9czoxNToibmV3cy5nb29nbGUuY29tIjthOjI6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjQ6Im5hbWUiO3M6MTE6Ikdvb2dsZSBOZXdzIjt9czoxNDoibmV3cy5nb29nbGUue30iO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6NDoibmFtZSI7czoxMToiR29vZ2xlIE5ld3MiO31zOjE4OiJzY2hvbGFyLmdvb2dsZS5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTM6InNjaG9sYXI/cT17a30iO3M6NDoibmFtZSI7czoxNDoiR29vZ2xlIFNjaG9sYXIiO31zOjE3OiJzY2hvbGFyLmdvb2dsZS57fSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxMzoic2Nob2xhcj9xPXtrfSI7czo0OiJuYW1lIjtzOjE0OiJHb29nbGUgU2Nob2xhciI7fXM6MTk6Imdvb2dsZS5jb20vcHJvZHVjdHMiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTU6Ij9xPXtrfSZ0Ym09c2hvcCI7czo0OiJuYW1lIjtzOjE1OiJHb29nbGUgU2hvcHBpbmciO31zOjE4OiJnb29nbGUue30vcHJvZHVjdHMiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTU6Ij9xPXtrfSZ0Ym09c2hvcCI7czo0OiJuYW1lIjtzOjE1OiJHb29nbGUgU2hvcHBpbmciO31zOjI2OiJnb29nbGVzeW5kaWNhdGVkc2VhcmNoLmNvbSI7YToyOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo0OiJuYW1lIjtzOjI0OiJHb29nbGUgc3luZGljYXRlZCBzZWFyY2giO31zOjIwOiJ0cmFuc2xhdGUuZ29vZ2xlLmNvbSI7YToyOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo0OiJuYW1lIjtzOjE5OiJHb29nbGUgVHJhbnNsYXRpb25zIjt9czoxNjoidmlkZW8uZ29vZ2xlLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoyMDoic2VhcmNoP3E9e2t9JnRibT12aWQiO3M6NDoibmFtZSI7czoxMjoiR29vZ2xlIFZpZGVvIjt9czoxNToid3d3LmdveWVsbG93LmRlIjthOjI6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjM6Ik1ETiI7fXM6NDoibmFtZSI7czoxMToiR29ZZWxsb3cuZGUiO31zOjE2OiJ3d3cuZ3VsZXNpZGVyLm5vIjthOjI6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjQ6Im5hbWUiO3M6MTA6Ikd1bGUgU2lkZXIiO31zOjE0OiJ3d3cuaGFvc291LmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czo3OiJzP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NjoiSGFvc291Ijt9czoxNjoid3d3LmhpZ2hiZWFtLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxNzoiU2VhcmNoLmFzcHg/cT17a30iO3M6NDoibmFtZSI7czo4OiJIaWdoQmVhbSI7fXM6MTg6InJlcS5oaXQtcGFyYWRlLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoyOiJwNyI7fXM6ODoiYmFja2xpbmsiO3M6Mjg6ImdlbmVyYWwvcmVjaGVyY2hlLmFzcD9wNz17a30iO3M6NDoibmFtZSI7czoxMDoiSGl0LVBhcmFkZSI7fXM6MjA6ImNsYXNzLmhpdC1wYXJhZGUuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjI6InA3Ijt9czo4OiJiYWNrbGluayI7czoyODoiZ2VuZXJhbC9yZWNoZXJjaGUuYXNwP3A3PXtrfSI7czo0OiJuYW1lIjtzOjEwOiJIaXQtUGFyYWRlIjt9czoxODoid3d3LmhpdC1wYXJhZGUuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjI6InA3Ijt9czo4OiJiYWNrbGluayI7czoyODoiZ2VuZXJhbC9yZWNoZXJjaGUuYXNwP3A3PXtrfSI7czo0OiJuYW1lIjtzOjEwOiJIaXQtUGFyYWRlIjt9czo5OiJob2xtZXMuZ2UiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTY6InNlYXJjaC5odG0/cT17a30iO3M6NDoibmFtZSI7czo2OiJIb2xtZXMiO31zOjE1OiJ3d3cuaG9vc2Vlay5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6OToicmVjaGVyY2hlIjt9czo4OiJiYWNrbGluayI7czoxNzoid2ViP3JlY2hlcmNoZT17a30iO3M6NDoibmFtZSI7czo3OiJIb29zZWVrIjt9czoxNDoid3d3LmhvdGJvdC5jb20iO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NToicXVlcnkiO31zOjQ6Im5hbWUiO3M6NjoiSG90Ym90Ijt9czoxNToic3RhcnQuaXBsYXkuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjI0OiJzZWFyY2hyZXN1bHRzLmFzcHg/cT17a30iO3M6NDoibmFtZSI7czo2OiJJLXBsYXkiO31zOjE5OiJibG9ncy5pY2Vyb2NrZXQuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjEyOiJzZWFyY2g/cT17a30iO3M6NDoibmFtZSI7czo5OiJJY2Vyb2NrZXQiO31zOjExOiJ3d3cuaWNxLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoyNDoic2VhcmNoL3Jlc3VsdHMucGhwP3E9e2t9IjtzOjQ6Im5hbWUiO3M6MzoiSUNRIjt9czoxNDoic2VhcmNoLmljcS5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MjQ6InNlYXJjaC9yZXN1bHRzLnBocD9xPXtrfSI7czo0OiJuYW1lIjtzOjM6IklDUSI7fXM6MTE6Ind3dy5pbHNlLm5sIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjEwOiJzZWFyY2hfZm9yIjt9czo4OiJiYWNrbGluayI7czoxNToiP3NlYXJjaF9mb3I9e2t9IjtzOjQ6Im5hbWUiO3M6NzoiSWxzZSBOTCI7fXM6MTY6InNlYXJjaC5pbWVzaC5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6Mjp7aTowO3M6MToicSI7aToxO3M6Mjoic2kiO31zOjg6ImJhY2tsaW5rIjtzOjk6IndlYj9xPXtrfSI7czo0OiJuYW1lIjtzOjU6ImlNZXNoIjt9czoxNDoid3d3Mi5pbmJveC5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MjY6InNlYXJjaC9yZXN1bHRzMS5hc3B4P3E9e2t9IjtzOjQ6Im5hbWUiO3M6NToiSW5ib3giO31zOjEzOiJpbmZvc3BhY2UuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjE3OiIvc2VhcmNoL3dlYj9xPXtrfSI7czo0OiJuYW1lIjtzOjk6IkluZm9TcGFjZSI7fXM6MTE6ImRvZ3BpbGUuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjE3OiIvc2VhcmNoL3dlYj9xPXtrfSI7czo0OiJuYW1lIjtzOjk6IkluZm9TcGFjZSI7fXM6MTM6InRhdHRvb2RsZS5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTc6Ii9zZWFyY2gvd2ViP3E9e2t9IjtzOjQ6Im5hbWUiO3M6OToiSW5mb1NwYWNlIjt9czoxNToibWV0YWNyYXdsZXIuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjE3OiIvc2VhcmNoL3dlYj9xPXtrfSI7czo0OiJuYW1lIjtzOjk6IkluZm9TcGFjZSI7fXM6MTI6IndlYmZldGNoLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxNzoiL3NlYXJjaC93ZWI/cT17a30iO3M6NDoibmFtZSI7czo5OiJJbmZvU3BhY2UiO31zOjE0OiJ3ZWJjcmF3bGVyLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxNzoiL3NlYXJjaC93ZWI/cT17a30iO3M6NDoibmFtZSI7czo5OiJJbmZvU3BhY2UiO31zOjE2OiJzZWFyY2gua2l3ZWUuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjE3OiIvc2VhcmNoL3dlYj9xPXtrfSI7czo0OiJuYW1lIjtzOjk6IkluZm9TcGFjZSI7fXM6MjA6InNlYXJjaGVzLnZpLXZpZXcuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjE3OiIvc2VhcmNoL3dlYj9xPXtrfSI7czo0OiJuYW1lIjtzOjk6IkluZm9TcGFjZSI7fXM6MjM6InNlYXJjaC53ZWJzc2VhcmNoZXMuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjE3OiIvc2VhcmNoL3dlYj9xPXtrfSI7czo0OiJuYW1lIjtzOjk6IkluZm9TcGFjZSI7fXM6MjM6InNlYXJjaC5mYmRvd25sb2FkZXIuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjE3OiIvc2VhcmNoL3dlYj9xPXtrfSI7czo0OiJuYW1lIjtzOjk6IkluZm9TcGFjZSI7fXM6MjM6InNlYXJjaGVzMy5nbG9ib3Nvc28uY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjE3OiIvc2VhcmNoL3dlYj9xPXtrfSI7czo0OiJuYW1lIjtzOjk6IkluZm9TcGFjZSI7fXM6MjE6IndzZHNvbGQuaW5mb3NwYWNlLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo0MToiL1wvW15cL10rXC93c1wvcmVzdWx0c1wvW15cL10rXC8oW15cL10rKS8iO31zOjg6ImJhY2tsaW5rIjtzOjYyOiJwZW1vbml0b3Job3N0ZWQvd3MvcmVzdWx0cy9XZWIve2t9LzEvNDE3L1RvcE5hdmlnYXRpb24vU291cmNlLyI7czo0OiJuYW1lIjtzOjk6IkluZm9TcGFjZSI7fXM6MTY6InNlYXJjaC5hdmFzdC5jb20iO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6NDoibmFtZSI7czo5OiJJbmZvU3BhY2UiO31zOjE5OiJpc2VhcmNoLmJhYnlsb24uY29tIjthOjI6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjQ6Im5hbWUiO3M6OToiSW5mb1NwYWNlIjt9czoxOToic3RhcnQuZmFjZW1vb2RzLmNvbSI7YToyOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJzIjt9czo0OiJuYW1lIjtzOjk6IkluZm9TcGFjZSI7fXM6MTg6InN0YXJ0LmZ1bm1vb2RzLmNvbSI7YToyOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo0OiJuYW1lIjtzOjk6IkluZm9TcGFjZSI7fXM6MTk6InNlYXJjaC5tYWdlbnRpYy5jb20iO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6NDoibmFtZSI7czo5OiJJbmZvU3BhY2UiO31zOjI3OiJzZWFyY2guc2VhcmNoY29tcGxldGlvbi5jb20iO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6NDoibmFtZSI7czo5OiJJbmZvU3BhY2UiO31zOjI2OiJ3d3cuc2VhcmNobW9iaWxlb25saW5lLmNvbSI7YToyOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo0OiJuYW1lIjtzOjk6IkluZm9TcGFjZSI7fXM6MjE6ImlzZWFyY2guZ2xhcnlzb2Z0LmNvbSI7YToyOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo0OiJuYW1lIjtzOjk6IkluZm9TcGFjZSI7fXM6MTg6InNlYXJjaC5jaGF0enVtLmNvbSI7YToyOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo0OiJuYW1lIjtzOjk6IkluZm9TcGFjZSI7fXM6MTc6ImhvbWUuc3BlZWRiaXQuY29tIjthOjI6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjQ6Im5hbWUiO3M6OToiSW5mb1NwYWNlIjt9czoxMzoic2VhcmNoLmIxLm9yZyI7YToyOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo0OiJuYW1lIjtzOjk6IkluZm9TcGFjZSI7fXM6MTI6InNlYXJjaHlhLmNvbSI7YToyOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo0OiJuYW1lIjtzOjk6IkluZm9TcGFjZSI7fXM6MjA6InNlYXJjaC5oYW5keWNhZmUuY29tIjthOjI6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjQ6Im5hbWUiO3M6OToiSW5mb1NwYWNlIjt9czoxMzoic2VhcmNoLnY5LmNvbSI7YToyOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo0OiJuYW1lIjtzOjk6IkluZm9TcGFjZSI7fXM6MTg6InNlYXJjaC5pbWluZW50LmNvbSI7YToyOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo0OiJuYW1lIjtzOjk6IkluZm9TcGFjZSI7fXM6MjM6InV0b3JyZW50Lmluc3BzZWFyY2guY29tIjthOjI6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjQ6Im5hbWUiO3M6OToiSW5mb1NwYWNlIjt9czoyMToiZ292b21lLmluc3BzZWFyY2guY29tIjthOjI6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjQ6Im5hbWUiO3M6OToiSW5mb1NwYWNlIjt9czoyMToid3d3Lmdvb2dsZS5pbnRlcmlhLnBsIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjEyOiJzenVrYWo/cT17a30iO3M6NDoibmFtZSI7czo3OiJJbnRlcmlhIjt9czoxNToid3d3Lmlzb2RlbGVuLnNlIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjg6IktleXdvcmRzIjt9czo4OiJiYWNrbGluayI7czoyNDoic29rcmVzdWx0YXQ/S2V5d29yZHM9e2t9IjtzOjQ6Im5hbWUiO3M6ODoiSXNvZGVsZW4iO31zOjExOiJpeHF1aWNrLmNvbSI7YTo0OntzOjY6InBhcmFtcyI7YToxOntpOjA7czo1OiJxdWVyeSI7fXM6ODoiYmFja2xpbmsiO3M6MjA6ImRvL2FzZWFyY2g/cXVlcnk9e2t9IjtzOjEzOiJoaWRkZW5rZXl3b3JkIjthOjE6e2k6MDtzOjExOiIvZG8vYXNlYXJjaCI7fXM6NDoibmFtZSI7czo3OiJJeFF1aWNrIjt9czoxODoid3d3LmV1Lml4cXVpY2suY29tIjthOjQ6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjU6InF1ZXJ5Ijt9czo4OiJiYWNrbGluayI7czoyMDoiZG8vYXNlYXJjaD9xdWVyeT17a30iO3M6MTM6ImhpZGRlbmtleXdvcmQiO2E6MTp7aTowO3M6MTE6Ii9kby9hc2VhcmNoIjt9czo0OiJuYW1lIjtzOjc6Ikl4UXVpY2siO31zOjEwOiJpeHF1aWNrLmRlIjthOjQ6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjU6InF1ZXJ5Ijt9czo4OiJiYWNrbGluayI7czoyMDoiZG8vYXNlYXJjaD9xdWVyeT17a30iO3M6MTM6ImhpZGRlbmtleXdvcmQiO2E6MTp7aTowO3M6MTE6Ii9kby9hc2VhcmNoIjt9czo0OiJuYW1lIjtzOjc6Ikl4UXVpY2siO31zOjE0OiJ3d3cuaXhxdWljay5kZSI7YTo0OntzOjY6InBhcmFtcyI7YToxOntpOjA7czo1OiJxdWVyeSI7fXM6ODoiYmFja2xpbmsiO3M6MjA6ImRvL2FzZWFyY2g/cXVlcnk9e2t9IjtzOjEzOiJoaWRkZW5rZXl3b3JkIjthOjE6e2k6MDtzOjExOiIvZG8vYXNlYXJjaCI7fXM6NDoibmFtZSI7czo3OiJJeFF1aWNrIjt9czoxNDoidXMuaXhxdWljay5jb20iO2E6NDp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NToicXVlcnkiO31zOjg6ImJhY2tsaW5rIjtzOjIwOiJkby9hc2VhcmNoP3F1ZXJ5PXtrfSI7czoxMzoiaGlkZGVua2V5d29yZCI7YToxOntpOjA7czoxMToiL2RvL2FzZWFyY2giO31zOjQ6Im5hbWUiO3M6NzoiSXhRdWljayI7fXM6MTc6InMxLnVzLml4cXVpY2suY29tIjthOjQ6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjU6InF1ZXJ5Ijt9czo4OiJiYWNrbGluayI7czoyMDoiZG8vYXNlYXJjaD9xdWVyeT17a30iO3M6MTM6ImhpZGRlbmtleXdvcmQiO2E6MTp7aTowO3M6MTE6Ii9kby9hc2VhcmNoIjt9czo0OiJuYW1lIjtzOjc6Ikl4UXVpY2siO31zOjE3OiJzMi51cy5peHF1aWNrLmNvbSI7YTo0OntzOjY6InBhcmFtcyI7YToxOntpOjA7czo1OiJxdWVyeSI7fXM6ODoiYmFja2xpbmsiO3M6MjA6ImRvL2FzZWFyY2g/cXVlcnk9e2t9IjtzOjEzOiJoaWRkZW5rZXl3b3JkIjthOjE6e2k6MDtzOjExOiIvZG8vYXNlYXJjaCI7fXM6NDoibmFtZSI7czo3OiJJeFF1aWNrIjt9czoxNzoiczMudXMuaXhxdWljay5jb20iO2E6NDp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NToicXVlcnkiO31zOjg6ImJhY2tsaW5rIjtzOjIwOiJkby9hc2VhcmNoP3F1ZXJ5PXtrfSI7czoxMzoiaGlkZGVua2V5d29yZCI7YToxOntpOjA7czoxMToiL2RvL2FzZWFyY2giO31zOjQ6Im5hbWUiO3M6NzoiSXhRdWljayI7fXM6MTc6InM0LnVzLml4cXVpY2suY29tIjthOjQ6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjU6InF1ZXJ5Ijt9czo4OiJiYWNrbGluayI7czoyMDoiZG8vYXNlYXJjaD9xdWVyeT17a30iO3M6MTM6ImhpZGRlbmtleXdvcmQiO2E6MTp7aTowO3M6MTE6Ii9kby9hc2VhcmNoIjt9czo0OiJuYW1lIjtzOjc6Ikl4UXVpY2siO31zOjE3OiJzNS51cy5peHF1aWNrLmNvbSI7YTo0OntzOjY6InBhcmFtcyI7YToxOntpOjA7czo1OiJxdWVyeSI7fXM6ODoiYmFja2xpbmsiO3M6MjA6ImRvL2FzZWFyY2g/cXVlcnk9e2t9IjtzOjEzOiJoaWRkZW5rZXl3b3JkIjthOjE6e2k6MDtzOjExOiIvZG8vYXNlYXJjaCI7fXM6NDoibmFtZSI7czo3OiJJeFF1aWNrIjt9czoxNDoiZXUuaXhxdWljay5jb20iO2E6NDp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NToicXVlcnkiO31zOjg6ImJhY2tsaW5rIjtzOjIwOiJkby9hc2VhcmNoP3F1ZXJ5PXtrfSI7czoxMzoiaGlkZGVua2V5d29yZCI7YToxOntpOjA7czoxMToiL2RvL2FzZWFyY2giO31zOjQ6Im5hbWUiO3M6NzoiSXhRdWljayI7fXM6MTc6InM4LWV1Lml4cXVpY2suY29tIjthOjQ6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjU6InF1ZXJ5Ijt9czo4OiJiYWNrbGluayI7czoyMDoiZG8vYXNlYXJjaD9xdWVyeT17a30iO3M6MTM6ImhpZGRlbmtleXdvcmQiO2E6MTp7aTowO3M6MTE6Ii9kby9hc2VhcmNoIjt9czo0OiJuYW1lIjtzOjc6Ikl4UXVpY2siO31zOjE2OiJzMS1ldS5peHF1aWNrLmRlIjthOjQ6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjU6InF1ZXJ5Ijt9czo4OiJiYWNrbGluayI7czoyMDoiZG8vYXNlYXJjaD9xdWVyeT17a30iO3M6MTM6ImhpZGRlbmtleXdvcmQiO2E6MTp7aTowO3M6MTE6Ii9kby9hc2VhcmNoIjt9czo0OiJuYW1lIjtzOjc6Ikl4UXVpY2siO31zOjE4OiJzMi1ldTQuaXhxdWljay5jb20iO2E6NDp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NToicXVlcnkiO31zOjg6ImJhY2tsaW5rIjtzOjIwOiJkby9hc2VhcmNoP3F1ZXJ5PXtrfSI7czoxMzoiaGlkZGVua2V5d29yZCI7YToxOntpOjA7czoxMToiL2RvL2FzZWFyY2giO31zOjQ6Im5hbWUiO3M6NzoiSXhRdWljayI7fXM6MTg6InM1LWV1NC5peHF1aWNrLmNvbSI7YTo0OntzOjY6InBhcmFtcyI7YToxOntpOjA7czo1OiJxdWVyeSI7fXM6ODoiYmFja2xpbmsiO3M6MjA6ImRvL2FzZWFyY2g/cXVlcnk9e2t9IjtzOjEzOiJoaWRkZW5rZXl3b3JkIjthOjE6e2k6MDtzOjExOiIvZG8vYXNlYXJjaCI7fXM6NDoibmFtZSI7czo3OiJJeFF1aWNrIjt9czoxMzoianVuZ2xla2V5LmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo1OiJxdWVyeSI7fXM6ODoiYmFja2xpbmsiO3M6Mzc6InNlYXJjaC5waHA/cXVlcnk9e2t9JnR5cGU9d2ViJmxhbmc9ZW4iO3M6NDoibmFtZSI7czoxMDoiSnVuZ2xlIEtleSI7fXM6MTI6Imp1bmdsZWtleS5mciI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo1OiJxdWVyeSI7fXM6ODoiYmFja2xpbmsiO3M6Mzc6InNlYXJjaC5waHA/cXVlcnk9e2t9JnR5cGU9d2ViJmxhbmc9ZW4iO3M6NDoibmFtZSI7czoxMDoiSnVuZ2xlIEtleSI7fXM6MjA6Ind3dy5qdW5nbGUtc3BpZGVyLmRlIjthOjI6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjQ6Im5hbWUiO3M6MTM6Ikp1bmdsZSBTcGlkZXIiO31zOjEyOiJqeXhvLjExODguY3oiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6Nzoicz9xPXtrfSI7czo0OiJuYW1lIjtzOjQ6Ikp5eG8iO31zOjE2OiJrOXNhZmVzZWFyY2guY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjE2OiJzZWFyY2guanNwP3E9e2t9IjtzOjQ6Im5hbWUiO3M6MTQ6Iks5IFNhZmUgU2VhcmNoIjt9czoxNDoid3d3LmthdGF3ZWIuaXQiO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6NDoibmFtZSI7czo3OiJLYXRhd2ViIjt9czoxNDoid3d3LmtlbnNhcS5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6OToid2ViP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NjoiS2Vuc2FxIjt9czo5OiJrdmFzaXIubm8iO2E6Mzp7czo2OiJwYXJhbXMiO2E6Mjp7aTowO3M6MToicSI7aToxO3M6MTE6InNlYXJjaF93b3JkIjt9czo4OiJiYWNrbGluayI7czoxMDoiYWxsZT9xPXtrfSI7czo0OiJuYW1lIjtzOjY6Ikt2YXNpciI7fXM6MTM6Ind3dy5rdmFzaXIubm8iO2E6Mzp7czo2OiJwYXJhbXMiO2E6Mjp7aTowO3M6MToicSI7aToxO3M6MTE6InNlYXJjaF93b3JkIjt9czo4OiJiYWNrbGluayI7czoxMDoiYWxsZT9xPXtrfSI7czo0OiJuYW1lIjtzOjY6Ikt2YXNpciI7fXM6MTM6Ind3dy50b2lsZS5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTI6InNlYXJjaD9xPXtrfSI7czo0OiJuYW1lIjtzOjI4OiJMYSBUb2lsZSBEdSBRdcOpYmVjIChHb29nbGUpIjt9czoxMzoid2ViLnRvaWxlLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxMjoic2VhcmNoP3E9e2t9IjtzOjQ6Im5hbWUiO3M6Mjg6IkxhIFRvaWxlIER1IFF1w6liZWMgKEdvb2dsZSkiO31zOjg6ImxhYmFuLnZuIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjE3OiJzZWFyY2guaHRtbD9xPXtrfSI7czo0OiJuYW1lIjtzOjU6IkxhYmFuIjt9czoxMjoid3d3LmxhdG5lLmx2IjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjE1OiJzaWV0cy5waHA/cT17a30iO3M6NDoibmFtZSI7czo1OiJMYXRuZSI7fXM6MTU6InNlYXJjaC5saWxvLm9yZyI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxNzoicmVzdWx0cy5waHA/cT17a30iO3M6NDoibmFtZSI7czo0OiJMaWxvIjt9czo1OiJsby5zdCI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo3OiJ4X3F1ZXJ5Ijt9czo4OiJiYWNrbGluayI7czozMDoiY2dpLWJpbi9lb2xvc3QuY2dpP3hfcXVlcnk9e2t9IjtzOjQ6Im5hbWUiO3M6NToiTG8uc3QiO31zOjE1OiJ3d3cubG9va2FueS5jb20iO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MzY6Ii8oPzpzZWFyY2h8aW1hZ2VzfHZpZGVvcylcLyhbXlwvXSspLyI7fXM6NDoibmFtZSI7czo3OiJMb29rQW55Ijt9czoxOToic2VhcmNoLmxvb2tzZWVrLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxNzoic2VhcmNoMi5waHA/cT17a30iO3M6NDoibmFtZSI7czo4OiJMb29rc2VlayI7fXM6MTc6Ind3dy5sb29rc21hcnQuY29tIjthOjI6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjM6ImtleSI7fXM6NDoibmFtZSI7czo5OiJMb29rc21hcnQiO31zOjE2OiJzZWFyY2gubHljb3MuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjU6InF1ZXJ5Ijt9czo4OiJiYWNrbGluayI7czoxMDoiP3F1ZXJ5PXtrfSI7czo0OiJuYW1lIjtzOjU6Ikx5Y29zIjt9czo4OiJseWNvcy57fSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo1OiJxdWVyeSI7fXM6ODoiYmFja2xpbmsiO3M6MTA6Ij9xdWVyeT17a30iO3M6NDoibmFtZSI7czo1OiJMeWNvcyI7fXM6MTQ6Ind3dy5tYWFpbG0uY29tIjthOjI6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjU6InRla3N0Ijt9czo0OiJuYW1lIjtzOjEwOiJtYWFpbG0uY29tIjt9czoxMDoiZ28ubWFpbC5ydSI7YTo1OntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxODoic2VhcmNoP3JjaD1lJnE9e2t9IjtzOjg6ImNoYXJzZXRzIjthOjI6e2k6MDtzOjU6IlVURi04IjtpOjE7czoxMjoid2luZG93cy0xMjUxIjt9czoxMzoiaGlkZGVua2V5d29yZCI7YTozOntpOjA7czoxOToiL3JlZGlyXD8uKnJlZGlyPS4qLyI7aToxO3M6NDoiL14kLyI7aToyO3M6MToiLyI7fXM6NDoibmFtZSI7czo2OiJNYWlscnUiO31zOjEzOiJ3d3cubWFtbWEuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjU6InF1ZXJ5Ijt9czo4OiJiYWNrbGluayI7czoxNjoicmVzdWx0LnBocD9xPXtrfSI7czo0OiJuYW1lIjtzOjU6Ik1hbW1hIjt9czoxNzoibWFtbWE3NS5tYW1tYS5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NToicXVlcnkiO31zOjg6ImJhY2tsaW5rIjtzOjE2OiJyZXN1bHQucGhwP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NToiTWFtbWEiO31zOjE3OiJ3d3cubWVpbmVzdGFkdC5kZSI7YToyOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo1OiJ3b3JkcyI7fXM6NDoibmFtZSI7czoxMzoiTWVpbmVzdGFkdC5kZSI7fXM6NzoibWV0YS51YSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxNjoic2VhcmNoLmFzcD9xPXtrfSI7czo0OiJuYW1lIjtzOjc6Ik1ldGEudWEiO31zOjE3OiJzMS5tZXRhY3Jhd2xlci5kZSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czozOiJxcnkiO31zOjg6ImJhY2tsaW5rIjtzOjg6Ij9xcnk9e2t9IjtzOjQ6Im5hbWUiO3M6MTQ6Ik1ldGFDcmF3bGVyIERFIjt9czoxNzoiczIubWV0YWNyYXdsZXIuZGUiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MzoicXJ5Ijt9czo4OiJiYWNrbGluayI7czo4OiI/cXJ5PXtrfSI7czo0OiJuYW1lIjtzOjE0OiJNZXRhQ3Jhd2xlciBERSI7fXM6MTc6InMzLm1ldGFjcmF3bGVyLmRlIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjM6InFyeSI7fXM6ODoiYmFja2xpbmsiO3M6ODoiP3FyeT17a30iO3M6NDoibmFtZSI7czoxNDoiTWV0YUNyYXdsZXIgREUiO31zOjI1OiJtZXRhLnJyem4udW5pLWhhbm5vdmVyLmRlIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjc6ImVpbmdhYmUiO31zOjg6ImJhY2tsaW5rIjtzOjM0OiJtZXRhL2NnaS1iaW4vbWV0YS5nZXIxP2VpbmdhYmU9e2t9IjtzOjQ6Im5hbWUiO3M6NzoiTWV0YWdlciI7fXM6MTQ6Ind3dy5tZXRhZ2VyLmRlIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjc6ImVpbmdhYmUiO31zOjg6ImJhY2tsaW5rIjtzOjM0OiJtZXRhL2NnaS1iaW4vbWV0YS5nZXIxP2VpbmdhYmU9e2t9IjtzOjQ6Im5hbWUiO3M6NzoiTWV0YWdlciI7fXM6MTA6Im1ldGFnZXIuZGUiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NzoiZWluZ2FiZSI7fXM6ODoiYmFja2xpbmsiO3M6MzQ6Im1ldGEvY2dpLWJpbi9tZXRhLmdlcjE/ZWluZ2FiZT17a30iO3M6NDoibmFtZSI7czo3OiJNZXRhZ2VyIjt9czoxMToibWV0YWdlcjIuZGUiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MjI6InNlYXJjaC9pbmRleC5waHA/cT17a30iO3M6NDoibmFtZSI7czo4OiJNZXRhZ2VyMiI7fXM6MTk6Ind3dy5taXN0ZXItd29uZy5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6ODoia2V5d29yZHMiO31zOjg6ImJhY2tsaW5rIjtzOjIwOiJzZWFyY2gvP2tleXdvcmRzPXtrfSI7czo0OiJuYW1lIjtzOjExOiJNaXN0ZXIgV29uZyI7fXM6MTg6Ind3dy5taXN0ZXItd29uZy5kZSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo4OiJrZXl3b3JkcyI7fXM6ODoiYmFja2xpbmsiO3M6MjA6InNlYXJjaC8/a2V5d29yZHM9e2t9IjtzOjQ6Im5hbWUiO3M6MTE6Ik1pc3RlciBXb25nIjt9czoyMjoid3d3Lm1vbnN0ZXJjcmF3bGVyLmNvbSI7YToyOntzOjY6InBhcmFtcyI7YToxOntpOjA7czozOiJxcnkiO31zOjQ6Im5hbWUiO3M6MTQ6Ik1vbnN0ZXJjcmF3bGVyIjt9czoxMzoid3d3Lm1vemJvdC5mciI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxNzoicmVzdWx0cy5waHA/cT17a30iO3M6NDoibmFtZSI7czo2OiJtb3pib3QiO31zOjE2OiJ3d3cubW96Ym90LmNvLnVrIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjE3OiJyZXN1bHRzLnBocD9xPXtrfSI7czo0OiJuYW1lIjtzOjY6Im1vemJvdCI7fXM6MTQ6Ind3dy5tb3pib3QuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjE3OiJyZXN1bHRzLnBocD9xPXtrfSI7czo0OiJuYW1lIjtzOjY6Im1vemJvdCI7fXM6MjU6InNlYXJjaHNlcnZpY2UubXlzcGFjZS5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MzoicXJ5Ijt9czo4OiJiYWNrbGluayI7czo1NjoiaW5kZXguY2ZtP2Z1c2VhY3Rpb249c2l0ZXNlYXJjaC5yZXN1bHRzJnR5cGU9V2ViJnFyeT17a30iO3M6NDoibmFtZSI7czo3OiJNeVNwYWNlIjt9czoxNjoid3d3Lm15c2VhcmNoLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToyOntpOjA7czo5OiJzZWFyY2hmb3IiO2k6MTtzOjk6InNlYXJjaEZvciI7fXM6ODoiYmFja2xpbmsiO3M6MzM6InNlYXJjaC9Bam1haW4uamh0bWw/c2VhcmNoZm9yPXtrfSI7czo0OiJuYW1lIjtzOjExOiJNeVdlYlNlYXJjaCI7fXM6MTg6Im1zMTE0Lm15c2VhcmNoLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToyOntpOjA7czo5OiJzZWFyY2hmb3IiO2k6MTtzOjk6InNlYXJjaEZvciI7fXM6ODoiYmFja2xpbmsiO3M6MzM6InNlYXJjaC9Bam1haW4uamh0bWw/c2VhcmNoZm9yPXtrfSI7czo0OiJuYW1lIjtzOjExOiJNeVdlYlNlYXJjaCI7fXM6MTg6Im1zMTQ2Lm15c2VhcmNoLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToyOntpOjA7czo5OiJzZWFyY2hmb3IiO2k6MTtzOjk6InNlYXJjaEZvciI7fXM6ODoiYmFja2xpbmsiO3M6MzM6InNlYXJjaC9Bam1haW4uamh0bWw/c2VhcmNoZm9yPXtrfSI7czo0OiJuYW1lIjtzOjExOiJNeVdlYlNlYXJjaCI7fXM6MjE6ImtmLm15c2VhcmNoLm15d2F5LmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToyOntpOjA7czo5OiJzZWFyY2hmb3IiO2k6MTtzOjk6InNlYXJjaEZvciI7fXM6ODoiYmFja2xpbmsiO3M6MzM6InNlYXJjaC9Bam1haW4uamh0bWw/c2VhcmNoZm9yPXtrfSI7czo0OiJuYW1lIjtzOjExOiJNeVdlYlNlYXJjaCI7fXM6MjE6ImtpLm15c2VhcmNoLm15d2F5LmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToyOntpOjA7czo5OiJzZWFyY2hmb3IiO2k6MTtzOjk6InNlYXJjaEZvciI7fXM6ODoiYmFja2xpbmsiO3M6MzM6InNlYXJjaC9Bam1haW4uamh0bWw/c2VhcmNoZm9yPXtrfSI7czo0OiJuYW1lIjtzOjExOiJNeVdlYlNlYXJjaCI7fXM6MTY6InNlYXJjaC5teXdheS5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6Mjp7aTowO3M6OToic2VhcmNoZm9yIjtpOjE7czo5OiJzZWFyY2hGb3IiO31zOjg6ImJhY2tsaW5rIjtzOjMzOiJzZWFyY2gvQWptYWluLmpodG1sP3NlYXJjaGZvcj17a30iO3M6NDoibmFtZSI7czoxMToiTXlXZWJTZWFyY2giO31zOjIyOiJzZWFyY2gubXl3ZWJzZWFyY2guY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjI6e2k6MDtzOjk6InNlYXJjaGZvciI7aToxO3M6OToic2VhcmNoRm9yIjt9czo4OiJiYWNrbGluayI7czozMzoic2VhcmNoL0FqbWFpbi5qaHRtbD9zZWFyY2hmb3I9e2t9IjtzOjQ6Im5hbWUiO3M6MTE6Ik15V2ViU2VhcmNoIjt9czoxMjoid3d3Lm5hamRpLnNpIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjE2OiJzZWFyY2guanNwP3E9e2t9IjtzOjQ6Im5hbWUiO3M6ODoiTmFqZGkuc2kiO31zOjE1OiJzZWFyY2gubmF0ZS5jb20iO2E6NDp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MjE6InNlYXJjaC9hbGwuaHRtbD9xPXtrfSI7czo4OiJjaGFyc2V0cyI7YToxOntpOjA7czo2OiJFVUMtS1IiO31zOjQ6Im5hbWUiO3M6NDoiTmF0ZSI7fXM6MTY6InNlYXJjaC5uYXZlci5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NToicXVlcnkiO31zOjg6ImJhY2tsaW5rIjtzOjIyOiJzZWFyY2gubmF2ZXI/cXVlcnk9e2t9IjtzOjQ6Im5hbWUiO3M6NToiTmF2ZXIiO31zOjIzOiJrby5zZWFyY2gubmVlZDJmaW5kLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo5OiJzZWFyY2hmb3IiO31zOjg6ImJhY2tsaW5rIjtzOjMzOiJzZWFyY2gvQUptYWluLmpodG1sP3NlYXJjaGZvcj17a30iO3M6NDoibmFtZSI7czoxMDoiTmVlZHRvZmluZCI7fXM6MTE6Ind3dy5uZXRpLmVlIjthOjQ6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjU6InF1ZXJ5Ijt9czo4OiJiYWNrbGluayI7czoyNDoiY2dpLWJpbi9vdHNpbmc/cXVlcnk9e2t9IjtzOjg6ImNoYXJzZXRzIjthOjE6e2k6MDtzOjEwOiJpc28tODg1OS0xIjt9czo0OiJuYW1lIjtzOjQ6Ik5ldGkiO31zOjE2OiJzZWFyY2gubmlmdHkuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjI6e2k6MDtzOjE6InEiO2k6MTtzOjQ6IlRleHQiO31zOjg6ImJhY2tsaW5rIjtzOjIyOiJ3ZWJzZWFyY2gvc2VhcmNoP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NToiTmlmdHkiO31zOjIzOiJzZWFyY2guYXpieS5mbXdvcmxkLm5ldCI7YTozOntzOjY6InBhcmFtcyI7YToyOntpOjA7czoxOiJxIjtpOjE7czo0OiJUZXh0Ijt9czo4OiJiYWNrbGluayI7czoyMjoid2Vic2VhcmNoL3NlYXJjaD9xPXtrfSI7czo0OiJuYW1lIjtzOjU6Ik5pZnR5Ijt9czoyMToidmlkZW9zZWFyY2gubmlmdHkuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjI6Imt3Ijt9czo4OiJiYWNrbGluayI7czoxMzoic2VhcmNoP2t3PXtrfSI7czo0OiJuYW1lIjtzOjEyOiJOaWZ0eSBWaWRlb3MiO31zOjg6Im5pZ21hLnJ1IjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InMiO31zOjg6ImJhY2tsaW5rIjtzOjE1OiJpbmRleC5waHA/cz17a30iO3M6NDoibmFtZSI7czo1OiJOaWdtYSI7fXM6MTQ6InN6dWthai5vbmV0LnBsIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjI6InF0Ijt9czo4OiJiYWNrbGluayI7czoxNzoicXVlcnkuaHRtbD9xdD17a30iO3M6NDoibmFtZSI7czo3OiJPbmV0LnBsIjt9czo5OiJvbmxpbmUubm8iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MjI6Imdvb2dsZS9pbmRleC5qc3A/cT17a30iO3M6NDoibmFtZSI7czo5OiJPbmxpbmUubm8iO31zOjE5OiJ3d3cub25seS1zZWFyY2guY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjY6Ij9xPXtrfSI7czo0OiJuYW1lIjtzOjEwOiJPbmx5U2VhcmNoIjt9czoxMToid3d3LjE4ODEubm8iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NToiUXVlcnkiO31zOjg6ImJhY2tsaW5rIjtzOjE2OiJNdWx0aS8/UXVlcnk9e2t9IjtzOjQ6Im5hbWUiO3M6MTc6Ik9wcGx5c25pbmdlbiAxODgxIjt9czoxNToiYnVzY2Eub3JhbmdlLmVzIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjEyOiJzZWFyY2g/cT17a30iO3M6NDoibmFtZSI7czo2OiJPcmFuZ2UiO31zOjIwOiJsZW1vdGV1ci5rZS52b2lsYS5mciI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoyOiJrdyI7fXM6ODoiYmFja2xpbmsiO3M6NzoiP2t3PXtrfSI7czo0OiJuYW1lIjtzOjY6Ik9yYW5nZSI7fXM6MTg6ImxlbW90ZXVyLm9yYW5nZS5mciI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoyOiJrdyI7fXM6ODoiYmFja2xpbmsiO3M6NzoiP2t3PXtrfSI7czo0OiJuYW1lIjtzOjY6Ik9yYW5nZSI7fXM6MTY6Ind3dy5wYXBlcmJhbGwuZGUiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTQ6InN1Y2hlL3MvP3E9e2t9IjtzOjQ6Im5hbWUiO3M6OToiUGFwZXJiYWxsIjt9czoyMToiZXh0ZXJuLnBlb3BsZWNoZWNrLmRlIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjE0OiJsaW5rLnBocD9xPXtrfSI7czo0OiJuYW1lIjtzOjExOiJQZW9wbGVDaGVjayI7fXM6MTk6InNlYXJjaC5wZW9wbGVwYy5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTI6InNlYXJjaD9xPXtrfSI7czo0OiJuYW1lIjtzOjg6IlBlb3BsZVBDIjt9czoxNzoid3d3LnBpY3NlYXJjaC5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTU6ImluZGV4LmNnaT9xPXtrfSI7czo0OiJuYW1lIjtzOjk6IlBpY3NlYXJjaCI7fXM6MTQ6Ind3dy5wbGF6b28uY29tIjthOjI6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjQ6Im5hbWUiO3M6NjoiUGxhem9vIjt9czoxNToicGx1c25ldHdvcmsuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjY6Ij9xPXtrfSI7czo0OiJuYW1lIjtzOjExOiJQbHVzTmV0d29yayI7fXM6ODoicG9pc2sucnUiO2E6NDp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NDoidGV4dCI7fXM6ODoiYmFja2xpbmsiO3M6MjI6ImNnaS1iaW4vcG9pc2s/dGV4dD17a30iO3M6ODoiY2hhcnNldHMiO2E6MTp7aTowO3M6MTI6IndpbmRvd3MtMTI1MSI7fXM6NDoibmFtZSI7czo4OiJQb2lzay5SdSI7fXM6MTM6InNlYXJjaC5xaXAucnUiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NToicXVlcnkiO31zOjg6ImJhY2tsaW5rIjtzOjE2OiJzZWFyY2g/cXVlcnk9e2t9IjtzOjQ6Im5hbWUiO3M6NjoicWlwLnJ1Ijt9czoxNDoid3d3LnF1YWxpZ28uYXQiO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6NDoibmFtZSI7czo3OiJRdWFsaWdvIjt9czoxNDoid3d3LnF1YWxpZ28uY2giO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6NDoibmFtZSI7czo3OiJRdWFsaWdvIjt9czoxNDoid3d3LnF1YWxpZ28uZGUiO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6NDoibmFtZSI7czo3OiJRdWFsaWdvIjt9czoxNDoid3d3LnF1YWxpZ28ubmwiO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6NDoibmFtZSI7czo3OiJRdWFsaWdvIjt9czoxMzoid3d3LnF3YW50LmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czoxMzoiaGlkZGVua2V5d29yZCI7YToyOntpOjA7czo0OiIvXiQvIjtpOjE7czoxOiIvIjt9czo0OiJuYW1lIjtzOjU6IlF3YW50Ijt9czoxNDoibGl0ZS5xd2FudC5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6MTM6ImhpZGRlbmtleXdvcmQiO2E6Mjp7aTowO3M6NDoiL14kLyI7aToxO3M6MToiLyI7fXM6NDoibmFtZSI7czo1OiJRd2FudCI7fXM6MjM6IndlYnNlYXJjaC5yYWt1dGVuLmNvLmpwIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjI6InF0Ijt9czo4OiJiYWNrbGluayI7czoxMjoiV2ViSVM/cXQ9e2t9IjtzOjQ6Im5hbWUiO3M6NzoiUmFrdXRlbiI7fXM6MTU6Im5vdmEucmFtYmxlci5ydSI7YTozOntzOjY6InBhcmFtcyI7YToyOntpOjA7czo1OiJxdWVyeSI7aToxO3M6NToid29yZHMiO31zOjg6ImJhY2tsaW5rIjtzOjE2OiJzZWFyY2g/cXVlcnk9e2t9IjtzOjQ6Im5hbWUiO3M6NzoiUmFtYmxlciI7fXM6MTY6Ind3dy5yaWtzZGVsZW4uc2UiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NDoiV2hhdCI7fXM6ODoiYmFja2xpbmsiO3M6MjY6IlNlYXJjaFJlc3VsdC5hc3B4P1doYXQ9e2t9IjtzOjQ6Im5hbWUiO3M6OToiUmlrc2RlbGVuIjt9czoxMzoic2VhcmNoLnJyLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czo2OiI/cT17a30iO3M6NDoibmFtZSI7czoxMToiUm9hZCBSdW5uZXIiO31zOjExOiJycG1maW5kLm5ldCI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo1OiJxdWVyeSI7fXM6ODoiYmFja2xpbmsiO3M6MzU6ImxpbnV4L3JwbTJodG1sL3NlYXJjaC5waHA/cXVlcnk9e2t9IjtzOjQ6Im5hbWUiO3M6NzoicnBtZmluZCI7fXM6MTU6ImZyMi5ycG1maW5kLm5ldCI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo1OiJxdWVyeSI7fXM6ODoiYmFja2xpbmsiO3M6MzU6ImxpbnV4L3JwbTJodG1sL3NlYXJjaC5waHA/cXVlcnk9e2t9IjtzOjQ6Im5hbWUiO3M6NzoicnBtZmluZCI7fXM6MTY6InBlc3F1aXNhLnNhcG8ucHQiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6NjoiP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NDoiU2FwbyI7fXM6OToic2NvdXIuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjIyOiIvc2VhcmNoXC9bXlwvXStcLyguKikvIjt9czo4OiJiYWNrbGluayI7czoxNDoic2VhcmNoL3dlYi97a30iO3M6NDoibmFtZSI7czo5OiJTY291ci5jb20iO31zOjEzOiJ3d3cuc2VhcmNoLmNoIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjY6Ij9xPXtrfSI7czo0OiJuYW1lIjtzOjk6IlNlYXJjaC5jaCI7fXM6MTQ6Ind3dy5zZWFyY2guY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjEyOiJzZWFyY2g/cT17a30iO3M6NDoibmFtZSI7czoxMDoiU2VhcmNoLmNvbSI7fXM6MTQ6InNlYXJjaGFsb3QuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjY6Ij9xPXtrfSI7czo0OiJuYW1lIjtzOjEwOiJTZWFyY2hhbG90Ijt9czoyMDoid3d3LnNlYXJjaGNhbnZhcy5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6OToid2ViP3E9e2t9IjtzOjQ6Im5hbWUiO3M6MTI6IlNlYXJjaENhbnZhcyI7fXM6MTQ6InNlYXJjaGxvY2suY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjEzOiJoaWRkZW5rZXl3b3JkIjthOjE6e2k6MDtzOjQ6Ii8uKi8iO31zOjQ6Im5hbWUiO3M6MTA6IlNlYXJjaExvY2siO31zOjIyOiJyZXN1bHRzLnNlYXJjaGxvY2suY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjEzOiJoaWRkZW5rZXl3b3JkIjthOjE6e2k6MDtzOjQ6Ii8uKi8iO31zOjQ6Im5hbWUiO3M6MTA6IlNlYXJjaExvY2siO31zOjE3OiJ3d3cuc2VhcmNoeS5jby51ayI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxNjoiaW5kZXguaHRtbD9xPXtrfSI7czo0OiJuYW1lIjtzOjc6IlNlYXJjaHkiO31zOjE2OiJzZWFyY2guc2Vlc2FhLmpwIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjI1OiIvXC8oW15cL10rKVwvaW5kZXhcLmh0bWwvIjt9czo4OiJiYWNrbGluayI7czoxNDoie2t9L2luZGV4Lmh0bWwiO3M6NDoibmFtZSI7czo2OiJTZWVTYWEiO31zOjEzOiJiZy5zZXRvb3ouY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjU6InF1ZXJ5Ijt9czo4OiJiYWNrbGluayI7czoxNjoic2VhcmNoP3F1ZXJ5PXtrfSI7czo0OiJuYW1lIjtzOjY6IlNldG9veiI7fXM6MTM6ImRhLnNldG9vei5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NToicXVlcnkiO31zOjg6ImJhY2tsaW5rIjtzOjE2OiJzZWFyY2g/cXVlcnk9e2t9IjtzOjQ6Im5hbWUiO3M6NjoiU2V0b296Ijt9czoxMzoiZWwuc2V0b296LmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo1OiJxdWVyeSI7fXM6ODoiYmFja2xpbmsiO3M6MTY6InNlYXJjaD9xdWVyeT17a30iO3M6NDoibmFtZSI7czo2OiJTZXRvb3oiO31zOjEzOiJmYS5zZXRvb3ouY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjU6InF1ZXJ5Ijt9czo4OiJiYWNrbGluayI7czoxNjoic2VhcmNoP3F1ZXJ5PXtrfSI7czo0OiJuYW1lIjtzOjY6IlNldG9veiI7fXM6MTM6InVyLnNldG9vei5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NToicXVlcnkiO31zOjg6ImJhY2tsaW5rIjtzOjE2OiJzZWFyY2g/cXVlcnk9e2t9IjtzOjQ6Im5hbWUiO3M6NjoiU2V0b296Ijt9czoxMzoie30uc2V0b296LmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo1OiJxdWVyeSI7fXM6ODoiYmFja2xpbmsiO3M6MTY6InNlYXJjaD9xdWVyeT17a30iO3M6NDoibmFtZSI7czo2OiJTZXRvb3oiO31zOjE2OiJzZWFyY2guc2V6bmFtLmN6IjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjY6Ij9xPXtrfSI7czo0OiJuYW1lIjtzOjY6IlNlem5hbSI7fXM6MTU6InZpZGVhLnNlem5hbS5jeiI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czo2OiI/cT17a30iO3M6NDoibmFtZSI7czoxMjoiU2V6bmFtIFZpZGVhIjt9czoxNjoid3d3LnNoYXJlbG9vay5mciI7YToyOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo3OiJrZXl3b3JkIjt9czo0OiJuYW1lIjtzOjk6IlNoYXJlbG9vayI7fXM6MTM6Ind3dy5za3luZXQuYmUiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MzE6InNlcnZpY2VzL3JlY2hlcmNoZS9nb29nbGU/cT17a30iO3M6NDoibmFtZSI7czo2OiJTa3luZXQiO31zOjc6Im0uc20uY24iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6Nzoicz9xPXtrfSI7czo0OiJuYW1lIjtzOjU6InNtLmNuIjt9czoxMDoic28ubS5zbS5jbiI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czo3OiJzP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NToic20uY24iO31zOjEwOiJtLnNwLnNtLmNuIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjc6InM/cT17a30iO3M6NDoibmFtZSI7czo1OiJzbS5jbiI7fXM6MTA6Inl6Lm0uc20uY24iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6Nzoicz9xPXtrfSI7czo0OiJuYW1lIjtzOjU6InNtLmNuIjt9czoxMToicXVhcmsuc20uY24iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6Nzoicz9xPXtrfSI7czo0OiJuYW1lIjtzOjU6InNtLmNuIjt9czo5OiJ3d3cuc20uZGUiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6NjoiP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NToic20uZGUiO31zOjI2OiJzZWFyY2guc21hcnRhZGRyZXNzYmFyLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJzIjt9czo4OiJiYWNrbGluayI7czo2OiI/cz17a30iO3M6NDoibmFtZSI7czoxNToiU21hcnRBZGRyZXNzYmFyIjt9czoyNDoic2VhcmNoLnNtYXJ0c2hvcHBpbmcuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjI6e2k6MDtzOjM6Imt3ZCI7aToxO3M6ODoia2V5d29yZHMiO31zOjg6ImJhY2tsaW5rIjtzOjg6Ij9rd2Q9e2t9IjtzOjQ6Im5hbWUiO3M6MTM6IlNtYXJ0U2hvcHBpbmciO31zOjE0OiJzZWFyY2guc25hcC5kbyI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czo2OiI/cT17a30iO3M6NDoibmFtZSI7czo3OiJTbmFwLmRvIjt9czoxNjoid3d3LnNvLW5ldC5uZS5qcCI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo1OiJxdWVyeSI7fXM6ODoiYmFja2xpbmsiO3M6MjE6InNlYXJjaC93ZWIvP3F1ZXJ5PXtrfSI7czo0OiJuYW1lIjtzOjY6IlNvLW5ldCI7fXM6MTg6InZpZGVvLnNvLW5ldC5uZS5qcCI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoyOiJrdyI7fXM6ODoiYmFja2xpbmsiO3M6MTQ6InNlYXJjaC8/a3c9e2t9IjtzOjQ6Im5hbWUiO3M6MTM6IlNvLW5ldCBWaWRlb3MiO31zOjE5OiJzZWFyY2guc29mdG9uaWMuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjIxOiJkZWZhdWx0L2RlZmF1bHQ/cT17a30iO3M6NDoibmFtZSI7czo4OiJTb2Z0b25pYyI7fXM6MTM6Ind3dy5zb2dvdS5jb20iO2E6NTp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NToicXVlcnkiO31zOjg6ImJhY2tsaW5rIjtzOjEzOiJ3ZWI/cXVlcnk9e2t9IjtzOjg6ImNoYXJzZXRzIjthOjE6e2k6MDtzOjY6ImdiMjMxMiI7fXM6MTM6ImhpZGRlbmtleXdvcmQiO2E6Mzp7aTowO3M6MTQ6Ii9saW5rXD91cmw9LiovIjtpOjE7czo0OiIvXiQvIjtpOjI7czoxOiIvIjt9czo0OiJuYW1lIjtzOjU6IlNvZ291Ijt9czo5OiJzb2dvdS5jb20iO2E6NTp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NToicXVlcnkiO31zOjg6ImJhY2tsaW5rIjtzOjEzOiJ3ZWI/cXVlcnk9e2t9IjtzOjg6ImNoYXJzZXRzIjthOjE6e2k6MDtzOjY6ImdiMjMxMiI7fXM6MTM6ImhpZGRlbmtleXdvcmQiO2E6Mzp7aTowO3M6MTQ6Ii9saW5rXD91cmw9LiovIjtpOjE7czo0OiIvXiQvIjtpOjI7czoxOiIvIjt9czo0OiJuYW1lIjtzOjU6IlNvZ291Ijt9czoxMToibS5zb2dvdS5jb20iO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6Nzoia2V5d29yZCI7fXM6NDoibmFtZSI7czo1OiJTb2dvdSI7fXM6MTM6IndhcC5zb2dvdS5jb20iO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6Nzoia2V5d29yZCI7fXM6NDoibmFtZSI7czo1OiJTb2dvdSI7fXM6MTc6ImVuZ2xpc2guc29nb3UuY29tIjthOjI6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjc6ImtleXdvcmQiO31zOjQ6Im5hbWUiO3M6NToiU29nb3UiO31zOjEyOiJ3d3cuc29zby5jb20iO2E6NDp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToidyI7fXM6ODoiYmFja2xpbmsiO3M6NzoicT93PXtrfSI7czo4OiJjaGFyc2V0cyI7YToxOntpOjA7czo2OiJnYjIzMTIiO31zOjQ6Im5hbWUiO3M6NDoiU29zbyI7fXM6MTQ6Ind3dy5zcHV0bmlrLnJ1IjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjEyOiJzZWFyY2g/cT17a30iO3M6NDoibmFtZSI7czo3OiJTcHV0bmlrIjt9czoxNjoic2VhcmNoLnN0YXJ0LmZ5aSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czo2OiI/cT17a30iO3M6NDoibmFtZSI7czo5OiJzdGFydC5meWkiO31zOjEzOiJzdGFydHBhZ2UuY29tIjthOjQ6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjU6InF1ZXJ5Ijt9czo4OiJiYWNrbGluayI7czoyMDoiZG8vYXNlYXJjaD9xdWVyeT17a30iO3M6MTM6ImhpZGRlbmtleXdvcmQiO2E6MTp7aTowO3M6MTE6Ii9kby9hc2VhcmNoIjt9czo0OiJuYW1lIjtzOjk6IlN0YXJ0UGFnZSI7fXM6MjE6ImNsYXNzaWMuc3RhcnRwYWdlLmNvbSI7YTo0OntzOjY6InBhcmFtcyI7YToxOntpOjA7czo1OiJxdWVyeSI7fXM6ODoiYmFja2xpbmsiO3M6MjA6ImRvL2FzZWFyY2g/cXVlcnk9e2t9IjtzOjEzOiJoaWRkZW5rZXl3b3JkIjthOjE6e2k6MDtzOjExOiIvZG8vYXNlYXJjaCI7fXM6NDoibmFtZSI7czo5OiJTdGFydFBhZ2UiO31zOjE3OiJ3d3cuc3RhcnRwYWdlLmNvbSI7YTo0OntzOjY6InBhcmFtcyI7YToxOntpOjA7czo1OiJxdWVyeSI7fXM6ODoiYmFja2xpbmsiO3M6MjA6ImRvL2FzZWFyY2g/cXVlcnk9e2t9IjtzOjEzOiJoaWRkZW5rZXl3b3JkIjthOjE6e2k6MDtzOjExOiIvZG8vYXNlYXJjaCI7fXM6NDoibmFtZSI7czo5OiJTdGFydFBhZ2UiO31zOjE2OiJldS5zdGFydHBhZ2UuY29tIjthOjQ6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjU6InF1ZXJ5Ijt9czo4OiJiYWNrbGluayI7czoyMDoiZG8vYXNlYXJjaD9xdWVyeT17a30iO3M6MTM6ImhpZGRlbmtleXdvcmQiO2E6MTp7aTowO3M6MTE6Ii9kby9hc2VhcmNoIjt9czo0OiJuYW1lIjtzOjk6IlN0YXJ0UGFnZSI7fXM6MTg6InM2LWV1NS5peHF1aWNrLmNvbSI7YTo0OntzOjY6InBhcmFtcyI7YToxOntpOjA7czo1OiJxdWVyeSI7fXM6ODoiYmFja2xpbmsiO3M6MjA6ImRvL2FzZWFyY2g/cXVlcnk9e2t9IjtzOjEzOiJoaWRkZW5rZXl3b3JkIjthOjE6e2k6MDtzOjExOiIvZG8vYXNlYXJjaCI7fXM6NDoibmFtZSI7czo5OiJTdGFydFBhZ2UiO31zOjIwOiJzMi1ldTQuc3RhcnRwYWdlLmNvbSI7YTo0OntzOjY6InBhcmFtcyI7YToxOntpOjA7czo1OiJxdWVyeSI7fXM6ODoiYmFja2xpbmsiO3M6MjA6ImRvL2FzZWFyY2g/cXVlcnk9e2t9IjtzOjEzOiJoaWRkZW5rZXl3b3JkIjthOjE6e2k6MDtzOjExOiIvZG8vYXNlYXJjaCI7fXM6NDoibmFtZSI7czo5OiJTdGFydFBhZ2UiO31zOjIwOiJzNi1ldTQuc3RhcnRwYWdlLmNvbSI7YTo0OntzOjY6InBhcmFtcyI7YToxOntpOjA7czo1OiJxdWVyeSI7fXM6ODoiYmFja2xpbmsiO3M6MjA6ImRvL2FzZWFyY2g/cXVlcnk9e2t9IjtzOjEzOiJoaWRkZW5rZXl3b3JkIjthOjE6e2k6MDtzOjExOiIvZG8vYXNlYXJjaCI7fXM6NDoibmFtZSI7czo5OiJTdGFydFBhZ2UiO31zOjIwOiJzNy1ldTQuc3RhcnRwYWdlLmNvbSI7YTo0OntzOjY6InBhcmFtcyI7YToxOntpOjA7czo1OiJxdWVyeSI7fXM6ODoiYmFja2xpbmsiO3M6MjA6ImRvL2FzZWFyY2g/cXVlcnk9e2t9IjtzOjEzOiJoaWRkZW5rZXl3b3JkIjthOjE6e2k6MDtzOjExOiIvZG8vYXNlYXJjaCI7fXM6NDoibmFtZSI7czo5OiJTdGFydFBhZ2UiO31zOjIwOiJzMS1ldTUuc3RhcnRwYWdlLmNvbSI7YTo0OntzOjY6InBhcmFtcyI7YToxOntpOjA7czo1OiJxdWVyeSI7fXM6ODoiYmFja2xpbmsiO3M6MjA6ImRvL2FzZWFyY2g/cXVlcnk9e2t9IjtzOjEzOiJoaWRkZW5rZXl3b3JkIjthOjE6e2k6MDtzOjExOiIvZG8vYXNlYXJjaCI7fXM6NDoibmFtZSI7czo5OiJTdGFydFBhZ2UiO31zOjIwOiJzMi1ldTUuc3RhcnRwYWdlLmNvbSI7YTo0OntzOjY6InBhcmFtcyI7YToxOntpOjA7czo1OiJxdWVyeSI7fXM6ODoiYmFja2xpbmsiO3M6MjA6ImRvL2FzZWFyY2g/cXVlcnk9e2t9IjtzOjEzOiJoaWRkZW5rZXl3b3JkIjthOjE6e2k6MDtzOjExOiIvZG8vYXNlYXJjaCI7fXM6NDoibmFtZSI7czo5OiJTdGFydFBhZ2UiO31zOjIwOiJzNC1ldTUuc3RhcnRwYWdlLmNvbSI7YTo0OntzOjY6InBhcmFtcyI7YToxOntpOjA7czo1OiJxdWVyeSI7fXM6ODoiYmFja2xpbmsiO3M6MjA6ImRvL2FzZWFyY2g/cXVlcnk9e2t9IjtzOjEzOiJoaWRkZW5rZXl3b3JkIjthOjE6e2k6MDtzOjExOiIvZG8vYXNlYXJjaCI7fXM6NDoibmFtZSI7czo5OiJTdGFydFBhZ2UiO31zOjIwOiJzNS1ldTUuc3RhcnRwYWdlLmNvbSI7YTo0OntzOjY6InBhcmFtcyI7YToxOntpOjA7czo1OiJxdWVyeSI7fXM6ODoiYmFja2xpbmsiO3M6MjA6ImRvL2FzZWFyY2g/cXVlcnk9e2t9IjtzOjEzOiJoaWRkZW5rZXl3b3JkIjthOjE6e2k6MDtzOjExOiIvZG8vYXNlYXJjaCI7fXM6NDoibmFtZSI7czo5OiJTdGFydFBhZ2UiO31zOjIwOiJzNi1ldTUuc3RhcnRwYWdlLmNvbSI7YTo0OntzOjY6InBhcmFtcyI7YToxOntpOjA7czo1OiJxdWVyeSI7fXM6ODoiYmFja2xpbmsiO3M6MjA6ImRvL2FzZWFyY2g/cXVlcnk9e2t9IjtzOjEzOiJoaWRkZW5rZXl3b3JkIjthOjE6e2k6MDtzOjExOiIvZG8vYXNlYXJjaCI7fXM6NDoibmFtZSI7czo5OiJTdGFydFBhZ2UiO31zOjIwOiJzNy1ldTUuc3RhcnRwYWdlLmNvbSI7YTo0OntzOjY6InBhcmFtcyI7YToxOntpOjA7czo1OiJxdWVyeSI7fXM6ODoiYmFja2xpbmsiO3M6MjA6ImRvL2FzZWFyY2g/cXVlcnk9e2t9IjtzOjEzOiJoaWRkZW5rZXl3b3JkIjthOjE6e2k6MDtzOjExOiIvZG8vYXNlYXJjaCI7fXM6NDoibmFtZSI7czo5OiJTdGFydFBhZ2UiO31zOjIwOiJzOC1ldTUuc3RhcnRwYWdlLmNvbSI7YTo0OntzOjY6InBhcmFtcyI7YToxOntpOjA7czo1OiJxdWVyeSI7fXM6ODoiYmFja2xpbmsiO3M6MjA6ImRvL2FzZWFyY2g/cXVlcnk9e2t9IjtzOjEzOiJoaWRkZW5rZXl3b3JkIjthOjE6e2k6MDtzOjExOiIvZG8vYXNlYXJjaCI7fXM6NDoibmFtZSI7czo5OiJTdGFydFBhZ2UiO31zOjIxOiJzMTAtZXU1LnN0YXJ0cGFnZS5jb20iO2E6NDp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NToicXVlcnkiO31zOjg6ImJhY2tsaW5rIjtzOjIwOiJkby9hc2VhcmNoP3F1ZXJ5PXtrfSI7czoxMzoiaGlkZGVua2V5d29yZCI7YToxOntpOjA7czoxMToiL2RvL2FzZWFyY2giO31zOjQ6Im5hbWUiO3M6OToiU3RhcnRQYWdlIjt9czoyMToiczExLWV1NS5zdGFydHBhZ2UuY29tIjthOjQ6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjU6InF1ZXJ5Ijt9czo4OiJiYWNrbGluayI7czoyMDoiZG8vYXNlYXJjaD9xdWVyeT17a30iO3M6MTM6ImhpZGRlbmtleXdvcmQiO2E6MTp7aTowO3M6MTE6Ii9kby9hc2VhcmNoIjt9czo0OiJuYW1lIjtzOjk6IlN0YXJ0UGFnZSI7fXM6MjE6InMxMi1ldTUuc3RhcnRwYWdlLmNvbSI7YTo0OntzOjY6InBhcmFtcyI7YToxOntpOjA7czo1OiJxdWVyeSI7fXM6ODoiYmFja2xpbmsiO3M6MjA6ImRvL2FzZWFyY2g/cXVlcnk9e2t9IjtzOjEzOiJoaWRkZW5rZXl3b3JkIjthOjE6e2k6MDtzOjExOiIvZG8vYXNlYXJjaCI7fXM6NDoibmFtZSI7czo5OiJTdGFydFBhZ2UiO31zOjIxOiJzMTMtZXU1LnN0YXJ0cGFnZS5jb20iO2E6NDp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NToicXVlcnkiO31zOjg6ImJhY2tsaW5rIjtzOjIwOiJkby9hc2VhcmNoP3F1ZXJ5PXtrfSI7czoxMzoiaGlkZGVua2V5d29yZCI7YToxOntpOjA7czoxMToiL2RvL2FzZWFyY2giO31zOjQ6Im5hbWUiO3M6OToiU3RhcnRQYWdlIjt9czoyMToiczE0LWV1NS5zdGFydHBhZ2UuY29tIjthOjQ6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjU6InF1ZXJ5Ijt9czo4OiJiYWNrbGluayI7czoyMDoiZG8vYXNlYXJjaD9xdWVyeT17a30iO3M6MTM6ImhpZGRlbmtleXdvcmQiO2E6MTp7aTowO3M6MTE6Ii9kby9hc2VhcmNoIjt9czo0OiJuYW1lIjtzOjk6IlN0YXJ0UGFnZSI7fXM6MjY6InN0YXJ0Z29vZ2xlLnN0YXJ0cGFnaW5hLm5sIjthOjM6e3M6NjoicGFyYW1zIjthOjI6e2k6MDtzOjE6InEiO2k6MTtzOjU6InF1ZXJ5Ijt9czo4OiJiYWNrbGluayI7czo2OiI/cT17a30iO3M6NDoibmFtZSI7czoyMDoiU3RhcnRwYWdpbmEgKEdvb2dsZSkiO31zOjE3OiJ3d3cuc3RhcnRzaWRlbi5ubyI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoyMDoic29rL2luZGV4Lmh0bWw/cT17a30iO3M6NDoibmFtZSI7czoxMDoiU3RhcnRzaWRlbiI7fXM6MTA6InN1Y2hlLmluZm8iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6ODoiS2V5d29yZHMiO31zOjg6ImJhY2tsaW5rIjtzOjIyOiJzdWNoZS5waHA/S2V5d29yZHM9e2t9IjtzOjQ6Im5hbWUiO3M6MTA6IlN1Y2hlLmluZm8iO31zOjIwOiJ3d3cuc3VjaG1hc2NoaW5lLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo3OiJzdWNoc3RyIjt9czo4OiJiYWNrbGluayI7czoyNjoiY2dpLWJpbi93by5jZ2k/c3VjaHN0cj17a30iO3M6NDoibmFtZSI7czoxNjoiU3VjaG1hc2NoaW5lLmNvbSI7fXM6MTU6Ind3dy5zdWNobmFzZS5kZSI7YToyOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo0OiJuYW1lIjtzOjg6IlN1Y2huYXNlIjt9czoxNDoic3VyZmNhbnlvbi5jb20iO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6NDoibmFtZSI7czoxMToiU3VyZiBDYW55b24iO31zOjE3OiJzdWNoZS50LW9ubGluZS5kZSI7YTo0OntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czo1MToiZmFzdC1jZ2kvdHNjP21hbmRhbnQ9dG9pJmNvbnRleHQ9aW50ZXJuZXQtdGFiJnE9e2t9IjtzOjEzOiJoaWRkZW5rZXl3b3JkIjthOjI6e2k6MDtzOjQ6Ii9eJC8iO2k6MTtzOjE6Ii8iO31zOjQ6Im5hbWUiO3M6ODoiVC1PbmxpbmUiO31zOjIwOiJicmlzYmFuZS50LW9ubGluZS5kZSI7YTo0OntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czo1MToiZmFzdC1jZ2kvdHNjP21hbmRhbnQ9dG9pJmNvbnRleHQ9aW50ZXJuZXQtdGFiJnE9e2t9IjtzOjEzOiJoaWRkZW5rZXl3b3JkIjthOjI6e2k6MDtzOjQ6Ii9eJC8iO2k6MTtzOjE6Ii8iO31zOjQ6Im5hbWUiO3M6ODoiVC1PbmxpbmUiO31zOjI4OiJuYXZpZ2F0aW9uc2hpbGZlLnQtb25saW5lLmRlIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjM4OiJkdGFnL2Rucy9yZXN1bHRzP21vZGU9c2VhcmNoX3RvcCZxPXtrfSI7czo0OiJuYW1lIjtzOjg6IlQtT25saW5lIjt9czoxNToid3d3LnRhbGltYmEuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjY6InNlYXJjaCI7fXM6ODoiYmFja2xpbmsiO3M6MzY6ImluZGV4LnBocD9wYWdlPXNlYXJjaC93ZWImc2VhcmNoPXtrfSI7czo0OiJuYW1lIjtzOjc6InRhbGltYmEiO31zOjE4OiJ3d3cudGFsa3RhbGsuY28udWsiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NToicXVlcnkiO31zOjg6ImJhY2tsaW5rIjtzOjI5OiJzZWFyY2gvcmVzdWx0cy5odG1sP3F1ZXJ5PXtrfSI7czo0OiJuYW1lIjtzOjg6IlRhbGtUYWxrIjt9czoxMDoidGFybW90LmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxMDoiYXJhLz9xPXtrfSI7czo0OiJuYW1lIjtzOjY6IlRhcm1vdCI7fXM6MTQ6InRlY2hub3JhdGkuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjM5OiJzZWFyY2g/cmV0dXJuPXNpdGVzJmF1dGhvcml0eT1hbGwmcT17a30iO3M6NDoibmFtZSI7czoxMDoiVGVjaG5vcmF0aSI7fXM6MTM6Ind3dy50ZW9tYS5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6OToid2ViP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NToiVGVvbWEiO31zOjE3OiJidXNjYWRvci50ZXJyYS5lcyI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo1OiJxdWVyeSI7fXM6ODoiYmFja2xpbmsiO3M6MzY6IkRlZmF1bHQuYXNweD9zb3VyY2U9U2VhcmNoJnF1ZXJ5PXtrfSI7czo0OiJuYW1lIjtzOjU6IlRlcnJhIjt9czoxNzoiYnVzY2Fkb3IudGVycmEuY2wiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NToicXVlcnkiO31zOjg6ImJhY2tsaW5rIjtzOjM2OiJEZWZhdWx0LmFzcHg/c291cmNlPVNlYXJjaCZxdWVyeT17a30iO3M6NDoibmFtZSI7czo1OiJUZXJyYSI7fXM6MjE6ImJ1c2NhZG9yLnRlcnJhLmNvbS5iciI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo1OiJxdWVyeSI7fXM6ODoiYmFja2xpbmsiO3M6MzY6IkRlZmF1bHQuYXNweD9zb3VyY2U9U2VhcmNoJnF1ZXJ5PXtrfSI7czo0OiJuYW1lIjtzOjU6IlRlcnJhIjt9czoxNzoic2VhcmNoLnRpc2NhbGkuaXQiO2E6Mzp7czo2OiJwYXJhbXMiO2E6Mjp7aTowO3M6MToicSI7aToxO3M6Mzoia2V5Ijt9czo4OiJiYWNrbGluayI7czo2OiI/cT17a30iO3M6NDoibmFtZSI7czo3OiJUaXNjYWxpIjt9czoyMToic2VhcmNoLWR5bi50aXNjYWxpLml0IjthOjM6e3M6NjoicGFyYW1zIjthOjI6e2k6MDtzOjE6InEiO2k6MTtzOjM6ImtleSI7fXM6ODoiYmFja2xpbmsiO3M6NjoiP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NzoiVGlzY2FsaSI7fXM6MTg6ImhsZWRhbmkudGlzY2FsaS5jeiI7YToyOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo1OiJxdWVyeSI7fXM6NDoibmFtZSI7czo3OiJUaXNjYWxpIjt9czoxMzoid3d3LnRpeHVtYS5kZSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoyOiJzYyI7fXM6ODoiYmFja2xpbmsiO3M6MzY6ImluZGV4LnBocD9tcD1zZWFyY2gmc3RwPSZzYz17a30mdGc9MCI7czo0OiJuYW1lIjtzOjY6IlRpeHVtYSI7fXM6MTk6Ind3dy50b29sYmFyaG9tZS5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTc6InNlYXJjaC5hc3B4P3E9e2t9IjtzOjQ6Im5hbWUiO3M6MTE6IlRvb2xiYXJob21lIjt9czoyMjoidnNoYXJlLnRvb2xiYXJob21lLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxNzoic2VhcmNoLmFzcHg/cT17a30iO3M6NDoibmFtZSI7czoxMToiVG9vbGJhcmhvbWUiO31zOjE2OiJ3d3cudG9wcHJlaXNlLmNoIjthOjQ6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjY6InNlYXJjaCI7fXM6ODoiYmFja2xpbmsiO3M6MjA6ImluZGV4LnBocD9zZWFyY2g9e2t9IjtzOjg6ImNoYXJzZXRzIjthOjE6e2k6MDtzOjEwOiJJU08tODg1OS0xIjt9czo0OiJuYW1lIjtzOjEyOiJUb3BwcmVpc2UuY2giO31zOjEyOiJ0b3BwcmVpc2UuY2giO2E6NDp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6Njoic2VhcmNoIjt9czo4OiJiYWNrbGluayI7czoyMDoiaW5kZXgucGhwP3NlYXJjaD17a30iO3M6ODoiY2hhcnNldHMiO2E6MTp7aTowO3M6MTA6IklTTy04ODU5LTEiO31zOjQ6Im5hbWUiO3M6MTI6IlRvcHByZWlzZS5jaCI7fXM6MTU6ImZyLnRvcHByZWlzZS5jaCI7YTo0OntzOjY6InBhcmFtcyI7YToxOntpOjA7czo2OiJzZWFyY2giO31zOjg6ImJhY2tsaW5rIjtzOjIwOiJpbmRleC5waHA/c2VhcmNoPXtrfSI7czo4OiJjaGFyc2V0cyI7YToxOntpOjA7czoxMDoiSVNPLTg4NTktMSI7fXM6NDoibmFtZSI7czoxMjoiVG9wcHJlaXNlLmNoIjt9czoxNToiZGUudG9wcHJlaXNlLmNoIjthOjQ6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjY6InNlYXJjaCI7fXM6ODoiYmFja2xpbmsiO3M6MjA6ImluZGV4LnBocD9zZWFyY2g9e2t9IjtzOjg6ImNoYXJzZXRzIjthOjE6e2k6MDtzOjEwOiJJU08tODg1OS0xIjt9czo0OiJuYW1lIjtzOjEyOiJUb3BwcmVpc2UuY2giO31zOjE1OiJlbi50b3BwcmVpc2UuY2giO2E6NDp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6Njoic2VhcmNoIjt9czo4OiJiYWNrbGluayI7czoyMDoiaW5kZXgucGhwP3NlYXJjaD17a30iO3M6ODoiY2hhcnNldHMiO2E6MTp7aTowO3M6MTA6IklTTy04ODU5LTEiO31zOjQ6Im5hbWUiO3M6MTI6IlRvcHByZWlzZS5jaCI7fXM6MTU6Ind3dy50cm91dmV6LmNvbSI7YToyOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo1OiJxdWVyeSI7fXM6NDoibmFtZSI7czoxMToiVHJvdXZlei5jb20iO31zOjE5OiJ3d3cudHJvdmFyYXBpZG8uY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjE2OiJyZXN1bHQucGhwP3E9e2t9IjtzOjQ6Im5hbWUiO3M6MTE6IlRyb3ZhUmFwaWRvIjt9czoyMjoid3d3LnRydXN0ZWQtc2VhcmNoLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJ3Ijt9czo4OiJiYWNrbGluayI7czoxMjoic2VhcmNoP3c9e2t9IjtzOjQ6Im5hbWUiO3M6MTQ6IlRydXN0ZWQgU2VhcmNoIjt9czoxNToid3d3LnR3aW5nbHkuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjEyOiJzZWFyY2g/cT17a30iO3M6NDoibmFtZSI7czo3OiJUd2luZ2x5Ijt9czoxNjoiYnVzY2EudW9sLmNvbS5iciI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxMToiL3dlYi8/cT17a30iO3M6NDoibmFtZSI7czoxMDoidW9sLmNvbS5iciI7fXM6MTE6Ind3dy51cmwub3JnIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjExOiI/bD1kZSZxPXtrfSI7czo0OiJuYW1lIjtzOjEzOiJVUkwuT1JHYW56aWVyIjt9czoxMzoid3d3LnZpbmRlbi5ubCI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czo2OiI/cT17a30iO3M6NDoibmFtZSI7czo2OiJWaW5kZW4iO31zOjEzOiJ3d3cudmluZGV4Lm5sIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjEwOiJzZWFyY2hfZm9yIjt9czo4OiJiYWNrbGluayI7czoxOToiL3dlYj9zZWFyY2hfZm9yPXtrfSI7czo0OiJuYW1lIjtzOjY6IlZpbmRleCI7fXM6MTY6InNlYXJjaC52aW5kZXgubmwiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MTA6InNlYXJjaF9mb3IiO31zOjg6ImJhY2tsaW5rIjtzOjE5OiIvd2ViP3NlYXJjaF9mb3I9e2t9IjtzOjQ6Im5hbWUiO3M6NjoiVmluZGV4Ijt9czoxOToicmljZXJjYS52aXJnaWxpby5pdCI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoyOiJxcyI7fXM6ODoiYmFja2xpbmsiO3M6MTQ6InJpY2VyY2E/cXM9e2t9IjtzOjQ6Im5hbWUiO3M6ODoiVmlyZ2lsaW8iO31zOjI3OiJyaWNlcmNhaW1tYWdpbmkudmlyZ2lsaW8uaXQiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MjoicXMiO31zOjg6ImJhY2tsaW5rIjtzOjE0OiJyaWNlcmNhP3FzPXtrfSI7czo0OiJuYW1lIjtzOjg6IlZpcmdpbGlvIjt9czoyNDoicmljZXJjYXZpZGVvLnZpcmdpbGlvLml0IjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjI6InFzIjt9czo4OiJiYWNrbGluayI7czoxNDoicmljZXJjYT9xcz17a30iO3M6NDoibmFtZSI7czo4OiJWaXJnaWxpbyI7fXM6MjM6InJpY2VyY2FuZXdzLnZpcmdpbGlvLml0IjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjI6InFzIjt9czo4OiJiYWNrbGluayI7czoxNDoicmljZXJjYT9xcz17a30iO3M6NDoibmFtZSI7czo4OiJWaXJnaWxpbyI7fXM6MTg6Im1vYmlsZS52aXJnaWxpby5pdCI7YToyOntzOjY6InBhcmFtcyI7YToxOntpOjA7czozOiJxcnMiO31zOjQ6Im5hbWUiO3M6ODoiVmlyZ2lsaW8iO31zOjE4OiJzZWFyY2gua2Uudm9pbGEuZnIiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NToicmRhdGEiO31zOjg6ImJhY2tsaW5rIjtzOjE3OiJTL3ZvaWxhP3JkYXRhPXtrfSI7czo0OiJuYW1lIjtzOjU6IlZvaWxhIjt9czoxNToid3d3LmxlbW90ZXVyLmZyIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjU6InJkYXRhIjt9czo4OiJiYWNrbGluayI7czoxNzoiUy92b2lsYT9yZGF0YT17a30iO3M6NDoibmFtZSI7czo1OiJWb2lsYSI7fXM6MTI6IndlYi52b2xueS5jeiI7YTo0OntzOjY6InBhcmFtcyI7YToxOntpOjA7czo2OiJzZWFyY2giO31zOjg6ImJhY2tsaW5rIjtzOjIwOiJmdWxsdGV4dC8/c2VhcmNoPXtrfSI7czo4OiJjaGFyc2V0cyI7YToxOntpOjA7czoxMjoid2luZG93cy0xMjUwIjt9czo0OiJuYW1lIjtzOjU6IlZvbG55Ijt9czoxNzoid3d3LndhbGhlbGxvLmluZm8iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6Mzoia2V5Ijt9czo4OiJiYWNrbGluayI7czoxNDoic2VhcmNoP2tleT17a30iO3M6NDoibmFtZSI7czo4OiJXYWxoZWxsbyI7fXM6MTY6Ind3dy53YWxoZWxsby5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6Mzoia2V5Ijt9czo4OiJiYWNrbGluayI7czoxNDoic2VhcmNoP2tleT17a30iO3M6NDoibmFtZSI7czo4OiJXYWxoZWxsbyI7fXM6MTU6Ind3dy53YWxoZWxsby5kZSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czozOiJrZXkiO31zOjg6ImJhY2tsaW5rIjtzOjE0OiJzZWFyY2g/a2V5PXtrfSI7czo0OiJuYW1lIjtzOjg6IldhbGhlbGxvIjt9czoxNToid3d3LndhbGhlbGxvLm5sIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjM6ImtleSI7fXM6ODoiYmFja2xpbmsiO3M6MTQ6InNlYXJjaD9rZXk9e2t9IjtzOjQ6Im5hbWUiO3M6ODoiV2FsaGVsbG8iO31zOjEyOiJzdWNoZS53ZWIuZGUiO2E6NDp7czo2OiJwYXJhbXMiO2E6Mjp7aTowO3M6Mjoic3UiO2k6MTtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjE4OiJzZWFyY2gvd2ViLz9zdT17a30iO3M6MTM6ImhpZGRlbmtleXdvcmQiO2E6Mjp7aTowO3M6NDoiL14kLyI7aToxO3M6MToiLyI7fXM6NDoibmFtZSI7czo2OiJXZWIuZGUiO31zOjE0OiJtLnN1Y2hlLndlYi5kZSI7YTo0OntzOjY6InBhcmFtcyI7YToyOntpOjA7czoyOiJzdSI7aToxO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTg6InNlYXJjaC93ZWIvP3N1PXtrfSI7czoxMzoiaGlkZGVua2V5d29yZCI7YToyOntpOjA7czo0OiIvXiQvIjtpOjE7czoxOiIvIjt9czo0OiJuYW1lIjtzOjY6IldlYi5kZSI7fXM6MTA6Ind3dy53ZWIubmwiO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6OToiem9la3dvb3JkIjt9czo0OiJuYW1lIjtzOjY6IldlYi5ubCI7fXM6MTU6Ind3dy53ZWJvcmFtYS5mciI7YToyOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo1OiJRVUVSWSI7fXM6NDoibmFtZSI7czo4OiJ3ZWJvcmFtYSI7fXM6MTc6Ind3dy53ZWJzZWFyY2guY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjI6e2k6MDtzOjM6InFrdyI7aToxO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MjY6InNlYXJjaC9yZXN1bHRzMi5hc3B4P3E9e2t9IjtzOjQ6Im5hbWUiO3M6OToiV2ViU2VhcmNoIjt9czoxMjoiZnIud2Vkb28uY29tIjthOjI6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjc6ImtleXdvcmQiO31zOjQ6Im5hbWUiO3M6NToiV2Vkb28iO31zOjEyOiJlbi53ZWRvby5jb20iO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6Nzoia2V5d29yZCI7fXM6NDoibmFtZSI7czo1OiJXZWRvbyI7fXM6MTI6ImVzLndlZG9vLmNvbSI7YToyOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo3OiJrZXl3b3JkIjt9czo0OiJuYW1lIjtzOjU6IldlZG9vIjt9czoxNzoic2VhcmNoLndpbmFtcC5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTk6InNlYXJjaC9zZWFyY2g/cT17a30iO3M6NDoibmFtZSI7czo2OiJXaW5hbXAiO31zOjEyOiJzenVrYWoud3AucGwiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6Njoic3p1a2FqIjt9czo4OiJiYWNrbGluayI7czo0MjoiaHR0cDovL3N6dWthai53cC5wbC9zenVrYWouaHRtbD9zenVrYWo9e2t9IjtzOjQ6Im5hbWUiO3M6MTY6IldpcnR1YWxuYSBQb2xza2EiO31zOjEyOiJ3d3cud2l0Y2guZGUiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6Njoic2VhcmNoIjt9czo4OiJiYWNrbGluayI7czozMzoic2VhcmNoLXJlc3VsdC5waHA/Y249MCZzZWFyY2g9e2t9IjtzOjQ6Im5hbWUiO3M6NToiV2l0Y2giO31zOjEzOiJ3d3cud29vcGllLmpwIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjI6Imt3Ijt9czo4OiJiYWNrbGluayI7czoxMzoic2VhcmNoP2t3PXtrfSI7czo0OiJuYW1lIjtzOjY6Ildvb3BpZSI7fXM6MTM6InNlYXJjaC53d3cuZWUiO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NToicXVlcnkiO31zOjQ6Im5hbWUiO3M6MTA6Ind3dyB2w6RyYXYiO31zOjE5OiJ3d3cueC1yZWNoZXJjaGUuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjQ6Ik1PVFMiO31zOjg6ImJhY2tsaW5rIjtzOjI2OiJjZ2ktYmluL3dlYnNlYXJjaD9NT1RTPXtrfSI7czo0OiJuYW1lIjtzOjExOiJYLVJlY2hlcmNoZSI7fXM6MTY6InNlYXJjaC55YWhvby5jb20iO2E6NDp7czo2OiJwYXJhbXMiO2E6Mjp7aTowO3M6MToicCI7aToxO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTI6InNlYXJjaD9wPXtrfSI7czoxMzoiaGlkZGVua2V5d29yZCI7YTozOntpOjA7czo5OiIvXC9yXC8uKi8iO2k6MTtzOjQ6Ii9eJC8iO2k6MjtzOjE6Ii8iO31zOjQ6Im5hbWUiO3M6NjoiWWFob28hIjt9czoyNToibWFsYXlzaWEuc2VhcmNoLnlhaG9vLmNvbSI7YTo0OntzOjY6InBhcmFtcyI7YToyOntpOjA7czoxOiJwIjtpOjE7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxMjoic2VhcmNoP3A9e2t9IjtzOjEzOiJoaWRkZW5rZXl3b3JkIjthOjM6e2k6MDtzOjk6Ii9cL3JcLy4qLyI7aToxO3M6NDoiL14kLyI7aToyO3M6MToiLyI7fXM6NDoibmFtZSI7czo2OiJZYWhvbyEiO31zOjE5OiJ7fS5zZWFyY2gueWFob28uY29tIjthOjQ6e3M6NjoicGFyYW1zIjthOjI6e2k6MDtzOjE6InAiO2k6MTtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjEyOiJzZWFyY2g/cD17a30iO3M6MTM6ImhpZGRlbmtleXdvcmQiO2E6Mzp7aTowO3M6OToiL1wvclwvLiovIjtpOjE7czo0OiIvXiQvIjtpOjI7czoxOiIvIjt9czo0OiJuYW1lIjtzOjY6IllhaG9vISI7fXM6MTQ6ImNhZGUueWFob28uY29tIjthOjQ6e3M6NjoicGFyYW1zIjthOjI6e2k6MDtzOjE6InAiO2k6MTtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjEyOiJzZWFyY2g/cD17a30iO3M6MTM6ImhpZGRlbmtleXdvcmQiO2E6Mzp7aTowO3M6OToiL1wvclwvLiovIjtpOjE7czo0OiIvXiQvIjtpOjI7czoxOiIvIjt9czo0OiJuYW1lIjtzOjY6IllhaG9vISI7fXM6MjQ6ImVzcGFub2wuc2VhcmNoLnlhaG9vLmNvbSI7YTo0OntzOjY6InBhcmFtcyI7YToyOntpOjA7czoxOiJwIjtpOjE7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxMjoic2VhcmNoP3A9e2t9IjtzOjEzOiJoaWRkZW5rZXl3b3JkIjthOjM6e2k6MDtzOjk6Ii9cL3JcLy4qLyI7aToxO3M6NDoiL14kLyI7aToyO3M6MToiLyI7fXM6NDoibmFtZSI7czo2OiJZYWhvbyEiO31zOjE5OiJxYy5zZWFyY2gueWFob28uY29tIjthOjQ6e3M6NjoicGFyYW1zIjthOjI6e2k6MDtzOjE6InAiO2k6MTtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjEyOiJzZWFyY2g/cD17a30iO3M6MTM6ImhpZGRlbmtleXdvcmQiO2E6Mzp7aTowO3M6OToiL1wvclwvLiovIjtpOjE7czo0OiIvXiQvIjtpOjI7czoxOiIvIjt9czo0OiJuYW1lIjtzOjY6IllhaG9vISI7fXM6MTY6Im9uZS5jbi55YWhvby5jb20iO2E6NDp7czo2OiJwYXJhbXMiO2E6Mjp7aTowO3M6MToicCI7aToxO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTI6InNlYXJjaD9wPXtrfSI7czoxMzoiaGlkZGVua2V5d29yZCI7YTozOntpOjA7czo5OiIvXC9yXC8uKi8iO2k6MTtzOjQ6Ii9eJC8iO2k6MjtzOjE6Ii8iO31zOjQ6Im5hbWUiO3M6NjoiWWFob28hIjt9czoxODoici5zZWFyY2gueWFob28uY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjA6e31zOjEzOiJoaWRkZW5rZXl3b3JkIjthOjE6e2k6MDtzOjQ6Ii8uKi8iO31zOjQ6Im5hbWUiO3M6NjoiWWFob28hIjt9czoxNDoid3d3LmNlcmNhdG8uaXQiO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6NDoibmFtZSI7czo2OiJZYWhvbyEiO31zOjE5OiJzZWFyY2gub2ZmZXJib3guY29tIjthOjI6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjQ6Im5hbWUiO3M6NjoiWWFob28hIjt9czoxNToid3d3LmJlbmVmaW5kLmRlIjthOjI6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjQ6Im5hbWUiO3M6NjoiWWFob28hIjt9czoxNjoieXMubWlyb3N0YXJ0LmNvbSI7YToyOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo0OiJuYW1lIjtzOjY6IllhaG9vISI7fXM6Mjc6InNlYXJjaC55YWhvby5jb20vc2VhcmNoL2RpciI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJwIjt9czo4OiJiYWNrbGluayI7czo2OiI/cD17a30iO3M6NDoibmFtZSI7czoxNjoiWWFob28hIERpcmVjdG9yeSI7fXM6MjM6ImltYWdlcy5zZWFyY2gueWFob28uY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjI6e2k6MDtzOjE6InAiO2k6MTtzOjI6InZhIjt9czo4OiJiYWNrbGluayI7czoxOToic2VhcmNoL2ltYWdlcz9wPXtrfSI7czo0OiJuYW1lIjtzOjEzOiJZYWhvbyEgSW1hZ2VzIjt9czoxOToie30uaW1hZ2VzLnlhaG9vLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToyOntpOjA7czoxOiJwIjtpOjE7czoyOiJ2YSI7fXM6ODoiYmFja2xpbmsiO3M6MTk6InNlYXJjaC9pbWFnZXM/cD17a30iO3M6NDoibmFtZSI7czoxMzoiWWFob28hIEltYWdlcyI7fXM6MjE6ImNhZGUuaW1hZ2VzLnlhaG9vLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToyOntpOjA7czoxOiJwIjtpOjE7czoyOiJ2YSI7fXM6ODoiYmFja2xpbmsiO3M6MTk6InNlYXJjaC9pbWFnZXM/cD17a30iO3M6NDoibmFtZSI7czoxMzoiWWFob28hIEltYWdlcyI7fXM6MjQ6ImVzcGFub2wuaW1hZ2VzLnlhaG9vLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToyOntpOjA7czoxOiJwIjtpOjE7czoyOiJ2YSI7fXM6ODoiYmFja2xpbmsiO3M6MTk6InNlYXJjaC9pbWFnZXM/cD17a30iO3M6NDoibmFtZSI7czoxMzoiWWFob28hIEltYWdlcyI7fXM6MTk6InFjLmltYWdlcy55YWhvby5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6Mjp7aTowO3M6MToicCI7aToxO3M6MjoidmEiO31zOjg6ImJhY2tsaW5rIjtzOjE5OiJzZWFyY2gvaW1hZ2VzP3A9e2t9IjtzOjQ6Im5hbWUiO3M6MTM6IllhaG9vISBJbWFnZXMiO31zOjE4OiJzZWFyY2gueWFob28uY28uanAiO2E6NTp7czo2OiJwYXJhbXMiO2E6Mjp7aTowO3M6MToicCI7aToxO3M6MjoidnAiO31zOjg6ImJhY2tsaW5rIjtzOjEyOiJzZWFyY2g/cD17a30iO3M6ODoiY2hhcnNldHMiO2E6Mzp7aTowO3M6NToidXRmLTgiO2k6MTtzOjY6ImV1Yy1qcCI7aToyO3M6NToibXM5MzIiO31zOjEzOiJoaWRkZW5rZXl3b3JkIjthOjM6e2k6MDtzOjk6Ii9cL3JcLy4qLyI7aToxO3M6NDoiL14kLyI7aToyO3M6MToiLyI7fXM6NDoibmFtZSI7czoxMjoiWWFob28hIEphcGFuIjt9czoxMzoianAuaGFvMTIzLmNvbSI7YToyOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo1OiJxdWVyeSI7fXM6NDoibmFtZSI7czoxMjoiWWFob28hIEphcGFuIjt9czoxNjoiaG9tZS5raW5nc29mdC5qcCI7YToyOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo3OiJrZXl3b3JkIjt9czo0OiJuYW1lIjtzOjEyOiJZYWhvbyEgSmFwYW4iO31zOjE3OiJqd3NlYXJjaC5qd29yZC5qcCI7YToyOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo0OiJuYW1lIjtzOjEyOiJZYWhvbyEgSmFwYW4iO31zOjI0OiJpbWFnZS5zZWFyY2gueWFob28uY28uanAiO2E6NDp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicCI7fXM6ODoiYmFja2xpbmsiO3M6MTI6InNlYXJjaD9wPXtrfSI7czo4OiJjaGFyc2V0cyI7YTozOntpOjA7czo1OiJ1dGYtOCI7aToxO3M6NjoiZXVjLWpwIjtpOjI7czo1OiJtczkzMiI7fXM6NDoibmFtZSI7czoxOToiWWFob28hIEphcGFuIEltYWdlcyI7fXM6MjQ6InZpZGVvLnNlYXJjaC55YWhvby5jby5qcCI7YTo0OntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJwIjt9czo4OiJiYWNrbGluayI7czoxMjoic2VhcmNoP3A9e2t9IjtzOjg6ImNoYXJzZXRzIjthOjM6e2k6MDtzOjU6InV0Zi04IjtpOjE7czo2OiJldWMtanAiO2k6MjtzOjU6Im1zOTMyIjt9czo0OiJuYW1lIjtzOjE5OiJZYWhvbyEgSmFwYW4gVmlkZW9zIjt9czoxNDoic2VhcmNoLnlhbS5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToiayI7fXM6ODoiYmFja2xpbmsiO3M6MzI6IlNlYXJjaC9XZWIvP1NlYXJjaFR5cGU9d2ViJms9e2t9IjtzOjQ6Im5hbWUiO3M6MzoiWWFtIjt9czo5OiJ5YW5kZXgucnUiO2E6NDp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NDoidGV4dCI7fXM6ODoiYmFja2xpbmsiO3M6MTk6InlhbmRzZWFyY2g/dGV4dD17a30iO3M6MTM6ImhpZGRlbmtleXdvcmQiO2E6Mjp7aTowO3M6NDoiL14kLyI7aToxO3M6MToiLyI7fXM6NDoibmFtZSI7czo2OiJZYW5kZXgiO31zOjEwOiJ5YW5kZXguY29tIjthOjQ6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjQ6InRleHQiO31zOjg6ImJhY2tsaW5rIjtzOjE5OiJ5YW5kc2VhcmNoP3RleHQ9e2t9IjtzOjEzOiJoaWRkZW5rZXl3b3JkIjthOjI6e2k6MDtzOjQ6Ii9eJC8iO2k6MTtzOjE6Ii8iO31zOjQ6Im5hbWUiO3M6NjoiWWFuZGV4Ijt9czo5OiJ5YW5kZXgue30iO2E6NDp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NDoidGV4dCI7fXM6ODoiYmFja2xpbmsiO3M6MTk6InlhbmRzZWFyY2g/dGV4dD17a30iO3M6MTM6ImhpZGRlbmtleXdvcmQiO2E6Mjp7aTowO3M6NDoiL14kLyI7aToxO3M6MToiLyI7fXM6NDoibmFtZSI7czo2OiJZYW5kZXgiO31zOjEzOiJ3d3cueWFuZGV4Lnt9IjthOjQ6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjQ6InRleHQiO31zOjg6ImJhY2tsaW5rIjtzOjE5OiJ5YW5kc2VhcmNoP3RleHQ9e2t9IjtzOjEzOiJoaWRkZW5rZXl3b3JkIjthOjI6e2k6MDtzOjQ6Ii9eJC8iO2k6MTtzOjE6Ii8iO31zOjQ6Im5hbWUiO3M6NjoiWWFuZGV4Ijt9czoxNDoiY2xjay55YW5kZXgue30iO2E6NDp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NDoidGV4dCI7fXM6ODoiYmFja2xpbmsiO3M6MTk6InlhbmRzZWFyY2g/dGV4dD17a30iO3M6MTM6ImhpZGRlbmtleXdvcmQiO2E6Mjp7aTowO3M6NDoiL14kLyI7aToxO3M6MToiLyI7fXM6NDoibmFtZSI7czo2OiJZYW5kZXgiO31zOjExOiJtLnlhbmRleC57fSI7YTo0OntzOjY6InBhcmFtcyI7YToxOntpOjA7czo0OiJ0ZXh0Ijt9czo4OiJiYWNrbGluayI7czoxOToieWFuZHNlYXJjaD90ZXh0PXtrfSI7czoxMzoiaGlkZGVua2V5d29yZCI7YToyOntpOjA7czo0OiIvXiQvIjtpOjE7czoxOiIvIjt9czo0OiJuYW1lIjtzOjY6IllhbmRleCI7fXM6MTQ6InlhYnMueWFuZGV4Lnt9IjthOjI6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjQ6Im5hbWUiO3M6NjoiWWFuZGV4Ijt9czoxNjoiaW1hZ2VzLnlhbmRleC5ydSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo0OiJ0ZXh0Ijt9czo4OiJiYWNrbGluayI7czoxOToieWFuZHNlYXJjaD90ZXh0PXtrfSI7czo0OiJuYW1lIjtzOjEzOiJZYW5kZXggSW1hZ2VzIjt9czoxNzoiaW1hZ2VzLnlhbmRleC5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NDoidGV4dCI7fXM6ODoiYmFja2xpbmsiO3M6MTk6InlhbmRzZWFyY2g/dGV4dD17a30iO3M6NDoibmFtZSI7czoxMzoiWWFuZGV4IEltYWdlcyI7fXM6MTY6ImltYWdlcy55YW5kZXgue30iO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NDoidGV4dCI7fXM6ODoiYmFja2xpbmsiO3M6MTk6InlhbmRzZWFyY2g/dGV4dD17a30iO3M6NDoibmFtZSI7czoxMzoiWWFuZGV4IEltYWdlcyI7fXM6MTI6Ind3dy55YXNuaS5kZSI7YToyOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo1OiJxdWVyeSI7fXM6NDoibmFtZSI7czo1OiJZYXNuaSI7fXM6MTM6Ind3dy55YXNuaS5jb20iO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NToicXVlcnkiO31zOjQ6Im5hbWUiO3M6NToiWWFzbmkiO31zOjE1OiJ3d3cueWFzbmkuY28udWsiO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NToicXVlcnkiO31zOjQ6Im5hbWUiO3M6NToiWWFzbmkiO31zOjEyOiJ3d3cueWFzbmkuY2giO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NToicXVlcnkiO31zOjQ6Im5hbWUiO3M6NToiWWFzbmkiO31zOjEyOiJ3d3cueWFzbmkuYXQiO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6NToicXVlcnkiO31zOjQ6Im5hbWUiO3M6NToiWWFzbmkiO31zOjE0OiJ3d3cueWF0ZWRvLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxOToic2VhcmNoL3Byb2ZpbD9xPXtrfSI7czo0OiJuYW1lIjtzOjY6IllhdGVkbyI7fXM6MTM6Ind3dy55YXRlZG8uZnIiO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicSI7fXM6ODoiYmFja2xpbmsiO3M6MTk6InNlYXJjaC9wcm9maWw/cT17a30iO3M6NDoibmFtZSI7czo2OiJZYXRlZG8iO31zOjEyOiJ5ZWxsb3dtYXAuZGUiO2E6Mjp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToiICI7fXM6NDoibmFtZSI7czo5OiJZZWxsb3dtYXAiO31zOjE2OiJzZWFyY2gueWlwcHkuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjU6InF1ZXJ5Ijt9czo4OiJiYWNrbGluayI7czoxNjoic2VhcmNoP3F1ZXJ5PXtrfSI7czo0OiJuYW1lIjtzOjU6IllpcHB5Ijt9czoxMzoid3d3LnlvdWdvby5mciI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo4OiJiYWNrbGluayI7czoxNjoiP2N4PXNlYXJjaCZxPXtrfSI7czo0OiJuYW1lIjtzOjY6IllvdUdvbyI7fXM6MTU6Ind3dy56YXBtZXRhLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToyOntpOjA7czoxOiJxIjtpOjE7czo1OiJxdWVyeSI7fXM6ODoiYmFja2xpbmsiO3M6NjoiP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NzoiWmFwbWV0YSI7fXM6MTA6InphcG1ldGEue30iO2E6Mzp7czo2OiJwYXJhbXMiO2E6Mjp7aTowO3M6MToicSI7aToxO3M6NToicXVlcnkiO31zOjg6ImJhY2tsaW5rIjtzOjY6Ij9xPXtrfSI7czo0OiJuYW1lIjtzOjc6IlphcG1ldGEiO31zOjE0OiJ1ay56YXBtZXRhLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToyOntpOjA7czoxOiJxIjtpOjE7czo1OiJxdWVyeSI7fXM6ODoiYmFja2xpbmsiO3M6NjoiP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NzoiWmFwbWV0YSI7fXM6MTQ6ImFyLnphcG1ldGEuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjI6e2k6MDtzOjE6InEiO2k6MTtzOjU6InF1ZXJ5Ijt9czo4OiJiYWNrbGluayI7czo2OiI/cT17a30iO3M6NDoibmFtZSI7czo3OiJaYXBtZXRhIjt9czoxNDoiYXUuemFwbWV0YS5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6Mjp7aTowO3M6MToicSI7aToxO3M6NToicXVlcnkiO31zOjg6ImJhY2tsaW5rIjtzOjY6Ij9xPXtrfSI7czo0OiJuYW1lIjtzOjc6IlphcG1ldGEiO31zOjE0OiJjYS56YXBtZXRhLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToyOntpOjA7czoxOiJxIjtpOjE7czo1OiJxdWVyeSI7fXM6ODoiYmFja2xpbmsiO3M6NjoiP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NzoiWmFwbWV0YSI7fXM6MTQ6ImZpLnphcG1ldGEuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjI6e2k6MDtzOjE6InEiO2k6MTtzOjU6InF1ZXJ5Ijt9czo4OiJiYWNrbGluayI7czo2OiI/cT17a30iO3M6NDoibmFtZSI7czo3OiJaYXBtZXRhIjt9czoxNDoibm8uemFwbWV0YS5jb20iO2E6Mzp7czo2OiJwYXJhbXMiO2E6Mjp7aTowO3M6MToicSI7aToxO3M6NToicXVlcnkiO31zOjg6ImJhY2tsaW5rIjtzOjY6Ij9xPXtrfSI7czo0OiJuYW1lIjtzOjc6IlphcG1ldGEiO31zOjE0OiJ0ci56YXBtZXRhLmNvbSI7YTozOntzOjY6InBhcmFtcyI7YToyOntpOjA7czoxOiJxIjtpOjE7czo1OiJxdWVyeSI7fXM6ODoiYmFja2xpbmsiO3M6NjoiP3E9e2t9IjtzOjQ6Im5hbWUiO3M6NzoiWmFwbWV0YSI7fXM6MTQ6InAuemhvbmdzb3UuY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InciO31zOjg6ImJhY2tsaW5rIjtzOjc6InA/dz17a30iO3M6NDoibmFtZSI7czo4OiJaaG9uZ3NvdSI7fXM6MTI6Ind3dzMuem9lay5ubCI7YToyOntzOjY6InBhcmFtcyI7YToxOntpOjA7czoxOiJxIjt9czo0OiJuYW1lIjtzOjQ6IlpvZWsiO31zOjEzOiJ3d3cuem9la2VuLm5sIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjY6Ij9xPXtrfSI7czo0OiJuYW1lIjtzOjY6IlpvZWtlbiI7fXM6OToiem9vaG9vLmN6IjthOjQ6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjE6InEiO31zOjg6ImJhY2tsaW5rIjtzOjY6Ij9xPXtrfSI7czo4OiJjaGFyc2V0cyI7YToxOntpOjA7czoxMjoid2luZG93cy0xMjUwIjt9czo0OiJuYW1lIjtzOjY6Ilpvb2hvbyI7fXM6MTM6Ind3dy56b3puYW0uc2siO2E6Mzp7czo2OiJwYXJhbXMiO2E6MTp7aTowO3M6MToicyI7fXM6ODoiYmFja2xpbmsiO3M6MjU6ImhsYWRhai5mY2dpP3M9e2t9JmNvPXN2ZXQiO3M6NDoibmFtZSI7czo2OiJab3puYW0iO31zOjEzOiJ3d3cuenh1c28uY29tIjthOjM6e3M6NjoicGFyYW1zIjthOjE6e2k6MDtzOjI6IndkIjt9czo4OiJiYWNrbGluayI7czoxMDoicmkvP3dkPXtrfSI7czo0OiJuYW1lIjtzOjU6Ilp4dXNvIjt9czo4OiJrd3pmLm5ldCI7YTozOntzOjY6InBhcmFtcyI7YToxOntpOjA7czo2OiJzZWFyY2giO31zOjg6ImJhY2tsaW5rIjtzOjExOiIjc2VhcmNoPXtrfSI7czo0OiJuYW1lIjtzOjE2OiLrrLvsp4Drp4gg6rKA7IOJIjt9fQ==', 0);
+INSERT INTO `matomo_option` (`option_name`, `option_value`, `autoload`) VALUES
+('SitesManagerHadTrafficInPast_1', '1', 0),
+('SitesManager_DefaultCurrency', 'EUR', 0),
+('SitesManager_DefaultTimezone', 'Europe/Paris', 0),
+('SocialDefinitions', 'YToxMzU6e3M6OToiYmFkb28uY29tIjtzOjU6IkJhZG9vIjtzOjg6ImJlYm8uY29tIjtzOjQ6IkJlYm8iO3M6MTU6ImJsYWNrcGxhbmV0LmNvbSI7czoxMToiQmxhY2tQbGFuZXQiO3M6MTE6ImJ1enpuZXQuY29tIjtzOjc6IkJ1enpuZXQiO3M6MTQ6ImNsYXNzbWF0ZXMuY29tIjtzOjE0OiJDbGFzc21hdGVzLmNvbSI7czoxODoiZ2xvYmFsLmN5d29ybGQuY29tIjtzOjc6IkN5d29ybGQiO3M6MTQ6ImdhaWFvbmxpbmUuY29tIjtzOjExOiJHYWlhIE9ubGluZSI7czo4OiJnZW5pLmNvbSI7czo4OiJHZW5pLmNvbSI7czoxMDoiZ2l0aHViLmNvbSI7czo2OiJHaXRIdWIiO3M6MTU6InBsdXMuZ29vZ2xlLmNvbSI7czo5OiJHb29nbGUlMkIiO3M6MTQ6InVybC5nb29nbGUuY29tIjtzOjk6Ikdvb2dsZSUyQiI7czoyODoiY29tLmdvb2dsZS5hbmRyb2lkLmFwcHMucGx1cyI7czo5OiJHb29nbGUlMkIiO3M6MTA6ImRvdWJhbi5jb20iO3M6NjoiRG91YmFuIjtzOjEyOiJkcmliYmJsZS5jb20iO3M6ODoiRHJpYmJibGUiO3M6MTI6ImZhY2Vib29rLmNvbSI7czo4OiJGYWNlYm9vayI7czo1OiJmYi5tZSI7czo4OiJGYWNlYm9vayI7czoxNDoibS5mYWNlYm9vay5jb20iO3M6ODoiRmFjZWJvb2siO3M6MTQ6ImwuZmFjZWJvb2suY29tIjtzOjg6IkZhY2Vib29rIjtzOjExOiJmZXRsaWZlLmNvbSI7czo3OiJGZXRsaWZlIjtzOjEwOiJmbGlja3IuY29tIjtzOjY6IkZsaWNrciI7czoxMjoiZmxpeHN0ZXIuY29tIjtzOjg6IkZsaXhzdGVyIjtzOjExOiJmb3RvbG9nLmNvbSI7czo3OiJGb3RvbG9nIjtzOjE0OiJmb3Vyc3F1YXJlLmNvbSI7czoxMDoiRm91cnNxdWFyZSI7czoxOToiZnJpZW5kc3JldW5pdGVkLmNvbSI7czoxNjoiRnJpZW5kcyBSZXVuaXRlZCI7czoxNDoiZnJpZW5kc3Rlci5jb20iO3M6MTA6IkZyaWVuZHN0ZXIiO3M6NzoiZ3JlZS5qcCI7czo0OiJncmVlIjtzOjk6ImhhYmJvLmNvbSI7czo1OiJIYWJvbyI7czoyMDoibmV3cy55Y29tYmluYXRvci5jb20iO3M6MTE6IkhhY2tlciBOZXdzIjtzOjc6ImhpNS5jb20iO3M6MzoiaGk1IjtzOjg6Imh5dmVzLm5sIjtzOjU6Ikh5dmVzIjtzOjk6ImlkZW50aS5jYSI7czo5OiJpZGVudGkuY2EiO3M6MTM6Imluc3RhZ3JhbS5jb20iO3M6OToiSW5zdGFncmFtIjtzOjE1OiJsLmluc3RhZ3JhbS5jb20iO3M6OToiSW5zdGFncmFtIjtzOjEwOiJsYW5nLTguY29tIjtzOjY6ImxhbmctOCI7czo3OiJsYXN0LmZtIjtzOjc6Ikxhc3QuZm0iO3M6OToibGFzdGZtLnJ1IjtzOjc6Ikxhc3QuZm0iO3M6OToibGFzdGZtLmRlIjtzOjc6Ikxhc3QuZm0iO3M6OToibGFzdGZtLmVzIjtzOjc6Ikxhc3QuZm0iO3M6OToibGFzdGZtLmZyIjtzOjc6Ikxhc3QuZm0iO3M6OToibGFzdGZtLml0IjtzOjc6Ikxhc3QuZm0iO3M6OToibGFzdGZtLmpwIjtzOjc6Ikxhc3QuZm0iO3M6OToibGFzdGZtLnBsIjtzOjc6Ikxhc3QuZm0iO3M6MTM6Imxhc3RmbS5jb20uYnIiO3M6NzoiTGFzdC5mbSI7czo5OiJsYXN0Zm0uc2UiO3M6NzoiTGFzdC5mbSI7czoxMzoibGFzdGZtLmNvbS50ciI7czo3OiJMYXN0LmZtIjtzOjEyOiJsaW5rZWRpbi5jb20iO3M6ODoiTGlua2VkSW4iO3M6NzoibG5rZC5pbiI7czo4OiJMaW5rZWRJbiI7czoxNjoibGlua2VkaW4uYW5kcm9pZCI7czo4OiJMaW5rZWRJbiI7czoxNDoibGl2ZWpvdXJuYWwucnUiO3M6MTE6IkxpdmVKb3VybmFsIjtzOjE1OiJsaXZlam91cm5hbC5jb20iO3M6MTE6IkxpdmVKb3VybmFsIjtzOjE1OiJtYXN0b2Rvbi5zb2NpYWwiO3M6ODoiTWFzdG9kb24iO3M6MTQ6Im1hc3RvZG9uLmNsb3VkIjtzOjg6Ik1hc3RvZG9uIjtzOjE5OiJtYXN0b2Rvbi50ZWNobm9sb2d5IjtzOjg6Ik1hc3RvZG9uIjtzOjEyOiJtYXN0b2Rvbi54eXoiO3M6ODoiTWFzdG9kb24iO3M6MTE6Im1hc3RvZG9uLmF0IjtzOjg6Ik1hc3RvZG9uIjtzOjEyOiJtYXN0b2Rvbi5hcnQiO3M6ODoiTWFzdG9kb24iO3M6ODoibWFtb3QuZnIiO3M6ODoiTWFzdG9kb24iO3M6OToicGF3b28ubmV0IjtzOjg6Ik1hc3RvZG9uIjtzOjg6Im1zdGRuLmlvIjtzOjg6Ik1hc3RvZG9uIjtzOjg6Im1zdGRuLmpwIjtzOjg6Ik1hc3RvZG9uIjtzOjEyOiJmcmllbmRzLm5pY28iO3M6ODoiTWFzdG9kb24iO3M6MTk6InJvLW1hc3RvZG9uLnB1eW8uanAiO3M6ODoiTWFzdG9kb24iO3M6ODoicXVleS5vcmciO3M6ODoiTWFzdG9kb24iO3M6MTI6ImJvdHNpbi5zcGFjZSI7czo4OiJNYXN0b2RvbiI7czoxNjoic29jaWFsLnRjaG5jcy5kZSI7czo4OiJNYXN0b2RvbiI7czo3OiJrbnprLm1lIjtzOjg6Ik1hc3RvZG9uIjtzOjEzOiJtYXN0b2RvbnQuY2F0IjtzOjg6Ik1hc3RvZG9uIjtzOjE4OiJiaXRjb2luaGFja2Vycy5vcmciO3M6ODoiTWFzdG9kb24iO3M6MTM6ImZvc3N0b2Rvbi5vcmciO3M6ODoiTWFzdG9kb24iO3M6MTI6ImNoYW9zLnNvY2lhbCI7czo4OiJNYXN0b2RvbiI7czoxMToiY3licmUuc3BhY2UiO3M6ODoiTWFzdG9kb24iO3M6MTA6InZpcy5zb2NpYWwiO3M6ODoiTWFzdG9kb24iO3M6MTA6Im1laW52ei5uZXQiO3M6NjoiTWVpblZaIjtzOjc6Im1peGkuanAiO3M6NDoiTWl4aSI7czoxMDoibW9pa3J1Zy5ydSI7czoxMDoiTW9pS3J1Zy5ydSI7czoxMjoibXVsdGlwbHkuY29tIjtzOjg6Ik11bHRpcGx5IjtzOjEwOiJteS5tYWlsLnJ1IjtzOjEwOiJteS5tYWlsLnJ1IjtzOjE0OiJteWhlcml0YWdlLmNvbSI7czoxMDoiTXlIZXJpdGFnZSI7czo5OiJteWxpZmUucnUiO3M6NjoiTXlMaWZlIjtzOjExOiJteXNwYWNlLmNvbSI7czo3OiJNeXNwYWNlIjtzOjE0OiJteXllYXJib29rLmNvbSI7czoxMDoibXlZZWFyYm9vayI7czo1OiJuay5wbCI7czoxNDoiTmFzemEta2xhc2EucGwiO3M6MTA6Im5ldGxvZy5jb20iO3M6NjoiTmV0bG9nIjtzOjE2OiJvZG5va2xhc3NuaWtpLnJ1IjtzOjEzOiJPZG5va2xhc3NuaWtpIjtzOjk6Im9ya3V0LmNvbSI7czo1OiJPcmt1dCI7czoxMjoicXpvbmUucXEuY29tIjtzOjU6Ik96b25lIjtzOjExOiJwZWVwZXRoLmNvbSI7czo3OiJQZWVwZXRoIjtzOjEzOiJwaW50ZXJlc3QuY29tIjtzOjk6IlBpbnRlcmVzdCI7czoxMjoicGludGVyZXN0LmNhIjtzOjk6IlBpbnRlcmVzdCI7czoxMjoicGludGVyZXN0LmNoIjtzOjk6IlBpbnRlcmVzdCI7czoxNToicGludGVyZXN0LmNvLnVrIjtzOjk6IlBpbnRlcmVzdCI7czoxMjoicGludGVyZXN0LmRlIjtzOjk6IlBpbnRlcmVzdCI7czoxMjoicGludGVyZXN0LmRrIjtzOjk6IlBpbnRlcmVzdCI7czoxMjoicGludGVyZXN0LmVzIjtzOjk6IlBpbnRlcmVzdCI7czoxMjoicGludGVyZXN0LmZyIjtzOjk6IlBpbnRlcmVzdCI7czoxMjoicGludGVyZXN0LmllIjtzOjk6IlBpbnRlcmVzdCI7czoxMjoicGludGVyZXN0LmpwIjtzOjk6IlBpbnRlcmVzdCI7czoxMjoicGludGVyZXN0Lm56IjtzOjk6IlBpbnRlcmVzdCI7czoxMjoicGludGVyZXN0LnB0IjtzOjk6IlBpbnRlcmVzdCI7czoxMjoicGludGVyZXN0LnNlIjtzOjk6IlBpbnRlcmVzdCI7czo5OiJwbGF4by5jb20iO3M6NToiUGxheG8iO3M6MTA6InJlZGRpdC5jb20iO3M6NjoicmVkZGl0IjtzOjEzOiJucC5yZWRkaXQuY29tIjtzOjY6InJlZGRpdCI7czoxNDoicGF5LnJlZGRpdC5jb20iO3M6NjoicmVkZGl0IjtzOjEwOiJyZW5yZW4uY29tIjtzOjY6IlJlbnJlbiI7czoxMToic2t5cm9jay5jb20iO3M6NzoiU2t5cm9jayI7czoxMDoic29uaWNvLmNvbSI7czoxMDoiU29uaWNvLmNvbSI7czoxNzoic3RhY2tvdmVyZmxvdy5jb20iO3M6MTM6IlN0YWNrT3ZlcmZsb3ciO3M6MTE6InN0dWRpdnoubmV0IjtzOjc6IlN0dWRpVloiO3M6MTY6ImxvZ2luLnRhZ2dlZC5jb20iO3M6NjoiVGFnZ2VkIjtzOjExOiJ0YXJpbmdhLm5ldCI7czo4OiJUYXJpbmdhISI7czoxNjoid2ViLnRlbGVncmFtLm9yZyI7czo4OiJUZWxlZ3JhbSI7czoyMjoib3JnLnRlbGVncmFtLm1lc3NlbmdlciI7czo4OiJUZWxlZ3JhbSI7czoxMDoidHVlbnRpLmNvbSI7czo2OiJUdWVudGkiO3M6MTA6InR1bWJsci5jb20iO3M6NjoidHVtYmxyIjtzOjExOiJ0LnVtYmxyLmNvbSI7czo2OiJ0dW1ibHIiO3M6MTE6InR3aXR0ZXIuY29tIjtzOjc6IlR3aXR0ZXIiO3M6NDoidC5jbyI7czo3OiJUd2l0dGVyIjtzOjE1OiJzb3VyY2Vmb3JnZS5uZXQiO3M6MTE6IlNvdXJjZWZvcmdlIjtzOjE1OiJzdHVtYmxldXBvbi5jb20iO3M6MTE6IlN0dW1ibGVVcG9uIjtzOjY6InZrLmNvbSI7czo5OiJWa29udGFrdGUiO3M6MTI6InZrb250YWt0ZS5ydSI7czo5OiJWa29udGFrdGUiO3M6MTE6InlvdXR1YmUuY29tIjtzOjc6IllvdVR1YmUiO3M6ODoieW91dHUuYmUiO3M6NzoiWW91VHViZSI7czo4OiJ2MmV4LmNvbSI7czo0OiJWMkVYIjtzOjEwOiJ2aWFkZW8uY29tIjtzOjY6IlZpYWRlbyI7czo5OiJ2aW1lby5jb20iO3M6NToiVmltZW8iO3M6MTU6InZrcnVndWRydXplaS5ydSI7czoxNToidmtydWd1ZHJ1emVpLnJ1IjtzOjg6IndheW4uY29tIjtzOjQ6IldBWU4iO3M6OToid2VpYm8uY29tIjtzOjU6IldlaWJvIjtzOjQ6InQuY24iO3M6NToiV2VpYm8iO3M6MTI6IndlZXdvcmxkLmNvbSI7czo4OiJXZWVXb3JsZCI7czoxNDoibG9naW4ubGl2ZS5jb20iO3M6MTk6IldpbmRvd3MgTGl2ZSBTcGFjZXMiO3M6OToieGFuZ2EuY29tIjtzOjU6IlhhbmdhIjtzOjg6InhpbmcuY29tIjtzOjQ6IlhJTkciO30=', 0),
+('TaskScheduler.timetable', 'a:23:{s:60:\"Piwik\\Plugins\\CoreAdminHome\\Tasks.invalidateOutdatedArchives\";i:1601683222;s:59:\"Piwik\\Plugins\\CoreAdminHome\\Tasks.deleteOldFingerprintSalts\";i:1601683222;s:55:\"Piwik\\Plugins\\CoreAdminHome\\Tasks.purgeOutdatedArchives\";i:1601683222;s:55:\"Piwik\\Plugins\\CoreAdminHome\\Tasks.purgeOrphanedArchives\";i:1601856017;s:56:\"Piwik\\Plugins\\CoreAdminHome\\Tasks.updateSpammerBlacklist\";i:1601856017;s:49:\"Piwik\\Plugins\\Referrers\\Tasks.updateSearchEngines\";i:1601856017;s:43:\"Piwik\\Plugins\\Referrers\\Tasks.updateSocials\";i:1601856018;s:47:\"Piwik\\Plugins\\Login\\Tasks.cleanupBruteForceLogs\";i:1601683222;s:63:\"Piwik\\Plugins\\UsersManager\\Tasks.setUserDefaultReportPreference\";i:1601683222;s:47:\"Piwik\\Plugins\\CustomPiwikJs\\Tasks.updateTracker\";i:1601636417;s:58:\"Piwik\\Plugins\\CoreAdminHome\\Tasks.purgeInvalidatedArchives\";i:1601683222;s:51:\"Piwik\\Plugins\\PrivacyManager\\Tasks.deleteReportData\";i:1601683222;s:48:\"Piwik\\Plugins\\PrivacyManager\\Tasks.deleteLogData\";i:1601636417;s:52:\"Piwik\\Plugins\\PrivacyManager\\Tasks.anonymizePastData\";i:1601636417;s:63:\"Piwik\\Plugins\\PrivacyManager\\Tasks.deleteLogDataForDeletedSites\";i:1601856018;s:54:\"Piwik\\Plugins\\CoreAdminHome\\Tasks.optimizeArchiveTable\";i:1604188841;s:57:\"Piwik\\Plugins\\CoreAdminHome\\Tasks.cleanupTrackingFailures\";i:1601683222;s:56:\"Piwik\\Plugins\\CoreAdminHome\\Tasks.notifyTrackingFailures\";i:1601856018;s:49:\"Piwik\\Plugins\\UserCountry\\GeoIPAutoUpdater.update\";i:1602028815;s:45:\"Piwik\\Plugins\\GeoIp2\\GeoIP2AutoUpdater.update\";i:1602028815;s:65:\"Piwik\\Plugins\\CoreUpdater\\Tasks.sendNotificationIfUpdateAvailable\";i:1601683222;s:52:\"Piwik\\Plugins\\Marketplace\\Tasks.clearAllCacheEntries\";i:1601683222;s:66:\"Piwik\\Plugins\\Marketplace\\Tasks.sendNotificationIfUpdatesAvailable\";i:1601683222;}', 0),
+('TransactionLevel.testOption', '1', 0),
+('UpdateCheck_LastTimeChecked', '1601622801', 1),
+('UpdateCheck_LatestVersion', '3.14.1', 0),
+('usercountry.location_provider', 'geoip2php', 0),
+('usercountry.switchtoisoregions', '1600159997', 0),
+('useridsalt', 'vfC9s-vR2FAEFpZBIEKvRSm_WNIvN3d3x7sS_evC', 1),
+('UsersManager.lastSeen.Vincouze', '1600936252', 1),
+('version_Actions', '3.14.1', 1),
+('version_Annotations', '3.14.1', 1),
+('version_API', '3.14.1', 1),
+('version_BulkTracking', '3.14.1', 1),
+('version_Contents', '3.14.1', 1),
+('version_core', '3.14.1', 1),
+('version_CoreAdminHome', '3.14.1', 1),
+('version_CoreConsole', '3.14.1', 1),
+('version_CoreHome', '3.14.1', 1),
+('version_CorePluginsAdmin', '3.14.1', 1),
+('version_CoreUpdater', '3.14.1', 1),
+('version_CoreVisualizations', '3.14.1', 1),
+('version_CustomPiwikJs', '3.14.1', 1),
+('version_CustomVariables', '3.14.1', 1),
+('version_Dashboard', '3.14.1', 1),
+('version_DevicePlugins', '3.14.1', 1),
+('version_DevicesDetection', '3.14.1', 1),
+('version_Diagnostics', '3.14.1', 1),
+('version_Ecommerce', '3.14.1', 1),
+('version_Events', '3.14.1', 1),
+('version_Feedback', '3.14.1', 1),
+('version_GeoIp2', '3.14.1', 1),
+('version_Goals', '3.14.1', 1),
+('version_Heartbeat', '3.14.1', 1),
+('version_ImageGraph', '3.14.1', 1),
+('version_Insights', '3.14.1', 1),
+('version_Installation', '3.14.1', 1),
+('version_Intl', '3.14.1', 1),
+('version_IntranetMeasurable', '3.14.1', 1),
+('version_LanguagesManager', '3.14.1', 1),
+('version_Live', '3.14.1', 1),
+('version_Login', '3.14.1', 1),
+('version_log_conversion.revenue', 'float default NULL', 1),
+('version_log_conversion.revenue_discount', 'float default NULL', 1),
+('version_log_conversion.revenue_shipping', 'float default NULL', 1),
+('version_log_conversion.revenue_subtotal', 'float default NULL', 1),
+('version_log_conversion.revenue_tax', 'float default NULL', 1),
+('version_log_link_visit_action.idaction_content_interaction', 'INTEGER(10) UNSIGNED DEFAULT NULL', 1),
+('version_log_link_visit_action.idaction_content_name', 'INTEGER(10) UNSIGNED DEFAULT NULL', 1),
+('version_log_link_visit_action.idaction_content_piece', 'INTEGER(10) UNSIGNED DEFAULT NULL', 1),
+('version_log_link_visit_action.idaction_content_target', 'INTEGER(10) UNSIGNED DEFAULT NULL', 1),
+('version_log_link_visit_action.idaction_event_action', 'INTEGER(10) UNSIGNED DEFAULT NULL', 1),
+('version_log_link_visit_action.idaction_event_category', 'INTEGER(10) UNSIGNED DEFAULT NULL', 1),
+('version_log_link_visit_action.idaction_name', 'INTEGER(10) UNSIGNED', 1),
+('version_log_link_visit_action.idaction_url', 'INTEGER(10) UNSIGNED DEFAULT NULL', 1),
+('version_log_link_visit_action.idpageview', 'CHAR(6) NULL DEFAULT NULL', 1),
+('version_log_link_visit_action.interaction_position', 'SMALLINT UNSIGNED DEFAULT NULL', 1),
+('version_log_link_visit_action.server_time', 'DATETIME NOT NULL', 1),
+('version_log_link_visit_action.time_spent_ref_action', 'INTEGER(10) UNSIGNED NULL', 1),
+('version_log_visit.config_browser_engine', 'VARCHAR(10) NULL', 1),
+('version_log_visit.config_browser_name', 'VARCHAR(10) NULL', 1),
+('version_log_visit.config_browser_version', 'VARCHAR(20) NULL', 1),
+('version_log_visit.config_cookie', 'TINYINT(1) NULL', 1),
+('version_log_visit.config_device_brand', 'VARCHAR( 100 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL1', 1),
+('version_log_visit.config_device_model', 'VARCHAR( 100 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL1', 1),
+('version_log_visit.config_device_type', 'TINYINT( 100 ) NULL DEFAULT NULL1', 1),
+('version_log_visit.config_director', 'TINYINT(1) NULL', 1),
+('version_log_visit.config_flash', 'TINYINT(1) NULL', 1),
+('version_log_visit.config_gears', 'TINYINT(1) NULL', 1),
+('version_log_visit.config_java', 'TINYINT(1) NULL', 1),
+('version_log_visit.config_os', 'CHAR(3) NULL', 1),
+('version_log_visit.config_os_version', 'VARCHAR( 100 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL', 1),
+('version_log_visit.config_pdf', 'TINYINT(1) NULL', 1),
+('version_log_visit.config_quicktime', 'TINYINT(1) NULL', 1),
+('version_log_visit.config_realplayer', 'TINYINT(1) NULL', 1),
+('version_log_visit.config_resolution', 'VARCHAR(18) NULL', 1),
+('version_log_visit.config_silverlight', 'TINYINT(1) NULL', 1),
+('version_log_visit.config_windowsmedia', 'TINYINT(1) NULL', 1),
+('version_log_visit.location_browser_lang', 'VARCHAR(20) NULL', 1),
+('version_log_visit.location_city', 'varchar(255) DEFAULT NULL1', 1),
+('version_log_visit.location_country', 'CHAR(3) NULL1', 1),
+('version_log_visit.location_latitude', 'decimal(9, 6) DEFAULT NULL1', 1),
+('version_log_visit.location_longitude', 'decimal(9, 6) DEFAULT NULL1', 1),
+('version_log_visit.location_region', 'char(3) DEFAULT NULL1', 1),
+('version_log_visit.referer_keyword', 'VARCHAR(255) NULL1', 1),
+('version_log_visit.referer_name', 'VARCHAR(70) NULL1', 1),
+('version_log_visit.referer_type', 'TINYINT(1) UNSIGNED NULL1', 1),
+('version_log_visit.referer_url', 'TEXT NULL', 1),
+('version_log_visit.user_id', 'VARCHAR(200) NULL', 1),
+('version_log_visit.visitor_count_visits', 'INT(11) UNSIGNED NOT NULL1', 1),
+('version_log_visit.visitor_days_since_first', 'SMALLINT(5) UNSIGNED NULL1', 1),
+('version_log_visit.visitor_days_since_last', 'SMALLINT(5) UNSIGNED NULL', 1),
+('version_log_visit.visitor_days_since_order', 'SMALLINT(5) UNSIGNED NULL1', 1),
+('version_log_visit.visitor_localtime', 'TIME NULL', 1),
+('version_log_visit.visitor_returning', 'TINYINT(1) NULL1', 1),
+('version_log_visit.visit_entry_idaction_name', 'INTEGER(10) UNSIGNED NULL', 1),
+('version_log_visit.visit_entry_idaction_url', 'INTEGER(11) UNSIGNED NULL  DEFAULT NULL', 1),
+('version_log_visit.visit_exit_idaction_name', 'INTEGER(10) UNSIGNED NULL', 1),
+('version_log_visit.visit_exit_idaction_url', 'INTEGER(10) UNSIGNED NULL DEFAULT 0', 1),
+('version_log_visit.visit_first_action_time', 'DATETIME NOT NULL', 1),
+('version_log_visit.visit_goal_buyer', 'TINYINT(1) NULL', 1),
+('version_log_visit.visit_goal_converted', 'TINYINT(1) NULL', 1),
+('version_log_visit.visit_total_actions', 'INT(11) UNSIGNED NULL', 1),
+('version_log_visit.visit_total_events', 'INT(11) UNSIGNED NULL', 1),
+('version_log_visit.visit_total_interactions', 'SMALLINT UNSIGNED DEFAULT 0', 1),
+('version_log_visit.visit_total_searches', 'SMALLINT(5) UNSIGNED NULL', 1),
+('version_log_visit.visit_total_time', 'INT(11) UNSIGNED NOT NULL', 1),
+('version_Marketplace', '3.14.1', 1),
+('version_MobileMessaging', '3.14.1', 1),
+('version_Monolog', '3.14.1', 1),
+('version_Morpheus', '3.14.1', 1),
+('version_MultiSites', '3.14.1', 1),
+('version_Overlay', '3.14.1', 1),
+('version_PrivacyManager', '3.14.1', 1),
+('version_ProfessionalServices', '3.14.1', 1),
+('version_Proxy', '3.14.1', 1),
+('version_Referrers', '3.14.1', 1),
+('version_Resolution', '3.14.1', 1),
+('version_RssWidget', '1.0', 1),
+('version_ScheduledReports', '3.14.1', 1),
+('version_SegmentEditor', '3.14.1', 1),
+('version_SEO', '3.14.1', 1),
+('version_SitesManager', '3.14.1', 1),
+('version_Tour', '3.14.1', 1),
+('version_Transitions', '3.14.1', 1),
+('version_TwoFactorAuth', '3.14.1', 1),
+('version_UserCountry', '3.14.1', 1),
+('version_UserCountryMap', '3.14.1', 1),
+('version_UserId', '3.14.1', 1),
+('version_UserLanguage', '3.14.1', 1),
+('version_UsersManager', '3.14.1', 1),
+('version_VisitFrequency', '3.14.1', 1),
+('version_VisitorInterest', '3.14.1', 1),
+('version_VisitsSummary', '3.14.1', 1),
+('version_VisitTime', '3.14.1', 1),
+('version_WebsiteMeasurable', '3.14.1', 1),
+('version_Widgetize', '3.14.1', 1),
+('Vincouze_defaultReport', '1', 0),
+('Vincouze_defaultReportDate', 'today', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `matomo_plugin_setting`
+--
+
+CREATE TABLE `matomo_plugin_setting` (
+  `plugin_name` varchar(60) NOT NULL,
+  `setting_name` varchar(255) NOT NULL,
+  `setting_value` longtext NOT NULL,
+  `json_encoded` tinyint(3) UNSIGNED NOT NULL DEFAULT '0',
+  `user_login` varchar(100) NOT NULL DEFAULT '',
+  `idplugin_setting` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `matomo_plugin_setting`
+--
+
+INSERT INTO `matomo_plugin_setting` (`plugin_name`, `setting_name`, `setting_value`, `json_encoded`, `user_login`, `idplugin_setting`) VALUES
+('Tour', 'view_visits_log_completed', '1', 0, 'Vincouze', 4),
+('Tour', 'view_visitor_profile_completed', '1', 0, 'Vincouze', 5),
+('Tour', 'browse_marketplace_completed', '1', 0, 'Vincouze', 6);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `matomo_privacy_logdata_anonymizations`
+--
+
+CREATE TABLE `matomo_privacy_logdata_anonymizations` (
+  `idlogdata_anonymization` bigint(20) UNSIGNED NOT NULL,
+  `idsites` text,
+  `date_start` datetime NOT NULL,
+  `date_end` datetime NOT NULL,
+  `anonymize_ip` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `anonymize_location` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `anonymize_userid` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `unset_visit_columns` text NOT NULL,
+  `unset_link_visit_action_columns` text NOT NULL,
+  `output` mediumtext,
+  `scheduled_date` datetime DEFAULT NULL,
+  `job_start_date` datetime DEFAULT NULL,
+  `job_finish_date` datetime DEFAULT NULL,
+  `requester` varchar(100) NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `matomo_report`
+--
+
+CREATE TABLE `matomo_report` (
+  `idreport` int(11) NOT NULL,
+  `idsite` int(11) NOT NULL,
+  `login` varchar(100) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `idsegment` int(11) DEFAULT NULL,
+  `period` varchar(10) NOT NULL,
+  `hour` tinyint(4) NOT NULL DEFAULT '0',
+  `type` varchar(10) NOT NULL,
+  `format` varchar(10) NOT NULL,
+  `reports` text NOT NULL,
+  `parameters` text,
+  `ts_created` timestamp NULL DEFAULT NULL,
+  `ts_last_sent` timestamp NULL DEFAULT NULL,
+  `deleted` tinyint(4) NOT NULL DEFAULT '0',
+  `evolution_graph_within_period` tinyint(4) NOT NULL DEFAULT '0',
+  `evolution_graph_period_n` int(11) NOT NULL,
+  `period_param` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `matomo_report_subscriptions`
+--
+
+CREATE TABLE `matomo_report_subscriptions` (
+  `idreport` int(11) NOT NULL,
+  `token` varchar(100) DEFAULT NULL,
+  `email` varchar(100) NOT NULL,
+  `ts_subscribed` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ts_unsubscribed` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `matomo_segment`
+--
+
+CREATE TABLE `matomo_segment` (
+  `idsegment` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `definition` text NOT NULL,
+  `login` varchar(100) NOT NULL,
+  `enable_all_users` tinyint(4) NOT NULL DEFAULT '0',
+  `enable_only_idsite` int(11) DEFAULT NULL,
+  `auto_archive` tinyint(4) NOT NULL DEFAULT '0',
+  `ts_created` timestamp NULL DEFAULT NULL,
+  `ts_last_edit` timestamp NULL DEFAULT NULL,
+  `deleted` tinyint(4) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `matomo_sequence`
+--
+
+CREATE TABLE `matomo_sequence` (
+  `name` varchar(120) NOT NULL,
+  `value` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `matomo_sequence`
+--
+
+INSERT INTO `matomo_sequence` (`name`, `value`) VALUES
+('matomo_archive_numeric_2020_01', 0),
+('matomo_archive_numeric_2020_09', 130),
+('matomo_archive_numeric_2020_10', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `matomo_session`
+--
+
+CREATE TABLE `matomo_session` (
+  `id` varchar(255) NOT NULL,
+  `modified` int(11) DEFAULT NULL,
+  `lifetime` int(11) DEFAULT NULL,
+  `data` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `matomo_session`
+--
+
+INSERT INTO `matomo_session` (`id`, `modified`, `lifetime`, `data`) VALUES
+('1us6kutunj8pbmo04uqreevhlp', 1600157326, 1209600, 'a:1:{s:4:\"data\";s:8:\"YTowOnt9\";}'),
+('21lne316he2tjft829pdmg0she', 1600936253, 1209600, 'a:1:{s:4:\"data\";s:300:\"YTo0OntzOjk6InVzZXIubmFtZSI7czo4OiJWaW5jb3V6ZSI7czoyMjoidHdvZmFjdG9yYXV0aC52ZXJpZmllZCI7aTowO3M6MTI6InNlc3Npb24uaW5mbyI7YTozOntzOjI6InRzIjtpOjE2MDA5MzQxOTc7czoxMDoicmVtZW1iZXJlZCI7YjowO3M6MTA6ImV4cGlyYXRpb24iO2k6MTYwMDkzOTg1Mzt9czoxMjoibm90aWZpY2F0aW9uIjthOjE6e3M6MTM6Im5vdGlmaWNhdGlvbnMiO2E6MDp7fX19\";}'),
+('2f4fv7kc8vjg6atstjqd4vln7q', 1600158086, 1209600, 'a:1:{s:4:\"data\";s:8:\"YTowOnt9\";}'),
+('933hjghubsrutmnjv0n0a885n6', 1600159849, 1209600, 'a:1:{s:4:\"data\";s:8:\"YTowOnt9\";}'),
+('aanjeivdg8lr4f5f9nh81ouml2', 1600157393, 1209600, 'a:1:{s:4:\"data\";s:8:\"YTowOnt9\";}'),
+('f1g3kd7vbjetr1b7o4rbgn9f66', 1600157316, 1209600, 'a:1:{s:4:\"data\";s:8:\"YTowOnt9\";}'),
+('fi5adt3f885fng01s687ov86ms', 1600159760, 1209600, 'a:1:{s:4:\"data\";s:8:\"YTowOnt9\";}'),
+('hs0shqv1ioa3fp8f3g33bca3pd', 1600159751, 1209600, 'a:1:{s:4:\"data\";s:8:\"YTowOnt9\";}'),
+('ilcubi75ac5ri4cj5mu7vs0d81', 1600159486, 1209600, 'a:1:{s:4:\"data\";s:8:\"YTowOnt9\";}'),
+('m3p4k1a5mfnbfgsnru4o9vt4ka', 1600158983, 1209600, 'a:1:{s:4:\"data\";s:568:\"YTo2OntzOjQ6Il9fWkYiO2E6MTp7czozMToiQ29yZVBsdWdpbnNBZG1pbi5hY3RpdmF0ZVBsdWdpbiI7YToxOntzOjQ6IkVOVlQiO2E6MTp7czo1OiJub25jZSI7aToxNjAwMTU5MTQyO319fXM6OToidXNlci5uYW1lIjtzOjg6IlZpbmNvdXplIjtzOjIyOiJ0d29mYWN0b3JhdXRoLnZlcmlmaWVkIjtpOjA7czoxMjoic2Vzc2lvbi5pbmZvIjthOjM6e3M6MjoidHMiO2k6MTYwMDE1ODE2MztzOjEwOiJyZW1lbWJlcmVkIjtiOjA7czoxMDoiZXhwaXJhdGlvbiI7aToxNjAwMTYyNTgzO31zOjEyOiJub3RpZmljYXRpb24iO2E6MTp7czoxMzoibm90aWZpY2F0aW9ucyI7YTowOnt9fXM6MzE6IkNvcmVQbHVnaW5zQWRtaW4uYWN0aXZhdGVQbHVnaW4iO2E6MTp7czo1OiJub25jZSI7czozMjoiZWFhZGVhZjI2N2E2ZDI4ZWY1YWU3NmE4ODVhMTkyYzAiO319\";}'),
+('mukurrrca8l2akdc0c5gbveeqq', 1600156307, 1209600, 'a:1:{s:4:\"data\";s:8:\"YTowOnt9\";}'),
+('pambujf22mvs6v7qekg0sfrf2g', 1600159783, 1209600, 'a:1:{s:4:\"data\";s:8:\"YTowOnt9\";}'),
+('riol80dncq9fvgahkth0n5u2oj', 1600159910, 1209600, 'a:1:{s:4:\"data\";s:8:\"YTowOnt9\";}'),
+('sa8kg82heksmh6ht2s78r3k6s1', 1600164003, 1209600, 'a:1:{s:4:\"data\";s:584:\"YTo5OntzOjk6InVzZXIubmFtZSI7czo4OiJWaW5jb3V6ZSI7czoyMjoidHdvZmFjdG9yYXV0aC52ZXJpZmllZCI7aTowO3M6MTI6InNlc3Npb24uaW5mbyI7YTozOntzOjI6InRzIjtpOjE2MDAxNTU3MDg7czoxMDoicmVtZW1iZXJlZCI7YjoxO3M6MTA6ImV4cGlyYXRpb24iO2k6MTYwMTM3MzYwMzt9czoxMjoibm90aWZpY2F0aW9uIjthOjE6e3M6MTM6Im5vdGlmaWNhdGlvbnMiO2E6MDp7fX1zOjMxOiJDb3JlUGx1Z2luc0FkbWluLmFjdGl2YXRlUGx1Z2luIjthOjA6e31zOjI5OiJUd29GYWN0b3JBdXRoLmRpc2FibGVBdXRoQ29kZSI7YTowOnt9czoyNToiTWFya2V0cGxhY2UuaW5zdGFsbFBsdWdpbiI7YTowOnt9czoyNDoiTWFya2V0cGxhY2UudXBkYXRlUGx1Z2luIjthOjA6e31zOjMzOiJDb3JlUGx1Z2luc0FkbWluLmRlYWN0aXZhdGVQbHVnaW4iO2E6MDp7fX0=\";}'),
+('uov8sn3atjb4ta1e42eloaoueo', 1600157169, 1209600, 'a:1:{s:4:\"data\";s:8:\"YTowOnt9\";}'),
+('v05ok8n5oe6u1g69de7h2ol8va', 1600157686, 1209600, 'a:1:{s:4:\"data\";s:8:\"YTowOnt9\";}');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `matomo_site`
+--
+
+CREATE TABLE `matomo_site` (
+  `idsite` int(10) UNSIGNED NOT NULL,
+  `name` varchar(90) NOT NULL,
+  `main_url` varchar(255) NOT NULL,
+  `ts_created` timestamp NULL DEFAULT NULL,
+  `ecommerce` tinyint(4) DEFAULT '0',
+  `sitesearch` tinyint(4) DEFAULT '1',
+  `sitesearch_keyword_parameters` text NOT NULL,
+  `sitesearch_category_parameters` text NOT NULL,
+  `timezone` varchar(50) NOT NULL,
+  `currency` char(3) NOT NULL,
+  `exclude_unknown_urls` tinyint(1) DEFAULT '0',
+  `excluded_ips` text NOT NULL,
+  `excluded_parameters` text NOT NULL,
+  `excluded_user_agents` text NOT NULL,
+  `group` varchar(250) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `keep_url_fragment` tinyint(4) NOT NULL DEFAULT '0',
+  `creator_login` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `matomo_site`
+--
+
+INSERT INTO `matomo_site` (`idsite`, `name`, `main_url`, `ts_created`, `ecommerce`, `sitesearch`, `sitesearch_keyword_parameters`, `sitesearch_category_parameters`, `timezone`, `currency`, `exclude_unknown_urls`, `excluded_ips`, `excluded_parameters`, `excluded_user_agents`, `group`, `type`, `keep_url_fragment`, `creator_login`) VALUES
+(1, 'Moto Club Millau Passion', 'http://cda27.s1.2isa.org', '2020-09-13 22:00:00', 0, 1, '', '', 'Europe/Paris', 'EUR', 0, '', '', '', '', 'website', 0, 'anonymous');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `matomo_site_setting`
+--
+
+CREATE TABLE `matomo_site_setting` (
+  `idsite` int(10) UNSIGNED NOT NULL,
+  `plugin_name` varchar(60) NOT NULL,
+  `setting_name` varchar(255) NOT NULL,
+  `setting_value` longtext NOT NULL,
+  `json_encoded` tinyint(3) UNSIGNED NOT NULL DEFAULT '0',
+  `idsite_setting` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `matomo_site_setting`
+--
+
+INSERT INTO `matomo_site_setting` (`idsite`, `plugin_name`, `setting_name`, `setting_value`, `json_encoded`, `idsite_setting`) VALUES
+(1, 'CoreAdminHome', 'trackingCodeExistsCheck', '1', 0, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `matomo_site_url`
+--
+
+CREATE TABLE `matomo_site_url` (
+  `idsite` int(10) UNSIGNED NOT NULL,
+  `url` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `matomo_tracking_failure`
+--
+
+CREATE TABLE `matomo_tracking_failure` (
+  `idsite` bigint(20) UNSIGNED NOT NULL,
+  `idfailure` smallint(5) UNSIGNED NOT NULL,
+  `date_first_occurred` datetime NOT NULL,
+  `request_url` mediumtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `matomo_twofactor_recovery_code`
+--
+
+CREATE TABLE `matomo_twofactor_recovery_code` (
+  `idrecoverycode` bigint(20) UNSIGNED NOT NULL,
+  `login` varchar(100) NOT NULL,
+  `recovery_code` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `matomo_user`
+--
+
+CREATE TABLE `matomo_user` (
+  `login` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `alias` varchar(45) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `twofactor_secret` varchar(40) NOT NULL DEFAULT '',
+  `token_auth` char(32) NOT NULL,
+  `superuser_access` tinyint(2) UNSIGNED NOT NULL DEFAULT '0',
+  `date_registered` timestamp NULL DEFAULT NULL,
+  `ts_password_modified` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `matomo_user`
+--
+
+INSERT INTO `matomo_user` (`login`, `password`, `alias`, `email`, `twofactor_secret`, `token_auth`, `superuser_access`, `date_registered`, `ts_password_modified`) VALUES
+('anonymous', '', 'anonymous', 'anonymous@example.org', '', 'anonymous', 0, '2020-09-15 05:36:42', '2020-09-15 05:36:42'),
+('Vincouze', '$2y$10$RPgkzcKt7bUw1q7DqG4sr.Ii/jnml7QJzA435vAnhf1C/CO2XZ2QS', 'Vincouze', 'v.mundoegea@gmail.com', '', '6043c1df9bb733969844a203a2781b43', 1, '2020-09-15 05:37:26', '2020-09-15 05:37:26');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `matomo_user_dashboard`
+--
+
+CREATE TABLE `matomo_user_dashboard` (
+  `login` varchar(100) NOT NULL,
+  `iddashboard` int(11) NOT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `layout` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `matomo_user_dashboard`
+--
+
+INSERT INTO `matomo_user_dashboard` (`login`, `iddashboard`, `name`, `layout`) VALUES
+('Vincouze', 1, 'Tableau de bord', '{\"config\":{\"layout\":\"33-33-33\"},\"columns\":[[{\"uniqueId\":\"widgetLivewidget\",\"parameters\":{\"module\":\"Live\",\"action\":\"widget\",\"disableLink\":0,\"widget\":1},\"isHidden\":false},{\"uniqueId\":\"widgetCoreHomegetPromoVideo\",\"parameters\":{\"module\":\"CoreHome\",\"action\":\"getPromoVideo\",\"disableLink\":0,\"widget\":1},\"isHidden\":false}],[{\"uniqueId\":\"widgetVisitsSummarygetEvolutionGraphforceView1viewDataTablegraphEvolution\",\"parameters\":{\"forceView\":\"1\",\"viewDataTable\":\"graphEvolution\",\"module\":\"VisitsSummary\",\"action\":\"getEvolutionGraph\",\"disableLink\":0,\"widget\":1,\"evolution_day_last_n\":\"30\",\"columns\":[\"nb_visits\",\"nb_uniq_visitors\"],\"columns_to_display\":[\"nb_visits\",\"nb_uniq_visitors\"],\"rows\":[],\"rows_to_display\":[]},\"isHidden\":false},{\"uniqueId\":\"widgetProfessionalServicespromoServices\",\"parameters\":{\"module\":\"ProfessionalServices\",\"action\":\"promoServices\",\"disableLink\":0,\"widget\":1},\"isHidden\":false},{\"uniqueId\":\"widgetVisitsSummarygetforceView1viewDataTablesparklines\",\"parameters\":{\"forceView\":\"1\",\"viewDataTable\":\"sparklines\",\"module\":\"VisitsSummary\",\"action\":\"get\",\"disableLink\":0,\"widget\":1},\"isHidden\":false}],[{\"uniqueId\":\"widgetTourgetEngagement\",\"parameters\":{\"module\":\"Tour\",\"action\":\"getEngagement\",\"disableLink\":0,\"widget\":1},\"isHidden\":false},{\"uniqueId\":\"widgetUserCountryMapvisitorMap\",\"parameters\":{\"module\":\"UserCountryMap\",\"action\":\"visitorMap\",\"disableLink\":0,\"widget\":1},\"isHidden\":false},{\"uniqueId\":\"widgetReferrersgetReferrerType\",\"parameters\":{\"module\":\"Referrers\",\"action\":\"getReferrerType\",\"disableLink\":0,\"widget\":1},\"isHidden\":false},{\"uniqueId\":\"widgetRssWidgetrssPiwik\",\"parameters\":{\"module\":\"RssWidget\",\"action\":\"rssPiwik\",\"disableLink\":0,\"widget\":1},\"isHidden\":false}]]}');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `matomo_user_language`
+--
+
+CREATE TABLE `matomo_user_language` (
+  `login` varchar(100) NOT NULL,
+  `language` varchar(10) NOT NULL,
+  `use_12_hour_clock` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `matomo_user_language`
+--
+
+INSERT INTO `matomo_user_language` (`login`, `language`, `use_12_hour_clock`) VALUES
+('Vincouze', 'fr', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `nouvelle`
+--
+
+CREATE TABLE `nouvelle` (
+  `IdNouvelle` int(11) NOT NULL,
+  `Titre` varchar(50) NOT NULL,
+  `Texte` longblob,
+  `DPubli` date NOT NULL,
+  `Diffusion` int(1) DEFAULT '0',
+  `Fichier` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `nouvelle`
+--
+
+INSERT INTO `nouvelle` (`IdNouvelle`, `Titre`, `Texte`, `DPubli`, `Diffusion`, `Fichier`) VALUES
+(83, 'Hypertext Markup Language', 0x3c66696775726520636c6173733d22696d61676520696d6167655f726573697a656422207374796c653d2277696474683a313030253b223e3c696d67207372633d2268747470733a2f2f65787465726e616c2d636f6e74656e742e6475636b6475636b676f2e636f6d2f69752f3f753d687474702533412532462532467777772e7a61737461766b692e636f6d253246706963747572657325324631393230783132303025324632303132253246436f6d7075746572735f68746d6c5f355f3033343330315f2e6a706726616d703b663d3126616d703b6e6f66623d312220616c743d2268746d6c20352077616c6c70617065727320616e6420696d61676573202d2077616c6c7061706572732c2070696374757265732c2070686f746f73223e3c2f6669677572653e3c68323e496e7465726f70c3a9726162696c6974c3a92064652048544d4c3c2f68323e3c703e54656c207175e28099696c206120c3a974c3a920666f726d616c6973c3a920706172206c65203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f576f726c645f576964655f5765625f436f6e736f727469756d223e5733433c2f613e2c2048544d4c2065737420636f6ec3a77520706f7572206f7074696d69736572206ce280993c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f496e7465726f70254333254139726162696c6974254333254139223e696e7465726f70c3a9726162696c6974c3a93c2f613e2064657320646f63756d656e74732e204c652048544d4c206e6520736572742070617320c3a02064c3a96372697265206c652072656e64752066696e616c20646573203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f506167655f776562223e7061676573207765623c2f613e2e20456e20706172746963756c6965722c20636f6e7472616972656d656e7420c3a0206c61203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f5075626c69636174696f6e5f617373697374254333254139655f7061725f6f7264696e6174657572223e7075626c69636174696f6e20617373697374c3a96520706172206f7264696e61746575723c2f613e2c2048544d4c206ee280996573742070617320636f6ec3a77520706f7572207370c3a9636966696572206ce280996170706172656e63652076697375656c6c652064657320646f63756d656e74732e2048544d4c2065737420706c7574c3b47420636f6ec3a77520706f757220646f6e6e6572206475203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f532543332541396d616e7469717565223e73656e733c2f613e206175782064696666c3a972656e7465732070617274696573206475207465787465266e6273703b3a2074697472652c206c697374652c207061737361676520696d706f7274616e742c206369746174696f6e2c266e6273703b6574632e204c65206c616e676167652048544d4c206120c3a974c3a92064c3a976656c6f7070c3a92061766563206ce28099696e74756974696f6e20717565206c657320617070617265696c7320646520746f7574657320736f72746573207365726169656e74207574696c6973c3a97320706f757220636f6e73756c746572206c6520776562266e6273703b3a206c6573206f7264696e61746575727320706572736f6e6e656c7320617665632064657320c3a96372616e732064652072c3a9736f6c7574696f6e2065742064652070726f666f6e6465757220646520636f756c65757273207661726961626c65732c206c65732074c3a96cc3a970686f6e657320706f727461626c65732c206c657320617070617265696c732064652073796e7468c3a87365206574206465207265636f6e6e61697373616e6365206465206c61207061726f6c652c206c6573206f7264696e617465757273206176656320756e652062616e64652070617373616e746520666169626c6520636f6d6d6520c3a96c6576c3a9652c2065742061696e73692064652073756974652e3c2f703e3c703e436f6d6d652048544d4c206e652073e2809961747461636865207061732061752072656e64752066696e616c20647520646f63756d656e742c20756e206dc3aa6d6520646f63756d656e742048544d4c207065757420c3aa74726520636f6e73756c74c3a920c3a0206ce2809961696465206465206d6174c3a97269656c73206574206c6f67696369656c73207472c3a873206469766572732e204175206e6976656175206d6174c3a97269656c2c20756e20646f63756d656e742070657574206e6f74616d6d656e7420c3aa74726520616666696368c3a92073757220756e203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f2543332538396372616e5f642532376f7264696e6174657572223ec3a96372616e2064276f7264696e61746575723c2f613e20656e203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f4d6f64655f677261706869717565223e6d6f6465206772617068697175653c2f613e206f7520756e203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f5465726d696e616c5f696e666f726d617469717565223e7465726d696e616c20696e666f726d6174697175653c2f613e20656e203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f4d6f64655f7465787465223e6d6f64652074657874653c2f613e2c20696c207065757420c3aa74726520696d7072696dc3a92c206f7520696c207065757420c3aa7472652070726f6e6f6e63c3a920706172203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f53796e746825433325413873655f766f63616c65223e73796e7468c3a8736520766f63616c653c2f613e2e204175206e6976656175206c6f67696369656c2c2048544d4c206e65206661697420706173206e6f6e20706c757320646520737570706f736974696f6e2c20657420706c75736965757273207479706573206465206c6f67696369656c73206c6973656e74206c652048544d4c266e6273703b3a203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f4e6176696761746575725f776562223e6e617669676174657572207765623c2f613e2c203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f526f626f745f64253237696e6465786174696f6e223e726f626f74206427696e6465786174696f6e3c2f613e2c2073637269707473206469766572732028656e203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f5065726c5f286c616e6761676529223e5065726c3c2f613e2c203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f504850223e5048503c2f613e29206465207472616974656d656e74206175746f6d6174697175652e3c2f703e3c703e556e20686175742064656772c3a92064e28099696e7465726f70c3a9726162696c6974c3a9207065726d65742064652062616973736572206c657320636fc3bb74732064657320666f75726e6973736575727320646520636f6e74656e75732063617220756e65207365756c652076657273696f6e2064652063686171756520646f63756d656e74207365727420646573206265736f696e73207472c3a8732076617269c3a9732e20506f7572206ce280997574696c69736174657572206475207765622c206ce28099696e7465726f70c3a9726162696c6974c3a9207065726d6574206ce280996578697374656e6365206465206e6f6d6272657578206e6176696761746575727320636f6e63757272656e74732c20746f75732063617061626c657320646520636f6e73756c746572206ce28099656e73656d626c65206475207765622e3c2f703e3c703e4368617175652076657273696f6e2064652048544d4c2061206573736179c3a9206465207265666cc3a9746572206c6520706c7573206772616e6420636f6e73656e73757320656e747265206c65732061637465757273206465206ce28099696e647573747269652c20646520736f72746520717565206c657320696e76657374697373656d656e747320636f6e73656e74697320706172206c657320666f75726e6973736575727320646520636f6e74656e7573206e6520736f69656e74207061732067617370696c6cc3a97320657420717565206c6575727320646f63756d656e7473206e652064657669656e6e656e7420656e207065752064652074656d707320696c6c697369626c65732e204c612073c3a97061726174696f6e20647520666f6e64206574206465206c6120666f726d65206ee28099612070617320746f756a6f75727320c3a974c3a92072657370656374c3a96520617520636f7572732064752064c3a976656c6f7070656d656e74206475206c616e676167652c20636f6d6d6520656e2074c3a96d6f69676e6520706172206578656d706c65206c652062616c6973616765206465207374796c652064652074657874652c20717569207065726d65742064e28099696e646971756572206e6f74616d6d656e74206c6120706f6c69636520646520636172616374c3a872657320736f7568616974c3a96520706f7572206ce280996166666963686167652c207361207461696c6c652c206f7520736120636f756c6575722e3c2f703e3c66696775726520636c6173733d22696d616765223e3c696d67207372633d2268747470733a2f2f65787465726e616c2d636f6e74656e742e6475636b6475636b676f2e636f6d2f69752f3f753d68747470732533412532462532467777772e6765656b73726561642e636f6d25324677702d636f6e74656e7425324675706c6f61647325324632303138253246303825324648544d4c2d4353532d4a6176617363726970742e6a706726616d703b663d3126616d703b6e6f66623d312220616c743d224120677569646520746f206265636f6d652046756c6c2d537461636b20646576656c6f70657220696e2032303138202d204765656b7352656164223e3c66696763617074696f6e3e4353532048544d4c35206574204a5320213c2f66696763617074696f6e3e3c2f6669677572653e3c703e266e6273703b3c2f703e, '2020-09-30', 2, 'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.zastavki.com%2Fpictures%2F1920x1200%2F2012%2FComputers_html_5_034301_.jpg&f=1&nofb=1'),
+(85, 'Le CSS !', 0x3c68323e266e6273703b3c2f68323e3c66696775726520636c6173733d22696d61676520696d6167655f726573697a656422207374796c653d2277696474683a35312e3431253b223e3c696d67207372633d2268747470733a2f2f65787465726e616c2d636f6e74656e742e6475636b6475636b676f2e636f6d2f69752f3f753d6874747073253341253246253246747365322e6d6d2e62696e672e6e6574253246746825334669642533444f49502e5657545070796b6172796450424c534b6a574f6875514861443725323670696425334441706926616d703b663d31223e3c2f6669677572653e3c68323e486973746f697265206475204353533c2f68323e3c703e3c7374726f6e673e556e20636f6e63657074207061726d692064276175747265732c207072c3a973656e742064c3a873206c276f726967696e65206475207765623c2f7374726f6e673e3c2f703e3c703e4c6520636f6e63657074206465203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f466575696c6c655f64655f7374796c65223e666575696c6c65206465207374796c653c2f613e20657374207072c3a973656e742064c3a873206c276f726967696e65206475203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f576f726c645f576964655f576562223e576f726c642057696465205765623c2f613e266e6273703b3a206c65207072656d696572203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f4e6176696761746575725f776562223e6e617669676174657572207765623c2f613e203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f576f726c6457696465576562223e576f726c64576964655765623c2f613e207065726d6574206465206d657474726520656e20666f726d65206c657320646f63756d656e747320c3a0206c276169646520646520636520717569207365726169742061756a6f7572642768756920636f6e736964c3a972c3a920636f6d6d6520756e6520c2ab266e6273703b666575696c6c65206465207374796c65207574696c69736174657572266e6273703bc2bb3c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f466575696c6c65735f64655f7374796c655f656e5f6361736361646523636974655f6e6f74652d32223e323c2f613e2e204465206dc3aa6d652c206c6573206e61766967617465757273203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f772f696e6465782e7068703f7469746c653d56696f6c615f286e6176696761746575722926616d703b616374696f6e3d6564697426616d703b7265646c696e6b3d31223e56696f6c613c2f613e20656e203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f31393932223e313939323c2f613e206574203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f772f696e6465782e7068703f7469746c653d4861726d6f6e795f286e6176696761746575722926616d703b616374696f6e3d6564697426616d703b7265646c696e6b3d31223e4861726d6f6e793c2f613e20656e203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f31393933223e313939333c2f613e207265636f7572656e7420c3a020756e206dc3a963616e69736d652073696d696c61697265207065726d657474616e742064652064c3a97465726d696e6572206c652072656e64752064657320706f6c6963657320646520636172616374c3a87265732c2064657320636f756c65757273206f75206465206c27616c69676e656d656e742064752074657874652e3c2f703e3c703e496c206e652073276167697420636570656e64616e7420706173206465207374796c65732064c3a97465726d696ec3a97320706172206c2761757465757220647520646f63756d656e742e203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f48544d4c223e48544d4c3c2f613e206e6520636f6d706f7274616e7420706173206e6f6e20706c7573206427c3a96cc3a96d656e7473206465207072c3a973656e746174696f6e2064616e7320736573207072656d69c3a872657320616e6ec3a965732c20756e65207072657373696f6e2063726f697373616e746520732765786572636520616c6f727320706f757220717565206c6573206e61766967617465757273207065726d657474656e742061757820617574657572732064652064c3a97465726d696e6572206575782d6dc3aa6d6573206c61207072c3a973656e746174696f6e20646573203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f50616765735f776562223e7061676573207765623c2f613e3c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f466575696c6c65735f64655f7374796c655f656e5f6361736361646523636974655f6e6f74652d33223e333c2f613e2c2064616e7320756e652064c3a96d6172636865206973737565206465206c61207075626c69636174696f6e20696d7072696dc3a96520c3a96c656374726f6e697175652e2043276573742064616e7320636520636f6e74657874652c20656e203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f31393934223e313939343c2f613e2d3c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f31393935223e313939353c2f613e2c20717565206c6520746f7574206e6f7576656175203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f4e657473636170655f4e6176696761746f72223e4e65747363617065204e6176696761746f723c2f613e20696e74726f64756974206c6573207072656d6965727320c3a96cc3a96d656e74732048544d4c206465207072c3a973656e746174696f6e20c3a0206c27696e6974696174697665206465203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f4d6172635f416e647265657373656e223e4d61726320416e647265657373656e3c2f613e2c2074616e64697320717527617070617261697373656e7420636f6e63757272656d6d656e74206c6573207072656d69c3a87265732070726f706f736974696f6e73206465207374796c65732065787465726e65733c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f466575696c6c65735f64655f7374796c655f656e5f6361736361646523636974655f6e6f74652d34223e6e2e20313c2f613e266e6273703b3a206c6520c2ab266e6273703b7374796c6573686565742070726f706f73616c266e6273703bc2bb206465205065692057656920286372c3a961746575722064652056696f6c61293c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f466575696c6c65735f64655f7374796c655f656e5f6361736361646523636974655f6e6f74652d35223e343c2f613e2c206c657320c2ab266e6273703b5374796c6573686565747320666f722048544d4c266e6273703bc2bb20646520526f626572742052616973636820284f275265696c6c79293c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f466575696c6c65735f64655f7374796c655f656e5f6361736361646523636974655f6e6f74652d36223e353c2f613e2c20657420656e66696e206c657320c2ab266e6273703b20436173636164696e672048544d4c205374796c6520536865657473266e6273703bc2bb202843485353292064273c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f482543332541356b6f6e5f5769756d5f4c6965223e48c3a56b6f6e205769756d204c69653c2f613e3c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f466575696c6c65735f64655f7374796c655f656e5f6361736361646523636974655f6e6f74652d37223e363c2f613e2e204c2761707061726974696f6e206465204353532072c3a9706f6e6420c3a020756e6520766f6c6f6e74c3a920646520c2ab266e6273703b70726f706f73657220756e6520616c7465726e617469766520c3a0206c27c3a9766f6c7574696f6e2064752048544d4c206427756e206c616e676167652064652073747275637475726174696f6e207665727320756e206c616e67616765206465207072c3a973656e746174696f6e266e6273703bc2bb3c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f466575696c6c65735f64655f7374796c655f656e5f6361736361646523636974655f6e6f74652d38223e373c2f613e2e3c2f703e3c703e556e652074726f697369c3a86d6520766f69652064652064c3a976656c6f7070656d656e742065737420c3a967616c656d656e74206f75766572746520c3a0206c61206dc3aa6d6520c3a9706f717565266e6273703b3a206c65206c616e67616765206465207472616e73666f726d6174696f6e20445353534c2064657320646f63756d656e7473203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f53474d4c223e53474d4c3c2f613e2c20c3a96c61626f72c3a920706172203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f4a616d65735f436c61726b5f28696e666f726d61746971756529223e4a616d657320436c61726b3c2f613e2c2073756767c3a87265206c6120706f73736962696c6974c3a9206427756e206c616e67616765206465207374796c657320717569206e6520736f697420706173207365756c656d656e7420646573637269707469662c2065742073652072617070726f636865206427756e2076c3a972697461626c65203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f4c616e676167655f64655f70726f6772616d6d6174696f6e223e6c616e676167652064652070726f6772616d6d6174696f6e3c2f613e3c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f466575696c6c65735f64655f7374796c655f656e5f6361736361646523636974655f6e6f74652d39223e6e2e20323c2f613e2e20436574746520766f6965206573742073756976696520706172204e657473636170652c207175692070726f706f736520656e203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f31393936223e313939363c2f613e20617520573343206c657320c2ab266e6273703b4a6176615363726970742d4261736564205374796c6520536865657473266e6273703bc2bb20284a535353293c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f466575696c6c65735f64655f7374796c655f656e5f6361736361646523636974655f6e6f74652d3130223e383c2f613e2c20696d706cc3a96d656e74c3a9657320706172204e65747363617065204e6176696761746f72203420656e203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f31393937223e313939373c2f613e2e3c2f703e3c703e4c6573206f726967696e6573206465732043535320736f6e7420646f6e63206c69c3a9657320c3a02074726f697320706f73736962696c6974c3a973206d616a6575726573266e6273703b3a3c2f703e3c756c3e3c6c693e48544d4c206573742d696c20756e206c616e676167652064652073747275637475726174696f6e206f7520756e206c616e67616765206d69787465206465206d69736520656e20666f726d652065742064652073747275637475726174696f6e266e6273703b3f3c2f6c693e3c6c693e4c65732063686f6978206465207072c3a973656e746174696f6e206465206c2761757465757220646f6976656e742d696c732061766f6972206c61207072696d617574c3a9207375722063657578206465206c277574696c69736174657572266e6273703b3f3c2f6c693e3c6c693e4c612072c3a9706f6e736520617578206265736f696e73206573742d656c6c6520756e206c616e67616765206465206465736372697074696f6e206465206c61206d69736520656e20666f726d65206f7520756e206c616e67616765206465207472616e73666f726d6174696f6e266e6273703b3f3c2f6c693e3c2f756c3e3c703e266e6273703b3c2f703e3c66696775726520636c6173733d22696d616765223e3c696d67207372633d2268747470733a2f2f65787465726e616c2d636f6e74656e742e6475636b6475636b676f2e636f6d2f69752f3f753d68747470732533412532462532466372656976652e6d6525324677702d636f6e74656e7425324675706c6f61647325324632303138253246303825324670616e6b616a2d706174656c2d3632363135362d756e73706c6173682e6a706726616d703b663d3126616d703b6e6f66623d312220616c743d22435353e381a7e8a681e7b4a0e38292e6a8aae4b8a6e381b3e381abe38199e3828be696b9e6b39528666c6f6174e381a8646973706c6179e381aee4bdbfe38184e696b9e38292e8a7a3e8aaac29207c20637265697665e38090e382afe383aae383bce38396e38091223e3c2f6669677572653e, '2020-09-30', 1, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.VWTPpykarydPBLSKjWOhuQHaD7%26pid%3DApi&f=1'),
+(86, 'Javascript !', 0x3c66696775726520636c6173733d22696d616765223e3c696d67207372633d2268747470733a2f2f636f6e737472756374732e7374616d706564652d64657369676e2e636f6d2f77702d636f6e74656e742f75706c6f6164732f323031372f30312f6a6176617363726970746c6f676f2d322e6a7067223e3c2f6669677572653e3c703e3c7374726f6e673e44c3a96275743c2f7374726f6e673e3c2f703e3c703e4c65206c616e67616765206120c3a974c3a9206372c3a9c3a920656e20646978206a6f75727320656e206d6169203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f31393935223e313939353c2f613e20706f7572206c6520636f6d707465206465206c61203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f4e657473636170655f436f6d6d756e69636174696f6e735f436f72706f726174696f6e223e4e6574736361706520436f6d6d756e69636174696f6e7320436f72706f726174696f6e3c2f613e20706172203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f4272656e64616e5f45696368223e4272656e64616e20456963683c2f613e2c2071756920732765737420696e73706972c3a9206465206e6f6d6272657578206c616e67616765732c206e6f74616d6d656e74206465203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f4a6176615f286c616e6761676529223e4a6176613c2f613e206d61697320656e2073696d706c696669616e74206c612073796e7461786520706f7572206c65732064c3a9627574616e74733c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f4a61766153637269707423636974655f6e6f74652d39223e393c2f613e2e203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f4272656e64616e5f45696368223e4272656e64616e20456963683c2f613e206120696e697469616c656d656e742064c3a976656c6f7070c3a920756e206c616e67616765206465207363726970742063c3b474c3a920736572766575722c20617070656cc3a9204c6976655363726970742c20706f75722072656e666f72636572206c276f6666726520636f6d6d65726369616c65206465203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f536572766575725f48545450223e7365727665757220485454503c2f613e206465203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f4d6f736169635f436f6d6d756e69636174696f6e735f436f72706f726174696f6e223e4d6f7361696320436f6d6d756e69636174696f6e7320436f72706f726174696f6e3c2f613e2e204c6120736f72746965206465204c69766553637269707420696e7465727669656e7420c3a0206c27c3a9706f717565206fc3b9206c65203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f4e6174696f6e616c5f43656e7465725f666f725f5375706572636f6d707574696e675f4170706c69636174696f6e73223e4e4353413c2f613e20666f726365204d6f7361696320436f6d6d756e69636174696f6e7320436f72706f726174696f6e20c3a0206368616e676572206465206e6f6d20706f757220646576656e6972204e6574736361706520436f6d6d756e69636174696f6e7320436f72706f726174696f6e2e2e204e65747363617065207472617661696c6c6520616c6f72732061752064c3a976656c6f7070656d656e74206427756e652076657273696f6e206f7269656e74c3a96520636c69656e74206465204c6976655363726970742e205175656c71756573206a6f757273206176616e7420736120736f727469652c204e65747363617065206368616e6765206c65206e6f6d206465204c69766553637269707420706f7572204a6176615363726970742e203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f53756e5f4d6963726f73797374656d73223e53756e204d6963726f73797374656d733c2f613e206574204e6574736361706520c3a9746169656e742070617274656e61697265732c206574206c61203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f4d616368696e655f7669727475656c6c65223e6d616368696e65207669727475656c6c653c2f613e203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f4a6176615f286c616e6761676529223e4a6176613c2f613e20646520706c757320656e20706c757320706f70756c616972652e204365206368616e67656d656e74206465206e6f6d2073657276616974206c657320696e74c3a972c3aa747320646573206465757820736f6369c3a974c3a9732e3c2f703e3c703e456e203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f4425433325413963656d6272655f31393935223e64c3a963656d6272653c2f613e203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f31393935223e313939353c2f613e2c2053756e206574204e6574736361706520616e6e6f6e63656e743c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f4a61766153637269707423636974655f6e6f74652d6e65777372656c6561736536372d3130223e31303c2f613e206c6120736f72746965206465204a6176615363726970742e20456e203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f4d6172735f31393936223e6d6172733c2f613e203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f31393936223e313939363c2f613e2c204e65747363617065206d657420656e20c59375767265206c65206d6f74657572204a6176615363726970742064616e7320736f6e203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f4e6176696761746575725f776562223e6e617669676174657572207765623c2f613e203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f4e657473636170655f4e6176696761746f72223e4e65747363617065204e6176696761746f723c2f613e20322e302e204c652073756363c3a873206465206365206e61766967617465757220636f6e74726962756520c3a0206c2761646f7074696f6e20726170696465206465204a6176615363726970742064616e73206c652064c3a976656c6f7070656d656e7420776562206f7269656e74c3a920636c69656e742e203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f4d6963726f736f6674223e4d6963726f736f66743c2f613e2072c3a96167697420616c6f727320656e2064c3a976656c6f7070616e74203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f4a536372697074223e4a5363726970743c2f613e2c20717527696c20696e636c757420656e73756974652064616e73203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f496e7465726e65745f4578706c6f726572223e496e7465726e6574204578706c6f7265723c2f613e20332e3020656e203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f416f254333254242745f31393936223e616fc3bb743c2f613e203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f31393936223e313939363c2f613e20706f7572206c6120736f7274696520646520736f6e206e6176696761746575722e3c2f703e3c703e4a617661536372697074206573742064c3a96372697420636f6d6d6520756e20636f6d706cc3a96d656e7420c3a0203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f4a6176615f286c616e6761676529223e4a6176613c2f613e2064616e7320756e20636f6d6d756e697175c3a9206465207072657373653c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f4a61766153637269707423636974655f6e6f74652d6e65777372656c6561736536372d3130223e31303c2f613e20636f6d6d756e206465204e657473636170652065742053756e204d6963726f73797374656d732c20646174c3a9206475203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f345f6425433325413963656d627265223e343c2f613e203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f4425433325413963656d6272655f31393935223e64c3a963656d6272653c2f613e203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f31393935223e313939353c2f613e2e20436574746520696e6974696174697665206120636f6e7472696275c3a920c3a0206372c3a965722061757072c3a873206475207075626c696320756e65206365727461696e6520636f6e667573696f6e20656e747265206c65732064657578206c616e67616765732c2070726f636865732073796e746178697175656d656e74206d6169732070617320647520746f75742064616e73206c6575727320636f6e636570747320666f6e64616d656e746175782c20657420717569207065726475726520656e636f7265206465206e6f73206a6f7572733c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f4a61766153637269707423636974655f6e6f74652d3131223e31313c2f613e2e3c2f703e3c703ec2abe280af4a617661536372697074e280afc2bb2064657669656e7420756e65203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f4d61727175655f64254333254139706f7325433325413965223e6d61727175652064c3a9706f73c3a9653c2f613e20706172203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f4f7261636c655f28656e747265707269736529223e4f7261636c653c2f613e2061757820c389746174732d556e697320656e203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f4d61695f31393937223e6d61693c2f613e203c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f31393937223e313939373c2f613e3c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f4a61766153637269707423636974655f6e6f74652d3132223e31323c2f613e2c3c6120687265663d2268747470733a2f2f66722e77696b6970656469612e6f72672f77696b692f4a61766153637269707423636974655f6e6f74652d3133223e31333c2f613e2e3c2f703e3c66696775726520636c6173733d22696d616765223e3c696d67207372633d2268747470733a2f2f65787465726e616c2d636f6e74656e742e6475636b6475636b676f2e636f6d2f69752f3f753d68747470732533412532462532467777772e696d70726f6772616d6d65722e6e657425324677702d636f6e74656e7425324675706c6f6164732532463230313625324630392532464a6176612d76732d4a6176617363726970742e6a706726616d703b663d3126616d703b6e6f66623d312220616c743d225768617427732074686520646966666572656e6365206265747765656e204a61766153637269707420616e64204a617661202e2e2e223e3c2f6669677572653e3c703e4a617661206574204a61766153637269707420736f6e742064657578206c616e67616765732064652070726f6772616d6d6174696f6e2e3c62723e4c65757220706f696e7420636f6d6d756e266e6273703b3a20636520736f6e7420746f7573206c6573206465757820646573206c616e676167657320646520747970652043206574206f6e742064652063652066616974206c61206dc3aa6d65207374727563747572652e20496c7320736f6e7420636570656e64616e74207472c3a8732064696666c3a972656e74732064616e73206c65757220666f6e6374696f6e6e656d656e74206574206c657572207574696c69736174696f6e2e3c2f703e3c703e4a6176615363726970742065737420756e206c616e6761676520696e7465727072c3a974c3a92c2063e280996573742dc3a02d64697265207175e28099696c2065737420646972656374656d656e74206c7520657420747261647569742061752066757220657420c3a0206d6573757265206465206ce280996578c3a9637574696f6e2064752070726f6772616d6d652e204c65204a61766153637269707420657374207072696e636970616c656d656e74207574696c6973c3a9206175207472617665727320646520766f747265206e61766967617465757220696e7465726e65742e3c62723e54616e64697320717565204a6176612065737420756e206c616e676167652064697420636f6d70696cc3a9266e6273703b3a20696c20666175742070617373657220706172206c61204a564d20284a617661205669727475616c204d616368696e6529206166696e207175e28099696c20736f697420696e7465727072c3a974c3a920656e206c616e6761676520c2ab266e6273703b6d616368696e65266e6273703bc2bb2e3c2f703e3c703e41757472652064696666c3a972656e636520656e747265206365732064657578206c616e6761676573266e6273703b3a204a617661536372697074206120756e2074797061676520666169626c652074616e646973207175652063656c7569206465204a6176612065737420c3a02074797061676520666f72742e20547970657220756e65207661726961626c6520636f6e736973746520c3a0206964656e746966696572206c65207479706520646520646f6e6ec3a9657320c3a0206d616e6970756c65722028436861696e6520646520636172616374c3a872652c206e6f6d6272652c20626f6f6c65616e2a206574632e293c2f703e3c703e456e20706c75732064652063657320646575782064696666c3a972656e636573206e6f7461626c65732c206365732064657578206c616e6761676573206e6520736f6e7420706173207574696c6973c3a97320706f7572206c6573206dc3aa6d657320726169736f6e73206e692066696e616c6974c3a9732e3c2f703e3c703e266e6273703b3c2f703e3c703e3c7374726f6e673e4a6176615363726970743c2f7374726f6e673e2065737420756e206c616e67616765207765622c207265636f6d6d616e64c3a920706f7572206c6573206170706c69636174696f6e73206574207369746573207765622c206365206c616e6761676520706c757320c2ab266e6273703b6372c3a961746966266e6273703bc2bb2065737420646520636520666169742064c3a96469c3a92061752046726f6e742e20496c206573742061637475656c6c656d656e7420656e20706c65696e6520657870616e73696f6e2c20696c2065737420646f6e6320636f6e7365696c6cc3a92064652073e280997920696e74c3a97265737365722e204a6176615363726970742065737420756e206c616e6761676520646974207065746974206d61697320696c2065786973746520756e206e6f6d62726520696d706f7274616e74206465206672616d65776f726b73206574206c6962726169726965732c206574207065757420646f6e632073656d626c657220706c757320636f6d706c65786520c3a0207072656d69c3a87265207675652e20446570756973206ce280996172726976c3a965206465204e6f64654a532c204a617661536372697074206f66667265206c652064c3a976656c6f7070656d656e742064e280996170706c69636174696f6e732064c3a96469c3a96573206175204261636b2e3c2f703e3c703e3c7374726f6e673e4a6176613c2f7374726f6e673e2065737420756e206c616e676167652064c3a96469c3a9206175203c6120687265663d22687474703a2f2f7777772e616c74696372656174696f6e2e636f6d2f646966666572656e63652d646576656c6f70706575722d66726f6e742d656e642d65742d646576656c6f70706575722d6261636b2d656e642f223e3c7374726f6e673e4261636b3c2f7374726f6e673e3c2f613e20657420617578206170706c69636174696f6e73206175746f6e6f6d657320286465736b746f70206574206d6f62696c6520416e64726f69643c693e292e3c2f693e20496c2065737420636f6e736964c3a972c3a920636f6d6d65206c65206c616e67616765206e6174696620646573206170706c69636174696f6e73206d6f62696c657320416e64726f6964206574206f6666726520646573206f7074696f6e7320657420666f6e6374696f6e6e616c6974c3a97320706c7573206c617267657320717565206c657320617574726573206c616e676167657320706f757220636520747970652064652064c3a9706c6f69656d656e74732e20496c20657374207265636f6d6d616e64c3a920706f7572206c616e63657220646573206170706c69636174696f6e7320726f6275737465732e20526576657273206465206c61206dc3a96461696c6c653a20696c2065737420676f75726d616e6420656e207465726d657320646520726573736f75726365732e20436f6e7472616972656d656e7420c3a0204a6176615363726970742c20706575206465206c69627261697269657320677261766974656e74206175746f75722065742063e2809965737420756e206c616e676167652064697420c2ab266e6273703b76657262657578266e6273703bc2bb2c20696c20706575742061696e73692073656d626c657220706c757320666163696c6520c3a0207072656e64726520656e206d61696e206175207072656d6965722061626f72642e3c2f703e3c703e266e6273703b3c2f703e3c703e416c6f7273e280a620706f757271756f69206ce280997574696c69736174696f6e206475207465726d6520c2ab266e6273703b6a617661266e6273703bc2bb2064616e73204a617661536372697074207369206365732064657578206c616e6761676573206ee280996f6e74207269656e20646520636f6d6d756e20c3a020706172742064e28099c3aa74726520646520747970652043266e6273703b3f3c2f703e3c703e496e697469616c656d656e74204a6176615363726970742073e28099617070656c616974204c6976655363726970742e20536f6e206e6f6d206120c3a974c3a9206d6f64696669c3a920656e204a6176615363726970742c20706575742dc3aa74726520706f7572203c6120687265663d22687474703a2f2f7777772e6a732d61747469747564652e66722f323031322f30392f31372f6a6176617363726970742d6e2d612d7269656e2d612d766f69722d617665632d6a6176612f223e3c7374726f6e673e70726f6669746572206465206c61206e6f746f7269c3a974c3a9206475206c616e67616765204a6176613c2f7374726f6e673e3c2f613e2e3c2f703e, '2020-09-30', 0, 'https://constructs.stampede-design.com/wp-content/uploads/2017/01/javascriptlogo-2.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `pages`
+--
+
+CREATE TABLE `pages` (
+  `IdPage` tinyint(4) NOT NULL,
+  `Titre` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+  `Key` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+  `Sujet` text,
+  `Keywords` text,
+  `Description` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `pages`
+--
+
+INSERT INTO `pages` (`IdPage`, `Titre`, `Key`, `Sujet`, `Keywords`, `Description`) VALUES
+(1, 'Moto Club Millau Passion', 'accueil', 'Devenez adhérent et profitez de nos sorties à moto avec Moto club Millau Passion', 'Moto, moto, moto club, millau, moto club millau, moto club millau passion, aveyron, motard, motards, sorties, inscription, super, génial, équipe, cylindrée, scooter', 'Site web dynamique de Moto Club Millau Passion'),
+(2, 'News | MCMP', 'news', 'Les nouvelles de Moto Club Millau Passion', 'Moto, moto, moto club, millau, moto club millau, moto club millau passion, aveyron, motard, motards, sorties, inscription, super, génial, équipe, cylindrée, scooter, nouvelles, informations, nouvelle, information', 'Site web dynamique de Moto Club Millau Passion'),
+(3, 'Activités | MCMP', 'activites', 'Les activités de Moto Club Millau Passion', 'Moto, moto, moto club, millau, moto club millau, moto club millau passion, aveyron, motard, motards, sorties, inscription, super, génial, équipe, cylindrée, scooter, activités,activité, inscription, balade, balades', 'Site web dynamique de Moto Club Millau Passion'),
+(4, 'Galerie | MCMP', 'galerie', 'La galerie de Moto Club Millau Passion', 'Moto, moto, moto club, millau, moto club millau, moto club millau passion, aveyron, motard, motards, sorties, inscription, super, génial, équipe, cylindrée, scooter, photo, photos, galerie photo, galerie image, bande', 'Site web dynamique de Moto Club Millau Passion'),
+(5, 'Historique | MCMP', 'historique', 'L\'histoire de Moto Club Millau Passion', 'Moto, moto, moto club, millau, moto club millau, moto club millau passion, aveyron, motard, motards, sorties, inscription, super, génial, équipe, cylindrée, scooter, histoire, historique, création', 'Site web dynamique de Moto Club Millau Passion'),
+(6, 'Connexion | MCMP', 'connexion', 'Menu connexion de Moto Club Millau Passion', 'Moto, moto, moto club, millau, moto club millau, moto club millau passion, aveyron, motard, motards, sorties, inscription, super, génial, équipe, cylindrée, scooter', 'Site web dynamique de Moto Club Millau Passion'),
+(7, 'Inscription | MCMP', 'inscription', 'Inscription de Moto Club Millau Passion', 'Moto, moto, moto club, millau, moto club millau, moto club millau passion, aveyron, motard, motards, sorties, inscription, super, génial, équipe, cylindrée, scooter', 'Site web dynamique de Moto Club Millau Passion'),
+(8, 'Règlement | MCMP', 'reglement', 'Règlement de Moto Club Millau Passion', 'Moto, moto, moto club, millau, moto club millau, moto club millau passion, aveyron, motard, motards, sorties, inscription, super, génial, équipe, cylindrée, scooter, règle, règlement, règles', 'Site web dynamique de Moto Club Millau Passion'),
+(9, 'Contact | MCMP', 'contact', 'Contact de Moto Club Millau Passion', 'Moto, moto, moto club, millau, moto club millau, moto club millau passion, aveyron, motard, motards, sorties, inscription, super, génial, équipe, cylindrée, scooter, contact, nous contacter, rendez-vous', 'Site web dynamique de Moto Club Millau Passion'),
+(10, 'Partenaire | MCMP', 'partenaire', 'Partenaires de Moto Club Millau Passion', 'Moto, moto, moto club, millau, moto club millau, moto club millau passion, aveyron, motard, motards, sorties, inscription, super, génial, équipe, cylindrée, scooter, partenaire', 'Site web dynamique de Moto Club Millau Passion'),
+(11, 'Membres | MCMP', 'membres', 'Membres de Moto Club Millau Passion', 'Moto, moto, moto club, millau, moto club millau, moto club millau passion, aveyron, motard, motards, sorties, inscription, super, génial, équipe, cylindrée, scooter, notre équipe, nos membres, membres, ', 'Site web dynamique de Moto Club Millau Passion'),
+(12, 'Profil | MCMP', 'profil', 'Profil de Moto Club Millau Passion', 'Moto, moto, moto club, millau, moto club millau, moto club millau passion, aveyron, motard, motards, sorties, inscription, super, génial, équipe, cylindrée, scooter', 'Site web dynamique de Moto Club Millau Passion'),
+(13, 'Galerie Manage - MCMP', 'manage', ' Manager galerie de Moto Club Millau Passion', 'Moto, moto, moto club, millau, moto club millau, moto club millau passion, aveyron, motard, motards, sorties, inscription, super, génial, équipe, cylindrée, scooter', 'Site web dynamique de Moto Club Millau Passion'),
+(15, 'Nouvelles - MCMP', 'newscontent', 'La nouvelle de Moto Club Millau Passion', 'Moto, moto, moto club, millau, moto club millau, moto club millau passion, aveyron, motard, motards, sorties, inscription, super, génial, équipe, cylindrée, scooter', 'Site web dynamique de Moto Club Millau Passion'),
+(16, 'Ajout de nouvelles - MCMP', 'ajoutnews', 'Ajout de nouvelle de Moto Club Millau Passion', 'Moto, moto, moto club, millau, moto club millau, moto club millau passion, aveyron, motard, motards, sorties, inscription, super, génial, équipe, cylindrée, scooter', 'Site web dynamique de Moto Club Millau Passion'),
+(17, 'Edition de nouvelles - MCMP', 'editnews', 'Editer une nouvelle de Moto Club Millau Passion', 'Moto, moto, moto club, millau, moto club millau, moto club millau passion, aveyron, motard, motards, sorties, inscription, super, génial, équipe, cylindrée, scooter', 'Site web dynamique de Moto Club Millau Passion'),
+(18, 'Cryptage sha256 all sql database', 'cryptage', NULL, 'Moto, moto, moto club, millau, moto club millau, moto club millau passion, aveyron, motard, motards, sorties, inscription, super, génial, équipe, cylindrée, scooter', 'Site web dynamique de Moto Club Millau Passion'),
+(19, 'Ajouter activité - MCMP', 'ajoutactivite', 'Ajout d\'activité de Moto Club Millau Passion', 'Moto, moto, moto club, millau, moto club millau, moto club millau passion, aveyron, motard, motards, sorties, inscription, super, génial, équipe, cylindrée, scooter', 'Site web dynamique de Moto Club Millau Passion'),
+(30, 'Liste des fichiers', 'listefichiers', 'Lister les fichiers de Moto Club Millau Passion', 'Moto, moto, moto club, millau, moto club millau, moto club millau passion, aveyron, motard, motards, sorties, inscription, super, génial, équipe, cylindrée, scooter', 'Site web dynamique de Moto Club Millau Passion'),
+(20, 'Information activité - MCMP', 'activitecontent', 'Information de l\'activité de Moto Club Millau Passion', 'Moto, moto, moto club, millau, moto club millau, moto club millau passion, aveyron, motard, motards, sorties, inscription, super, génial, équipe, cylindrée, scooter', 'Site web dynamique de Moto Club Millau Passion'),
+(29, 'Liste - Admin - MCMP', 'liste', NULL, 'Moto, moto, moto club, millau, moto club millau, moto club millau passion, aveyron, motard, motards, sorties, inscription, super, génial, équipe, cylindrée, scooter', 'Site web dynamique de Moto Club Millau Passion'),
+(27, 'Edition d\'activité', 'editactivite', NULL, 'Moto, moto, moto club, millau, moto club millau, moto club millau passion, aveyron, motard, motards, sorties, inscription, super, génial, équipe, cylindrée, scooter', 'Site web dynamique de Moto Club Millau Passion'),
+(24, 'Administration de la galerie', 'admin', NULL, 'Moto, moto, moto club, millau, moto club millau, moto club millau passion, aveyron, motard, motards, sorties, inscription, super, génial, équipe, cylindrée, scooter', 'Site web dynamique de Moto Club Millau Passion'),
+(25, 'Upload d\'image - MCMP', 'upload', 'Upload de Moto Club Millau Passion', 'Moto, moto, moto club, millau, moto club millau, moto club millau passion, aveyron, motard, motards, sorties, inscription, super, génial, équipe, cylindrée, scooter', 'Site web dynamique de Moto Club Millau Passion'),
+(26, 'Regarder un upload', 'viewer', NULL, 'Moto, moto, moto club, millau, moto club millau, moto club millau passion, aveyron, motard, motards, sorties, inscription, super, génial, équipe, cylindrée, scooter', 'Site web dynamique de Moto Club Millau Passion'),
+(28, 'Activité', 'activite', NULL, NULL, 'Site web dynamique de Moto Club Millau Passion'),
+(31, 'Ajout de type d\'activité', 'ajouttype', NULL, NULL, 'Site web dynamique de Moto Club Millau Passion');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `photo`
+--
+
+CREATE TABLE `photo` (
+  `IdPhoto` int(11) NOT NULL,
+  `Titre` varchar(50) NOT NULL,
+  `DPhoto` date DEFAULT NULL,
+  `Fichier` varchar(50) DEFAULT NULL,
+  `IdAdherent` int(11) NOT NULL,
+  `IdActivite` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `type_activite`
+--
+
+CREATE TABLE `type_activite` (
+  `IdType` int(11) NOT NULL,
+  `IntituleType` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `type_activite`
+--
+
+INSERT INTO `type_activite` (`IdType`, `IntituleType`) VALUES
+(1, 'Sorties en gros cube'),
+(2, 'Sorties en 125cc');
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `activite`
+--
+ALTER TABLE `activite`
+  ADD PRIMARY KEY (`IdActivite`),
+  ADD KEY `IdAdherent` (`IdAdherent`),
+  ADD KEY `IdType` (`IdType`);
+
+--
+-- Index pour la table `adherent`
+--
+ALTER TABLE `adherent`
+  ADD PRIMARY KEY (`IdAdherent`),
+  ADD UNIQUE KEY `Login` (`Login`),
+  ADD KEY `Password` (`Password`);
+
+--
+-- Index pour la table `adherentrecovery`
+--
+ALTER TABLE `adherentrecovery`
+  ADD PRIMARY KEY (`IdAdherent`);
+
+--
+-- Index pour la table `fichiers`
+--
+ALTER TABLE `fichiers`
+  ADD PRIMARY KEY (`IdFichier`);
+
+--
+-- Index pour la table `images`
+--
+ALTER TABLE `images`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `inscription`
+--
+ALTER TABLE `inscription`
+  ADD PRIMARY KEY (`IdInscription`),
+  ADD KEY `IdAdherent` (`IdAdherent`),
+  ADD KEY `IdActivite` (`IdActivite`);
+
+--
+-- Index pour la table `matomo_access`
+--
+ALTER TABLE `matomo_access`
+  ADD PRIMARY KEY (`idaccess`),
+  ADD KEY `index_loginidsite` (`login`,`idsite`);
+
+--
+-- Index pour la table `matomo_archive_blob_2020_01`
+--
+ALTER TABLE `matomo_archive_blob_2020_01`
+  ADD PRIMARY KEY (`idarchive`,`name`),
+  ADD KEY `index_period_archived` (`period`,`ts_archived`);
+
+--
+-- Index pour la table `matomo_archive_blob_2020_09`
+--
+ALTER TABLE `matomo_archive_blob_2020_09`
+  ADD PRIMARY KEY (`idarchive`,`name`),
+  ADD KEY `index_period_archived` (`period`,`ts_archived`);
+
+--
+-- Index pour la table `matomo_archive_blob_2020_10`
+--
+ALTER TABLE `matomo_archive_blob_2020_10`
+  ADD PRIMARY KEY (`idarchive`,`name`),
+  ADD KEY `index_period_archived` (`period`,`ts_archived`);
+
+--
+-- Index pour la table `matomo_archive_numeric_2020_01`
+--
+ALTER TABLE `matomo_archive_numeric_2020_01`
+  ADD PRIMARY KEY (`idarchive`,`name`),
+  ADD KEY `index_idsite_dates_period` (`idsite`,`date1`,`date2`,`period`,`ts_archived`),
+  ADD KEY `index_period_archived` (`period`,`ts_archived`);
+
+--
+-- Index pour la table `matomo_archive_numeric_2020_09`
+--
+ALTER TABLE `matomo_archive_numeric_2020_09`
+  ADD PRIMARY KEY (`idarchive`,`name`),
+  ADD KEY `index_idsite_dates_period` (`idsite`,`date1`,`date2`,`period`,`ts_archived`),
+  ADD KEY `index_period_archived` (`period`,`ts_archived`);
+
+--
+-- Index pour la table `matomo_archive_numeric_2020_10`
+--
+ALTER TABLE `matomo_archive_numeric_2020_10`
+  ADD PRIMARY KEY (`idarchive`,`name`),
+  ADD KEY `index_idsite_dates_period` (`idsite`,`date1`,`date2`,`period`,`ts_archived`),
+  ADD KEY `index_period_archived` (`period`,`ts_archived`);
+
+--
+-- Index pour la table `matomo_brute_force_log`
+--
+ALTER TABLE `matomo_brute_force_log`
+  ADD PRIMARY KEY (`id_brute_force_log`),
+  ADD KEY `index_ip_address` (`ip_address`);
+
+--
+-- Index pour la table `matomo_goal`
+--
+ALTER TABLE `matomo_goal`
+  ADD PRIMARY KEY (`idsite`,`idgoal`);
+
+--
+-- Index pour la table `matomo_locks`
+--
+ALTER TABLE `matomo_locks`
+  ADD PRIMARY KEY (`key`);
+
+--
+-- Index pour la table `matomo_logger_message`
+--
+ALTER TABLE `matomo_logger_message`
+  ADD PRIMARY KEY (`idlogger_message`);
+
+--
+-- Index pour la table `matomo_log_action`
+--
+ALTER TABLE `matomo_log_action`
+  ADD PRIMARY KEY (`idaction`),
+  ADD KEY `index_type_hash` (`type`,`hash`);
+
+--
+-- Index pour la table `matomo_log_conversion`
+--
+ALTER TABLE `matomo_log_conversion`
+  ADD PRIMARY KEY (`idvisit`,`idgoal`,`buster`),
+  ADD UNIQUE KEY `unique_idsite_idorder` (`idsite`,`idorder`),
+  ADD KEY `index_idsite_datetime` (`idsite`,`server_time`);
+
+--
+-- Index pour la table `matomo_log_conversion_item`
+--
+ALTER TABLE `matomo_log_conversion_item`
+  ADD PRIMARY KEY (`idvisit`,`idorder`,`idaction_sku`),
+  ADD KEY `index_idsite_servertime` (`idsite`,`server_time`);
+
+--
+-- Index pour la table `matomo_log_link_visit_action`
+--
+ALTER TABLE `matomo_log_link_visit_action`
+  ADD PRIMARY KEY (`idlink_va`),
+  ADD KEY `index_idvisit` (`idvisit`),
+  ADD KEY `index_idsite_servertime` (`idsite`,`server_time`);
+
+--
+-- Index pour la table `matomo_log_profiling`
+--
+ALTER TABLE `matomo_log_profiling`
+  ADD PRIMARY KEY (`idprofiling`),
+  ADD UNIQUE KEY `query` (`query`(100));
+
+--
+-- Index pour la table `matomo_log_visit`
+--
+ALTER TABLE `matomo_log_visit`
+  ADD PRIMARY KEY (`idvisit`),
+  ADD KEY `index_idsite_config_datetime` (`idsite`,`config_id`,`visit_last_action_time`),
+  ADD KEY `index_idsite_datetime` (`idsite`,`visit_last_action_time`),
+  ADD KEY `index_idsite_idvisitor` (`idsite`,`idvisitor`);
+
+--
+-- Index pour la table `matomo_option`
+--
+ALTER TABLE `matomo_option`
+  ADD PRIMARY KEY (`option_name`),
+  ADD KEY `autoload` (`autoload`);
+
+--
+-- Index pour la table `matomo_plugin_setting`
+--
+ALTER TABLE `matomo_plugin_setting`
+  ADD PRIMARY KEY (`idplugin_setting`),
+  ADD KEY `plugin_name` (`plugin_name`,`user_login`);
+
+--
+-- Index pour la table `matomo_privacy_logdata_anonymizations`
+--
+ALTER TABLE `matomo_privacy_logdata_anonymizations`
+  ADD PRIMARY KEY (`idlogdata_anonymization`),
+  ADD KEY `job_start_date` (`job_start_date`);
+
+--
+-- Index pour la table `matomo_report`
+--
+ALTER TABLE `matomo_report`
+  ADD PRIMARY KEY (`idreport`);
+
+--
+-- Index pour la table `matomo_report_subscriptions`
+--
+ALTER TABLE `matomo_report_subscriptions`
+  ADD PRIMARY KEY (`idreport`,`email`),
+  ADD UNIQUE KEY `unique_token` (`token`);
+
+--
+-- Index pour la table `matomo_segment`
+--
+ALTER TABLE `matomo_segment`
+  ADD PRIMARY KEY (`idsegment`);
+
+--
+-- Index pour la table `matomo_sequence`
+--
+ALTER TABLE `matomo_sequence`
+  ADD PRIMARY KEY (`name`);
+
+--
+-- Index pour la table `matomo_session`
+--
+ALTER TABLE `matomo_session`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `matomo_site`
+--
+ALTER TABLE `matomo_site`
+  ADD PRIMARY KEY (`idsite`);
+
+--
+-- Index pour la table `matomo_site_setting`
+--
+ALTER TABLE `matomo_site_setting`
+  ADD PRIMARY KEY (`idsite_setting`),
+  ADD KEY `idsite` (`idsite`,`plugin_name`);
+
+--
+-- Index pour la table `matomo_site_url`
+--
+ALTER TABLE `matomo_site_url`
+  ADD PRIMARY KEY (`idsite`,`url`);
+
+--
+-- Index pour la table `matomo_tracking_failure`
+--
+ALTER TABLE `matomo_tracking_failure`
+  ADD PRIMARY KEY (`idsite`,`idfailure`);
+
+--
+-- Index pour la table `matomo_twofactor_recovery_code`
+--
+ALTER TABLE `matomo_twofactor_recovery_code`
+  ADD PRIMARY KEY (`idrecoverycode`);
+
+--
+-- Index pour la table `matomo_user`
+--
+ALTER TABLE `matomo_user`
+  ADD PRIMARY KEY (`login`),
+  ADD UNIQUE KEY `uniq_keytoken` (`token_auth`);
+
+--
+-- Index pour la table `matomo_user_dashboard`
+--
+ALTER TABLE `matomo_user_dashboard`
+  ADD PRIMARY KEY (`login`,`iddashboard`);
+
+--
+-- Index pour la table `matomo_user_language`
+--
+ALTER TABLE `matomo_user_language`
+  ADD PRIMARY KEY (`login`);
+
+--
+-- Index pour la table `nouvelle`
+--
+ALTER TABLE `nouvelle`
+  ADD PRIMARY KEY (`IdNouvelle`);
+
+--
+-- Index pour la table `pages`
+--
+ALTER TABLE `pages`
+  ADD PRIMARY KEY (`IdPage`);
+
+--
+-- Index pour la table `photo`
+--
+ALTER TABLE `photo`
+  ADD PRIMARY KEY (`IdPhoto`),
+  ADD KEY `IdAdherent` (`IdAdherent`),
+  ADD KEY `IdActivite` (`IdActivite`);
+
+--
+-- Index pour la table `type_activite`
+--
+ALTER TABLE `type_activite`
+  ADD PRIMARY KEY (`IdType`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `activite`
+--
+ALTER TABLE `activite`
+  MODIFY `IdActivite` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+
+--
+-- AUTO_INCREMENT pour la table `adherent`
+--
+ALTER TABLE `adherent`
+  MODIFY `IdAdherent` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+
+--
+-- AUTO_INCREMENT pour la table `fichiers`
+--
+ALTER TABLE `fichiers`
+  MODIFY `IdFichier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT pour la table `images`
+--
+ALTER TABLE `images`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT pour la table `inscription`
+--
+ALTER TABLE `inscription`
+  MODIFY `IdInscription` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT pour la table `matomo_access`
+--
+ALTER TABLE `matomo_access`
+  MODIFY `idaccess` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `matomo_brute_force_log`
+--
+ALTER TABLE `matomo_brute_force_log`
+  MODIFY `id_brute_force_log` bigint(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `matomo_logger_message`
+--
+ALTER TABLE `matomo_logger_message`
+  MODIFY `idlogger_message` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `matomo_log_action`
+--
+ALTER TABLE `matomo_log_action`
+  MODIFY `idaction` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT pour la table `matomo_log_link_visit_action`
+--
+ALTER TABLE `matomo_log_link_visit_action`
+  MODIFY `idlink_va` bigint(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+
+--
+-- AUTO_INCREMENT pour la table `matomo_log_profiling`
+--
+ALTER TABLE `matomo_log_profiling`
+  MODIFY `idprofiling` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `matomo_log_visit`
+--
+ALTER TABLE `matomo_log_visit`
+  MODIFY `idvisit` bigint(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT pour la table `matomo_plugin_setting`
+--
+ALTER TABLE `matomo_plugin_setting`
+  MODIFY `idplugin_setting` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT pour la table `matomo_privacy_logdata_anonymizations`
+--
+ALTER TABLE `matomo_privacy_logdata_anonymizations`
+  MODIFY `idlogdata_anonymization` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `matomo_report`
+--
+ALTER TABLE `matomo_report`
+  MODIFY `idreport` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `matomo_segment`
+--
+ALTER TABLE `matomo_segment`
+  MODIFY `idsegment` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `matomo_site`
+--
+ALTER TABLE `matomo_site`
+  MODIFY `idsite` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT pour la table `matomo_site_setting`
+--
+ALTER TABLE `matomo_site_setting`
+  MODIFY `idsite_setting` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT pour la table `matomo_twofactor_recovery_code`
+--
+ALTER TABLE `matomo_twofactor_recovery_code`
+  MODIFY `idrecoverycode` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `nouvelle`
+--
+ALTER TABLE `nouvelle`
+  MODIFY `IdNouvelle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+
+--
+-- AUTO_INCREMENT pour la table `pages`
+--
+ALTER TABLE `pages`
+  MODIFY `IdPage` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- AUTO_INCREMENT pour la table `photo`
+--
+ALTER TABLE `photo`
+  MODIFY `IdPhoto` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `type_activite`
+--
+ALTER TABLE `type_activite`
+  MODIFY `IdType` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `activite`
+--
+ALTER TABLE `activite`
+  ADD CONSTRAINT `activite_ibfk_1` FOREIGN KEY (`IdAdherent`) REFERENCES `adherent` (`IdAdherent`),
+  ADD CONSTRAINT `activite_ibfk_2` FOREIGN KEY (`IdType`) REFERENCES `type_activite` (`IdType`);
+
+--
+-- Contraintes pour la table `inscription`
+--
+ALTER TABLE `inscription`
+  ADD CONSTRAINT `inscription_ibfk_1` FOREIGN KEY (`IdAdherent`) REFERENCES `adherent` (`IdAdherent`),
+  ADD CONSTRAINT `inscription_ibfk_2` FOREIGN KEY (`IdActivite`) REFERENCES `activite` (`IdActivite`);
+
+--
+-- Contraintes pour la table `photo`
+--
+ALTER TABLE `photo`
+  ADD CONSTRAINT `photo_ibfk_1` FOREIGN KEY (`IdAdherent`) REFERENCES `adherent` (`IdAdherent`),
+  ADD CONSTRAINT `photo_ibfk_2` FOREIGN KEY (`IdActivite`) REFERENCES `activite` (`IdActivite`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

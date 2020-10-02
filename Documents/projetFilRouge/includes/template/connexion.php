@@ -17,14 +17,14 @@
                                 <div class="row text-center">
                                     <div class="col-lg-6">
                                         <label class="py-0 mb-0" for="name">Identifiant</label>
-                                        <br /><input size="16" type="text" id="login" name="Login" placeholder="" required />
+                                        <br /><input size="16" type="text" id="login" name="Login" placeholder="" value="UtilisateurTest1" required />
                                     </div>
                                     <div class="col-lg-6">
                                         <label class="py-0 mb-0"  for="name">Mot de passe</label>
-                                        <br /><input size="16" type="password" id="password" name="Password" placeholder="" required />
+                                        <br /><input size="16" type="password" id="password" name="Password" placeholder="" value="123456Test" required />
                                     </div>
                                     <div class="col-lg-12">
-                                        <label class="py-0 mb-0"  for="mobile">Veuillez saisir votre identifiant et votre mot de passe</label>
+                                        <label class="py-0 mb-0"  for="mobile">Veuillez saisir votre identifiant et votre mot de passe<br />(ATTENTION, Fil Rouge en cours <br /> il manque un caractère dans le mot de passe <br /> Veuillez lire le message Teams pour le récupérer...)</label>
                                     </div>
                                 </div>
                                 <div class="g-recaptcha col-12" data-sitekey="6LfVpssZAAAAALskuUcMWYxfZ-WYY2hOxIJi4cxr"></div>

@@ -148,31 +148,35 @@ if (!empty($_POST)) {
                 $MonModalBouton = '<a href="javascript:history.back()">Rééssayer</a>';
             }
         } elseif ($_POST['formulaire'] == 'inscriptionactivite' && isset($_SESSION['User_Level']) && $_SESSION['User_Level'] > 0) {
-            //Si un login existe déjà dans mon tableau de login alors je lui renvoie une modal
-            $ListeInscription = $BDD->query('SELECT * FROM inscription WHERE IdActivite ='.$_GET['id'].' AND IdAdherent = '.$_SESSION['Id']);
-            //Je créé un tableau de login
-            $TbInscription = array();
-            while ($ResultatListeInscription = $ListeInscription->fetch()) {
-                $TbInscription[$ResultatListeInscription['IdAdherent']] = $ResultatListeInscription;
+            $VerifDateLimite = $BDD->query('SELECT DLimite FROM activite WHERE IdActivite ='.$_GET['id']);
+            while ($ResultatVerifDateLimite = $VerifDateLimite->fetch()) {
+                $datelimite = $ResultatVerifDateLimite['DLimite'];
             }
-            if (array_key_exists($_SESSION['Id'], $TbInscription)) {
-                $MonModalTitre = 'Erreur';
-                $MonModalTexte = 'Vous êtes déjà inscrit à cette activité!';
-                $MonModalBouton = '<a href="page-activitecontent-'.$_GET['id'].'">Retourner sur l\'activité</a>';
-            } else {
-                //Initialisation de la requête
-                $Query = 'INSERT INTO inscription(
+            if (date('d/m/Y') < strftime("%d/%m/%y", strtotime($ResultatVerifDateLimite['DLimite']))) {
+                $ListeInscription = $BDD->query('SELECT * FROM inscription WHERE IdActivite ='.$_GET['id'].' AND IdAdherent = '.$_SESSION['Id']);
+
+                $TbInscription = array();
+                while ($ResultatListeInscription = $ListeInscription->fetch()) {
+                    $TbInscription[$ResultatListeInscription['IdAdherent']] = $ResultatListeInscription;
+                }
+                if (array_key_exists($_SESSION['Id'], $TbInscription)) {
+                    $MonModalTitre = 'Erreur';
+                    $MonModalTexte = 'Vous êtes déjà inscrit à cette activité!';
+                    $MonModalBouton = '<a href="page-activitecontent-'.$_GET['id'].'">Retourner sur l\'activité</a>';
+                } else {
+                    //Initialisation de la requête
+                    $Query = 'INSERT INTO inscription(
             DInscription,
             NbInvités,
             IdAdherent,
             IdActivite
             ) VALUES ( NOW(), ?, ?, ?)'
             ;
-                //Préparation de la requête
-                $reponse = $BDD->prepare($Query);
+                    //Préparation de la requête
+                    $reponse = $BDD->prepare($Query);
 
-                /* Execution de la requête dans la base de données */
-                $reponse->execute(
+                    /* Execution de la requête dans la base de données */
+                    $reponse->execute(
                     array(
                     $_POST["NombreInvite"],
                     $_SESSION['Id'],
@@ -180,9 +184,14 @@ if (!empty($_POST)) {
                 )
                 );
 
-                /* Changement du message de type modal */
-                $MonModalTitre = 'Succès !';
-                $MonModalTexte = 'Votre inscription a bien été prise en compte';
+                    /* Changement du message de type modal */
+                    $MonModalTitre = 'Succès !';
+                    $MonModalTexte = 'Votre inscription a bien été prise en compte';
+                    $MonModalBouton = '<a href="page-activitecontent-'.$_GET['id'].'">Retourner sur l\'activité</a>';
+                }
+            } else {
+                $MonModalTitre = 'Erreur';
+                $MonModalTexte = 'La date d\'inscription limite est passée, essayez de contacter l\'administrateur dans la page <a href="./page-contact">Contact</a> du site';
                 $MonModalBouton = '<a href="page-activitecontent-'.$_GET['id'].'">Retourner sur l\'activité</a>';
             }
         } elseif ($_POST['formulaire'] == 'updateprofil' && isset($_SESSION['User_Level'])) {
